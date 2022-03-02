@@ -1,0 +1,62 @@
+\section{A linear system over $\mathbb{C}$.}
+The system of linear equations can be solved with an augmented matrix.
+\begin{align*}
+    & \begin{gmatrix}[p]
+        1 & i & 0 & 1\\
+        1 & 0 & 1 & 1\\
+        0 & 1 & -i & 2
+        \rowops
+        \add[-1]{0}{1}
+      \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & i & 0 & 1\\
+        0 & -i & 1 & 0\\
+        0 & 1 & -i & 2
+        \rowops
+        \add[-i]{1}{2}
+      \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & i & 0 & 1\\
+        0 & -i & 1 & 0\\
+        0 & 0 & -2i & 2
+        \rowops
+        \add[1]{1}{0}
+        \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 0 & 1 & 1\\
+        0 & -i & 1 & 0\\
+        0 & 0 & -2i & 2
+        \rowops
+        \add[-\frac{1}{2}i]{2}{1}
+        \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 0 & 1 & 1\\
+        0 & -i & 0 & -i\\
+        0 & 0 & -2i & 2
+        \rowops
+        \add[-\frac{1}{2}i]{2}{0}
+        \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 0 & 0 & 1-i\\
+        0 & -i & 0 & -i\\
+        0 & 0 & -2i & 2
+        \rowops
+        \mult{1}{\scriptstyle \cdot i}
+        \mult{2}{\scriptstyle \cdot \frac{1}{2}i}
+        \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 0 & 0 & 1-i\\
+        0 & 1 & 0 & 1\\
+        0 & 0 & 1 & i
+        \end{gmatrix} \\
+  \end{align*}
+
+The augmented matrix shows that 
+$x = 1-i$, $y = 1$, and $z = i$.
+ 

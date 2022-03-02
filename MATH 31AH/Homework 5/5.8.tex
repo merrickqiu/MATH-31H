@@ -1,0 +1,41 @@
+\section{Determinants and block matrices}
+\begin{proof} If the bottom left $m \times n$ block is zeros,
+    the determinant is equal to $\det(A) \cdot \det(C)$. \gap
+
+    \textbf{Base Case: }
+    When 
+    $\begin{bmatrix}
+        A & B\\
+        0 & C
+    \end{bmatrix}$ is a $2 \times 2$ matrix,
+    $\det(A) = AC - B \cdot 0 = AC = \det(A) \cdot \det(C)$.
+    
+    \textbf{Inductive Step: }
+    Assume that  
+    $\begin{bmatrix}
+        A & B\\
+        0 & C
+    \end{bmatrix}
+    = \det(A) \cdot \det(C)$
+    for when $A$ is $m \times m$ and $C$ is $n-1 \times n-1$.
+    For any row index $i$, the cofactor formula says that
+    \[ \det(M) = \sum_{j=1}^{m+n} (-1)^{i+j} m_{ij} \det(M_{ij}) \]
+
+    Let $i = m+n$. In the cofactor formula, 
+    the first $n$ terms are equal to zero since $m_{ij} = 0$.
+    When $n < j \leq m+n$, the term is equal to 
+    $(-1)^{i+j} m_{ij} \det(M_{ij})$. 
+    By our assumption for when $C$ is $n-1 \times n-1$,
+    $\det(M_{ij}) = \det(A) \cdot \det(C_{ij})$.
+    Therefore,
+    \begin{align}
+        \det(M) 
+        &= \sum_{j=n+1}^{m+n} (-1)^{i+j} m_{ij} \det(A) \cdot \det(C_{ij}) 
+        &= \det(A) \sum_{j=n+1}^{m+n} (-1)^{i+j} m_{ij} \det(C_{ij}) 
+        &= \det(A) \cdot \det(C)
+    \end{align}
+
+    This completes the inductive step, so
+    $\det(M) = \det(A) \cdot \det(C)$
+
+\end{proof}

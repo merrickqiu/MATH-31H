@@ -1,0 +1,42 @@
+\section{Projections and trace}
+
+\begin{proof} $\tr(P)$ is well defined.\gap
+
+    The trace of all similar matrices are the same, so
+    $\tr(P)$ is the same for all choices of $\mathcal{B}$.
+    Therefore, $\tr(P)$ is well defined 
+    when $V$ is finite dimensional.
+\end{proof}
+
+\begin{proof}$\tr(P) = \dim \Image(P)$\gap
+
+    Let $\basisb = \{e_1,...,e_s\}$ be an ordered basis for $\Image(P)$.
+    Since $\Image(P) \subseteq V$, 
+    $\basisb$ can be completed to form an ordered basis for $V$,
+    $\basisc = \{e_1,...,e_s,e_{s+1},...,e_n\}$.
+    Let $[P]_\basisc^\basisc$ be the matrix representation 
+    of $P$ in basis $\basisc$.
+    A vector is in $\Image(P)$ iff the associated vector in $\mathbb{F}^n$
+    has zero in entries from $s+1$ through $n$; 
+    otherwise, $\basisb$ would no longer be a basis for $\Image(P)$.\gap
+
+    Since $P \circ P = P$, 
+    if a vector $v \in \Image(P)$, then $P(v) = v$.
+    Therefore the top-left $s \times s$ block of $[P]_\basisc^\basisc$
+    would be the identity matrix.
+    Since all $v \in \Image(P)$ have zeros in entries from $s+1$ through $n$,
+    the bottom $n-s$ rows of $[P]_\basisc^\basisc$ are zeros.
+    Therefore the block matrix form of $[P]_\basisc^\basisc$ is
+    \[ 
+    [P]_\basisc^\basisc =
+    \begin{bmatrix}
+        I_{s \times s} & B \\
+        0 & 0
+    \end{bmatrix}
+    \]
+
+    The trace of $[P]_\basisc^\basisc$ would therefore be $s$, which is simply
+    the dimension of the image.
+    Since the choice of basis does not change the trace of a transformation,
+    we have that $\tr(P) = \dim \Image(P)$. 
+\end{proof}

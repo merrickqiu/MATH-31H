@@ -1,0 +1,23 @@
+\section{Eventually zero sequences}
+W is a subspace of V
+\begin{proof}
+    The zero sequence is in W.
+    Addition in W is closed since for any $a,b \in W$,
+    u+w is eventually zero at $max(\{N_a, N_b\})$.
+    This is because for any $n > N_a$ and $n > N_b$,
+    $a_n = 0$ and $b_n = 0$.
+    This implies that $(a+b)_n = 0$,
+    so $a+b \in W$. \gap
+
+    Multiplication in W is closed since 
+    for any $a \in W$ and $\lambda \in \mathbb{R}$,
+    $\lambda a$ is eventually zero at $N_a$.
+    This is because for any $n > N_a$,
+    $a_n = 0$.
+    This implies that $(\lambda a)_n = 0$
+    so $\lambda a \in W$. \gap
+
+    Since $W \subseteq V$, and 
+    addition and multiplication is closed under $W$,
+    $W$ is a subspace of $V$.
+\end{proof}

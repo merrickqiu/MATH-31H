@@ -1,0 +1,145 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Midterm} \\
+	Due 02/07 at 16:00 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+	\item 
+	\begin{enumerate}
+		\item 
+		For any arbitrary $t \in \mathbb{R}$,
+		\begin{align*}
+			f(t)
+			&= (2\cos t, \sin t) \\
+			&= (2\cos (t+2\pi), \sin (t+2\pi)) \\
+			&= f(t+2\pi)
+		\end{align*}
+		Therefore, $f(t) = f(t+2\pi)$ for all $t \in \mathbb{R}$.
+
+		\item 
+		Let $v \in \operatorname{Im} f$ be arbitrary.
+		Therefore $v = (2\cos t, \sin t)$ for some $t$.
+		Since 
+		\[
+			\frac{1}{4}(2\cos t)^2 + \sin^2 t
+			= \cos^2 t + \sin^2 t 
+			= 1
+		\]
+		$v \in C$, so $\operatorname{Im} f \subseteq C$
+		since $v$ was arbitrary. \\
+
+		Let $v \in C$ be arbitrary in the form $ v=(x, y)$.
+		Let $t = \arccos \frac{x}{2}$;
+		$t$ exists since $\|\frac{x}{2}\|$ cannot be greater than 1.
+		Since  $\frac{1}{4}x^2 + y^2 = 1$, then 
+		$\frac{1}{2}x = \sqrt{1-y^2}$ .
+		Using the identity that $\cos(\arcsin(x)) = \sqrt{1-x^2}$,
+		\[
+			\arccos \frac{x}{2} 
+			= \arccos \sqrt{1-y^2}
+			= \arcsin y
+		\] 
+		Therefore $t = \arccos \frac{x}{2} = \arcsin y$ meaning that $f(t) = (x, y)$
+		and $v$ is in the image of $f$.
+		Since $v \in \operatorname{Im} f$ and $v$ was arbitrary, 
+		$C \subseteq \operatorname{Im} f$.
+		Since $\operatorname{Im} f \subseteq C$ and $C \subseteq \operatorname{Im} f$,
+		$\operatorname{Im} f = C$. The curve of $f$ is an ellipse.
+
+		\item 
+		The function $g(t) = (t, \sqrt{1-\frac{1}{4}t^2})$
+		is a non-periodic parameterization of $C$ since 
+		\[
+			\frac{1}{4}x^2 + \sqrt{1-\frac{1}{4}x^2}^2 = 1
+		\]
+		and
+		\[
+			(t, \sqrt{1-\frac{1}{4}x^2}) \neq (t+p, \sqrt{1-\frac{1}{4}(x+p)^2})
+		\]
+		for any nonzero $p \in \mathbb{R}$.
+	\end{enumerate}
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		The component functions for the basis of elementary matrices are 
+		\begin{align*}
+			f_{11}(t) &= e^t    & f_{12}(t) &= e^{2t} \\
+			f_{21}(t) &= e^{3t} & f_{22}(t) &= e^{4t}
+		\end{align*}
+
+		\item 
+		$f(t)$ is smooth if all of its component functions are smooth.
+		Since all the component functions are in the form $e^{kt}$ for some constant $k$,
+		the component functions have derivative $ke^{kt}$. 
+		Therefore the derivative exists for all $t \in \mathbb{R}$
+		and the derivative is continuous since the second derivative, $k^2e^{kt}$, exists.
+		Thus, the component functions of $f$ are continuously differentiable. \\
+
+		The component function derivatives are nonvanishing since 
+		$ke^{kt}$ does not ever equal zero. 
+		Therefore the component functions are smooth and thus $f(t)$ is a smooth curve.
+
+		\item 
+		\[
+			L(f) 
+			= \int_0^1 \|f'(t)\| \,dt
+			= \int_0^1 \sqrt{(e^t)^2 + (2e^{2t})^2 + (3e^{3t})^2 + (4e^{4t})^2} \,dt
+		\]
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		Using the chain rule on the component functions, 
+		\begin{align*}
+			g'(t)
+			&= (f(t) \cdot f(t))' \\
+			&= (\sum_{i=1}^m f_i(t)^2)' \\
+			&= \sum_{i=1}^m 2f_i(t) f_i'(t)\\
+			&= 2f(t) \cdot f'(t) 
+		\end{align*}
+
+		\item 
+		Let $f: \mathbb{R} \rightarrow \mathbb{R}^3$ 
+		represent the position of a particle on a sphere through time.
+		Let $g(t) = f(t) \cdot f(t)$.
+		Since the particle is moving in a sphere, 
+		the norm of the position must be a constant,
+		so  $g'(t) = 0$.
+		Since $g'(t) = 2f(t) \cdot f'(t)$,
+		then $f(t) \cdot f'(t) = 0$, so position and velocity are always orthogonal.
+
+		\item 
+		Let $f: \mathbb{R} \rightarrow \mathbb{R}^3$ 
+		represent the velocity of a particle moving at a constant speed.
+		Let $g(t) = f(t) \cdot f(t)$.
+		Since the speed is constant,
+		the norm of the velocity must be a constant,
+		so $g'(t) = 0$.
+		Since $g'(t) = 2f(t) \cdot f'(t)$,
+		then $f(t) \cdot f'(t) = 0$, so velocity and acceleration are always orthogonal.
+		 
+	\end{enumerate}
+\end{enumerate}
+%Declare end of document
+\end{document}

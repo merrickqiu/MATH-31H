@@ -1,0 +1,16 @@
+\section{Quotients and matrices}
+\begin{proof}$\tbar: V/W \rightarrow V/W$ with $\tbar(v+W) = T(v) + W$ is well defined. \gap
+    
+    Let $\ttilde: V \rightarrow V/W$ with $\ttilde(v) := T(v) + W$.
+    If $w \in W$, then $T(w) \in W$ since $W$ is T-invariant.
+    For all $w \in W$, $\ttilde(w) = T(w) + W = 0 + W$, so $W \subseteq \ker \ttilde$.
+    Because of the universal property of quotient spaces,
+    the function $\tbar: V/W \rightarrow V/W$ with 
+    $\tbar(v+W) = \ttilde(v) = T(v) + W$ is well-defined.\gap
+
+    Since the first $m$ indexes are an ordered basis for $W$
+    and $W$ is T-invariant, $A$ represents $T$ restricted to $W$.
+    $\basisb - \basisc$ is a basis of $V/W$ and 
+    $\tbar(v+W) = T(v) + W$, so
+    $C$ represents what $\tbar$ does to $v \in V-W$.
+\end{proof}

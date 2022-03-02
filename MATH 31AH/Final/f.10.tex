@@ -1,0 +1,11 @@
+\section*{Problem 10}
+Due to the rank-nullity theorem,
+$\dim(\hom(V,W) \otimes V) = \dim(\ker(\varphi)) + \dim(\text{image}(\varphi))$
+We have that $\dim(\hom(V,W) \otimes V) = (4 \cdot 5) \cdot 4= 80$.
+$\varphi$ is also surjective because for every $w \in W$,
+for some $v \neq 0$,
+there exists a transformation $T$ such that
+$T(v) = w$, so there exists some $T \otimes v$ with
+$\varphi(T \otimes v) = w$.
+Therefore $\dim(\text{image}(\varphi)) = \dim(W) = 5$.
+Therefore, $\dim(\ker(\varphi)) = 80 - 5 = 75$.

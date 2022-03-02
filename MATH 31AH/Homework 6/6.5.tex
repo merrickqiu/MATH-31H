@@ -1,0 +1,43 @@
+\section{Direct sums and diagonalizability}
+\begin{proof} 
+    If $\lambda$ is an eigenvalue of $T$ or $U$,
+    then $\lambda$ is an eigenvalue of $T \oplus U$\gap
+    
+    If $\lambda$ is an eigenvalue of $T$ and
+    $v \in T$ is the corresponding eigenvector,
+    then the corresponding eigenvector in $T \oplus U$
+    with eigenvalue $\lambda$
+    would be $(v, 0)$ since
+    \begin{align}
+        (T \oplus U)(v, 0)
+        &= (T(v), U(0)) \\
+        &= (\lambda v, 0)\\
+        &= \lambda(v, 0)
+    \end{align}
+    
+    Similarly, if $\lambda$ is an eigenvalue of $U$ and
+    $w \in U$ is the corresponding eigenvector,
+    then the corresponding eigenvector in $T \oplus U$
+    with eigenvalue $\lambda$
+    would be $(0, w)$ since
+    \begin{align}
+        (T \oplus U)(0, w)
+        &= (T(0), U(w)) \\
+        &= (0, \lambda w)\\
+        &= \lambda(0, w)
+    \end{align}
+    Therefore, if $\lambda$ is an eigenvalue of $T$ or $U$,
+    then $\lambda$ is an eigenvalue of $T \oplus U$
+\end{proof}
+
+\begin{proof} If $T$ and $U$ are diagonalizable, then $T \oplus U$ is diagonalizable. \gap
+    
+    Let $V$ be $m$ dimensional and let $W$ be $n$ dimensional.
+    Since $T$ and $U$ are both diagonalizable, 
+    they have $m$ and $n$ eigenvalues respectivly. \gap
+
+    Since every eigenvalue of $T$ or $U$ is an eigenvalue of $T \oplus U$,
+    $T \oplus U$ has $m+n$ eigenvalues.
+    Since $T \oplus U$ has $m+n$ dimensions and $m+n$ eigenvalues,
+    $T \oplus U$ is diagonalizable.
+\end{proof}

@@ -1,0 +1,146 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 2} \\
+	Due 01/16 at 23:59 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	% QUESTION 1	
+	\item
+	Let $\mathbf{S}$ be the space of $2 \times 2$ symmetric matrices, and let 
+	$f \colon \mathbf{S} \to \mathbb{R}^2$ be the function which sends each 
+	$S \in \mathbf{S}$ to $(s_1,s_2) \in \mathbb{R}^2$, where $s_1,s_2$ are 
+	the eigenvalues of $S$ and $s_1 \geq s_2$. 
+	\begin{enumerate}
+		
+		\smallskip
+		\item
+		Write down an explicit formula for the function $g \colon \mathbb{R}^3 \to \mathbb{R}^2$ defined by 
+	
+			\begin{equation*}
+				g(x_1,x_2,x_3) = f\left( \begin{bmatrix} x_1 & x_2 \\ x_2 & x_3 \end{bmatrix} \right).
+			\end{equation*}
+			
+		\smallskip
+		\item
+		Suppose $(a,b,c) \in \mathbb{R}^3$ is such that $g(a,b,c) = (1,2)$. Prove that
+		$g(a+1,b,c) \neq (2.1,2)$.
+	\end{enumerate}
+	
+	\solution 
+	\begin{enumerate}
+		\item    
+		The eigenvalues of $S$ are the values $\lambda$ with 
+		\[
+			\det (A-\lambda I) = (x_1-\lambda)(x_3-\lambda)-x_2^2 = 0
+		\]
+		We can rearrange the expression and use the quadratic equal to solve for the roots.
+		\begin{align*}
+			(x_1-\lambda)(x_3-\lambda)-x_2^2 = 0
+			&\implies x_1x_3 - x_1\lambda - x_3\lambda + \lambda^2 - x_2^2 = 0 \\
+			&\implies \lambda^2 + (-x_1-x_3)\lambda + (x_1x_3-x_2^2) = 0 \\
+			&\implies \lambda = \frac{-(-x_1-x_3) \pm \sqrt{(-x_1-x_3)^2-4(x_1x_3-x_2^2)}}{2} \\
+			&\implies \lambda = \frac{x_1+x_3 \pm \sqrt{(x_1^2+2x_1x_3+x_3^2)-(4x_1x_3-4x_2^2)}}{2} \\
+			&\implies \lambda = \frac{x_1+x_3 \pm \sqrt{x_1^2 + 4x_2^2 + x_3^2 - 2x_1x_3}}{2}
+		\end{align*}
+		Therefore, we have that 
+		\[
+			g(x_1, x_2, x_3) = 
+			\begin{bmatrix}
+				\frac{x_1+x_3 + \sqrt{x_1^2 + 4x_2^2 + x_3^2 - 2x_1x_3}}{2} \\
+				\frac{x_1+x_3 - \sqrt{x_1^2 + 4x_2^2 + x_3^2 - 2x_1x_3}}{2}
+			\end{bmatrix}
+		\]
+		
+		\item
+		From the equation for $g(a,b,c)$, 
+		we see that the sum of the eigenvalues is $a+c$.
+		If $g(a,b,c) = (1,2)$ then the sum of the eigenvalues is 
+		\[
+			\lambda_1 + \lambda_2 = a+c = 3
+		\]
+		For $g(a,b,c)$, the sum of the eigenvalues must be 
+		\[
+			\lambda_1 + \lambda_2 =  (a+1)+c = 4
+		\]
+		However, the sum $2.1 + 2 = 4.1$, so
+		$g(a+1,b,c) \neq (2.1,2)$	
+	\end{enumerate}
+
+	% QUESTION 2
+	\medskip
+	\item
+	Let $\mathbf{V}$ and $\mathbf{W}$ be Euclidean spaces. Prove that every linear 
+	function $f \colon \mathbf{V} \to \mathbf{W}$ is continuous.
+	
+	\solution
+	Let $\delta = ?$.
+	Since $B_\delta(v)$ is bounded, 
+	there exists point $p$ such that
+
+	% Let $\mathcal{B} = \{v_1,\ldots,v_n\}$ be an orthonormal basis of $V$.
+	% Let $\mathcal{C} = \{w_1,\ldots,w_m\}$ be an orthonormal basis of $W$.
+	% Any basis vector $v_j \in \mathcal{B}$, 
+	% $f(v_i)$ can be expressed as $\sum_{i=1}^m c_{ij}w_i$.
+	% Let $v \in V$ with $v = \sum_{i=1}^n a_iv_i$
+	% and $\epsilon > 0$ be arbitrary.
+	% Let $h = \sum_{i=1}^n b_ie_i$ and $h \in B_\delta(v)$.
+
+	% Since $h \in B_\delta(v)$,
+	% \begin{align*}
+	% 	||v-h||^2
+	% 	&= \inner{v-h}{v-h} \\
+	% 	&= \inner{\sum_{i=1}^n (a_i-b_i)v_i}{\sum_{i=1}^n (a_i-b_i)v_i} \\
+	% 	&= \sum_{i=1}^n (a_i-b_i)^2 \\
+	% 	&< \delta^2
+	% \end{align*}
+
+	% Let $\delta = f(\epsilon)$
+	% Since $f$ is linear,
+	% \begin{align*}
+	% 	f(v-h)
+	% 	&= \sum_{j=1}^n (a_j - b_j) f(e_j) \\
+	% 	&= \sum_{j=1}^n \sum_{i=1}^m (a_j - b_j)c_{ij}w_i \\
+	% \end{align*}
+	
+	% QUESTION 3
+	\medskip
+	\item
+	Let $\mathbf{v}_1,\dots,\mathbf{v}_r$ be vectors in a Euclidean space $\mathbf{V}$. 
+	
+		\begin{enumerate}
+		
+		\smallskip
+		\item
+		Prove that the convex hull $\mathrm{Conv}(\mathbf{v}_1,\dots,\mathbf{v}_r)$ is a compact set.
+		
+		\smallskip
+		\item
+		Let $f \colon \mathbf{V} \to \mathbb{R}$ be a linear function. Prove that
+		$f$ has both a maximum and a minimum value on $\mathrm{Conv}(\mathbf{v}_1,\dots,\mathbf{v}_r)$,
+		and show that it has both a maximizer and a minimizer in $\{\mathbf{v}_1,\dots,\mathbf{v}_r\}$.
+		
+	\end{enumerate}
+		
+\end{enumerate}
+%Declare end of document
+\end{document}

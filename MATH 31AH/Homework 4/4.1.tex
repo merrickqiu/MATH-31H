@@ -1,0 +1,27 @@
+\section{Projections}
+
+\begin{proof}$P_v$ is linear.\gap
+
+    $P_v$ preserves vector addition since
+    \begin{align*}
+        P_v((v,w)+(v',w')) 
+        &= P_v(v+v',w+w')\\ 
+        &= v+v'\\
+        &= P_v(v,w) + P_v(v',w').
+    \end{align*}
+
+    $P_v$ also preserves scalar multiplication since
+    \begin{align*}
+        P_v(c(v,w)) 
+        &= P_v(cv,cw)\\ 
+        &= cv\\
+        &= cP_v(v,w).
+    \end{align*}
+    Therefore, $P_V$ is a linear map.
+\end{proof}
+
+$P_v$ is always surjective since every element $v \in V$
+is mapped onto by $(v,0)$.
+$P_v$ is only injective when the size of $W$ is 1.
+If the size of $W$ is greater than 1, 
+then multiple tuples can be projected into $V$.

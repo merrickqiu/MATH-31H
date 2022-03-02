@@ -1,0 +1,22 @@
+\section{Particular solutions}
+\begin{proof}$\{x \in \mathbb{F}^n : Ax=b\} = \{x_0+w : w \in W\}$\gap
+    
+    Let $x$ be an arbitrary solution to the system of linear equations, and
+    let $x_0$ be a particular solution to the system of equations.
+    This means that $Ax=b$ and $Ax_0=b$.
+    Subtracting the equations from each other yields 
+    $Ax - Ax_0 = 0$, which implies $A(x-x_0) = 0$.
+    This means that $(x-x_0) \in W$ implying that
+    $x-x_0 = w$ for some $w \in W$.
+    Adding $x_0$ to both sides yields $x = x_0 + w$.
+    Since $x$ was arbitrary, all solutions to $Ax=b$ are in $\{x_0+w : w \in W\}$\gap
+
+    For all $w \in W$, $x_0+w$ is a solution to $Ax=b$.
+    Since $Ax_0 = b$ and $Aw=0$, we have that $Ax_0 + Aw = b$.
+    Factoring by A, we have that $A(x_0+w) = b$.
+    Thus all vectors in $\{x_0+w : w \in W\}$ are solutions to $Ax=B$.\gap
+
+    Since all solutions to $Ax=B$ can be expressed as $x_0+w$,
+    and all vectors expressed as $x_0+w$ are solutions to $Ax=B$,
+    we have that $\{x \in \mathbb{F}^n : Ax=b\} = \{x_0+w : w \in W\}$.
+\end{proof}

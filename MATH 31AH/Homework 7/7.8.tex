@@ -1,0 +1,27 @@
+\section{Symmetric and Orthogonal}
+\begin{proof} Symmetric matrices are an $\real$-vector space while orthogonal matrices are not.\gap
+
+    Symmetric matrices are an $\real$-vector space since
+    the zero matrix is symmetric and
+    \[
+        A + B
+        = A^T + B^T
+        = (A+B)^T
+    \]
+    \[
+        cA
+        =cA^T
+        =(cA)^T
+    \]
+
+    Symmetric matricies have dimension equal to the number
+    of upper triangular entries.
+    \[
+        \dim A = 1 + ... + n = \frac{n(n+1)}{2}
+    \]
+
+    Orthogonal matricies do not form a vector space
+    since the zero matrix is not orthogonal.
+    Addition is also not closed since the identity matrix is orthogonal, 
+    but the sum of the identity matrix with itself is not orthogonal.
+\end{proof}

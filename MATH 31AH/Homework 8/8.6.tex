@@ -1,0 +1,21 @@
+\section{Representing Tensor Transformations}
+
+Let $\basisb = \{(1,0), (0,1)\}$ be the standard basis of $\reals^2$,
+$\basisc = \{x^2, x, 1\}$ be basis for $V_2$,
+and $\basisd = \{x, 1\}$ be a basis for $V_1$.
+The basis of $\reals^2 \otimes V_2 $ is $\basisb \otimes \basisc$
+and the basis of $\reals^2 \otimes V_1$ is $\basisb \otimes \basisd$.
+Since a tensor transformation can be defined by what 
+it does to the basis vectors, we have that
+\[
+[T \oplus U]^{\basisb \otimes \basisc}_{\basisb \otimes \basisd} =
+\begin{blockarray}{ccccccc}
+(1,0) \otimes x^2 & (1,0) \otimes x & (1,0) \otimes 1 & (0,1) \otimes x^2 & (0,1) \otimes x & (0,1) \otimes 1 \\
+\begin{block}{(cccccc)c}
+   2 &  0 & 0 & 4 & 0 & 0 & (1,0) \otimes x \\
+   0 &  1 & 0 & 0 & 2 & 0 & (1,0) \otimes 1 \\
+  -2 &  0 & 0 & 0 & 0 & 0 & (0,1) \otimes x \\
+   0 & -1 & 0 & 0 & 0 & 0 & (0,1) \otimes 1 \\
+\end{block}
+\end{blockarray}
+ \]

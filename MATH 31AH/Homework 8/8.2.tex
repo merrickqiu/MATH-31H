@@ -1,0 +1,28 @@
+\section{Quotients and Direct Sums}
+\begin{proof}$(V \oplus W)/\mathcal{W} \cong V$.\gap
+    
+    To avoid notational abuse, we will use $\mathcal{W} :=\{(0,w):w \in W\}$.
+    Let $T: V \rightarrow (V \oplus W)/\mathcal{W}$ 
+    with $T(v) := (v,0) + \mathcal{W}$ be a function.
+    Every coset in $(V \oplus W)/\mathcal{W}$ can uniquely
+    be written as $(v,w) + \mathcal{W} = (v,0) + \mathcal{W}$,
+    so $T$ is surjective.
+    Let $v_1 \in V$ and $v_2 \in V$ be different vectors.
+    \[
+        T(v_1) = (v_1,0) + \mathcal{W}
+        \text{ and }
+        T(v_2) = (v_2,0) + \mathcal{W}
+    \]
+    Since $(v_2-v_1,0) \notin \mathcal{W}$, $T$ is injective.
+    Since $T$ is injective and surjective, $T$ is bijective.\gap
+
+    $T$ is linear since
+    \begin{align*}
+        T(c_1v_1 + c_2v_2) 
+        &=(c_1v_1 + c_2v_2,0) + \mathcal{W}\\
+        &= c_1((v_1,0) + \mathcal{W}) + c_2((v_2,0) + \mathcal{W})\\
+        &= c_1T(v_1) + c_2T(v_2)
+    \end{align*}
+    Since $T$ is bijective and linear, it is an isomorphism.
+    Therefore, $(V \oplus W)/\mathcal{W} \cong V$.
+\end{proof}

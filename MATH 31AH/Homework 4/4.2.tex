@@ -1,0 +1,20 @@
+\section{Linear maps and spanning}
+\begin{proof} $T(S) := \{T(v):v \in S\}$ spans $Image(T)$.\gap
+
+    Since $Image(T) := \{T(w):w \in V\}$, 
+    we must show that every $T(w)$ 
+    can be written as a linear combination of $T(v)$.\gap
+
+    Let $v_1,v_2,...,v_n$ be vectors in $T(S)$
+    and $c_1,c_2,...,c_n$ be scalars.
+    We have that
+    \begin{align*}
+        T(w) 
+        &= T(c_1v_1 + c_2v_2 + ... + c_nv_n)\\ 
+        &= c_1T(v_1) + c_2T(v_2) + ... + c_nT(v_n)
+    \end{align*}
+
+    Therefore, $T(S)$ spans $Image(T)$ 
+    since any arbitrary $T(w)$ can be written as
+    a linear combination of vectors in $T(S)$.
+\end{proof}

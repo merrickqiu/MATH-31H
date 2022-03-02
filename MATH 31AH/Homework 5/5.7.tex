@@ -1,0 +1,48 @@
+\section{Determinants and the plane}
+
+\begin{proof}A counterclockwise rotation has $\det(T) = 1$.\gap
+
+    A counterclockwise rotation in $\mathbb{R}^2$
+    by $\theta$ takes the form
+    $\begin{bmatrix}
+        \cos(\theta) & -\sin(\theta)\\
+        \sin(\theta) & \cos(\theta)
+    \end{bmatrix}.$
+    The determinant of a 2D rotation matrix matrix is equal to
+    \begin{align}
+        \det(T)
+        &= \cos(\theta)\cos(\theta)-(-\sin(\theta))(\sin(\theta))\\
+        &= \cos^2(\theta) + \sin^2(\theta)\\
+        &= 1
+    \end{align}
+    Therefore, $\det(T) = 1$.
+\end{proof}
+    
+\begin{proof} A reflection across a line has $\det(T) = -1$.\gap
+
+    Reflecting a vector across a line that is $\theta$ 
+    counterclockwise of the x-axis is equivalent to rotating 
+    the vector by $-\theta$, 
+    reflecting across the x-axis,
+    then rotating the vector by $\theta$.
+    The determinant for a rotation matrix is 1.
+    The matrix for negating the y-component is
+    $F =
+    \begin{bmatrix}
+        1 & 0\\
+        0 & -1
+    \end{bmatrix}$, so
+    the determinant of reflecting across the x-axis
+    is $1(-1) - 0(0) = -1$.
+    If $R$ is the matrix that rotates by $\theta$,
+    then the determinant of the matrix 
+    that reflection across a line is
+    \begin{align}
+        \det(T)
+        &= \det(RTR\inv)\\
+        &= \det(R)\det(F)\det(R\inv)\\
+        &= 1(-1)(1)\\
+        &= -1
+    \end{align}
+    Therefore, $\det T = -1$.
+\end{proof}

@@ -1,0 +1,41 @@
+\section{Is this matrix invertible?}
+Yes it is invertible since the row eschelon is upper triangular.
+\begin{align*}
+    & \begin{gmatrix}[p]
+        0 & 1 & 1 & 1 \\
+        1 & 0 & 1 & 1 \\
+        1 & 1 & 0 & 1 \\
+        1 & 1 & 1 & 0
+        \rowops
+        \add[-1]{3}{1}
+        \add[-1]{3}{2}
+      \end{gmatrix} \\
+     \Rightarrow & \begin{gmatrix}[p]
+        0 & 1 & 1 & 1 \\
+        0 & -1 & 0 & 1 \\
+        0 & 0 & -1 & 1 \\
+        1 & 1 & 1 & 0
+        \rowops
+        \add[1]{0}{1}
+      \end{gmatrix} \\
+    \Rightarrow & \begin{gmatrix}[p]
+        0 & 1 & 1 & 1 \\
+        0 & 0 & 1 & 2 \\
+        0 & 0 & -1 & 1 \\
+        1 & 1 & 1 & 0
+        \rowops
+        \add[1]{1}{2}
+      \end{gmatrix} \\
+    \Rightarrow & \begin{gmatrix}[p]
+        0 & 1 & 1 & 1 \\
+        0 & 0 & 1 & 2 \\
+        0 & 0 & 0 & 3 \\
+        1 & 1 & 1 & 0
+      \end{gmatrix} \\
+    \Rightarrow & \begin{gmatrix}[p]
+        1 & 1 & 1 & 0 \\
+        0 & 1 & 1 & 1 \\
+        0 & 0 & 1 & 2 \\
+        0 & 0 & 0 & 3        
+      \end{gmatrix} \\
+\end{align*}

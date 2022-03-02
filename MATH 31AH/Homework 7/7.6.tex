@@ -1,0 +1,64 @@
+\section{Inner products and dual spaces}
+\begin{proof}
+    $\varphi$ is an isomorphism over $\reals$ and $\complex$.
+    $\psi$ is an isomorphism only over $\reals$.\gap
+
+    Let $\basisb = \{e_1,...,e_n\}$ be an orthonormal basis for $V$, and 
+    let $\basisb^* = \{\lambda_1,...,\lambda_n\}$ be the corresponding dual basis for $V^*$.
+    Let $i$ and $j$ be arbitrary indexing variables.\\
+    When $i=j$,
+    \begin{align*}
+        \varphi(e_i)(e_i)
+        &= \inner{e_i}{e_i}\\
+        &= 1\\
+        &= \lambda_i(e_i)\\
+    \end{align*}
+    When $i \neq j$,
+    \begin{align*}
+        \varphi(e_i)(e_j)
+        &= \inner{e_i}{e_j}\\
+        &= 0\\
+        &= \lambda_i(e_j)\\
+    \end{align*}\gap
+
+    Therefore $\varphi(e_i) = \lambda_i$ for all $i$.
+    Let $v \in V$ be a vector such that $v = c_1e_1 + ... + c_ne_n$, 
+    let $v' \in V$ be a different vector such that $v' = d_1e_1 + ... + d_ne_n$
+    and let $w \in V$ be an arbitrary vector.
+    \begin{align*}
+        \varphi(v)(w)
+        &= \inner{v}{w}\\
+        &= \inner{c_1e_1 + ... + c_ne_n}{w}\\
+        &= c_1\inner{e_1}{w} + ... + c_n\inner{e_n}{w}\\
+        &= c_1\varphi(e_1)(w) + ... + c_n\varphi(e_n)(w)\\
+        &= c_1\lambda_1(w) + ... + c_n\lambda_n(w)\\
+    \end{align*}\gap
+    By a similar logic,
+    \[
+        \varphi(v')(w) = d_1\lambda_1(w) + ... + d_n\lambda_n(w)
+    \]
+
+    Since $\varphi(v)(w) \neq \varphi(v')(w)$, $\varphi$ is injective. 
+    Since $V$ is finite dimensional, $\dim V = \dim V^*$,
+    $\varphi$ is bijective.
+    Since $\inner{u+v}{w} =\inner{u}{w} + \inner{v}{w}$ and
+    $\inner{c u}{w} = c \inner{u}{w}$,
+    $\varphi$ preserves addition and scalar multiplication.
+    Since $\varphi$ is bijective and preserves algebra,
+    it is an isomorphism.
+    When $\mathbb{F} = \reals$, we have that $\inner{v}{w} = \inner{w}{v}$
+    so $\varphi = \psi$.
+    Therefore, $\varphi$ and $\psi$ are both isomorphisms in $\reals$.
+    When $\mathbb{F} = \complex$, 
+    \begin{align*}
+        \psi(c v)(w)
+        &= \inner{w}{c v}\\
+        &= \overline{c} \inner{w}{v}\\
+        &= \overline{c} \psi(v)(w)
+    \end{align*}
+    Thus, $\psi$ is no longer an isomorphism in $\complex$
+    since scalar multiplication is no longer preserved; however,
+    $\varphi$ remains an isomorphism in $\complex$.
+    
+    
+\end{proof}

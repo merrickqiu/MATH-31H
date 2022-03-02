@@ -1,0 +1,53 @@
+\section{Eigenvalues and Eigenvectors}
+$A$ has eigenvalues when $\det(A-\lambda I) = 0$.
+\[
+A-\lambda I =
+\begin{bmatrix}
+    7-\lambda & -8 & 6 \\
+    8 & -9-\lambda & 6 \\
+    0 & 0 & 1-\lambda
+\end{bmatrix}
+\]
+The characteristic polynomial of $A$ is thus
+\begin{align}
+    (7-\lambda)(-9-\lambda)(1-\lambda) - (-8)(8)(1-\lambda)
+    &=(-63+2\lambda+\lambda^2)(1-\lambda) + 64(1-\lambda)\\
+    &=(1+2\lambda+\lambda^2)(1-\lambda)\\
+    &=(1+\lambda)^2(1-\lambda)
+\end{align}
+$(1+\lambda)^2(1-\lambda) = 0$ when $\lambda = -1, 1$, so those are our eigenvalues.
+Using these eigenvalues, we can calculate the matrices for the eigenspaces.
+\[
+E_{-1} =
+\begin{bmatrix}
+    8 & -8 & 6 \\
+    8 & -8 & 6 \\
+    0 & 0 & 2
+\end{bmatrix}
+\text{  and  }
+E_{1} =
+\begin{bmatrix}
+    6 & -8 & 6 \\
+    8 & -10 & 6 \\
+    0 & 0 & 0
+\end{bmatrix}
+\]
+Using RREF, we have that
+\[
+\rref(E_{-1}) =
+\begin{bmatrix}
+    1 & -1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}
+\text{  and  }
+\rref(E_{1}) =
+\begin{bmatrix}
+    1 & 0 & -3 \\
+    0 & 1 & -3 \\
+    0 & 0 & 0
+\end{bmatrix}
+\]
+Therefore a basis for $E_{-1}$ is $\{\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}\}$ and
+a basis for $E_1$ is $\{\begin{bmatrix} 3 \\ 3 \\ 1 \end{bmatrix}\}$.
+Since there are not three eigenvalues, $A$ is not diagonalizable.

@@ -1,0 +1,24 @@
+\section{Tensors and Duals}
+\begin{proof} $\varphi$ is a well-defined linear map.\gap
+
+    Let $\psi: V \times V^* \rightarrow \field$ be a linear map with 
+    $\psi(v, \lambda) := \lambda(v)$ for $v \in V$ and $\lambda \in V^*$.
+    $\psi$ is linear in the first term since
+    \begin{align*}
+        \psi((v+v'), \lambda) 
+        &= \lambda(v+v')\\ 
+        &= \lambda(v) + \lambda(v') \\
+        &= \psi(v,\lambda) + \psi(v', \lambda)
+    \end{align*}
+    $\psi$ is linear in the second term since 
+    \begin{align*}
+        \psi(v, \lambda + \lambda') 
+        &= (\lambda + \lambda')(v)\\
+        &= \lambda(v) + \lambda'(v)\\
+        &= \psi(v, \lambda) + \psi(v, \lambda')
+    \end{align*}
+
+    From the universal property of tensor spaces,
+    $\varphi: V \otimes V^*$ is well-defined with
+    $\varphi(v \otimes \lambda) := \psi(v, \lambda) = \lambda(v)$.
+\end{proof}

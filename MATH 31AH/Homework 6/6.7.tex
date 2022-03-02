@@ -1,0 +1,144 @@
+\section{A real sequence}
+
+\begin{proof} $A^n = PD^nP\inv$ if $A = PDP\inv$.\gap
+
+    We will induct on n.
+    For $n=1$, we have that $A^1 = PD^1P\inv$.
+    For $n>1$, assume that $A^{n-1} = PD^{n-1}P\inv$.
+    We have that
+    \begin{align}
+        A^n
+        &= A^{n-1} A \\
+        &= (PD^{n-1}P\inv) (PDP\inv) \\
+        &= PD^nP\inv
+    \end{align}
+    This completes the inductive step, 
+    so $A^n = PD^nP\inv$.
+\end{proof}
+
+\begin{proof} 
+    When $a_1 = a_2 = 1$ and $a_n = 4a_{n-1} - 2a_{n-2}$,
+    $a_n =  \frac{(2+\sqrt{2})^{n-2} + (2-\sqrt{2})^{n-2}}{2}$ for $n>2$. \gap
+
+    The nth number in the sequence can be found using the following equation:
+    \[
+    \begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix} =
+    \begin{bmatrix}
+        4 & -2 \\
+        1 & 0
+    \end{bmatrix}^{n-2}
+    \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+    \]
+
+    The matrix has characteristic polynomial of
+    $(4-\lambda)(-\lambda) + 2 = \lambda^2 - 4\lambda + 2$.
+    Using the quadratic formula, we can find that
+    the matrix has eigenvalues of $\lambda_1 = 2+\sqrt{2}$, $\lambda_2 = 2-\sqrt{2}$.
+    The eigenvectors for these eigenvalues are
+    $v_1 = (2+\sqrt{2}, 1)$ and $v_2 = (2-\sqrt{2}, 1)$
+    since they solve the corresponding homologous system of equations for the eigenspace.\gap
+
+    Since there are two eigenvectors, 
+    we can diagonalize the matrix and 
+    simplify the expression to
+    \begin{align}
+        \begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix} 
+        &=
+        \begin{bmatrix}
+            2+\sqrt{2}& 2-\sqrt{2} \\
+            1 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+            2+\sqrt{2} & 0 \\
+            0 & 2-\sqrt{2}
+        \end{bmatrix}^{n-2}
+        \begin{bmatrix}
+            \frac{1}{2\sqrt{2}} & \frac{\sqrt{2}-2}{2\sqrt{2}} \\
+            -\frac{1}{2\sqrt{2}} & \frac{\sqrt{2}+2}{2\sqrt{2}}
+        \end{bmatrix}
+        \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
+        &=
+        \frac{1}{2\sqrt{2}}
+        \begin{bmatrix}
+            2+\sqrt{2}& 2-\sqrt{2} \\
+            1 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+            (2+\sqrt{2})^{n-2} & 0 \\
+            0 & (2-\sqrt{2})^{n-2}
+        \end{bmatrix}
+        \begin{bmatrix} \sqrt{2}-1 \\ \sqrt{2}+1 \end{bmatrix}\\
+        &=
+        \frac{1}{2\sqrt{2}}
+        \begin{bmatrix}
+            2+\sqrt{2}& 2-\sqrt{2} \\
+            1 & 1
+        \end{bmatrix}
+        \begin{bmatrix} 
+            (\sqrt{2}-1)(2+\sqrt{2})^{n-2}\\ 
+            (\sqrt{2}+1)(2-\sqrt{2})^{n-2}
+        \end{bmatrix}\\
+        &=
+        \frac{1}{2\sqrt{2}}
+        \begin{bmatrix} 
+            \sqrt{2}(2+\sqrt{2})^{n-2} + \sqrt{2}(2-\sqrt{2})^{n-2}\\ 
+            (\sqrt{2}-1)(2+\sqrt{2})^{n-2} + (\sqrt{2}+1)(2-\sqrt{2})^{n-2}
+        \end{bmatrix}\\
+    \end{align}
+    Therefore, $a_n =  \frac{(2+\sqrt{2})^{n-2} + (2-\sqrt{2})^{n-2}}{2}$ for $n>2$.
+    % This simplifies to
+    % \begin{align}
+    %     \begin{bmatrix} a_n \\ a_{n-1} \end{bmatrix} 
+    %     &=
+    %     \begin{bmatrix}
+    %         2+\sqrt{2}& 2-\sqrt{2} \\
+    %         1 & 1
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %         2+\sqrt{2} & 0 \\
+    %         0 & 2-\sqrt{2}
+    %     \end{bmatrix}^{n-2}
+    %     \begin{bmatrix}
+    %         \frac{1}{2\sqrt{2}} & \frac{\sqrt{2}-2}{2\sqrt{2}} \\
+    %         -\frac{1}{2\sqrt{2}} & \frac{\sqrt{2}+2}{2\sqrt{2}}
+    %     \end{bmatrix}
+    %     \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
+    %     &=
+    %     \begin{bmatrix}
+    %         2+\sqrt{2}& 2-\sqrt{2} \\
+    %         1 & 1
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %         (2+\sqrt{2})^{n-2} & 0 \\
+    %         0 & (2-\sqrt{2})^{n-2}
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %         1 & \sqrt{2}-2 \\
+    %         -1 & \sqrt{2}+2
+    %     \end{bmatrix}
+    %     \begin{bmatrix} \frac{1}{2\sqrt{2}} \\ \frac{1}{2\sqrt{2}} \end{bmatrix}\\
+    %     &=
+    %     \begin{bmatrix}
+    %         2+\sqrt{2}& 2-\sqrt{2} \\
+    %         1 & 1
+    %     \end{bmatrix}
+    %     \begin{bmatrix}
+    %         (2+\sqrt{2})^{n-2} & 2(2+\sqrt{2})^{n-3} \\
+    %         -(2-\sqrt{2})^{n-2} & 2(2+\sqrt{2})^{n-3}
+    %     \end{bmatrix}
+    %     \begin{bmatrix} \frac{1}{2\sqrt{2}} \\ \frac{1}{2\sqrt{2}} \end{bmatrix}\\
+    %     &=
+    %     \begin{bmatrix}
+    %         (2+\sqrt{2})^{n-1} - (2-\sqrt{2})^{n-1} & 2(2+\sqrt{2})^{n-2} + 2(2-\sqrt{2})^{n-2}\\
+    %         (2+\sqrt{2})^{n-2} - (2-\sqrt{2})^{n-2} & 2(2+\sqrt{2})^{n-3} + 2(2-\sqrt{2})^{n-3}
+    %     \end{bmatrix}
+    %     \begin{bmatrix} \frac{1}{2\sqrt{2}} \\ \frac{1}{2\sqrt{2}} \end{bmatrix}\\
+    %     &=
+    %     \begin{bmatrix}
+    %         \frac{(2+\sqrt{2})^{n-1} - (2-\sqrt{2})^{n-1} + 2(2+\sqrt{2})^{n-2} + 2(2-\sqrt{2})^{n-2}}{2\sqrt{2}}\\
+    %         \frac{(2+\sqrt{2})^{n-2} - (2-\sqrt{2})^{n-2} + 2(2+\sqrt{2})^{n-3} + 2(2-\sqrt{2})^{n-3}}{2\sqrt{2}}
+    %     \end{bmatrix}
+    % \end{align}
+    
+    
+\end{proof}

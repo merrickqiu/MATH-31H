@@ -1,0 +1,29 @@
+\section{Commuting operators and eigenspaces}
+\begin{proof} $E_\lambda$ is $U$-invariant when $T$ and $U$ are commutative. \gap
+    
+    Let $T, U: V \rightarrow V$ be two linear transformations that commute.
+    Let $v \in  E_\lambda$ be an eigenvector.
+    Since it is a T-eigenvector, we have that $T(v) = \lambda(v)$.
+    Since $T$ and $U$ commute, we have that
+    \begin{align}
+        U(T(v)) 
+        &= U(\lambda v) \\
+        &= \lambda U(v) \\
+        &= T(U(v))
+    \end{align}
+    Since $T(U(v)) = \lambda U(v)$, 
+    we know that $U(v) \in E_\lambda$,
+    and so $E_\lambda$ is $U$-invariant.\gap
+\end{proof}
+
+\begin{proof}
+    $E_\lambda$ is not necessarily $U$-invariant 
+    when $T$ and $U$ are not commutative.\gap
+
+    Let $T, U: \reals^2 \rightarrow \reals^2$ such that
+    $T$ projects the vector onto the x-axis 
+    and $U$ rotates the vector by $\pi/2$.
+    $E_\lambda$ would clearly not be $U$-invariant since 
+    the only eigenspace of T would be the x-axis, but
+    $U$ rotates vectors off of the x-axis.
+\end{proof}

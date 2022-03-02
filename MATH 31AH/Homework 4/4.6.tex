@@ -1,0 +1,34 @@
+\section{Inverses of linear maps}
+\begin{proof} The inverse of a linear transformation $T$ is also linear.\gap
+
+    Since $T$ is linear and additivity is preserved, we have that
+    \begin{align*}
+        T(v_1 + v_2) 
+        &= T(v_1) + T(v_2) \\
+        &= w_1 + w_2
+    \end{align*}
+
+    From this, we have that
+    $T\inv(w_1) = v_1$,
+    $T\inv(w_2) = v_2$, and
+    $T\inv(w_1 + w_2) = v_1 + v_2$.
+    Therefore, we have that
+    \begin{align*}
+        T\inv(w_1 + w_2) 
+        &= v_1 + v_2 \\
+        &= T\inv(w_1) + T\inv(w_2)
+    \end{align*}
+
+    Since $T$ is linear and scalar multiplication is preserved, 
+    we have that 
+    \begin{align*}
+        T(cv) 
+        &= cT(v) \\
+        &= cw
+    \end{align*}. 
+    From this, we have that $T\inv(cw) = cv$ and $T\inv(w) = v$.
+    Therefore, 
+    $T\inv(cw) = cv = cT\inv(w)$.
+    Since addition and scalar multiplication are preserved,
+    $T\inv$ is a linear transformation.
+\end{proof}

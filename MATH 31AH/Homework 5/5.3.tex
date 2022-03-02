@@ -1,0 +1,84 @@
+\section{Infinite dimensionality and double duals}
+
+\begin{proof} $\varphi$ is still injective when $V$ is infinite-dimensional. \gap
+
+    The proof for the injectivity of $\varphi$ when $V$ is finite-dimensional 
+    still holds for infinite dimensions.
+    $\varphi$ is injective when $Ker(\varphi) = 0$.
+    Let $\mathcal{B} = \{e_1, e_2,...\}$ be a basis for $V$, and
+    let $\mathcal{B}^* = \{\lambda_1, \lambda_2,...\}$ 
+    be the dual set of $V^*$ such that
+    $\lambda_i(e_j) = 1$ when $i=j$, and 
+    $\lambda_i(e_j) = 0$ when $i \neq j$\gap
+
+    Since all $v \in V$ can be writen as a finite linear combination,
+    $v = c_1e_1 +...+ c_ne_n$,
+    we have that for all $i \geq 1$,
+    \begin{align}
+        0
+        &= \varphi(v)(\lambda_i)\\
+        &= \lambda_i(v)\\
+        &= \lambda_i(c_1e_1 +...+ c_ne_n)\\
+        &= c_i\\ 
+    \end{align}
+    This forces $v=0$.
+    Therefore, $Ker(\varphi) = 0$ and $\varphi$ is injective.
+\end{proof}
+
+\begin{proof} $\varphi$ is not surjective when $V$ is infinite-dimensional. \gap
+
+    Let $\mathcal{B} = \{e_1, e_2,...\}$ be a basis for $V$.
+    Let $\mathcal{B}^* = \{\lambda_1, \lambda_2,... \}$ be the dual set of $\mathcal{B}$
+    such that $\lambda_i(e_j) = 1$ when $i=j$ and $\lambda_i(e_j) = 0$ when $i \neq j$.
+    Since $\mathcal{B^*}$ is a linearly independent subset of $V^*$, 
+    $\mathcal{B}^*$ is a subset of some basis of $V^*$.\gap
+    % In other words, let  $\lambda_i(e_j) = \delta_{ij}$ where $\delta_{ij}$
+    % is the Kronecker delta symbol.
+    
+    % Let $\mathcal{I^{**}} = \{\mu_1, \mu_2,...\}$  be a subset of $V^{**}$
+    % such that $\mu_i(\lambda_j) = \delta_{ij}$.
+
+    $\varphi$ is not surjective if there exists a $\mu \in V^{**}$
+    such that for all $v \in V$, $\varphi(v) \neq \mu$.
+    In other words, for some $\mu \in V^{**}$, for all $v \in V$, for some $\lambda \in V^*$,
+    $(\varphi(v))(\lambda) := \lambda(v) \neq \mu(\lambda)$.
+    Let $\mu_i \in V^{**}$ be the double dual vector
+    that sends $\lambda_i \in \mathcal{B}^*$ to 1
+    and all other basis vectors to 0.
+    Let $v$ be an arbitrary $v \in V$. 
+    %writen as a finite linear combination, $c_1e_1 + ... + c_ne_n$ with $c_n \neq 0$.
+    We have that for $\lambda_i \in \mathcal{B}^*$,
+    \begin{align}
+        (\varphi(v))(\lambda_i)
+        &= \lambda_i(v)\\
+        &= \lambda_i(c_1e_1 + ... + c_ie_i + ... + c_ne_n)\\
+        &= c_1\lambda_i(e_1) + ... + c_i\lambda_i(e_i)... + c_n\lambda_i(e_n)\\
+        &= c_i
+    \end{align}
+    Since $(\mu_i)(\lambda_i) = 1$,
+    we have that $c_i$ = 1 for all $i$ if $\lambda_i(v) = \mu_i(\lambda_i)$ for all $v$.
+    Since $v$ can only be a finite linear combination, this cannot be true.
+    So, for some $\mu \in V^{**}$, for all $v \in V$, for some $\lambda \in V^*$,
+    $(\varphi(v))(\lambda) := \lambda(v) \neq \mu(\lambda)$.
+    Therefore, $\varphi$ is not surjective.
+
+    % Let $\mathcal{B} = \{e_1, e_2,...\}$ be a basis for $V$.
+    % Let $\mathcal{I} = \{\lambda_i : i \in \mathbb{R}\}$ be a subset of $V^*$
+    % such that $\lambda_i(e_j) = i^j$.\footnote
+    % {
+    %     Idea for using $i^j$ to show uncountability 
+    %     came from https://math.stackexchange.com/a/253001.
+    %     All other work is mine.
+    % }
+    % $\mathcal{I}$ is linearly independent since each functional
+    % has a different rate of growth and cannot be formed
+    % as a linear combination of the other functionals.
+    % Since $\mathcal{I}$ is a linearly independent subset of $V^*$,
+    % we know that it is a subset of the basis of $V^*$.
+    % Since the cardinality of $I$ is uncountable, 
+    % we know that the basis of $V^*$ is uncountable,
+    % and the dimension of $V^*$ is uncountable.
+    % Therefore $dim(v^*) > dim(v)$ and
+    % $dim(v^{**}) > dim(v)$, so
+    % $\varphi$ is not surjective.
+\end{proof}

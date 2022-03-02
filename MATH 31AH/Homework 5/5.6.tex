@@ -1,0 +1,26 @@
+\section{Determinants and transposition}
+
+\begin{proof} $\det A = \det A^T$\gap
+
+    If $A$ is not invertible, then $A^T$ is not invertible, 
+    and $\det A = \det A^T = 0$.
+    If $A$ is invertible, then it can be written 
+    as a product of elementary matrices, 
+    $A = E_1E_2...E_n$.
+    Since $(AB)^T = B^T A^T$,
+    $A^T = (E_1E_2...E_n)^T = E_n^T...E_2^TE_1^T$.
+    Since the transpose of an elementary matrix 
+    has the same determinant and
+    $\det(AE) = \det(A)\det(E)$, 
+    we have that
+    \begin{align}
+        \det(A) 
+        &= \det(E_1E_2...E_n)\\
+        &= \det(E_1)\det(E_2)...\det(E_n)\\
+        &= \det(E_n)...\det(E_2)\det(E_1)\\
+        &= \det(E_n^T)...\det(E_2^T)\det(E_1^T)\\
+        &= \det(E_n^T...E_2^T E_1^T)\\
+        &= \det(A^T)
+    \end{align}
+    Therefore, $\det A = \det A^T$.
+\end{proof}

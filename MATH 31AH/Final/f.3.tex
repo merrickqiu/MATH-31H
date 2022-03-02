@@ -1,0 +1,38 @@
+\section*{Problem 3}
+We can use gaussian elimination to solve $Ax = 0$.
+\begin{align*}
+    & \begin{gmatrix}[p]
+        1 & 2 & 3 & 4 \\
+        0 & 1 & 2 & 3 \\
+        1 & 3 & 5 & 7 
+        \rowops
+        \add[-1]{0}{2}
+      \end{gmatrix} \\
+     \Rightarrow & \begin{gmatrix}[p]
+        1 & 2 & 3 & 4 \\
+        0 & 1 & 2 & 3 \\
+        0 & 1 & 2 & 3 
+        \rowops
+        \add[-1]{1}{2}
+      \end{gmatrix} \\
+    \Rightarrow & \begin{gmatrix}[p]
+        1 & 2 & 3 & 4 \\
+        0 & 1 & 2 & 3 \\
+        0 & 0 & 0 & 0 
+        \rowops
+        \add[-2]{1}{0}
+      \end{gmatrix} \\
+    \Rightarrow & \begin{gmatrix}[p]
+        1 & 0 & -1 & -2 \\
+        0 & 1 & 2 & 3 \\
+        0 & 0 & 0 & 0 
+      \end{gmatrix} \\
+\end{align*}
+
+$Ax = 0$ therefore has basis vectors of 
+\[
+    \mathcal{B} = \{
+    \begin{bmatrix}1 \\ -2 \\ 1 \\ 0 \end{bmatrix},
+    \begin{bmatrix}2 \\ -3 \\ 0 \\ 1 \end{bmatrix}
+    \}
+\]

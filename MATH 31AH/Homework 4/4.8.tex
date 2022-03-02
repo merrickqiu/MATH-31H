@@ -1,0 +1,47 @@
+\section{Invariant subspaces and block matrices}
+
+\begin{proof} There exists an ordered basis of V,
+    $\mathcal{B} = (v_1,v_2,...,v_m,v_{m+1},v_{m+2},...,v{n})$,
+    such that
+    $(v_1,v_2,...,v_m)$
+    is an ordered basis of W.\gap
+
+    Let $(v_1,v_2,...,v_m)$ be an ordered basis for $W$.
+    Since W is a finite linearly independent subset of $V$
+    ,and using problem 7 from problem set 3, 
+    $(v_1,v_2,...,v_m)$ can be completed to formed
+    an ordered basis of $V$.
+\end{proof}
+
+\begin{proof} T is invariant iff the lower-left block of the representing matrix is zeros.\gap
+    
+    Since $\mathcal{B}$ is linearly independent, 
+    none of the vectors $(v_{m+1},v_{m+2},...,v_n)$
+    can be formed as a linear combination 
+    of the vectors from $(v_1,v_2,...,v_m)$.
+    Since $(v_1,v_2,...,v_m)$ is a basis for $W$,
+    the vectors $(v_{m+1},v_{m+2},...,v_n)$ 
+    are not in $W$. 
+    Therefore, the corresponding vector in $\mathbb{F}^n$
+    for a vector $w \in W$ must 
+    have zeros in indexes $m+1$ to $n$.\gap
+
+    If a vector, $w$, has zeros in indexes $m+1$ to $n$,
+    then it will be a linear combination of 
+    the vectors in $(v_1,v_2,...,v_m)$.
+    Since $(v_1,v_2,...,v_m)$ is a basis for $W$, 
+    then $w \in W$.
+    Therefore a vector is in $W$ 
+    if and only if it has zeros 
+    in indexes $m+1$ to $n$.\gap
+
+    $W$ is invariant under $T$ if and only if
+    the any vector with zeros in indexes $m+1$ to $n$
+    maintains zeros in indexes $m+1$ to $n$ after the transformation $T$.
+    If the bottom left $(n-m)\times(m)$ block of $[T]_\mathcal{B}^\mathcal{B}$
+    is not all zeros, then it is possible for $T(w)$ to have a nonzero value
+    in indexes $m+1$ to $n$ when $w$ has zero values for these indexes.
+    Therefore W is only invariant under $T$ if and only if 
+    the bottom left $(n-m)\times(m)$ block of 
+    $[T]_\mathcal{B}^\mathcal{B}$ is all zeros.
+\end{proof}

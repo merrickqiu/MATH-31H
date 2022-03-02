@@ -1,0 +1,49 @@
+\section{A basis for polynomials}
+
+\begin{proof}$\mathcal{B}$ is a basis for $V$.\gap
+
+    Trivially, $\{1\}$ is a basis for polynomials of degree 0. 
+    Assume that $\{1,(t+1),(t+1)^2,...,(t+1)^{n-1}\}$ is a basis for polynomials of degree $n-1$.
+    Adding $(t+1)^n$ to this set makes this set span polynomials of degree $n$ since
+    a polynomial of degree $n$ can be written as 
+    $a_n(t+1)^n + v$ where $v$ is a polynomial of degree $n-1$.
+    $(t+1)^n$ is also linearly independent from the other polynomials in the set
+    since the degree of $(t+1)^n$ is higher than all the other polynomials.\gap
+
+    Thus, $\{1,(t+1),(t+1)^2,...,(t+1)^{n-1},(t+1)^n\}$ is a basis for polynomials of degree n.
+    This completes the inductive step, and so $\mathcal{B}$ is a basis for $V$.\gap
+\end{proof}
+
+% \begin{proof}Using gaussian elimination(EXTRA): $\mathcal{B}$ is a basis for $V$.\gap
+
+%     Let $u$ be a polynomial with $u = a_nt^n + a_{n-1}t^{n-1} + ... + a_1t^1 + a_0$.
+%     The coefficients can be written as a column vector $b$.
+%     Let $A$ be a $n \times n$ matrix representing the coefficients of the polynomials in $\mathcal{B}$
+%     (This will be equivalent to Pascal's triangle).
+%     Let $x$ be the coefficients of a linear combination 
+%     of the polynomials in $\mathcal{B}$ that give b.
+%     Thus we have $Ax = b$ or
+%     \[
+%     \begin{bmatrix}
+%         1 & 1 & 1 & \dots \\
+%         0 & 1 & 2 & \dots \\
+%         0 & 0 & 1 & \dots \\
+%         \vdots & \vdots & \vdots
+%     \end{bmatrix} 
+%     \begin{bmatrix}
+%         x_0 \\ x_1 \\ \dots \\ x_n 
+%     \end{bmatrix}
+%     =
+%     \begin{bmatrix}
+%         a_0 \\ a_1 \\ \dots \\ a_n 
+%     \end{bmatrix}
+%     \].
+
+%     Since the last row of $A$ is all zeros except for the last column,
+%     row operations can be conducted that turn all the other elements in the last column to zero.
+%     Since this leaves the second to last row all zeros except for the second to last column,
+%     a simmilar argument can be conducted that leaves all other elements of the second to last column as zeros.
+%     This reduction process can be repeated until one is left with a row reduce eschelon matrix of ones in the diagonal.
+%     Since the matrix represents the identity vectors, and the dimension of the matrix is $n \times n$,
+%     $\mathcal{B}$ is a basis for $V$.
+% \end{proof}

@@ -1,0 +1,29 @@
+\section{Trimming down to a basis}
+\begin{proof} A subset $\{v_1,...,v_m\}$ can be "trimmed down" to a basis $\{v_{i_1},...,v_{i_n}\}$ of $V$.\gap
+
+    Let $\mathcal{S} = \{v_1,...,v_m\}$ be a subset of $V$ that spans $V$. 
+    If $\mathcal{S}$ is linearly independent, then it is already a basis for $V$,
+    and it must have $n$-elements as shown in lecture 8.
+    This means that $\mathcal{S}$ is a basis $\{v_{i_1},...,v_{i_n}\}$ of $V$.
+    If $\mathcal{S}$ is linearly dependent,
+    then that means a nontrivial linear combination 
+    of vectors in $\mathcal{S}$ is zero, meaning
+    $a_1v_1 + a_2v_2 + ... + a_mv_m = 0$.
+    This means that some vector $v_i$ with a nonzero coefficient $a_i$
+    can be formed as a linear combination of the other vectors, i.e.
+    $-\frac{a_1}{a_i}v_1 - \frac{a_2}{a_i}v_2 - ... - \frac{a_m}{a_i}v_m = v_i$.\gap
+
+    If $v_i$ is removed from $\mathcal{S}$, then it will still span $V$,
+    since any linear combination with $v_i$ can substituted in with the linear combination
+    $-\frac{a_1}{a_i}v_1 - \frac{a_2}{a_i}v_2 - ... - \frac{a_m}{a_i}v_m$.
+    Vectors can be removed from $\mathcal{S}$ until 
+    $\mathcal{S}$ is linearly independent.
+    At this point, $\mathcal{S}$ will be a basis for $V$ since
+    it is linearly independent and it still spans $V$.
+    $\mathcal{S}$ cannot have more than $n$ elements at this point 
+    because that would imply the existence of a basis 
+    with more elements than the vector space, 
+    which was shown in lecture 8 to be impossible.
+    Thus, $\mathcal{S}$ would have to have $n$ elements, and so
+    a basis $\{v_{i_1},...,v_{i_n}\}$ of $V$ exists.
+\end{proof}

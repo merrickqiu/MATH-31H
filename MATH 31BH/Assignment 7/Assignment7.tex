@@ -1,0 +1,147 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\pdiv}[1]{\frac{\partial}{\partial #1}}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 7} \\
+	Due 02/27 at 23:59 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	\medskip
+	\item
+	Consider the function of three variables defined by $f(x,y,z) = x^2y\sin(yz)$.
+	
+		\begin{enumerate}
+		
+		\smallskip
+		\item
+		Show that $f$ is differentiable on $\mathbb{R}^3$.
+		
+		\smallskip
+		\item
+		Calculate the gradient vector $\nabla f(1,-1,\pi)$.
+		
+		\smallskip
+		\item
+		Write down a formula for the derivative 
+		$f'((1,-1,\pi),(x,y,z))$.
+		
+		\end{enumerate}
+		
+	\solution 
+	\begin{enumerate}
+		\item 
+		$f$ is differentiable on $\mathbb{R}^3$
+		since the partial derivatives exist.
+		\begin{align*}
+			&\pdiv{x} x^2y\sin(yz) = 2xy\sin(yz) \\
+			&\pdiv{y} x^2y\sin(yz) = x^2yz\cos(yz) + x^2\sin(yz) \\
+			&\pdiv{z} x^2y\sin(yz) = x^2y^2\cos(yz) 
+		\end{align*}
+
+		\item 
+		The gradient is the vector of the partial derivatives.
+		\begin{align*}
+			&\nabla f(x,y,z) 
+			(2xy\sin(yz), x^2yz\cos(yz) + x^2\sin(yz), x^2y^2\cos(yz)) \\
+			&\nabla f(1,-1, \pi) = 
+			(-2\sin(-\pi), -\pi\cos(-\pi) + \sin(-\pi), \cos(-\pi)) =
+			(0, \pi, -1)
+		\end{align*}
+			
+		\item 
+		The derivative can be represented as the scalar product between 
+		the gradient and $(x,y,z)$. 
+		\[
+			f'((1, -1, \pi),(x, y, z)) =
+			\nabla f(1, -1, \pi) \cdot (x, y, z) =
+			\pi y-z
+		\]
+	\end{enumerate}
+
+	\medskip
+	\item
+	Find the partial derivatives of $f(x,y) = x^y$.
+
+	\solution 
+	The partial derivative is computed by treating other variables as constants.
+	\begin{align*}
+		&\pdiv{x} x^y = yx^{y-1} \\
+		&\pdiv{y} x^y = \ln(x) x^y
+	\end{align*}
+	
+	\medskip
+	\item
+	Let $f(x,y) = x^2+y^3$. Find the directional derivative of 
+	$f$ at $\mathbf{v}=(-1,3)$ in the direction of maximal increase
+	of $f$.
+
+	\solution 
+	The partial derivatives are 
+	\begin{align*}
+		&\pdiv{x} x^2+y^3 = 2x \\
+		&\pdiv{y} x^2+y^3 = 3y^2
+	\end{align*}
+	Therefore, the gradient is $w=(-2, 27)$
+	Therefore, 
+	\[
+		f'(v,w) = \nabla f(v) \cdot w = (-2, 27) \cdot (-2,27) = 733
+	\]
+	Since the question is finding the directional derivative,
+	we divide by the norm of the gradient so,
+	$f'(v, e) =  \sqrt{733}$.
+
+	\medskip
+	\item
+	Let $f$ be a differentiable function defined on an open set $D$ 
+	in a Euclidean space $\mathbf{V}$. Suppose that $\mathbf{m} \in D$
+	is a maximum of $f$, i.e. $f(\mathbf{m}) \geq f(\mathbf{v})$ for all
+	$\mathbf{v} \in D$. Prove that $\nabla f(\mathbf{m}) = \mathbf{0}_\mathbf{V}$,
+	the zero vector in $\mathbf{V}.$
+
+	\solution
+	Suppose that $\nabla f(m) \neq 0_v$.
+	This means that 
+	\[
+		f'(m, \nabla f(m)) =
+		\nabla f(m) \cdot \nabla f(m) 
+		> 0
+	\]
+	Since
+	\[
+		f'(m, \nabla f(m)) = 
+		\lim_{h \to 0} \frac{f(m+h\nabla f(m))-f(m)}{h} =
+		\lim_{h \to 0^+} \frac{f(m+h\nabla f(m))-f(m)}{h} 
+		> 0
+	\]
+	\begin{align*}
+		\lim_{h \to 0^+} \frac{f(m+h\nabla f(m))-f(m)}{h} > 0
+		&\implies \lim_{h \to 0^+} f(m+h\nabla f(m))-f(m) > 0 \\ 
+		&\implies \lim_{h \to 0^+} f(m+h\nabla f(m)) > f(m) \\ 
+	\end{align*}
+	there exists an $h > 0$ such that $f(m+h\nabla f(m)) > f(m)$.	
+	This contradicts the fact that $f(m)$ is the maximum, so 
+	$\nabla f(m)$ must be $0_v$.
+	
+	\end{enumerate}
+	
+%Declare end of document
+\end{document}

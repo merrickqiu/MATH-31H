@@ -1,0 +1,20 @@
+\section{Completing a basis}
+\begin{proof}There exists vectors $v_{s+1},v_{s+2},...,v_n$ such that 
+            $\{v_1,...,v_s,v_{s+1},...,v_n\}$ is a basis of $V$.\gap
+
+    Let $\mathcal{S}=\{v_1,v_2,...,v_s\}$ be a 
+    linearly independent subset of the $n$-dimensional vector space $V$.
+    From lecture 8, the basis for an $n$-dimensional vector space must be have $n$ elements.
+    Since the dimension of $\mathcal{S}$ is less than $n$, 
+    it cannot be a basis for $V$, and it cannot span $V$.
+    Therefore there exists some vector $v_{s+1} \in V$ that is not in the span of 
+    $\mathcal{S}$, and is independent from all other vectors in $\mathcal{S}$.
+    This vector can be added to $\mathcal{S}$ and it will still be linearly independent.
+    A total of $n-s$ vectors can be added to $\mathcal{S}$ in a simmilar fashion
+    until the size of $\mathcal{S}$ is $n$-dimensions.
+    At this point, since $\mathcal{S}$ will have $n$ vectors,
+    and it is linearly independent,
+    from the theorem of lecture 8, $\mathcal{S}$ will be a basis for $V$.
+    Thus there exists vectors $v_{s+1},v_{s+2},...,v_n$ such that
+    $\{v_1,...,v_s,v_{s+1},...,v_n\}$ is a basis of $V$.
+\end{proof}

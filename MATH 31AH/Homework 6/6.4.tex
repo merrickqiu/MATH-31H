@@ -1,0 +1,27 @@
+\section{Polynomials and diagonalizability}
+
+\begin{proof}$f(A)$ is diagonalizable when $A$ is diagonalizable. \gap
+       
+    \textbf{Base Case:} Since $A$ is diagonalizable, 
+    let $P$ be a matrix such that $A = PDP\inv$ for some $D$.
+    $A^n$ can thus be written as $A = PD^nP\inv$.\footnote{See problem 7 for proof}
+    Therefore $c_nA^n = P(c_nD^n)P\inv$, 
+    so each of the terms in $f(A)$ is diagonalizable,
+    including when $n=0$.\gap
+
+    \textbf{Inductive Step:} For $n > 0$,
+    assume that the sum of the first $n-1$ terms 
+    is diagonalizable with $f_{n-1}(A) = PBP\inv$
+    for some matrix $B$.
+    Since the $nth$ term can be written as $c_nA^n = P(c_nD^n)P\inv$,
+    the sum of the first $n$ terms is
+    \begin{align}
+        f_{n-1}(A) + c_nA^n
+        &= PBP\inv +  P(c_nD^n)P\inv\\
+        &= P(BP\inv + c_nD^nP\inv)\\
+        &= P(B + c_nD^n)P\inv
+    \end{align}
+    This completes the inductive step, and so 
+    $f(A)$ is diagonalizable when $A$ is diagonalizable.
+\end{proof}
+

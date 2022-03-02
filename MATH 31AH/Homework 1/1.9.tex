@@ -1,0 +1,37 @@
+\section{$\mathbb{R}^2$ and $\mathbb{C}$ (Optional)}
+
+x is analogous to the real component of a complex number,
+and y is analogous to the imaginary component of a complex number.
+When viewed in this way, the arithmetic operations for $\mathbb{R}^2$ and $\mathbb{C}$
+are isomorphic. These rules can be used to define a field structure $\mathbb{F}^2$ for every $\mathbb{F}$:
+\begin{enumerate}
+    \item Addition is commutative.
+    \begin{enumerate}
+        \item $(a, b) + (c, d)$
+        \item $(a+c, b+d)$
+        \item $(c+a, d+b)$
+        \item $(c, d) + (a, b)$
+    \end{enumerate}   
+    \item Addition is associative.
+    \begin{enumerate}
+        \item $((a, b) + (c, d)) + (e, f)$
+        \item $(a+c, b+d) + (e, f)$
+        \item $(a+c+e, b+d+f)$
+        \item $(a+(c+e), b+(d+f))$
+        \item $(a, b) + (c+e, d+f)$
+        \item $(a, b) + ((c, d) + (e, f))$
+    \end{enumerate}
+    \item Multiplication is distributive.
+    \begin{enumerate}
+        \item $(a, b) \cdot ((c, d) + (e, f)) =$
+        \item $(a, b) \cdot (c+e, d+f) =$
+        \item $(ac+ae-bd-bf, ad+af+bc+be) =$
+        \item $(ac-bd, ad+bc) + (ae-bf, af+be) =$
+        \item $(a, b) \cdot (c, d) + (a, b) \cdot (e, f)$
+    \end{enumerate}
+    \item Zero is $(0, 0)$.
+    \item One is $(1, 0)$.
+    \item Additive inverse: $-(x,y) = (-x, -y)$
+    \item Multiplicative inverse: $(x,y)^-1 = (\frac{a}{a^2+b^2}, \frac{-b}{a^2+b^2})$
+    \item $(0, 0) \neq (1, 0)$.
+\end{enumerate}

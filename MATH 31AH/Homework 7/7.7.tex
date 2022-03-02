@@ -1,0 +1,49 @@
+\section{Matrices and Inner Products}
+
+\begin{proof}$\inner{v}{w} = v^TA^TAw$ iff $A$ is invertible\gap
+
+    $v^TA^TAw$ is an inner product iff 
+    it satisfies the properties of inner products.\\
+    For addition
+    \begin{align*}
+        \inner{u + v}{w}
+        &= (u+v)^T A^T Aw\\
+        &= (u^T +v^T) A^T Aw\\
+        &= u^T A^T Aw + v^T A^T Aw\\
+        &= \inner{u}{w} + \inner{v}{w}
+    \end{align*}
+    For scalar multiplication
+    \begin{align*}
+        \inner{cv}{w}
+        &= (cv)^T A^T Aw\\
+        &= cv^T A^T Aw\\
+        &= c\inner{v}{w}
+    \end{align*}
+    For symmetry, the transpose of a $1 \times 1$ matrix is itself. 
+    \begin{align*}
+        \inner{v}{w}
+        &= v^T A^T A w\\
+        &= ((v^T A^T A w)^T)^T\\
+        &= (w^T A^T A v)^T\\
+        &= w^T A^T A v\\
+        &= \inner{w}{v}
+    \end{align*}
+    For positive-definiteness
+    \begin{align*}
+        \inner{v}{v}
+        &= v^TA^T Av\\
+        &= (Av)^T Av\\
+        &= Av \cdot Av\\
+        &\geq 0
+    \end{align*}
+    For $\inner{v}{v} = 0$ iff $v = 0$
+    \begin{align*}
+        \inner{v}{v} = 0
+        &\iff v^TA^T Av = 0\\
+        &\iff Av \cdot Av = 0\\
+        &\iff Av = 0
+    \end{align*}
+    If A is invertible, then $Av = 0$ iff $v = 0$.
+    If A is not invertible, then there exists $v \neq 0$ with $Av = 0$.
+    Therefore, $\inner{v}{w} = v^TA^TAw$ iff $A$ is invertible.
+\end{proof}

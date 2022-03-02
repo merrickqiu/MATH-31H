@@ -1,0 +1,211 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 1} \\
+	Due 01/09 at 23:59 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	% QUESTION 1
+	\item
+	Let $(\mathbf{V},\langle \cdot, \cdot\rangle)$ be a Euclidean space, and let 
+	$\mathcal{B}=\{\mathbf{e}_1,\dots,\mathbf{e}_n\}$ be an orthonormal basis
+	of $\mathbf{V}$. Show that the $n \times 1$ coordinate matrix of any $\mathbf{v} \in \mathbf{V}$ 
+	relative to $\mathcal{B}$ is given by
+	
+		\begin{equation*}
+			[\mathbf{v}]_\mathcal{B} = \begin{bmatrix}
+				\langle \mathbf{e}_1, \mathbf{v} \rangle \\
+				\vdots \\
+				\langle \mathbf{e}_n, \mathbf{v} \rangle 
+				\end{bmatrix}.
+		\end{equation*}
+		
+	\solution
+	Let $v = a_1e_1 + \cdots + a_ne_n$. 
+	Using the bilinearity of the inner product 
+	and the definition of an orthonormal basis, we have that for a arbitrary index $i$
+	\begin{align*}
+		\inner{e_i}{v} 
+		&= \inner{e_i}{a_1e_1 + \cdots + a_ie_i + \cdots + a_ne_n} \\
+		&= a_1\inner{e_i}{e_1} + \cdots + a_i\inner{e_i}{e_i} + \cdots + a_n\inner{e_i}{e_n} \\
+		&= a_i
+	\end{align*}
+	Since $\inner{e_i}{v} = a_i$ for all indexes,
+	\[
+		[\mathbf{v}]_\mathcal{B} = 
+		\begin{bmatrix}
+			a_1 \\
+			\vdots \\
+			a_n
+		\end{bmatrix} =
+		\begin{bmatrix}
+			\langle \mathbf{e}_1, \mathbf{v} \rangle \\
+			\vdots \\
+			\langle \mathbf{e}_n, \mathbf{v} \rangle 	
+		\end{bmatrix}
+	\]
+	
+	% QUESTION 2
+	\medskip	
+	\item
+	With the same notation as in the previous problem, let $A \in \mathrm{End} \mathbf{V}$ be 
+	a linear operator. Show that the $n \times n$ matrix of $A$ relative to $\mathcal{B}$ is 
+	
+		\begin{equation*}
+			[A]_\mathcal{B} = \begin{bmatrix}
+			\langle \mathbf{e}_1,A\mathbf{e}_1 \rangle & \dots & \langle \mathbf{e}_1,A\mathbf{e}_n \rangle \\
+			\vdots & {} & \vdots \\
+			\langle \mathbf{e}_n,A\mathbf{e}_1 \rangle & \dots & \langle \mathbf{e}_n,A\mathbf{e}_n \rangle
+			\end{bmatrix}.
+		\end{equation*}
+	
+	\solution 
+	Let the $i$th row and $j$th column of $[A]_\mathcal{B}$ be $a_{ij}$.
+	\begin{align*}
+		\inner{e_i}{Ae_j} 
+		&= \inner{e_i}{a_{1j}e_1 + \cdots + a_{ij}e_i + \cdots + a_{nj}e_n} \\
+		&= a_{1j}\inner{e_i}{e_1} + \cdots + a_{ij}\inner{e_i}{e_i} + \cdots + a_{nj}\inner{e_i}{e_n} \\
+		&= a_{ij}
+	\end{align*}
+	Since $\inner{e_i}{Ae_j} = a_{ij}$ for all indexes, 
+	\begin{equation*}
+		[A]_\mathcal{B} = 
+		\begin{bmatrix}
+			a_{11} & \dots & a_{1n} \\
+			\vdots & {} & \vdots \\
+			a_{n1} & \dots & a_{nn}
+		\end{bmatrix} =
+		\begin{bmatrix}
+			\langle \mathbf{e}_1,A\mathbf{e}_1 \rangle & \dots & \langle \mathbf{e}_1,A\mathbf{e}_n \rangle \\
+			\vdots & {} & \vdots \\
+			\langle \mathbf{e}_n,A\mathbf{e}_1 \rangle & \dots & \langle \mathbf{e}_n,A\mathbf{e}_n \rangle
+		\end{bmatrix}
+	\end{equation*}
+
+	% QUESTION 3
+	\medskip
+	\item
+	With the same notation as in the previous problems, for each $1 \leq i,j \leq n$ let $E_{ij} \in \mathrm{End}\mathbf{V}$ 
+	be the linear operator defined by 
+	
+		\begin{equation*}
+			E_{ij} \mathbf{e}_k = \langle \mathbf{e}_j,\mathbf{e}_k \rangle \mathbf{e}_i, \quad 1 \leq k \leq n.
+		\end{equation*}
+			
+	\noindent
+	What is the matrix of $E_{ij}$ relative to $\mathcal{B}$?
+	
+	\solution 
+	Since the basis is orthonormal,
+	the expression $E_{ij}e_k$ is equal to $e_i$ when $j=k$ and 0 when $j \neq k$.
+	In other words, $E_{ij}$ sends the basis vector $e_j$ to the basis vector $e_i$.
+	Thus the matrix of $E_{ij}$ will contain a 1 at the index $(i,j)$ and 0 everywhere else. 
+	% QUESTION 4
+	\medskip
+	\item
+	With the same notation as in the previous problems, prove that 
+	
+		\begin{equation*}
+			E_{ij} E_{kl} = \langle \mathbf{e}_j,\mathbf{e}_k \rangle E_{il}
+		\end{equation*}
+		
+	\noindent
+	Deduce from this that $\mathcal{E} = \{ E_{ij} \colon 1 \leq i , j \leq n\}$
+	is an orthonormal basis of $\mathrm{End} \mathbf{V}$, where by definition the scalar product of
+	two operators $A,B \in \mathrm{End}\mathbf{V}$ is
+	$\langle A,B \rangle = \operatorname{Tr} A^*B$, with $\operatorname{Tr}$ the trace and $A^*$ the
+	adjoint (aka transpose) of $A$. What is $\dim \mathrm{End}\mathbf{V}$?
+
+	\solution
+	Let $m$ be a arbitrary index.
+	We have that 
+	\begin{align*}
+		E_{ij}E_{kl}e_m
+		&= E_{ij}\inner{e_l}{e_m}e_k \\
+		&= \inner{e_l}{e_m}E_{ij}e_k \\
+		&= \inner{e_l}{e_m}\inner{e_j}{e_k}e_i \\
+		&= \inner{e_j}{e_k}\inner{e_l}{e_m}e_i \\
+		&= \inner{e_j}{e_k}E_{il}e_m
+	\end{align*}
+	Since $E_{ij}E_{kl}$ is a linear transformation and it sends all
+	basis vectors to the same element as $\inner{e_j}{e_k}E_{il}$,
+	we have that
+	$E_{ij}E_{kl} = \inner{e_j}{e_k}E_{il}$.
+
+	The elements in $\mathcal{E}$ can be represented by 
+	$n \times n$ matrices with one 1 and 0 everywhere else;
+	these matrices are linearly independent and also span
+	all endomorphisms of $V$ since $\mathrm{End} \mathbf{V}$ 
+	can be represented as all $n \times n$ matrices.
+	Since 
+	\begin{align*}
+		 \inner{E_{ij}}{E_{kl}} 
+		 &= \operatorname{Tr} E_{ij}^* E_{kl} \\
+		 &= \operatorname{Tr} E_{ji} E_{kl} \\
+		 &= \operatorname{Tr} \inner{e_i}{e_k}E_{jl}
+	\end{align*}
+	$\inner{E_{ij}}{E_{kl}}$ is equal to 1 iff $i = k$ and $j = l$
+	and 0 otherwise. Therefore $\mathcal{E}$ is an orthonormal basis.
+	The dimension of $\mathrm{End} \mathbf{V}$ is $n \cdot n = n^2$.
+
+	% QUESTION 5
+	\medskip
+	\item
+	With the same notation as in the previous problems, prove that 
+	$\mathcal{S} = \{ E_{ij} + E_{ji} \colon 1 \leq i \leq j \leq n\}$ is an orthogonal basis of the subspace
+	$\mathrm{Sym}\mathbf{V}$ of $\mathrm{End}\mathbf{V}$ consisting of symmetric operators. 
+	What is $\dim \mathrm{Sym}\mathbf{V}$?
+
+	\solution 
+   The elements in $\mathcal{S}$ can be represented by symmetric
+   $n \times n$ matrices with two 1s off the diagonal and 0 everywhere else
+   or a 2 on the diagonal and 0 everywhere else.
+   Every $n \times n$ symmetric matrix $A \in \mathrm{Sym}\mathbf{V}$ with entries $a_{ij}$
+   can then be written as 
+   \[
+	   \sum_{i=1}^n \sum_{j=i+1}^n a_{ij}(E_{ij}+E_{ji}) + \sum_{i=1}^n \frac{a_{ii}}{2} (E_{ii}+E_{ii})
+   \]
+   Therefore, $\mathcal{S}$ spans $\mathrm{Sym}\mathbf{V}$.
+   
+   Since
+   \begin{align*}
+	   \inner{E_{ij}+E_{ji}}{E_{kl}+E_{lk}} 
+	   &= \operatorname{Tr} (E_{ij}+E_{ji})^* (E_{kl}+E_{lk}) \\
+	   &= \operatorname{Tr} (E_{ij}+E_{ji}) (E_{kl}+E_{lk}) \\
+	   &= \operatorname{Tr} E_{ij}E_{kl} + E_{ij}E_{lk} + E_{ji}E_{kl} + E_{ji}E_{lk} \\
+	   &= \operatorname{Tr} \inner{e_j}{e_k}E_{il} + \inner{e_j}{e_l}E_{ik} +\inner{e_i}{e_k}E_{jl} + \inner{e_i}{e_l}E_{jk}
+  \end{align*}
+  $\inner{E_{ij}+E_{ji}}{E_{kl}+E_{lk}}$ is nonzero iff 
+  $i=k$ and $j=l$ or $i=l$ and $j=k$, 
+  both of which would indicated that $E_{ij}+E_{ji} = E_{kl}+E_{lk}$.
+  Therefore $\mathcal{S}$ is orthogonal, which implies it is also linearly independent.
+  Since, $\mathcal{S}$ also spans $\mathrm{Sym}\mathbf{V}$, 
+  $\mathcal{S}$ is an orthogonal basis for $\mathrm{Sym}\mathbf{V}$.
+  
+  The dimension of $\mathrm{Sym} \mathbf{V}$ is 
+  the number of upper triangular elements in the $n \times n$ matrix representation,
+  so the dimension is $1 + \dots + n = \frac{n(n+1)}{2}$.
+   
+\end{enumerate}
+
+%Declare end of document
+\end{document}

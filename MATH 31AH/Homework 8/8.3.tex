@@ -1,0 +1,81 @@
+\section{Quotients and Duals}
+\begin{proof} $U$ is a subspace of $V^*$\gap
+
+    The zero functional has $\lambda_0(w) = 0$ 
+    for all $w \in W$, so $\lambda_0 \in U$.\gap
+
+    For all $\lambda, \mu \in U$ and for all $w \in W$,
+    \begin{align*}
+        (\lambda + \mu)(w)
+        &= \lambda(w) + \mu(w)\\
+        &= 0 + 0\\
+        &= 0
+    \end{align*}
+    Therefore, $\lambda + \mu \in U$.\gap
+
+    For all $\lambda \in U$, for all $c \in \field$, and for all $w \in W$,
+    \begin{align*}
+        (c\lambda)(w)
+        &= c\lambda(w)\\
+        &= c \cdot 0\\
+        &= 0
+    \end{align*}
+    Therefore, $c\lambda \in U$.\gap
+
+    Since $U$ has a zero, it is closed under addition, 
+    and it is closed under scalar multiplication, $U$ is a subspace of $V^*$.
+\end{proof}
+\begin{proof} $W^*$ and $V^*/U$ are isomorphic.\gap
+    
+    Let $T: W^* \rightarrow V^*/U$ with $T(w) := w + U$ be a function.
+    From the definition of $U$, 
+    $W^*$ and $U$ span $V$ and $W^* \cap U = 0$
+    so $W^* \oplus U = V^*$.
+    Therefore each coset in $V^*/U$ can be uniquely written 
+    as $(w+u) + U = w+U$ with $w \in W^*$ and $u \in U$, so $T$ is surjective.
+    Let $w_1 \in W^*$ and $w_2 \in W^*$ be different functionals.
+    \[
+        T(w_1) = w_1 + U
+        \text{ and }
+        T(w_2) = w_2 + U
+    \]
+    Since $w_2-w_1 \notin U$, $T$ is injective.
+    Since $T$ is injective and surjective, $T$ is bijective.\gap
+
+    $T$ is linear since
+    \begin{align*}
+        T(c_1w_1 + c_2w_2) 
+        &=(c_1w_1 + c_2w_2) + U\\
+        &= c_1(w_1 + U) + c_2(w_2 + U)\\
+        &= c_1T(w_1) + c_2T(w_2)
+    \end{align*}
+    Since $T$ is bijective and linear, it is an isomorphism.
+    Therefore, $W^* \cong V^*/U$.
+\end{proof}
+\begin{proof}$(V/W)^*$ and $U$ are isomorphic.\gap
+
+    Let $T: U \rightarrow (V/W)^*$ with $T(\lambda)(v+W) := \lambda(v)$ 
+    with $v \in V$ be a function.
+    $T$ is well-defined since for $v = v' + w$.
+    \begin{align*}
+        T(\lambda)(v+W)
+        &= \lambda(v)\\
+        &= \lambda(v' + w)\\
+        &= \lambda(v') + \lambda(w)\\
+        &= \lambda(v')\\
+        &= T(\lambda)(v'+W)
+    \end{align*}
+    $T$ has an inverse $T\inv: (V/W)^* \rightarrow U$ with
+    $T\inv(\lambda)(v) := \lambda(v+W)$ for $\lambda \in (V/W)^*$ and $v \in V$,
+    so $T$ is bijective.\gap
+
+    $T$ is also linear since
+    \begin{align*}
+        T(c_1\lambda + c_2\mu)(v+W)
+        &= (c_1\lambda + c_2\mu)(v)\\
+        &= c_1\lambda(v) + c_2\mu(v)\\
+        &= c_1T(\lambda)(v+W) + c_2T(\mu)(v+W)
+    \end{align*}
+    Since $T$ is bijective and linear, $T$ is a isomorphism.
+    Therefore, $(V/W)^* \cong U$.
+\end{proof}

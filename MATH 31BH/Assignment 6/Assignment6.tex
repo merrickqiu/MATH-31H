@@ -1,0 +1,142 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\pDiv}[1]{\frac{\partial}{\partial #1}}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 6} \\
+	Due 02/20 at 23:59 \\ 
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	\medskip
+	\item
+	Given an example of a function $f \colon \mathbb{R}^2 \to \mathbb{R}$ which 
+	is differentiable at $(0,0)$ in the direction $(1,0),$ but not in the direction $(0,1).$
+	
+	\solution 
+	The function $f(x_1, x_2) = \|x_2\|$ is differentiable at 
+	$(0, 0)$ in direction $(1, 0)$ with derivative $\pDiv{x_1} = 0$, but 
+	it is not differentiable in direction $(0, 1)$ since $\|x_2\|$ does not have
+	a derivative relative to $x_2$ at $(0, 0)$.
+
+	This is because the left-hand limit of the newton quotient of $\|x_2\|$
+	equals $-1$, but the right-hand limit of the newton quotient equals $1$
+	at $(0, 0)$.
+
+	\medskip
+	\item
+	Let $D \subseteq \mathbf{V}$ be an open set in a Euclidean space, and suppose 
+	$f \colon D \to \mathbb{R}$ is differentiable at $\mathbf{v} \in D$ with respect to 
+	$\mathbf{w} \in \mathbf{V}.$ Prove that $f$ is $\mathbf{v}$ with respect to any 
+	scalar multiple of $\mathbf{w}.$
+
+	\solution 
+	Using the newton quotient, $f'(v,aw) = af'(v,w)$ for any scalar $a$ since 
+	\begin{align*}
+		f'(v, aw)
+		&= \lim_{h\to0} \frac{f(v+haw) - f(v)}{h} \\
+		&= a \lim_{ha\to0} \frac{f(v+haw) - f(v)}{ha} \\
+		&= af'(v, w)
+	\end{align*}
+	If $a=0$, then the newton quotient trivially ends up equalling $0$, 
+	so the above proof works for all scalars.
+	Therefore f is differentiable with respect to any scalar multiple of $w$.
+		
+	\medskip
+	\item
+	Let $f \colon \mathbb{R}^n \to \mathbb{R}$ be the function defined by 
+	$f(\mathbf{v}) = \mathbf{v} \cdot \mathbf{v}.$
+	
+		\begin{enumerate}
+		
+			\smallskip
+			\item
+			Compute the partial derivatives of $f$ at a given point 
+			$\mathbf{v}\in \mathbb{R}^n.$
+			
+			\smallskip
+			\item
+			Prove that $f$ is continuously differentiable on $\mathbb{R}^n.$
+			
+			\smallskip
+			\item
+			Compute the gradient of $f$ at a given $\mathbf{v} \in \mathbb{R}^n$.
+		\end{enumerate}
+
+	\solution 
+	\begin{enumerate}
+		\item 
+		Decomposing v into its $n$ components,
+		\[
+			\pDiv{x_i} f(v) = 
+			\pDiv{x_i} (v \cdot v) = 
+			\pDiv{x_i} \sum_{j=1}^n x_j^2 = 
+			2x_i
+		\]
+
+		\item 
+		$f$ is differentiable since partial derivative exist for all basis vectors,
+		and the partial derivatives, $2x_i$, are all continuous.
+
+		\item 
+		The gradient is a vector composed of all the partial derivatives so,
+		\[
+			\nabla f(v) = (2x_1, ..., 2x_n) = 2v
+		\]
+	\end{enumerate}
+		
+	\medskip
+	\item
+	Let $A$ be a linear operator on a Euclidean space $\mathbf{V},$ 
+	and define a function $f \colon \mathbf{V} \to \mathbb{R}$ by 
+	$f(\mathbf{v})=\langle \mathbf{v},A\mathbf{v}\rangle$. Prove
+	that $f$ is continuously differentiable on $\mathbf{V}$, and compute 
+	the gradient $\nabla f(\mathbf{v})$ for each $\mathbf{v} \in \mathbf{V}.$
+
+	\solution 
+	Using the newton quotient and the bilinearity of the scalar product,
+	\begin{align*}
+		f'(v, w)
+		&= \lim_{h\to0} \frac{f(v+hw) - f(v)}{h} \\
+		&= \lim_{h\to0} \frac{\inner{v+hw}{A(v+hw)} - \inner{v}{Av}}{h} \\
+		&= \lim_{h\to0} \frac{\inner{v+hw}{Av+Ahw)} - \inner{v}{Av}}{h} \\
+		&= \lim_{h\to0} 
+			\frac{\inner{v}{Av} + \inner{v}{Ahw} + \inner{hw}{Av} + \inner{hw}{Ahw} 
+			- \inner{v}{Av}}{h} \\
+		&= \lim_{h\to0} \frac{h\inner{v}{Aw} + h\inner{Av}{w} + h^2\inner{w}{Aw}}{h} \\
+		&= \lim_{h\to0} \inner{v}{Aw} + \inner{Av}{w} + h\inner{w}{Aw} \\
+		&= \inner{A^*v}{w} + \inner{Av}{w} \\
+		&= \inner{(A+A^*)v}{w} 
+	\end{align*}
+	Therefore f is always differentiable.
+	Using the Cauchy-Schwartz inequality, 
+	the derivative is Lipschitz continuous since
+	\[
+		\|f'(v, w)\| =
+		\|\inner{(A+A^*)v}{w}\| =
+		\|\inner{v}{(A+A^*)w}\| \leq
+		\|v\| \|(A+A^*)w\|
+	\]
+	Since $f'(v, w) = \inner{(A+A^*)v}{w}$, the gradient is $(A+A^*)v$.
+			
+\end{enumerate}
+	
+%Declare end of document
+\end{document}

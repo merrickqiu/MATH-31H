@@ -1,0 +1,9 @@
+\section{Matrix Direct Sum}
+
+If A is a $m \times n$ matrix and B is a $p \times q$ matrix,
+then the first m entries of $(A \oplus B)x$ are $Ax_{1:n}$ 
+and the last p entries of $(A \oplus B)x$ are $Bx_{n+1:q}$. 
+This "segregates" the linear transformations of $A$ and $B$
+to only acting on the first $n$ entires and last $q$ entries
+in the same way that $T$ only acts on $v$ and $T'$ only acts on $v'$
+in $T \oplus T'$.

@@ -1,0 +1,80 @@
+%Problem 1.1.1
+\section{Arithmetic of sets}
+\subsection{$A \cap (B-C) = (A \cap B) - (A \cap C)$}
+The equality holds.
+\begin{proof} The equality can be demonstrated with set properties.
+    \begin{align*}
+        A \cap (B-C)
+        &= A \cap (B \cap \overline{C})\\
+        &= (A \cap B) \cap \overline{C}\\
+        &= \emptyset \cup ((A \cap B) \cap \overline{C}))\\
+        &= ((A \cap B) \cap \overline{A}) \cup ((A \cap B) \cap \overline{C})\\
+        &= (A \cap B) \cap (\overline{A} \cup \overline{C})\\
+        &= (A \cap B) \cap \overline{(A \cap C)}\\
+        &= (A \cap B) - (A \cap C)
+    \end{align*}
+\end{proof}
+
+%Problem 1.1.2
+\subsection{$A \cup (B-C) = (A \cup B) - (A \cup C)$}
+The equality does not hold, but $A \cup (B-C) \supseteq (A \cup B) - (A \cup C)$ is true.
+\begin{proof} The left hand side can be simplified:
+    \begin{align*}
+        A \cup (B-C)
+        &= A \cup (B \cap \overline{C})\\
+        &= (A \cup B) \cap (A \cup \overline{C})\\
+        &= A \cup (B \cap \overline{C})
+    \end{align*}
+    The right hand side can be simplified:
+    \begin{align*}
+        (A \cup B) - (A \cup C)
+        &= (A \cup B) \cap \overline{(A \cup C)}\\
+        &= (A \cup B) \cap (\overline{A} \cap \overline{C})\\
+        &= (A \cap (\overline{A} \cap \overline{C})) \cup (B \cap (\overline{A} \cap \overline{C}))\\
+        &= \emptyset \cup (B \cap (\overline{A} \cap \overline{C}))\\
+        &= (B \cap (\overline{A} \cap \overline{C}))\\
+        &= \overline{A} \cap (B  \cap \overline{C})
+    \end{align*}
+    
+    Since $\overline{A} \cap (B  \cap \overline{C}) \subseteq (B \cap \overline{C}) \subseteq A \cup (B \cap \overline{C})$
+    , we know that 
+    $(A \cup B) - (A \cup C) \subseteq A \cup (B-C)$\gap
+    
+    Let $x \in A$, so $x \in A \cup (B-C)$. 
+    However, $x \in A$ implies that $x \not\in \overline{A} \cap B  \cap \overline{C}$,
+    which implies that $x \not\in (A \cup B) - (A \cup C)$. 
+    Therefore $A \cup (B-C) \nsubseteq (A \cup B) - (A \cup C)$, so there is no equality.
+\end{proof}
+
+%Problem 1.1.3
+\subsection{$A \times (B-C) = (A \times B) - (A \times C)$}
+The equality holds.
+\begin{proof} 
+    Let $x \in A \times (B-C)$. 
+    Then $x = (x_1, x_2)$ where $x_1 \in A$ and $x_2 \in B-C$.
+    The statement $x \in (A \times B) - (A \times C)$ 
+    is true if and only if 
+    $(x_1, x_2) \in A \times B$ and $(x_1, x_2) \not\in A \times C$.
+    Note, $(x_1, x_2) \in A \times B$ because $x_1 \in A$ and $x_2 \in B-C$.
+    Because $x_2 \in B-C$, $x_2 \not\in C$, so $(x_1, x_2) \not\in A \times C$.
+    Therefore, $x \in (A \times B) - (A \times C)$ and
+    $A \times (B-C) \subseteq (A \times B) - (A \times C)$.\gap
+
+    Let $x \in (A \times B) - (A \times C)$. 
+    Then $x = (x_1, x_2)$ where 
+    $(x_1, x_2) \in A \times B$ and $(x_1, x_2) \not\in A \times C$.
+    Because $(x_1, x_2) \not\in A \times C$, 
+    $x_1 \not\in A$ or $x_2 \not\in C$.
+    Because $x_1 \in A$ from $(x_1, x_2) \in A \times B$,
+    $x_1 \not\in A$ cannot be true. 
+    Therefore $x_2 \not\in C$.
+    Since $x_1 \in A$, $x_2 \in B$, and $x_2 \not\in C$, 
+    it follows that 
+    $x \in A \times (B-C)$ and
+    $A \times (B-C) \supseteq (A \times B) - (A \times C)$.\gap
+    
+    Since $A \times (B-C) \subseteq (A \times B) - (A \times C)$ and
+    $A \times (B-C) \supseteq (A \times B) - (A \times C)$,
+    it follows that 
+    $A \times (B-C) = (A \times B) - (A \times C)$.
+\end{proof}

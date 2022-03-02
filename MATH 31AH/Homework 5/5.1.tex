@@ -1,0 +1,19 @@
+\section{Linear functionals and nonzero vectors}
+\begin{proof} There exists some $\lambda \in V^*$ with $\lambda(v) \neq 0$.\gap
+
+    Let $\mathcal{B} = \{v_1,v_2,...,v_n\}$ be a basis for $V$, and
+    let $\mathcal{B}^* = \{\lambda_1,\lambda_2,...,\lambda_n\}$ 
+    be the dual basis of $V^*$.
+    Since $v$ is nonzero, there exists a linear combination
+    $v = c_1v_1 + c_2v_2 + ... c_nv_n$ equal to $v$ with some $c_i$ nonzero.
+    Using the definition of $\lambda_i$, we have that
+    \begin{align} 
+        \lambda_i(v) 
+        &= \lambda_i(c_1v_1 + c_2v_2 + ... c_nv_n)\\
+        &= c_1\lambda_i(v_1) + c_2\lambda_i(v_2) + ... + c_i\lambda_i(v_i) + ... + c_n\lambda_i(v_n) \\
+        &= c_i\lambda_j(v_i)\\
+        &= c_i
+    \end{align}.
+    Since $\lambda_i(v) = c_i \neq 0$, there exists some $\lambda \in V^*$ with $\lambda(v) \neq 0$.
+\end{proof}
+

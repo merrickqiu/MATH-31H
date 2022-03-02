@@ -1,0 +1,32 @@
+\section{Direct Sum}
+
+\begin{proof} $\mathcal{B} \oplus \mathcal{C}$ is a basis for $V \oplus W$.\gap
+
+    Let $(a,b) \in V \oplus W$. 
+    $(a,0)$ can be written as a linear combination
+    of vectors in $\{(v,0) : v \in \mathcal{B}\}$ 
+    since $\mathcal{B}$ spans V.
+    Simmilarly, $(0,b)$ can be written as a linear combinations 
+    of vectors in $\{(0,w) : w \in \mathcal{C}\}$ 
+    since $\mathcal{C}$ spans W.
+    Since $(a,0) + (0,b) = (a,b)$, 
+    $(a,b)$ can be written as a linear combination of vectors in
+    $\{(v,0) : v \in \mathcal{B}\} \cup \{(0,w) : w \in \mathcal{C}\}$.
+    Therefore, $\mathcal{B} \oplus \mathcal{C}$ spans $V \oplus W$.\gap
+
+    
+    The only way for a linear combination of $\mathcal{B} \oplus \mathcal{C}$
+    to be zero is if the linear combination of the vectors in 
+    $\{(v,0) : v \in \mathcal{B}\}$ is zero 
+    and the linear combination of vectors in 
+    $\{(0,w) : w \in \mathcal{C}\}$ is zero.
+    Since $\mathcal{B}$ is linearly independent, 
+    and $\mathcal{C}$ is linearly independent,
+    The only linear combination of vectors in $\mathcal{B} \oplus \mathcal{C}$ 
+    that are zero is the trivial linear combination.
+    Therefore, $\mathcal{B} \oplus \mathcal{C}$  is linearly independent.\gap
+
+    Since $\mathcal{B} \oplus \mathcal{C}$ is linearly independent,
+    and it spans $V \oplus W$,
+    $\mathcal{B} \oplus \mathcal{C}$ is a basis for $V \oplus W$.
+\end{proof}

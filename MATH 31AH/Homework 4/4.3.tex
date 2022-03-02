@@ -1,0 +1,21 @@
+\section{Linear maps and independence}
+\begin{proof} $T(I) := \{T(v):v \in I\}$ is linearly independent.\gap
+
+    Since T is injective and linear, we have that 
+    \begin{align*}
+        c_1T(v_1) + c_2T(v_2) + ... + c_nT(v_n) = 0 &\xrightarrow{Linear} \\ 
+        T(c_1v_1 + c_2v_2 + ... + c_nv_n) = 0 &\xrightarrow[T\inv(0)=0]{Injective} \\
+        c_1v_1 + c_2v_2 + ... + c_nv_n = 0
+    \end{align*}
+     
+
+    Therefore, if a nontrivial linear combination of the vectors in $T(I)$ exists,
+    it would imply that a nontrivial linear combination of vectors in $I$ exists,
+    which contradicts the fact that $I$ is linearly independent.
+    Therefore $T(I)$ is linearly independent.\gap
+
+    If $T$ was not injective, then it would be possible for 
+    two vectors in $V$ to map to the same vector, 
+    which would make $T(I)$ not linearly independent.
+    Therefore, it doesn't hold if the assumption of injectivity is removed.
+\end{proof}

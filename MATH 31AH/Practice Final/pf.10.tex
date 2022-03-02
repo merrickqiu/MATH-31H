@@ -1,0 +1,37 @@
+\section{Adjoint matrixes}
+\begin{proof} $Av$ is surjective.\gap
+
+    Let $A = \{a_1,...,a_n\}^T$ be an $n \times m$ complex matrix.
+    Then the $ij$th entry of $AA^*$ would be $a_i \cdot \overline{a_j}$.
+    Let $B = \{b_1,...,b_n\}$ be an $r \times n$ complex matrix.
+    Then the $ij$th entry of $B^*B$ would be $\overline{b_i} \cdot b_j$.
+    Since $AA^* - B^*B = I_n$, we have that
+    \[
+        (AA^*)_{ij} - (B^*B)_{ij} =
+        a_i \cdot \overline{a_j} - b_j \cdot \overline{b_i} = 
+        \inner{a_i}{a_j} - \inner{b_j}{b_i}=
+        \left\{
+        \begin{array}{ll}
+            0 & i \neq j \\
+            1 & i = j \\
+        \end{array} 
+        \right.
+    \]
+    Since the standard inner product of a vector to itself is real and nonnegative, 
+    we have that $(B^*B)_{ii} \geq 0$ and $(AA^*)_{ii} = (B^*B)_{ii} + 1 \geq 1$ on the diagonals.\gap
+
+    Assume that there exists a nonzero $v \in \complex^n$ 
+    such that $AA^*v = 0$.
+    Therefore we have that
+    \begin{align*}
+        AA^*v - B^*Bv = I_nv
+        &\implies -B^*Bv = I_nv\\
+        &\implies B^*Bv = -v\\
+    \end{align*}
+    This contradicts the fact that the diagonal entries of $AA^*$
+    are greater than or equal to 1, so $AA^*$ must have a kernel of zero.
+    Since $AA^*$ is square, $AA^*$ is invertible and 
+    there exists an inverse $AA^*(AA^*)\inv = I$.
+    Therefore, $A^*(AA^*)\inv$ is the right inverse of $A$ 
+    and so $A$ is surjective.
+\end{proof}

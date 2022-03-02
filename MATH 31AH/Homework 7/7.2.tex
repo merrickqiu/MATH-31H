@@ -1,0 +1,48 @@
+\section{Trace}
+\begin{proof} $\tr(AB) = \tr(BA)$.\gap
+
+    Let $A$ and $B$ be $n \times n$ matrices.
+    The trace of a matrix is the sum of the diagonal entries,
+    so 
+    \[
+        \tr(AB) =\sum_{i=1}^n \sum_{j=1}^n a_{ij} b_{ji}
+        \text{ and }
+        \tr(BA) =\sum_{i=1}^n \sum_{j=1}^n b_{ij} a_{ji}
+    \]
+    Since both traces sum up all term of the form $a_{ij} b_{ji}$,
+    $\tr(AB) = \tr(BA)$.
+\end{proof}
+
+\begin{proof} Similar matricies have the same trace.\gap
+
+    Let $A$ and $B$ be similar matricies with $A = PBP\inv$.
+    Since $\tr(AB) = \tr(BA)$, we have that
+    \begin{align*}
+        \tr(A)
+        &= \tr(P(BP\inv))\\
+        &= \tr((BP\inv)P)\\
+        &= \tr(BI)\\
+        &= \tr(B)
+    \end{align*}
+    Therefore $\tr(A) = \tr(B)$ if $A \cong B$.
+\end{proof}
+
+\begin{proof} 
+    $\tr(A) = \dim E_{\lambda_1} \cdot \lambda_1 + ... + \dim E_{\lambda_r} \cdot \lambda_r$\gap
+    
+    Since $A$ is diagonalizable with eigenvalues $\lambda_1,...,\lambda_r$,
+    $A$ is similar to a diagonal matrix, $D$, with the eigenvalues of $A$ on the diagonal.
+    Similar matricies have the same trace, so
+    the trace of $A$ is the trace of $D$,
+    which is the sum of the eigenvalues on the diagonal matrix.\gap
+
+    Since the dimension of an eigenspace is equal to the number of eigenvectors
+    associated with the eigenvalue of the eigenspace,
+    the dimension of an eigenspace is equal to the number of times that 
+    the eigenvalue appears on the diagonal of the diagonal matrix.
+    The trace of $D$ is equal to the 
+    sum of each eigenvalue multiplied by how many times it appears on the diagonal, 
+    so therefore,
+    $\tr(A) = \tr(D) = \dim E_{\lambda_1} \cdot \lambda_1 + ... + \dim E_{\lambda_r} \cdot \lambda_r$.
+
+\end{proof}

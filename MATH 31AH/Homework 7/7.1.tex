@@ -1,0 +1,29 @@
+\section{General Projections}
+\begin{proof}If $P$ is a projection, then $V = \image P \oplus \ker P$.\gap
+
+    If the intersection of $\image P$ and $\ker P$ is zero, and
+    any vector in $V$ can be written as a sum of a vector 
+    in $\image P$ and a vector in $\ker P$, then
+    $V$ is the direct sum of $\image P$ and $\ker P$.
+    In other words, $\image P \cap \ker P = 0$ and 
+    $V = \image P + \ker P$ implies
+    $V = \image P \oplus \ker P$. \gap
+
+    Assume that there exists $v \in \image P \cap \ker P$ 
+    with $v \neq 0$.
+    Since $v \in \image P$, 
+    $P(x) = v$ for some $x \in V$.
+    Since $P \circ P = P$, 
+    then $P(v) = P(P(x)) = P(x) = v \neq 0$.
+    Since $v \in \ker P$, then $P(v) = 0$.
+    This is a contradiction, therefore $v$ cannot be nonzero and
+    $\image P \cap \ker P = 0$.\gap
+
+    Every $v \in V$ can be written as $v = P(v) + (v - P(v))$.
+    $P(v)$ is in the image of $P$.
+    Since $P(v - P(v)) = P(v) - P(P(v)) = P(v) - P(v) = 0$,
+    $(v - P(v))$ is in the kernal of $P$.
+    Therefore, $V = \image P + \ker P$.
+    Since $\image P \cap \ker P = 0$ and $V = \image P + \ker P$,
+    $V = \image P \oplus \ker P$.
+\end{proof}

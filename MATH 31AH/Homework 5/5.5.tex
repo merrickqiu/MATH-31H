@@ -1,0 +1,31 @@
+\section{Internal Direct Sums}
+
+\begin{proof} Being able to uniquely write $v = u + w$ 
+    is equivalent to $U \cup W$ spans V and $U \cap W = 0$.\gap
+
+    If every vector $v \in V$ can be uniquely written as
+    $v = u + w$ for $u \in U$ and $w \in W$,
+    then $U \cup W$ spans V.
+    Let $u \in U$ and $w \in W$.
+    If some $x \in U,W$ with $x \neq 0$,
+    then some $v \in V$ can be written as
+    $(u+x) + w = u + (w+x) = v$.
+    Since every vector $v$ can only be uniquely written in one way,
+    $x$ cannot exist and so $U \cap W = 0$.\gap
+
+    If the union $U \cup W$ spans V, 
+    then every vector $v \in V$ can be written as
+    a linear combination of vectors in $U$ and $W$; 
+    since $U$ and $W$ and subspaces,
+    then some $v = u + w$ for $u \in U$ and $w \in W$.
+    If $U \cap W = 0$, then the union
+    of any basis of $U$ and any basis of $W$
+    is linearly independent since
+    basis vectors cannot be the zero vector.
+    This implies that there is only one way to 
+    write each $v$ in terms of $u$ and $w$.\gap
+
+    Since uniquely writing $v = u+w$ implies $U \cup W$ spans V with $U \cap W = 0$
+    and $U \cup W$ spans V with $U \cap W = 0$ implies uniquely writing $v = u+w$,
+    the two statements are equivalent.
+\end{proof}

@@ -1,0 +1,32 @@
+\section{Polynomial change of basis}
+
+These are the transformations of the basis vectors
+from  $\mathcal{B}$ to $\mathcal{C}$:\\ 
+$1 = 1$\\
+$x+1 = 2(1) + 1(x-1)$\\
+$x^2+x+1 = 2(1) + 2(x-1) + (x^2-x+1)$\\
+$x^3+x^2+x+1 = 2(1) + 2(x-1) + 2(x^2-x+1) + (x^3-x^2+x-1)$ \gap \\
+Therefore, the transition matrix can be written as 
+$[T]_\mathcal{C}^\mathcal{B} =
+\begin{bmatrix} 
+    1 & 2 & 2 & 2 \\
+    0 & 1 & 2 & 2 \\
+    0 & 0 & 1 & 2 \\
+    0 & 0 & 0 & 1
+\end{bmatrix}$. \gap \\
+These are the transformations of the basis vectors
+from $\mathcal{C}$ to $\mathcal{B}$:\\
+$1 = 1$\\
+$x-1 = -2(1) + 1(x+1)$\\
+$x^2-x+1 = 2(1) - 2(x+1) + 1(x^2+x+1)$\\
+$x^3-x^2+x-1 = -2(1) + 2(x+1) - 2(x^2+x+1) + 1(x^3+x^2+x+1)$
+
+Therefore, the transition matrix can be written as 
+$[T]_\mathcal{B}^\mathcal{C} =
+\begin{bmatrix} 
+    1 & -2 & 2 & -2 \\
+    0 & 1 & -2 & 2 \\
+    0 & 0 & 1 & -2 \\
+    0 & 0 & 0 & 1
+\end{bmatrix}$.
+

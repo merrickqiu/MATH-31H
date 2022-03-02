@@ -1,0 +1,27 @@
+\section{A linear system over $\mathbb{F}_2$.}
+The system of linear equations can be solved with an augmented matrix.
+\begin{align*}
+    & \begin{gmatrix}[p]
+        1 & 1 & 0 & 1\\
+        1 & 0 & 1 & 1\\
+        0 & 1 & 1 & 1
+        \rowops
+        \add[1]{0}{1}
+      \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 1 & 0 & 1\\
+        0 & 1 & 1 & 0\\
+        0 & 1 & 1 & 1
+        \rowops
+        \add[1]{1}{2}
+      \end{gmatrix} \\
+    \Rightarrow 
+    & \begin{gmatrix}[p]
+        1 & 1 & 0 & 1\\
+        0 & 1 & 1 & 0\\
+        0 & 0 & 0 & 1
+      \end{gmatrix} \\
+  \end{align*}
+
+Since the third row can never be true, there are no solutions.

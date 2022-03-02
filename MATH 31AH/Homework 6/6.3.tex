@@ -1,0 +1,42 @@
+\section{$\reals$ and $\complex$ and diagonalizability}
+
+The matrix has eigenvalues when
+$\det(R_\theta - \lambda I) = 0$.
+We have that the characteristic polynomial is
+\begin{align}
+    (\cos(\theta)-\lambda)^2 + \sin^2(\theta)
+    &= \cos^2(\theta) - 2\lambda + \lambda^2 + \sin^2(\theta)\\
+    &= 1 - 2\lambda\cos(\theta) + \lambda^2
+\end{align}
+Using the quadratic formula, we get that our eigenvalues are
+\begin{align}
+    \lambda
+    &= \frac{2\cos(\theta) \pm \sqrt{4\cos^2(\theta) - 4}}{2}\\
+    &= \cos(\theta) \pm \sqrt{\cos^2(\theta) - 1}\\
+    &= \cos(\theta) \pm i \sin(\theta)\\
+    &= e^{\pm i\theta}
+\end{align}
+
+Our eigenspace matrices are
+\[
+E_{e^{-i\theta}} =
+\begin{bmatrix}
+    i \sin(\theta) & -\sin(\theta)\\
+    \sin(\theta) & i \sin(\theta)
+\end{bmatrix} 
+\]
+\[
+E_{e^{i\theta}} =
+\begin{bmatrix}
+    -i \sin(\theta) & -\sin(\theta)\\
+    \sin(\theta) & -i \sin(\theta)
+\end{bmatrix}
+\]
+
+So the corresponding eigenvectors are 
+$v_{e^{-i\theta}} = (-i, 1)$ and
+$v_{e^{i\theta}} = (i, 1)$
+Over $\reals$, $R_\theta$ is only diagonalizable when $\theta = 0, \pi$
+since these are the only two angles that result in real eigenvalues.
+Over $\complex$, $R_\theta$ is diagonalizable for all $\theta$
+because there are always two eigenvalues.

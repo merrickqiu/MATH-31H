@@ -1,0 +1,15 @@
+\section{Matrix Tensor Product}
+
+\begin{proof}$(A \otimes B) \cdot (C \otimes D) = (AC)\otimes (BD)$\gap
+
+    The $ij$th block of $(A \otimes B) \cdot (C \otimes D)$ is
+    \[
+        \sum_{k=1}^n (a_{ik}B) (c_{kj} D) = \sum_{k=1}^n a_{ik} c_{kj} BD
+    \]
+
+    The $ij$th block of $(AC)\otimes (BD)$ is
+    \[
+        (\sum_{k=1}^n a_{ik} c_{kj}) BD = \sum_{k=1}^n a_{ik} c_{kj} BD
+    \]
+    Since both expressions result in the same summation, they are equal.
+\end{proof}

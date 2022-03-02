@@ -1,0 +1,89 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 4} \\
+	Due 01/30 at 23:59 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	\item
+	Verify that the following sets $C \subseteq \mathbb{R}^2$ are curves by giving an 
+	explicit paramterization, i.e. for each 
+	give a continuously differentiable function defined on a subset of $\mathbb{R}$ and
+	taking values in $\mathbb{R}^2$ whose image is $C.$
+	
+	\begin{enumerate}
+	
+		\smallskip
+		\item
+		The parabola $C=\{(x,y) \in \mathbb{R}^2 \colon y+1=(x-2)^2\}.$
+		
+		\smallskip
+		\item
+		The circle $C=\{(x,y) \in \mathbb{R}^2 \colon (x-1)^2+(y-2)^2=4\}.$
+		
+		\smallskip
+		\item
+		The ellipse $C=\{(x,y) \in \mathbb{R}^2 \colon 4x^2+y^2=1\}.$
+		
+		\smallskip
+		\item
+		The ellipse $C=\{(x,y) \in \mathbb{R}^2 \colon 4x^2+y^2=1\}.$
+		
+		\smallskip
+		\item
+		The set $C=\{(x,y) \in \mathbb{R}^2 \colon x=|y|\}.$
+	
+	\end{enumerate}
+
+	\solution 
+	\begin{enumerate}
+		\item $f(t) = (t, (t-2)^2-1)$
+		\item $f(t) = (2\cos(t)+1, 2\sin(t)+2)$
+		\item $f(t) = (\frac{\cos(t)}{2}, \sin(t))$
+		\item Ditto 
+		\item $f(t) = (t^2, t\|t\|)$
+	\end{enumerate}
+	
+	\medskip
+	\item
+	For each of the curves $C$ in the previous problem, find the equation of the tangent line
+	at each point on $C$ where it exists, and specify those points at which it does not.
+	
+	\solution 
+	\begin{enumerate}
+		\item $f'(t) = (1, 2t-4)$ so \\
+			$y-((t-2)^2-1) = (2t-4)(x-t)$
+		\item $f'(t) = (-2\sin(t), 2\cos(t))$ so \\
+			$y-(2\sin(t)+2) = -\cot(t)(x-(2\cos(t)+1))$ with \\
+			$x = 3$ at $(3,0)$ and $x = -1$ at $(-1,0)$
+		\item $f'(t) = (-\frac{1}{2}\sin(t), \cos(t))$ so \\
+			$y-\sin(t) = \frac{\cot(t)}{2}(x-\frac{\cos(t)}{2})$ with \\
+			$x = \frac{1}{2}$ at $(\frac{1}{2}, 0)$ and 
+			$x = -\frac{1}{2}$ at $(-\frac{1}{2}, 0)$
+		\item Ditto 
+		\item $f'(t) = (2t, 2\|t\|)$ so \\
+			$y=x$ when $t>0$ and $y=-x$ when $t<0$ 
+			with no tangent line at $t=0$
+	\end{enumerate}
+\end{enumerate}
+%Declare end of document
+\end{document}

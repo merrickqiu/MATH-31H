@@ -1,0 +1,77 @@
+\section{Induced maps}
+\begin{proof} If $T$ is injective, then $T^*$ is surjective. \gap
+    
+    The definition of $T^*$ on some $\mu \in W^*$ 
+    and some $v \in V$ is
+    $(T^*(\mu))(v) = \mu(T(v))$.
+    $T^*$ is surjective if and only if for every  $\varphi \in V^*$,
+    there exists some $\mu \in W^*$ such that $T^*(\mu) = \varphi$ or
+    $(T^*(\mu))(v) = \mu(T(v)) = \varphi(v)$
+    for all $v \in V$. \gap
+
+    
+    % Let $\mathcal{B} = \{w_1,w_2,...,w_s\}$ be a basis for $Image(T)$, and
+    % let $\mathcal{C} = \{w_1,...,w_s,w_{s+1},...,w_n\}$ 
+    % be $\mathcal{B}$ extended to be a basis for $W$. 
+    Let $\varphi \in V^*$ be arbitrary. 
+    Let $\mathcal{B}$ be a basis for $W$.
+    Since T is injective, there exists a left-inverse $T\inv$ for it. 
+    We can uniquely define a linear transformation by where it maps
+    the basis vectors in $\mathcal{B}$. 
+    For all $b \in \mathcal{B}$,
+    let $\mu \in W^*$ such that
+    if $b \in Image(T)$, then
+    $\mu(b) = \varphi(T\inv(b))$.
+    Otherwise,
+    $\mu(b) = 0$.
+    In other words,
+    \[\mu(b) = 
+    \begin{dcases}
+        \varphi(T\inv(b)) & b \in Image(T)\\
+        0 & b \notin Image(T)
+    \end{dcases}
+    \]\gap
+
+    % For all $w \in W$, $w$ can be written 
+    % as a linear combination of the vectors in $\mathcal{C}$,
+    % $c_1v_1 + ... + c_sv_s + c_{s+1}v_{s+1} + ... + c_nv_n$,
+    % for some $c_1,c_2,...c_n \in \mathbb{F}$.
+    % Let $\mu \in W^*$ such that
+    %     $\mu(w) 
+    %     = \mu(c_1v_1 + ... + c_sv_s + c_{s+1}v_{s+1} + ... c_nv_n)
+    %     := \varphi(T\inv(c_1v_1 + ... + c_sv_s))$. \gap
+
+    If $w \in Image(T)$, then
+    $\mu(w) = \varphi(T\inv(w))$.
+    Since
+        $\mu(T(v))
+        = \varphi(T\inv(T(v)))
+        = \varphi(v)$
+    for all $v \in V$, 
+    there exists a $\mu$ where $\mu(T(v)) = \varphi(v)$,
+    and thus $T^*$ is surjective.
+\end{proof}\vspace{4mm}
+
+\begin{proof} If $T$ is surjective, then $T^*$ is injective \gap
+
+    The definition of $T^*$ on some $\mu \in W^*$ 
+    and some $v \in V$ is
+    $(T^*(\mu))(v) = \mu(T(v))$.
+    $T^*$ is injective if and only if for all $\varphi,\psi \in W^*$,
+    $\varphi \neq \psi$ implies $T^*(\varphi) \neq T^*(\psi)$, or 
+    $\varphi(T(v)) \neq \psi(T(v))$ for some $v \in V$.\gap
+
+    Let $\varphi,\psi \in W^*$ be arbitrary linear functionals 
+    such that $\varphi \neq \psi$.
+    Let $\mathcal{B}$ be a basis for $W$.
+    Since $\varphi \neq \psi$, 
+    there exists a $b \in \mathcal{B}$ such that
+    $\varphi(b) \neq \psi(b)$.
+    Since T is surjective,
+    there exists a $v \in V$ such that
+    $T(v) = b$.\gap
+
+    Since $\varphi(T(v)) = \varphi(b) \neq \psi(b) = \psi(T(v))$,
+    we know that $\varphi \neq \psi$ implies $T^*(\varphi) \neq T^*(\psi)$,
+    so $T^*$ is injective.
+\end{proof}

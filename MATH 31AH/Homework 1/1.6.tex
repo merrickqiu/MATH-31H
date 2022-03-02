@@ -1,0 +1,14 @@
+\section{Characteristic of a field}
+If $char(\mathbb{F}) = n > 0$ then $n$ is prime.
+\begin{proof} 
+    Assume that $n$ is not prime. 
+    This means that there exists numbers $1 < a \leq b < n$ such that $ab = n$.
+    Since $\overbrace{1+1+...+1}^n = 0$, and
+    $ab = n$
+    we have that
+    $\overbrace{1+1+...+1}^\text{ab} = 0$ which implies
+    $ab = 0$.
+    Since $1 < a \leq b < n$, $ab \neq 0$ by problem 5, 
+    which contradicts $ab = 0$.
+    Therefore n must be prime.
+\end{proof}

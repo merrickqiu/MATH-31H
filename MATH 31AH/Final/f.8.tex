@@ -1,0 +1,27 @@
+\section*{Problem 8}
+This statement is false, since vectors in the form $v \otimes w$
+only includes simple tensors.
+Let $t \in \reals^2 \otimes \reals^2$ be a tensor with 
+$t = e_1 \otimes e_2 + e_2 \otimes e_1$, where $e_1,e_2$ 
+are the standard basis vectors of $\reals^2$.
+If it is expressable in the form $v \otimes w$,
+then
+\begin{align*}
+    (e_1 \otimes e_2) + (e_2 \otimes e_1)
+    &= (ae_1 + be_2) \otimes (ce_1 + de_2)\\
+    &= ac(e_1 \otimes e_1) + ad(e_1 \otimes e_2) 
+    + bc(e_2 \otimes e_1) + bd(e_2 \otimes e_2)
+\end{align*}
+Therefore
+\begin{align*}
+    & ac = 0\\
+    & ad = 1\\
+    & bc = 1\\
+    & bd = 0
+\end{align*}
+
+This is impossible since the second equation implies $a$ is nonzero
+and the third equation implies that $c$ is nonzero,
+but then $ac = 0$ would be impossible.
+This is a contradiction, so there exists tensors that cannot be 
+written in the form $v \otimes w$.

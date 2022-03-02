@@ -1,0 +1,25 @@
+\section{Homogenous systems}
+\begin{proof}The solution set of a homogeneous system is a subspace of $\mathbb{F}^n$.\gap
+
+    Let $x$ and $y$ be solutions to the homogeneous system $Ax=0$.
+    This implies that for every row $i$, 
+    $a_{i1}x_1 + a_{i2}x_2 + ... + a_{in}x_n = 0$ (or $Ax=0$) and 
+    $a_{i1}y_1 + a_{i2}y_2 + ... + a_{in}y_n = 0$ (or $Ay=0$).
+    Adding these two equations together implies that
+    $a_{i1}(x_1+y_1) + a_{i2}(x_2+y_2) + ... + a_{in}(x_n+y_n) = 0$ (or $A(x+y)=0$)
+    for every row $i$, implying that $x+y$ is also a solution to the homogeneous system.
+    Therefore, the solution set of a homogeneous system is closed under addition.\gap
+    
+    Let $x$ be a solution to the homogeneous system $Ax=0$, and 
+    let $c \in \mathbb{F}$ be a scalar.
+    This implies that for every row $i$,
+    $a_{i1}x_1 + a_{i2}x_2 + ... + a_{in}x_n = 0$ (or $Ax=0$).
+    Multiplying this equation by c yields
+    $a_{i1}(cx_1) + a_{i2}(cx_2) + ... + a_{in}(cx_n) = 0$ (or $A(cx)=0$)
+    for every row $i$, implying that $cx$ is also a solution to the homogeneous ystem.
+    Therefore, the solution set of a homogeneous system is closed under scalar multiplication.\gap
+
+    Since solutions of $Ax=0$ is a member of $\mathbb{F}^n$
+    and addition and scalar multiplication are closed,
+    the solution set of a homogeneous system is a subspace of $\mathbb{F}^n$.
+\end{proof}

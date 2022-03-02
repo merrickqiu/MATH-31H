@@ -1,0 +1,27 @@
+\section{Matrices, duals, and linear maps}
+
+\begin{proof}$T_A$ is linear\gap
+
+    For $A \in Mat_{n \times n}(\mathbb{F})$
+    and $v, v', w \in \mathbb{F}^n$,
+    \begin{align}
+        (T_A(v+v'))(w)
+        &= (v+v')^TAw\\
+        &= (v^T+{v'}^T)Aw\\
+        &= v^TAw+{v'}^TAw\\
+        &= (T_A(v))(w) + (T_A(v'))(w)
+    \end{align}
+
+    For $A \in Mat_{n \times n}(\mathbb{F})$,
+    $\lambda \in \mathbb{F}$,
+    and $v, w \in \mathbb{F}^n$,
+    \begin{align}
+        (T_A(\lambda v))(w)
+        &= (\lambda v)^TAw\\
+        &= \lambda v^TAw \\
+        &= (\lambda T_{A}(v))(w)
+    \end{align}\gap
+
+    Since $T_A$ preserves addition and scalar multiplication,
+    $T_A$ is linear.
+\end{proof}

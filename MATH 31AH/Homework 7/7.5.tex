@@ -1,0 +1,43 @@
+% \newcommand{\integral}[1]{\int_{-1}^{1} #1 \,dt}
+% \newcommand{\brackets}[1]{\left[ #1 \right]_{-1}^{1}}
+%\frac{1}{2^{n+m}n!m!}
+\section{Legendre Polynomial}
+\begin{proof}$\inner{P_n(t)}{P_m(t)} = 0$ for $n \neq m$\gap
+
+    Let $n < m$ let
+    \[
+        u = \frac{d^n}{dt^n} (t^2 - 1)^n \quad
+        du = \frac{d^{n+1}}{dt^{n+1}} (t^2 - 1)^n dt 
+    \]
+    \[
+        v = \frac{d^{m-1}}{dt^{m-1}} (t^2 - 1)^m \quad
+        dv = \frac{d^m}{dt^m} (t^2 - 1)^m dt
+    \]
+
+    Because of the chain rule, any derivative of $(t^2 - 1)^m$ up to the $m-1$th derivative
+    will have $t^2 - 1$ as a term and equal zero when $t = -1, 1$.
+    Since the largest power in $(t^2-1)^n$ is $t^{2n}$ and $n+m > 2n$,
+    the $m+n$th derivative of $(t^2-1)^n$ must equal zero.
+    We have that
+    \begin{align*}
+        \integral{\frac{d^n}{dt^n} (t^2 - 1)^n \frac{d^m}{dt^m} (t^2 - 1)^m}
+        &= \brackets{\frac{d^n}{dt^n} (t^2 - 1)^n \frac{d^{m-1}}{dt^{m-1}} (t^2 - 1)^m} - \integral{\frac{d^{m-1}}{dt^{m-1}} (t^2 - 1)^m \frac{d^{n+1}}{dt^{n+1}} (t^2 - 1)^n}\\
+        &= -\integral{\frac{d^{n+1}}{dt^{n+1}} (t^2 - 1)^n \frac{d^{m-1}}{dt^{m-1}} (t^2 - 1)^m}\\
+        &= \integral{\frac{d^{n+2}}{dt^{n+2}} (t^2 - 1)^n \frac{d^{m-2}}{dt^{m-2}} (t^2 - 1)^m}\\
+        &\qquad \vdots\\
+        &= \integral{\frac{d^{n+m}}{dt^{n+m}} (t^2 - 1)^n \frac{d^{0}}{dt^{0}} (t^2 - 1)^m}\\
+        &= \integral{(t^2 - 1)^m \frac{d^{n+m}}{dt^{n+m}} (t^2 - 1)^n}\\
+        &= 0
+    \end{align*}\gap
+
+    
+    Since the inner product is commutative, and the inner product equals
+    \[
+        \inner{P_n(t)}{P_m(t)}
+        =\frac{1}{2^{n+m}n!m!} \integral{\frac{d^n}{dt^n} (t^2 - 1)^n \frac{d^m}{dt^m} (t^2 - 1)^m}
+        = 0
+    \]
+    we have that $\inner{P_n(t)}{P_m(t)} = 0$ for $n \neq m$.
+
+  
+\end{proof}

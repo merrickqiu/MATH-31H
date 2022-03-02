@@ -1,0 +1,52 @@
+\section*{Problem 6}
+We have that
+\[
+A-\lambda I =
+\begin{bmatrix}
+    -\lambda & 0 & 0 & 0 & 1 \\
+    1 & -\lambda & 0 & 0 & 0 \\
+    0 & 1 & -\lambda & 0 & 0 \\
+    0 & 0 & 1 & -\lambda & 0 \\
+    0 & 0 & 0 & 1 & -\lambda \\
+\end{bmatrix}
+\]
+There are only two permutations
+that result in non-negative terms, 
+so the characteristic polynomial is
+\begin{align}
+    \det(A-\lambda I)
+    &= (-\lambda)^5 + 1^5 \\
+    &= -\lambda^5 + 1
+\end{align}
+so $\lambda = \sqrt[\leftroot{-2}\uproot{2}5]{1}$.
+Therefore the five eigenvalues are
+$\lambda = 0, \eulerID{2}{5}, \eulerID{4}{5},
+ \eulerID{7}{5}, \eulerID{8}{5}$.
+If we perform row reduction on $A-\lambda I$ we the following matrix
+\[
+\begin{bmatrix}
+    -\lambda & 0 & 0 & 0 & 1 \\
+    0 & -\lambda & 0 & 0 & \frac{1}{\lambda} \\
+    0 & 0 & -\lambda & 0 & \frac{1}{\lambda^2} \\
+    0 & 0 & 0 & -\lambda & \frac{1}{\lambda^3} \\
+    0 & 0 & 0 & 0 & \frac{1}{\lambda^4} - \lambda\\
+\end{bmatrix}
+\]
+Since 
+\[
+    \frac{1}{\lambda^4} - \lambda = \frac{1 - \lambda^5}{\lambda^4} = \frac{0}{\lambda^4} = 0
+\]
+we can set the bottom right entry to zero. The final rref matrix is 
+\[
+\begin{bmatrix}
+    1 & 0 & 0 & 0 & -\frac{1}{\lambda} \\
+    0 & 1 & 0 & 0 & -\frac{1}{\lambda^2} \\
+    0 & 0 & 1 & 0 & -\frac{1}{\lambda^3} \\
+    0 & 0 & 0 & 1 & -\frac{1}{\lambda^4} \\
+    0 & 0 & 0 & 0 & 0\\
+\end{bmatrix}
+\]
+This means that each eigenspace will have a one dimensional eigenbasis in the form
+$\{\left[ \frac{1}{\lambda}, \frac{1}{\lambda^2}, \frac{1}{\lambda^3}, \frac{1}{\lambda^4}, 1 \right]\}$.
+for the corresponding eigenvalue of the eigenspace $\lambda = 0, \eulerID{2}{5}, \eulerID{4}{5},
+\eulerID{7}{5}, \eulerID{8}{5}$.

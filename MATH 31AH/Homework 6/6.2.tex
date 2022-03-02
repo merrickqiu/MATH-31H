@@ -1,0 +1,63 @@
+\section{More Eigenvalues and Eigenvectors}
+$B$ has eigenvalues when $\det(B-\lambda I) = 0$.
+\[
+B-\lambda I =
+\begin{bmatrix}
+    1-\lambda & \frac{1}{4} & 0 \\
+    0 & \frac{1}{2}-\lambda & 0 \\
+    0 & \frac{1}{4} & -1-\lambda
+\end{bmatrix}
+\]
+The characteristic polynomial of $B$ is thus 
+$(1-\lambda)(\frac{1}{2}-\lambda)(-1-\lambda)$.
+The eigenvalues are thus $\lambda = -1, \frac{1}{2}, 1$ 
+Using these eigenvalues, we can calculate the matrices for the eigenspaces.
+\[
+E_{-1} =
+\begin{bmatrix}
+    2 & \frac{1}{4} & 0 \\
+    0 & \frac{3}{2} & 0 \\
+    0 & \frac{1}{4} & 0
+\end{bmatrix}
+\text{  and  }
+E_{\frac{1}{2}} =
+\begin{bmatrix}
+    \frac{1}{2} & \frac{1}{4} & 0 \\
+    0 & 0 & 0 \\
+    0 & \frac{1}{4} & -\frac{3}{2}
+\end{bmatrix}
+\text{  and  }
+E_{1} =
+\begin{bmatrix}
+    0 & \frac{1}{4} & 0 \\
+    0 & -\frac{1}{2} & 0 \\
+    0 & \frac{1}{4} & -2
+\end{bmatrix}
+\]
+Using RREF, we have that
+\[
+\rref(E_{-1}) =
+\begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 0
+\end{bmatrix}
+\text{  and  }
+\rref(E_{\frac{1}{2}}) =
+\begin{bmatrix}
+    1 & 0 & 3 \\
+    0 & 1 & -6 \\
+    0 & 0 & 0
+\end{bmatrix}
+\text{  and  }
+\rref(E_{1}) =
+\begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+\end{bmatrix}
+\]
+Therefore a basis for $E_{-1}$ is $\{\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\}$,
+a basis for $E_{\frac{1}{2}}$ is $\{\begin{bmatrix} -3 \\ 6 \\ 1 \end{bmatrix}\}$,
+and a basis for $E_1$ is $\{\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix}\}$
+Since there are three eigenvalues, $B$ is diagonalizable.

@@ -1,0 +1,166 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 5} \\
+	Due 02/06 at 23:59 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	\item
+	Let $f,g \colon \mathbb{R} \to \mathbb{R}^2$ be differentiable functions, and define
+	$D\colon \mathbb{R} \to \mathbb{R}$ by $D(t) = \det(f(t),g(t)).$ Prove that
+	
+		\begin{equation*}
+			D'(t)= \det(f'(t),g(t)) + \det(f(t),g'(t)).
+		\end{equation*}				
+	
+	\solution
+	Since $D(t) = \det(f(t), g(t))$, we can write using component functions that 
+	\[
+		D(t) = \det( 
+		\begin{bmatrix}
+			f_1(t) & g_1(t) \\
+			f_2(t) & g_2(t)
+		\end{bmatrix}) =
+		f_1(t)g_2(t) - f_2(t)g_1(t)
+	\]
+	Taking the derivative we have that 
+	\begin{align*}
+		D'(t) 
+		&= (f_1(t)g_2(t) - f_2(t)g_1(t))' \\
+		&= f_1(t)g_2'(t) + f_1'(t)g_2(t) - f_2(t)g_1'(t) - f_2'(t)g_1(t) \\
+		&= (f_1'(t)g_2(t) - f_2'(t)g_1(t)) + (f_1(t)g_2'(t) - f_2(t)g_1'(t)) \\
+		&= \det(f'(t),g(t)) + \det(f(t),g'(t))
+	\end{align*}
+
+	\medskip
+	\item
+	Consider a particle moving in $\mathbb{R}^2$ such that its position at time 
+	time $t \in \mathbb{R}$ is given by $f(t)=(t^2,t^3).$ 
+	
+		\begin{enumerate}
+		
+			\smallskip
+			\item
+			Calculate the velocity and speed of the particle at time $t$.
+			
+			\smallskip
+			\item
+			Show that there is a unique 
+			time at which the particle has zero velocity, and calculate its acceleration vector
+			at this time.
+			
+			\smallskip
+			\item
+			Write down an integral whose value is the distance traveled by the 
+			particle between time $t=-1$ and time $t=1.$ (You need not evaluate 
+			your integral, but I will be impressed if you do).
+			
+		\end{enumerate}
+	
+	\solution
+	\begin{enumerate}
+		\item 
+		The velocity is $f'(t) = (2t, 3t^2)$ 
+		and the speed is 
+		\[
+			\|f'(t)\| =
+			\sqrt{(2t)^2 + (3t^2)^2} =
+			\sqrt{4t^2 + 9t^4}
+		\]
+
+		\item 
+		$2t = 0$ and $3t^2 = 0$ only have a solution at $t=0$,
+		so the velocity is only zero when $t=0$.
+		Since $f''(t) = (2, 6t)$,
+		the acceleration is $f''(0) = (2, 0)$.
+
+		\item 
+		The integral is 
+		\[
+			\int_{-1}^1 \sqrt{4t^2 + 9t^4} \,dt
+		\]
+	\end{enumerate}
+
+	\medskip
+	\item
+	Consider a particle traveling along a helix in $\mathbb{R}^3$ such that its position 
+	at time $t\in \mathbb{R}$ is 
+	
+		\begin{equation*}
+			f(t) = (at,b\cos \omega t, b\sin \omega t),
+		\end{equation*}
+	
+	
+	\noindent
+	where $a,b,\omega$ are positive constants.
+	
+		\begin{enumerate}
+		
+			\smallskip
+			\item
+			Show that the particle is moving at constant speed.
+			
+			\smallskip
+			\item
+			Show that for all times $t$ the acceleration vector $f''(t)$
+			is a linear combination of the position vector $f(t)$ and the 
+			constant vector $(1,0,0).$
+			
+			\smallskip
+			\item
+			Show that the velocity vector $f'(t)$ and the acceleration 
+			vector $f''(t)$ are orthogonal for all times $t$.
+		
+		\end{enumerate}
+	\solution 
+	\begin{enumerate}
+		\item 
+		The velocity of the particle is
+		$f'(t) = (a, -b\omega\sin\omega t, b\omega\cos\omega t)$
+		so the speed is 
+		\begin{align*}
+			\|f'(t)\|^2
+			&= a^2 + b^2\omega^2\sin^2\omega t + b^2\omega^2\cos^2\omega t \\
+			&= a^2 + b^2\omega^2(\sin^2\omega t + \cos^2\omega t) \\
+			&= a^2 + b^2\omega^2
+		\end{align*}
+		Since $a,b,\omega$ are constants, speed is constant.
+
+		\item 
+		Since 
+		$f''(t) = (0, -b\omega^2\cos\omega t, -b\omega^2\sin\omega t)$, 
+		we can write
+		\[f''(t) = at\omega^2(1,0,0)-\omega^2f(t)\]
+
+		\item The scalar product of $f'(t)$ and $f''(t)$ is 
+		\[
+			f'(t) \cdot f''(t) =
+			0 +
+			b^2\omega^3\sin\omega t \cos\omega t - 
+			b^2\omega^3\sin\omega t \cos\omega t
+			= 0
+		\]
+		Therefore, the velocity and acceleration are always orthogonal.
+	\end{enumerate}
+\end{enumerate}
+%Declare end of document
+\end{document}

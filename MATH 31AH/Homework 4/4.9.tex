@@ -1,0 +1,43 @@
+\section{Optional Question}
+\begin{proof}$\mathbb{F} := {0,1,2,...,p-1} \subseteq \mathbb{K}$\gap
+
+    Let $a,b \in \mathbb{F}$.
+    Since the characteristic of $\mathbb{F}$ is $p$, we have that
+    \begin{align*}
+        a + b
+        &= \overbrace{1+1+...+1}^{a} + \overbrace{1+1+...+1}^{b}\\
+        &= \overbrace{1+1+...+1}^{a+b}\\
+        &= \overbrace{1+1+...+1}^{np} + \overbrace{1+1+...+1}^{(a+b) \mod p}\\
+        &= \overbrace{1+1+...+1}^{(a+b) \mod p} \\
+        &= (a+b) \mod p
+    \end{align*}
+    Since $(a+b) \mod p \in \mathbb{F}$, 
+    $\mathbb{F}$ is closed under addition.\gap
+
+    We also have that
+    \begin{align*}
+        ab
+        &= \overbrace{\overbrace{1+1+...+1}^{a} + ... +\overbrace{1+1+...+1}^{a}}^{b}\\
+        &= \overbrace{1+1+...+1}^{ab}\\
+        &= \overbrace{1+1+...+1}^{np} + \overbrace{1+1+...+1}^{(ab) \mod p}\\
+        &= \overbrace{1+1+...+1}^{(ab) \mod p} \\
+        &= (ab) \mod p
+    \end{align*}
+    Since $(ab) \mod p \in \mathbb{F}$,
+    $\mathbb{F}$ is closed under multiplication. 
+    Since $\mathbb{F}$ is closed under addition and multiplication,
+    $\mathbb{F}$ is a subfield of $\mathbb{K}$.
+\end{proof}
+
+\begin{proof} Any finite field has size
+    equal to some power $p^r$ of a prime number $p$,
+    where $r>0$ is an integer.\gap
+
+    It has already been proven that all fields
+    either have a characteristic that is prime,
+    or a characteristic that is zero.
+    If a field has a size that is 
+    not a power of a prime number,
+    then
+    [Proof goes here]
+\end{proof}
