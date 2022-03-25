@@ -1,0 +1,217 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\pdiv}[1]{\frac{\partial}{\partial #1}}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Assignment 8} \\
+	Due 03/06 at 23:59 \\ 
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+
+	\medskip
+	\item
+	Let $C$ be a plane curve, i.e. the image of a continuous function 
+	$f \colon \mathbb{R} \to \mathbb{R}^2$. What are the boundary points of $C$?
+	Is $C$ open, closed, neither, both?
+	
+	\solution 
+	The boundary points of $C$ are the points, $v$, for which 
+	the ball $B_\epsilon(v)$ contains both points in the image and outside the image 
+	for every $\epsilon > 0$.
+	Unless $C$ is space filling, $C$ will be a closed curve.
+  
+	\medskip
+	\item
+	Maximize the function $f(x,y) = x^2e^{-(x^4+y^2)}$ over $\mathbb{R}^2$.
+	
+	\solution 
+	For $v = (x, y)$
+	\[
+		x^2e^{-(x^4+y^2)} \leq (x^2+y^2)e^{-(x^2+y^2)} = \|v\| e^{-\|v\|}
+	\]
+	The function is also always nonnegative 
+	since $x^2$ and $e^{-(x^4+y^2)}$ are nonnegative.
+	Therefore
+	\[
+		0 \leq 
+		\lim_{\|v\| \to \infty} x^2e^{-(x^4+y^2)} \leq  
+		\lim_{\|v\| \to \infty} \|v\| e^{-\|v\|} = 0
+	\]
+	Since $\lim_{\|v\| \to \infty} x^2e^{-(x^4+y^2)} = 0$ and the function is smooth,
+	the maximum of the function must be a critical point. \\
+
+	The partial derivative with respect to $x$ is
+	\[
+		\pdiv{x} x^2e^{-(x^4+y^2)} = 
+		x^2 e^{-x^4-y^2} (-4x^3) + 2xe^{-x^4-y^2)} =
+		2xe^{-x^4-y^2}(1-2x^4)
+	\]
+	The left-hand term is only zero when $x=0$ and 
+	the right hand term is only zero when $x= \pm \sqrt[4]{\frac{1}{2}}$.
+	Therefore, the partial derivative with respect to $x$ is only zero for 
+	points in the form $(0, y)$ or $(\pm \sqrt[4]{\frac{1}{2}}, y)$.
+	The partial derivative with respect to $y$ is
+	\[
+		\pdiv{y} x^2e^{-(x^4+y^2)} = 
+		x^2e^{-x^4-y^2}(-2y) =
+		-2x^2y e^{-x^4-y^2}
+	\]
+	This is only zero when $x=0$ or $y=0$.
+	Therefore, the partial derivative with respect to $y$ is only zero for 
+	points in the form $(0, y)$ or $(x, 0)$. 
+	The critical points are thus points in the form 
+	$(0, y)$ or  $(\pm \sqrt[4]{\frac{1}{2}}, 0)$.
+
+	\begin{align*}
+		f(0, y) &= 0 \\
+		f(\sqrt[4]{\frac{1}{2}}, 0) &= \sqrt{\frac{1}{2}}e^{-\frac{1}{2}} \\
+		f(-\sqrt[4]{\frac{1}{2}}, 0) &= \sqrt{\frac{1}{2}}e^{-\frac{1}{2}} \\
+	\end{align*}
+
+	Therefore the global maximizer of $f$ 
+	are the points $(\pm \sqrt[4]{\frac{1}{2}}, 0)$
+	with a value of $\sqrt{\frac{1}{2}}e^{-\frac{1}{2}}$ each.
+
+	\medskip
+	\item
+	Find the maximum of the function $f(x,y) = x^3+xy$ on the unit square, 
+	and on the square with vertices $(\pm 1, \pm 1)$ and $(\pm 1, \mp 1)$.
+
+	\solution 
+	I will find the maximum on the square with vertices 
+	$(\pm 1, \pm 1)$ and $(\pm 1, \mp 1)$ first.
+	Since the square is a compact set, 
+	the maximizer is either a critical point or a point on the boundary.
+	The partial derivative with respect to $x$ is 
+	\[
+		\pdiv{x} x^3 + xy = 3x^2 + y
+	\]
+	This is zero for points in the form $(x, -3x^2)$.
+	The partial derivative with respect to $y$ is 
+	\[
+		\pdiv{y} x^3 + xy = x
+	\]
+	This is zero for points in the form $(0, y)$
+	The only critical point is therefore $(0, 0)$
+	This critical point has a value of $f(0, 0) = 0$.
+
+	Points on the top edge take the form $(x, 1)$.
+	The expression $x^3 + x$, corresponding to the top edge values,
+	is maximized when $x=1$ with a value of 2.
+
+	Points on the bottom edge take the form $(x, -1)$.
+	The expression $x^3 - x$, corresponding to the bottom edge values,
+	is maximized when $x= -\frac{1}{\sqrt{3}}$ 
+	with a value of $\frac{1}{3}^\frac{1}{2} - \frac{1}{3}^\frac{3}{2}$.
+
+	Points on the right edge take the form $(1, y)$.
+	The expression $1 + y$, corresponding to the right edge values,
+	is maximized when $y = 1$ with a value of 2 
+
+	Points on the left edge take the form $(-1, y)$.
+	The expression $-1-y$, corresponding to the left edge values,
+	is maximized when $y=-1$ with a value of 0.
+
+	From this, we can see that the maximizer is the point $(1, 1)$ 
+	with a value of 2. 
+	If only the unit square is considered, 
+	$(1, 1)$ is still the maximizer since 
+	the unit square is a subset of the square centered at the origin,
+	and $(1, 1)$ is in the unit square.
+	\medskip
+	\item
+	Find the terms of order at most two in the Taylor expansion of $f(x,y)=\log(1+xy)$ at the point
+	$(0,0)$.
+	
+	\solution 
+	The value at $(0, 0)$ is $f(0, 0) = 0$
+	The gradient is $G_f(x, y) = [\frac{y}{1+xy}, \frac{x}{1+xy}]$
+	from taking the partial derivatives. 
+	The gradient at $(0, 0)$ is thus $G_f(0, 0) = [0, 0]$.
+	The Hessian is the matrix of the partial derivatives of the partial derivatives.
+	\begin{align*}
+		H_f(x, y) 
+		= 	\begin{bmatrix}
+				\pdiv{x}\pdiv{x} f & \pdiv{x}\pdiv{y} f \\
+				\pdiv{y}\pdiv{x} f & \pdiv{y}\pdiv{y} f
+			\end{bmatrix} \\
+		= 	\begin{bmatrix}
+				\pdiv{x}\frac{y}{1+xy} & \pdiv{x}\frac{x}{1+xy} \\
+				\pdiv{y}\frac{y}{1+xy} f & \pdiv{y}\frac{x}{1+xy}
+			\end{bmatrix} \\
+		= 	\begin{bmatrix}
+			-\frac{y^2}{(1+xy)^2} & \frac{1}{(1+xy)^2} \\
+			\frac{1}{(1+xy)^2} & -\frac{x^2}{(1+xy)^2}
+		\end{bmatrix} \\
+	\end{align*}
+	Therefore,
+	\[
+		H_f(0, 0) =
+		\begin{bmatrix}
+			0 & 1 \\
+			1 & 0
+		\end{bmatrix}
+	\]
+
+	Therefore, 
+	\begin{align*}
+		P_2(x, y) 
+		&= f(0, 0) + \inner{G_f(0, 0)}{v} + \frac{1}{2}\inner{H_f(0, 0)v}{v} \\
+		&= 0 + 0 + \frac{1}{2}\inner{[y, x]}{[x, y]} \\
+		&= xy
+	\end{align*}
+	\medskip
+	\item
+	Repeat the previous problem with $f(x,y) = e^{x+y}$.
+
+	\solution
+	The value at $(0,0)$ is $f(0,0) = 1$
+	The gradient is $G_f(x, y) = [e^{x+y}, e^{x+y}]$ 
+	since the partial derivatives of $f$ are the function itself. 
+	Therefore the gradient at at $(0,0)$ is $G_f(0, 0) = [1, 1]$.
+	Because the partial derivatives are still $f$,
+	the hessian of $f$ is the matrix 
+	\[
+	H_f(x, y) =
+	\begin{bmatrix}
+		e^{x+y} & e^{x+y} \\
+		e^{x+y} & e^{x+y}
+	\end{bmatrix}
+	\]
+	Therefore the hessian at $(0, 0)$ is
+	\[
+	H_f(0, 0) =
+	\begin{bmatrix}
+		1 & 1 \\
+		1 & 1
+	\end{bmatrix}
+	\]
+
+	Therefore 
+	\begin{align*}
+		P_2(x, y) 
+		&= f(0, 0) + \inner{G_f(0, 0)}{v} + \frac{1}{2}\inner{H_f(0, 0)v}{v} \\
+		&= 1 + (x + y) + \frac{1}{2}\inner{[x+y, x+y]}{[x, y]} \\
+		&= 1 + (x + y) + \frac{1}{2}(x^2+2xy+y^2)
+	\end{align*}
+	\end{enumerate}
+	
+%Declare end of document
+\end{document}

@@ -1,0 +1,221 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\pdiv}[1]{\frac{\partial}{\partial #1}}
+
+%Declare beginning of document
+\begin{document}
+
+%Center to make a document title
+\begin{center}
+	\huge{\bf Math 31BH: Final} \\
+	Due 03/16 at 18:30 \\
+	Merrick Qiu
+\end{center}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+\begin{enumerate}
+	\item 
+	Let $\epsilon > 0$ be arbitrary.
+	Let $\delta = \frac{\epsilon}{C}$.
+	For $v \in V$ with $\|v\| < \delta$, 
+	then $\|f(v)\| < \epsilon$ since
+	\[
+		\|f(v)\| \leq 
+		C\|v\| <
+		C \delta =
+		C \frac{\epsilon}{C} =
+		\epsilon
+	\]
+	Therefore, $f$ is continuous because for all $\epsilon > 0$,
+	there exists a $\delta > 0$ such that 
+	$\|v\| < \delta$ implies $\|f(v)\| < \epsilon$.
+
+	\item 
+	The value of $f$ at $\frac{\pi}{3}$ is
+	\[
+		f(\frac{\pi}{3}) = (\frac{1}{2}, \frac{\sqrt{3}}{2})
+	\]
+	
+	The derivative of $f$ at $\frac{\pi}{3}$ is 
+	\[
+		f'(t) = (-\sin(t), \cos(t))
+	\]
+	\[
+		f'(\frac{\pi}{3}) = (-\frac{\sqrt{3}}{2}, \frac{1}{2})
+	\]
+	Using $r$ as a parameter, a tangent line at $t$ can be written in form 
+	$\{f(t) + rf'(t) : r \in \mathbb{R}\}$. 
+	Therefore the tangent line is 
+	$\{(\frac{1}{2}, \frac{\sqrt{3}}{2}) + r(-\frac{\sqrt{3}}{2}, \frac{1}{2}) : r \in \mathbb{R}\}$.
+	Written as an equation it is
+	$g(r) = (\frac{1}{2}-\frac{\sqrt{3}}{2}r, \frac{\sqrt{3}}{2} + \frac{1}{2}r)$.
+
+	\item 
+	\begin{enumerate}
+		\item 
+		The velocity is the derivative of the position.
+		Therefore the velocity at time $t$ is 
+		\[
+			f'(t) = 
+			(a, -b\omega\sin\omega t, b\omega\cos\omega t)
+		\]
+
+		\item 
+		The speed of a particle is the magnitude of its veloicty.
+		Therefore the speed at time $t$ is 
+		\[
+			\|f'(t)\| = 
+			\sqrt{a^2 + b^2\omega^2\sin^2\omega t + b^2\omega^2\cos^2\omega t}
+		\]
+
+		\item 
+		The acceleration is the derivative of the velocity.
+		Therefore the acceleration at time $t$ is 
+		\[
+			f''(t) = 
+			(0, -b\omega^2\cos\omega t, -b\omega^2\sin\omega t)
+		\]
+		The dot product of the acceleration and velocity is 
+		\begin{align*}
+			f'(t) \cdot f''(t)  
+			&= (-b\omega\sin\omega t)(-b\omega^2\cos\omega t) + 
+				(b\omega\cos\omega t)(-b\omega^2\sin\omega t) \\
+			&= b^2\omega^3 \sin\omega t\cos\omega t - 
+				b^2\omega^3 \sin\omega t\cos\omega t \\ 
+			&= 0
+		\end{align*}
+		Since the dot product of acceleration and velocity is zero 
+		for $t$, the acceleration and velocity are orthogonal at time $t$.
+	\end{enumerate}
+
+	\item 
+	The gradient of $f_1$ is a vector of the partial derivatives of $f_1$.
+	Using the chain rule to find the partial derivatives, 
+	\begin{align*}
+		\nabla f_1(x,y) 
+		&= (\pdiv{x} g_1(x+y), \pdiv{y} g_1(x+y)) \\
+		&= (g_1'(x+y)\pdiv{x} (x+y), g_1'(x+y)\pdiv{y} (x+y)) \\
+		&= (g_1'(x+y), g_1'(x+y))
+	\end{align*}
+
+	Similarly for $f_2$, 
+	\begin{align*}
+		\nabla f_2(x,y) 
+		&= (\pdiv{x} g_2(x-y), \pdiv{y} g_2(x-y)) \\
+		&= (g_2'(x-y)\pdiv{x} (x-y), g_2'(x+y)\pdiv{y} (x-y)) \\
+		&= (g_2'(x-y), -g_2'(x-y))
+	\end{align*}
+
+	The dot product of the gradients is 
+	\[
+		\nabla f_1(x,y) \cdot \nabla f_2(x,y)
+		= g_1'(x+y)g_2'(x-y) - g_1'(x+y)g_2'(x-y)
+		= 0
+	\]
+	Since the dot product of the gradients is 0 
+	for all $x$ and $y$,
+	the gradient of $f_1$ is orthogonal to the gradient of $f_2$
+	at every point in $\mathbb{R}^2$.
+
+	\item 
+	Writting v as its components, the function is 
+	\[
+		f(v_1,...,v_n) = (v_1^2 + ... + v_n^2)^a
+	\]
+	The partial derivative for an arbitrary component variable is 
+	\begin{align*}
+		\pdiv{v_i} f(v_1,..., v_i,...,v_n) 
+		&= \pdiv{v_1} (v_1^2 + ... + v_i^2 + ...+ v_n^2)^a \\
+		&= a(v_1^2 + ... + v_i^2 + ...+ v_n^2)^{a-1}2v_i \\
+		&= 2a(v\cdot v)^{a-1}v_i
+	\end{align*}
+	The gradient vector is therefore 
+	\[
+		\nabla f(v) = 
+		(2a(v\cdot v)^{a-1}v_1,...,2a(v\cdot v)^{a-1}v_n) =
+		2a(v\cdot v)^{a-1}v
+	\]
+
+	\item 
+	\begin{enumerate}
+		\item 
+		Since a convex hull is compact, 
+		the extreme value theorem says that a maximizer
+		exists in $S$.
+
+		\item 
+		The gradient of $f$ is
+		\[
+			\nabla f(x, y) = (3x^2+y, x)
+		\]
+		The gradient is only zero at the point $(0, 0)$.
+		Therefore $(0, 0)$ is the only critical point, which is on the boundary.
+		Therefore it is sufficient to only check the boundaries for a maximum.
+
+		For the left side $f(0, y) = 0$,
+		which achieves a maximum of $0$ for all points.
+
+		For the right side $f(1, y) = 1+y$,
+		which achieves a maximum of $2$ at $y=1$.
+
+		For the bottom side $f(x, 0) = x^3$, 
+		which achieves a maximum of $1$ at $x=1$.
+
+		For the top side $f(x, 1) = x^3 + 1$,
+		which achieves a maximum of $2$ at $x=1$.
+
+		Therefore, $f$ has a maximum value of $2$ 
+		at the point $(1, 1)$ on $S$. 
+	\end{enumerate}
+		
+	\item 
+	\begin{enumerate}
+		\item 
+		Since $f(0,0) = (1, 0)$ and $f(0, 2\pi) = (1, 0)$,
+		the function is not injective, and therefore it is not invertible.
+
+		\item 
+		The Jacobian matrix is the matrix of the possible derivatives 
+		on the component functions.
+		\[
+			J_f(x,y) 
+			= \begin{bmatrix}
+				\pdiv{x} e^x\cos y & \pdiv{y} e^x\cos y \\
+				\pdiv{x} e^x\sin y & \pdiv{y} e^x\sin y
+			\end{bmatrix} \\
+			= \begin{bmatrix}
+				e^x\cos y & -e^x\sin y \\
+				e^x\sin y & e^x\cos y
+			\end{bmatrix}
+		\]
+
+		\item 
+		From the inverse function theorem,
+		$f$ is locally invertible if $\det(f'(v,\cdot)) \neq 0$
+		for a point $v \in \mathbb{R}^2$.
+		The determinant is 
+		\begin{align*}
+			\det(f'(v,\cdot))  
+			&= \det (J_f(x,y)) \\
+			&= (e^x\cos y)(e^x\cos y) - (-e^x\sin y)(e^x\sin y) \\
+			&= e^{2x}\cos^2y + e^{2x}\sin^2y \\
+			&= e^{2x}(\cos^2y + \sin^2y) \\
+			&= e^{2x} \\
+			&\neq 0 \text{ for all $x$}
+		\end{align*}		
+		Since the determinant of the derivative is never zero,
+		$f$ is locally invertible for any point $v \in \mathbb{R}^2$.
+	\end{enumerate}
+\end{enumerate}
+%Declare end of document
+\end{document}
