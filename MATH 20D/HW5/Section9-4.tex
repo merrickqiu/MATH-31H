@@ -1,0 +1,91 @@
+\subsection*{Section 9.4}
+\textbf{Problem 2}
+\[
+    \begin{bmatrix}
+        r(t) \\ \theta(t)
+    \end{bmatrix}'
+    =
+    \begin{bmatrix}
+        2 & 0 \\
+        1 & -1
+    \end{bmatrix}
+    \begin{bmatrix}
+        r(t) \\ \theta(t)
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        t^2 \\ 1
+    \end{bmatrix}
+\]
+\textbf{Problem 6}
+Let $x_1 = x$ and $x_2 = x'$
+\[
+    \begin{bmatrix}
+        x_1 \\ x_2
+    \end{bmatrix}'
+    =
+    \begin{bmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\ x_2
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0 \\ t^2
+    \end{bmatrix}
+\]
+\textbf{Problem 9}
+\[
+    x_1' = 5x_1 + 2e^{-2t}
+\]
+\[
+    x_2' = -2x_1 + 4x_1 -3e^{-2t}
+\]
+\textbf{Problem 14}
+We have the scalar valued functions,
+\[
+    c_1te^{-t} + c_2e^{-t} = 0
+\]
+\[
+    c_1e^{-t} + c_2e^{-t} = 0
+\]
+Subtracting the second row from the first row yields 
+that $c_1(t-1) = 0$.
+Thus $c_1 = 0$ and $c_2 = 0$ and the functions are independent.
+
+\textbf{Problem 15}
+The second function is $-3$ times the first function.
+Thus the functions are dependent.
+
+\textbf{Problem 16}
+At the point $t = \frac{\pi}{2}$, the Wronskian is $-1$.
+Therefore the Wronskian is nonzero everywhere and the functions 
+are independent.
+
+\textbf{Problem 21}
+They do not form a fundamental solution set since the functions are dependent.
+The second function is $-2$ times the first one.
+
+\textbf{Problem 22}
+At $t=0$, the Wronskian is $-5$ so the function is independent.
+There are also $2$ solutions, so the functions form a fundamental set.
+The matrix is 
+\[
+    \begin{bmatrix}
+        3e^{-t} & e^{4t} \\
+        2e{-t} & -e^{4t}
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    c_1
+    \begin{bmatrix}
+        3e^{-t} \\ 2e{-t}
+    \end{bmatrix}
+    + c_2
+    \begin{bmatrix}
+        e^{4t} \\ -e{4t}
+    \end{bmatrix}
+\]

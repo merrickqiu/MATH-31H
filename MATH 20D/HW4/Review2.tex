@@ -1,0 +1,82 @@
+\subsection*{Review Chapter 2}
+\textbf{Problem 1}
+The equation is separable 
+\begin{align*}
+    (y-1)e^{-y} \,dy = e^x \,dx
+    &\implies -ye^{-y} = e^x + C
+\end{align*}
+\textbf{Problem 2}
+The equation is linear
+\[
+    \mu = e^{\int P(x) \,dx} = e^{-4x}
+\]
+Multiplying both sides by $\mu$ yields 
+\[
+    \der{}{x}[e^{-4x}y] = 32x^2e^{-4x}
+    \implies e^{-4x}y = e^{-4x} (8x^2+4x+1) + C
+    \implies y = 8x^2+4x+1 + Ce^{4x}
+\]
+\textbf{Problem 16}
+The equation is linear 
+\[
+    \mu = e^{\int P(x) \,dx} = e^{-\ln(\cos x)} = \sec x
+\]
+Multiplying both sides by $\mu$ yields 
+\[
+    \der{}{x}[\sec(x)y] = -\tan x
+    \implies \sec(x)y = \ln(\cos x) + C
+    \implies y = \cos(x)\ln(\cos x) + C\cos x
+\]
+\textbf{Problem 23}
+The equation is exact since both derivatives equal 1.
+Integrating M yields 
+\[
+    F(x,y) = yx - \frac{1}{2}x^2 + g(y)
+\]
+Taking the derivative relative to y yields 
+\[
+    x+y = x + g'(y) \implies g'(y) = y \implies g(y) = \frac{1}{2}y^2
+\]
+Therefore the solution is 
+\[
+    yx - \frac{1}{2}x^2 + \frac{1}{2}y^2 = C
+\]
+\textbf{Problem 28}
+The equation can be rewritten as the exact equation
+\[
+    (-x+y+1)\,dx+ (x+y+5)\,dy = 0
+\]
+Integrating M yields 
+\[
+    F(x,y) =-\frac{1}{2}x^2 + xy + x + g(y)
+\]
+Taking the derivative relative to y yields 
+\[
+    x+y+5 = x + g'(y) 
+    \implies g'(y) = y+5 
+    \implies g(y) = \frac{1}{2}y^2 + 5y
+\]
+Therefore the solution is 
+\[
+    -\frac{1}{2}x^2 + xy + x + \frac{1}{2}y^2 + 5y = C
+\]
+\textbf{Problem 34}
+The equation is linear.
+The integrating factor is
+\[
+    \mu = e^{\int P(x) \,dx} = e^{-2\ln x} = x^{-2}
+\]
+Multiplying both sides by the integratin factor yields 
+\[
+    \der{}{x} [x^{-2}y] = \cos x
+    y = x^2\sin x + Cx^2
+\]
+Plugging in the initial value... 
+\[
+    2 = 0 + C\pi^2 
+    \implies C = \frac{2}{pi^2}
+\]
+The final solution is 
+\[
+    y = x^2\sin x + \frac{2}{\pi^2}x^2
+\]

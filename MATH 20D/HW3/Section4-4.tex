@@ -1,0 +1,108 @@
+\subsection*{Section 4-4}
+\textbf{Problem 4}
+Method works since $3^t = e^(\ln 3 t)$
+
+\textbf{Problem 11}
+The roots are 
+\[
+    r^2 + r = 0 \implies r=-1, 0
+\]
+Since $r=\ln2$ is not a root, the general form is 
+\[
+    y = A_0 2^x
+\]
+Plugging this into the original equation yields 
+\[
+    \ln(2)^2 A_0 2^x + A_02^x = 2^x
+    \implies A_0 = \frac{1}{\ln(2)^2+1}
+\]
+The particular solution is 
+\[
+    y = \frac{2^x}{\ln(2)^2+1}
+\]
+
+\textbf{Problem 14}
+The roots are 
+\[
+    2r^2 + 1 = 0 \implies r = \frac{1}{\sqrt{2}}i
+\]
+Since $r = 2$ is not a root, the general form is 
+\[
+    y = A_0 e^{2t}
+\]
+Plugging this into the original equation yields 
+\[
+    8A_0e^{2t} + A_0 e^{2t} = 9e^{2t}
+    \implies A_0 = 1
+\]
+The particular solution is 
+\[
+    y = e^{2t}
+\]
+\textbf{Problem 18}
+The roots are 
+\[
+    r^2-2r+1 = 0
+    \implies r=1
+\]
+Since $r=1$ is a double root, the general form is 
+\[
+    y = A_0 t^2e^t
+\]
+Plugging this into the original equation yields 
+\[
+    A_0((2e^t+ 2te^t + 2te^t + t^2e^t) - 2(2te^t + t^2e^t) + (t^2e^t)) = 8e^t
+    \implies A_0(2e^t) = 8e^t
+    \implies A_0 = 4
+\]
+The particular solution is 
+\[
+    y = 4 t^2e^t
+\]
+\textbf{Problem 25}
+The roots are 
+\[
+    r^2 + 2r + 4 = 0 
+    \implies r = \frac{-2 \pm \sqrt{4-16}}{2}
+    \implies r = -1 \pm \sqrt{3}i
+\]
+$2 + 3i$ is not a root, so the general solution is 
+\[
+    y = e^{2t}(A \cos 3t + B \sin 3t)
+\]
+Finding the derivatives yields
+\begin{align*}
+    y' 
+    &= 2e^{2t}(A \cos 3t + B \sin 3t) + e^{2t}(-3A \sin 3t + 3B \cos 3t) \\
+    &= e^{2t}((2A+3B)\cos 3t + (-3A+2B) \sin 3t)
+\end{align*}
+\begin{align*}
+    y''
+    &= 2e^{2t}((2A+3B)\cos 3t + (-3A+2B) \sin 3t) + e^{2t}((-6A-9B)\sin 3t + (-9A+6B) \cos 3t) \\
+    &= e^{2t}((-5A+12B)\cos 3t + (-12A-5B) \sin 3t)
+\end{align*}
+Plugging these into the original equation yields,
+\[
+    (3A+18B)\cos 3t + (-18A+3B)\sin 3t = 111 \cos 3t
+\]
+Therefore, the particular solution is 
+\[
+    y = e^{2t}(\cos 3t + 6 \sin 3t)
+\]
+\textbf{Problem 28}
+The auxillary equation has the double root $r=3$, so $s=2$.
+\[
+    y = t^2(A_6t^6+A_5t^5+A_4t^4+A_3t^3+A_2t^2+A_1t+A_0)e^{3t}
+\]
+
+\textbf{Problem 31}
+The auxillary equation has roots $r = -1 \pm i$, so $s=1$
+\[
+    y = t(A_3t^3+A_2t^2+A_1t+A_0)e^{-t}\cos t + 
+    t(B_3t^3+B_2t^2+B_1t+B_0)e^{-t}\sin t 
+\]
+\textbf{Problem 32}
+The auxillary equation has roots $r=-3, 4$ so $s=1$
+\[
+    y = t(A_3t^3+A_2t^2+A_1t+A_0)e^{-3t}
+\]

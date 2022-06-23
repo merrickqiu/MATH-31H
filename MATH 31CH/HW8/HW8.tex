@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\pd}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+
+\title{Math 31CH HW 8\\}
+\author{Merrick Qiu}
+\date{}
+
+\begin{document}
+\textbf{Problem 6.10.1}
+\begin{align*}
+    \vol_3 U
+    &= \int_{\partial U} \frac{1}{3} 
+        (z\,dx \wedge dy + y \,dz \wedge dx + x \,dy \wedge dz) \\
+    &= \int_{U} \frac{1}{3} 
+        (\,dx \wedge dy \wedge dz + y \,dz \wedge dx \wedge dy + \,dy \wedge dz \, dx) \\
+    &= \int_{U} dx \wedge dy \wedge dz
+\end{align*}
+
+\textbf{Problem 6.10.2}
+\begin{align*}
+    \int_{C\cup D} x \,dy \wedge dz + y \,dz \wedge \,dx + z\,dx \wedge dy
+    &= \int_w 3 \,dx \wedge dy \wedge dz \\
+    &= 3 \vol_3 W \\
+    &= 3(\frac{1}{3}a\pi a^2) \\
+    &= \pi a^3
+\end{align*}
+We can ignore the $D$ since it is a flat disk.
+
+\textbf{Problem 6.10.3}
+\begin{align*}
+    \int_{U} x_1 \, dx_2 \wedge dx_3 \wedge dx_4
+    &= \left( \int_{\partial U_{1,2,3,4}} + \int_{\partial U_{2,3,4}} + \int_{\partial U_{1,3,4}} + \int_{\partial U_{1,2,4}} + \int_{\partial U_{1,2,3}} \right)
+        dx_1 \wedge dx_2 \wedge dx_3 \wedge dx_4 \\
+    &= \int_{\partial U_{1,2,3,4}} dx_1 \wedge dx_2 \wedge dx_3 \wedge dx_4 \\
+    &= \int_0^a \int_0^{a-x_4} \int_0^{a-x_4-x_3} \int_0^{a-x_4-x_3-x_2}\,dx_1 \wedge \,dx_2 \wedge \,d_3 \wedge \,d_4x
+\end{align*}
+
+\end{document}

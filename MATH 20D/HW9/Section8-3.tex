@@ -1,0 +1,175 @@
+\subsection*{Section 8.3}
+\textbf{Problem 2}
+The equation has a singular point at $x = 0$.
+
+\textbf{Problem 8}
+The euqation has no singular points.
+
+\textbf{Problem 14}
+\begin{align*}
+    (x^2+1)y'' + y = 0
+    &\implies (x^2+1)\sum_{n=2}^\infty n(n-1)a_n x^{n-2} 
+        + \sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^n
+        + \sum_{n=2}^\infty n(n-1)a_n x^{n-2} 
+        + \sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{k=2}^\infty k(k-1)a_k x^k
+        + \sum_{k=0}^\infty (k+2)(k+1)a_{k+2} x^k 
+        + \sum_{k=0}^\infty a_k x^k = 0 \\
+    &\implies (2a_2 + a_0) + (6a_3 + a_1)x +
+        \sum_{k=2}^\infty [(k(k-1) + 1)a_k + (k+2)(k+1)a_{k+2}]x^k = 0
+ \end{align*}
+ From this we get that 
+ \[
+     a_2 = -\frac{1}{2}a_0
+ \]
+ \[
+     a_3 = -\frac{1}{6}a_1
+ \]
+ \[
+     a_{k+2} = -\frac{k(k-1)+1}{(k+2)(k+1)}a_k
+ \]
+ Writing out the first four terms gives 
+ \[
+     y = a_0 \left(1 - \frac{x^2}{2} + \hdots \right) 
+     + a_1 \left(x - \frac{x^3}{6} + \hdots \right)
+ \]
+\textbf{Problem 19}
+\begin{align*}
+    y' - 2xy = 0
+    &\implies \sum_{n=1}^\infty na_n x^{n-1}
+        -2x \sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{n=1}^\infty na_n x^{n-1}
+        -2 \sum_{n=0}^\infty a_n x^{n+1} = 0 \\
+    &\implies \sum_{k=0}^\infty (k+1)a_{k+1} x^{k}
+        -2 \sum_{k=1}^\infty a_{k-1} x^{k} = 0 \\
+    &\implies a_1 
+        + \sum_{k=1}^\infty [(k+1)a_{k+1}-2 a_{k-1}] x^{k} = 0 \\
+\end{align*}
+Thus we have that 
+\[
+    a_1 = 0
+\]
+\[
+    a_{k+1} = \frac{2}{k+1}a_{k-1}
+\]
+The solution is 
+\[
+    a_0 \sum_{n=0}^\infty \frac{1}{n!} x^{2n} = a_0e^{x^2} 
+\]
+\textbf{Problem 23}
+\begin{align*}
+    z'' - x^2z' - xz = 0
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        -x^2\sum_{n=1}^\infty na_n x^{n-1}
+        -x\sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        -\sum_{n=1}^\infty na_n x^{n+1}
+        -\sum_{n=0}^\infty a_n x^{n+1} = 0 \\
+    &\implies \sum_{k=0}^\infty (k+2)(k+1)a_{k+2} x^k
+        -\sum_{k=2}^\infty (k-1)a_{k-1} x^k
+        -\sum_{k=1}^\infty a_{k-1} x^k = 0 \\
+    &\implies 2a_2 + (6a_3-a_0)x 
+        + \sum_{k=2}^\infty [(k+2)(k+1)a_{k+2} - ka_{k-1}]x^k = 0
+\end{align*}
+Thus we have that 
+\[
+    a_2 = 0
+\]
+\[
+    a_3 = \frac{1}{6} a_0
+\]
+\[
+    a_{k+2} = \frac{k}{(k+2)(k+1)} a_{k-1}
+\]
+The solution is 
+\[
+    a_0\left(1 + \sum_{k=1}^\infty \frac{\prod_1^k (3k-2)^2}{(3k)!}x^{3k}\right)
+    + a_1 \left(x + \sum_{k=1}^\infty \frac{\prod_1^k (3k-1)^2}{(3k+1)!}x^{3k+1}\right)
+\]
+\textbf{Problem 25}
+\begin{align*}
+    w'' + 3xw' - w = 0
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        +3x\sum_{n=1}^\infty na_n x^{n-1}
+        -\sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        +3\sum_{n=1}^\infty na_n x^n
+        -\sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{k=0}^\infty (k+2)(k+1)a_{k+2} x^k
+        +3\sum_{k=1}^\infty ka_k x^k
+        -\sum_{k=0}^\infty a_k x^k = 0 \\
+    &\implies (2a_2-a_0) + 
+        \sum_{k=1}^\infty [(k+2)(k+1)a_{k+2} + (3k-1)a_k]x^k = 0
+\end{align*}
+Thus we have that 
+\[
+    a_2 = \frac{1}{2}a_0
+\]
+\[
+    a_{k+2} = - \frac{3k-1}{(k+2)(k+1)} a_k
+\]
+$w(0) = 2$ implies $a_0 = 2$ and $w'(0) = 0$ implies $a_1 = 0$.
+The solution is
+\[
+    2 + x^2 - \frac{5}{12}x^4 + \frac{11}{72}x^6 + \hdots
+\]
+\textbf{Problem 26}
+\begin{align*}
+    &(x^2-x+1)y'' - y' - y = 0 \\
+    \implies& (x^2-x+1)\sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        - \sum_{n=1}^\infty na_n x^{n-1}
+        - \sum_{n=0}^\infty a_n x^n = 0 = 0 \\
+    \implies& \sum_{n=2}^\infty n(n-1)a_n x^n
+        - \sum_{n=2}^\infty n(n-1)a_n x^{n-1}
+        + \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        - \sum_{n=1}^\infty na_n x^{n-1}
+        - \sum_{n=0}^\infty a_n x^n = 0 \\
+    \implies& \sum_{k=2}^\infty k(k-1)a_k x^k
+        - \sum_{k=1}^\infty (k+1)ka_{k+1} x^k
+        + \sum_{k=0}^\infty (k+2)(k+1)a_{k+2} x^k
+        - \sum_{k=0}^\infty (k+1)a_{k+1} x^k
+        - \sum_{k=0}^\infty a_k x^k = 0 \\
+    \implies& (2a_2-a_1 - a_0) + (-2a_2+6a_3-2a_2-a_1)x 
+        + \sum_{k=2}^\infty [(k(k-1)-1)a_k - (k+1)^2a_{k+1} + (k+2)(k+1)a_{k+2}]x^k = 0
+\end{align*}
+Thus we have that 
+\[
+    a_2 = \frac{a_1 + a_0}{2}
+\]
+\[
+    a_3 = \frac{1}{6}(4a_2+a_1)
+\]
+\[
+    a_{k+2} = \frac{(k+1)^2a_{k+1}- (k(k-1)-1)a_k}{(k+2)(k+1)}
+\]
+Since $y'(0) = 1$ implies $a_1 = 1$, the first four terms are 
+\[
+    x + \frac{x^2}{2} + \frac{x^3}{2} + \frac{x^4}{3}
+\]
+\textbf{Problem 27}
+\begin{align*}
+    (x+1)y'' - y = 0
+    &\implies (x+1) \sum_{n=1}^\infty n(n-1)a_n x^{n-2}
+        - \sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{n=2}^\infty n(n-1)a_n x^{n-1}
+        + \sum_{n=2}^\infty n(n-1)a_n x^{n-2}
+        - \sum_{n=0}^\infty a_n x^n = 0 \\
+    &\implies \sum_{k=1}^\infty (k+1)ka_{k+1} x^k
+        + \sum_{k=0}^\infty (k+2)(k+1)a_{k+2} x^k
+        - \sum_{k=0}^\infty a_k x^k = 0 \\
+    &\implies (2a_2-a_0) 
+        + \sum_{k=1}^\infty [(k+1)ka_{k+1} + (k+2)(k+1)a_{k+2} - a_k] x^k = 0
+\end{align*}
+Thus we have that 
+\[
+    a_2 = \frac{1}{2}a_0
+\]
+\[
+    a_{k+2} = \frac{a_k - (k+1)ka_{k+1}}{(k+2)(k+1)} 
+\]
+The initial conditions imply $a_0 = 0$ and $a_1 = 1$.
+The first four terms are 
+\[
+    x + \frac{1}{6}x^3 - \frac{1}{12}x^4 + \frac{11}{72}x^5 + \hdots 
+\]

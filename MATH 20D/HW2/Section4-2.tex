@@ -1,0 +1,121 @@
+\subsection*{Section 4.2}
+\textbf{Problem 5}
+The root of the characteristic polynomial is $r=-4$
+\[
+    r^2+8y+16 = (r+4)^2
+\]
+The general solution is in the form 
+\[
+    y(t) = c_1e^{-4t} + c_2te^{-4t}
+\]
+\textbf{Problem 10}
+The roots of the characteristic polynomial are
+\[
+    r^2-r-11 = 0 \implies 
+    r = \frac{1 \pm \sqrt{1+44}}{2} \implies 
+    r = \frac{1 \pm 3\sqrt{5}}{2}
+\]
+The general solution is in the form
+\[
+    y(t) = c_1e^{\frac{1 + 3\sqrt{5}}{2}t} + c_2e^{\frac{1 - 3\sqrt{5}}{2}t}
+\]
+\textbf{Problem 16}
+The roots of the characteristic polynomial are $r=-1,5$
+\[
+    r^2-4r-5 = (r-5)(r+1)
+\]
+The general solution is in the form 
+\[
+    y(t) = c_1e^{-t} + c_2e^{5t}
+\]
+At $y(-1) = 3$ and $y'(-1) = 9$,
+\[
+    3 = ec_1 + e^{-5}c_2
+\]
+\[
+    9 = -ec_1 + 5e^{-5}c_2
+\]
+Therefore $c_1 = e\inv$ and $c_2 = 2e^5$, so the final solution is 
+\[
+    y(t) = e^{-t-1} + 2e^{5t+5}
+\]
+\textbf{Problem 18}
+The roots of the characteristic polynomial are 
+\[
+    r^2-2r-2 = 0 \implies 
+    r = \frac{2 \pm \sqrt{4+8}}{2} \implies 
+    r = 1 \pm 2\sqrt{3}
+\]
+The general solution is in the form 
+\[
+    z(t) = c_1e^{t + 2\sqrt{3}t} + c_2e^{t - 2\sqrt{3}t}
+\]
+At $z(0) = 0$ and $z'(0) = 3$,
+\[
+    0 = c_1 + c_2
+\]
+\[
+    3 = (1 + 2\sqrt{3})c_1 + (1 - 2\sqrt{3})c_2
+\]
+Therefore $c_1 = \frac{\sqrt{3}}{4}$ and $c_2 = -\frac{\sqrt{3}}{4}$, 
+so the final solution is 
+\[
+    z(t) = \frac{\sqrt{3}}{4}e^{t + 2\sqrt{3}t} - \frac{\sqrt{3}}{4}e^{t - 2\sqrt{3}t}
+\]
+\textbf{Problem 19}
+The root of the characteristic polynomial is $r=-1$
+\[
+    r^2+2r+1 = (r+1)^2
+\]
+The general solution is in the form 
+\[
+    y(t) = c_1e^{-t} + c_2te^{-t}
+\]
+At $y(0) = 1$ and $y'(0) = 3$,
+\[
+    1 = c_1 
+\]
+\[
+    -3 = -c_1 + c_2
+\]
+Therefore, $c_1 = 1$ and $c_2 = -2$, so the final solution is 
+\[
+    y(t) = e^{-t} - 2e^3te^{-t}
+\]
+\textbf{Problem 27}
+The functions are dependent
+\[
+    \cos t \sin t = c \sin(2t)  \implies 
+    \cos t \sin t = 2c \cos t \sin t \implies 
+    c = \frac{1}{2}
+\]
+\textbf{Problem 28}
+The functions are independent.
+\[
+    e^{3t} = ce^{-4t} \implies
+    c = e^{7t}
+\]
+\textbf{Problem 29}
+The functions are independent since 
+\[
+    te^{2t} = ce^{2t} \implies 
+    c = t
+\]
+\textbf{Problem 30}
+The functions are independent since 
+\[
+    t^2\cos(\ln t) = ct^2\sin(\ln t) \implies 
+    c = \cot(\ln t)
+\]
+\textbf{Problem 31}
+The functions are dependent since 
+\[
+    \tan^2 t - \sec^2 t = 3c \implies 
+    -1 = 3c \implies 
+    c= -\frac{1}{3}
+\]
+\textbf{Problem 32}
+The functions are dependent since 
+\[
+    1\cdot 0 + 0\cdot e^t = 0
+\]

@@ -1,0 +1,86 @@
+\subsection*{Section 8.2}
+\textbf{Problem 2}
+Using the ratio test,
+\[
+    \lim_{n \to \infty} \left| \frac{\frac{3^n}{n!}}{\frac{3^{n+1}}{(n+1)!}}\right|
+    = \lim_{n \to \infty} \left| \frac{n}{3}\right|
+    = \infty
+\]
+Thus the convergence set is $(-\infty, \infty)$. 
+
+\textbf{Problem 3}
+Using the ratio test,
+\[
+    \lim_{n \to \infty} \left| \frac{\frac{n^2}{2^n}}{\frac{(n+1)^2}{2^{n+1}}}\right|
+    = \lim_{n \to \infty} \left| \frac{2n^2}{(n+1)^2}\right|
+    = \lim_{n \to \infty} \left| \frac{4n}{2n+2}\right|
+    = 2
+\]
+Thus the convergence set is $(-4, 0)$. 
+
+\textbf{Problem 5}
+Using the ratio test,
+\[
+    \lim_{n \to \infty} \left| \frac{\frac{3}{n^3}}{\frac{3}{(n+1)^3}}\right|
+    = \lim_{n \to \infty} \left| \frac{(n+1)^3}{n^3}\right|
+    = \lim_{n \to \infty} \left| \frac{6(n+1)}{6n}\right|
+    = 1
+\]
+Thus the convergence set is $(1, 3)$. 
+
+\textbf{Problem 6}
+Using the ratio test,
+\[
+    \lim_{n \to \infty} \left| \frac{\frac{(n+2)!}{n!}}{\frac{(n+3)!}{(n+1)!}}\right|
+    = \lim_{n \to \infty} \left| \frac{n+1}{n+3} \right|
+    = 1
+\]
+Thus the convergence set is $(-3, -1)$. 
+
+\textbf{Problem 8}
+\begin{enumerate}
+    \item Using the ratio test and taking the square root,
+    \[
+        \lim_{n \to \infty} \left| \frac{2^{2k}}{2^{2k+2}}\right|
+        = \lim_{n \to \infty} \left| \frac{1}{4} \right|
+        = \frac{1}{4}
+    \]
+    Thus the convergence set is $\left(-\frac{1}{2}, \frac{1}{2}\right)$ 
+    \item Has the same limit as above, so convergence set is still $\left(-\frac{1}{2}, \frac{1}{2}\right)$ 
+    \item Using the ratio test,
+    \[
+        \lim_{n \to \infty} \left| \frac{\frac{(-1)^n}{(2n+1)!}}{\frac{(-1)^{n+1}}{(2n+3)!}}\right|
+        = \lim_{n \to \infty} \left| -(2n+2)(2n+3) \right|
+        = \infty
+    \]
+    Thus the convergence set is $(-\infty, \infty)$ 
+    \item Has the same limit as above, so convergence set is still $(-\infty, \infty)$
+    \item Has the same limit as above, so convergence set is still $(-\infty, \infty)$
+    \item Has same limit as part a but now taking the fourth root so 
+        convergence set is $\left(-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$ 
+\end{enumerate}
+
+\textbf{Problem 9}
+We can rewrite $g(x)$ as 
+\[
+    g(x) = \sum_{n=0}^\infty 2^{-n-1}x^n
+\]
+Thus 
+\[
+    f(x) + g(x) = \sum_{n=0}^\infty \left(\frac{1}{n+1} + 2^{-n-1}\right)x^n
+\]
+\textbf{Problem 29}
+The derivative of $\cos$ is $-\sin$ so 
+\[
+    \cos x = \sum_{n=0}^\infty \frac{(-1)^(n+1)}{(2n)!}(x-\pi)^{2n}
+\]
+\textbf{Problem 30}
+The derivatives of $x^{-1}$ cancel out with $n!$ so
+\[
+    \frac{1}{x} = \sum_{n=0}^\infty (-1)^n(x-1)^n
+\]
+\textbf{Problem 32}
+Similar to previous problem but one derivative behind.
+\[
+    \ln(1+x) = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{n}x^n
+\]

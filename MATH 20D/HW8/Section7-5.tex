@@ -1,0 +1,91 @@
+\subsection*{Section 7.5}
+\textbf{Problem 5}
+Let $W = \lap{w}(s)$
+\begin{align*}
+    \lap{w'' + w} = \lap{t^2+2}
+    &\implies s^2W - sw(0) - w'(0) + W = \frac{2}{s^3} + \frac{2}{s} \\
+    &\implies (s^2 + 1)W - s + 1 = \frac{2}{s^3} + \frac{2}{s} \\
+    &\implies (s^2 + 1)W = \frac{2}{s^3} + \frac{2}{s} + s - 1 \\
+    &\implies W = \frac{2}{s^3(s^2+1)} + \frac{2}{s(s^2+1)} + \frac{s}{s^2+1} - \frac{1}{s^2+1} \\
+    &\implies W = \frac{2}{s^3} + \frac{s}{s^2+1} - \frac{1}{s^2+1} \\
+    &\implies w = t^2 + \cos t - \sin t
+\end{align*}
+\textbf{Problem 7}
+Let $Y = \lap{y}(s)$
+\begin{align*}
+    \lap{y'' - 7y' + 10y} = \lap{9\cos t + 7\sin t}
+    &\implies (s^2Y - sy(0) - y'(0))- 7 (sY - y(0)) + 10 Y = \frac{9s}{s^2+1} + \frac{7}{s^2+1} \\
+    &\implies (s^2Y - 5s + 4) - (7sY - 35) + 10 Y = \frac{9s + 7}{s^2+1} \\
+    &\implies (s^2-7s+10)Y -5s + 39 = \frac{9s + 7}{s^2+1} \\
+    &\implies Y = \frac{9s + 7}{(s^2+1)(s-2)(s+5)} + \frac{5s-39}{(s-2)(s+5)} \\
+    &\implies Y = \frac{5s^3-39s^2+14s-32}{(s^2+1)(s-2)(s+5)} \\
+    &\implies Y =  \frac{s}{s^2+1} - \frac{4}{s-5} + \frac{8}{s-2} \\
+    &\implies y = \cos t - 4e^{5t} + 8e^{2t}
+\end{align*}
+\textbf{Problem 12}
+Let $y(t) = w(t-1)$ and $Y = \lap{y}(s)$
+\begin{align*}
+    \lap{y'' -2y' + y} = \lap{6(t-1)-2}
+    &\implies (s^2Y - sy(0) - y'(0)) -2 (sY - y(0)) + Y = \frac{6}{s^2} - \frac{8}{s} \\
+    &\implies (s^2Y - 3s - 7) -2 (sY - 3) + Y = \frac{6}{s^2} - \frac{8}{s} \\
+    &\implies (s^2-2s+1)Y - 3s - 1 = \frac{6}{s^2} - \frac{8}{s} \\
+    &\implies (s^2-2s+1)Y - 3s - 1 = \frac{6}{s^2(s-1)^2} - \frac{8}{s(s-1)^2} + \frac{3s+1}{(s-1)^2} \\
+    &\implies Y = \frac{3s^3+s^2-8s+6}{s^2(s-1)^2} \\
+    &\implies Y = \frac{6}{s^2} + \frac{4}{s} - \frac{1}{s-1} + \frac{2}{(s-1)^2} \\
+    &\implies y = 6t+4 - e^t + 2te^t \\
+    &\implies w = 6(t+1) - e^{t+1} + 2(t+1)e^{t+1} \\
+    &\implies w = 6t + 10 + e^{t+1} + 2te^{t+1}
+\end{align*}
+\textbf{Problem 18}
+\begin{align*}
+    \lap{y''-2y' - y} = \lap{e^{2t}-e^t}
+    &\implies (s^2Y - sy(0) - y'(0)) -2 (sY - y(0)) - Y = \frac{1}{s-2} - \frac{1}{s-1} \\
+    &\implies (s^2Y - s - 3) -2 (sY - 1) - Y = \frac{1}{s-2} - \frac{1}{s-1} \\
+    &\implies (s^2-2s - 1)Y -s - 1 = \frac{1}{s-2} - \frac{1}{s-1} \\
+    &\implies Y = \frac{1}{s^2-2s-1}\left(\frac{1}{s-2} - \frac{1}{s-1} + s + 1\right)\\
+\end{align*}
+\textbf{Problem 23}
+Let $G = \lap{g(t)}$
+\begin{align*}
+    \lap{y'' + 4y} = \lap{g(t)}
+    &\implies (s^2Y - sy(0) - y'(0)) + 4Y  = G \\
+    &\implies (s^2+4)Y + s = G \\
+    &\implies Y = \frac{G-s}{s^2+4} 
+\end{align*}
+The Laplace of $g$ is 
+\[
+    \lap{g(t)} 
+    = \int_0^2 te^{-st} \,dt + 5\int_2^\infty e^{-st} \,dt \\
+    = \frac{e^{-2s}(3s+e^{2s}-1)}{s^2}
+\]
+Thus
+\[
+    Y = \frac{-s^3+1+3se^{-2s}-e^{-2s}}{s^2(s^2+4)}
+\]
+\textbf{Problem 24}
+Let $G = \lap{g(t)}$
+\begin{align*}
+    \lap{y'' - y} = \lap{g(t)}
+    &\implies (s^2Y - sy(0) - y'(0)) - Y  = G \\
+    &\implies (s^2-1)Y - s - 2= G \\
+    &\implies Y = \frac{G+s+2}{s^2-4} 
+\end{align*}
+The Laplace of $g$ is 
+\begin{align*}
+    \lap{g(t)} 
+    &= \int_0^3 e^{-st} \,dt + \int_3^\infty te^{-st} \,dt \\
+    &= -\frac{e^{-3s}}{s} + \frac{1}{s} + \frac{3e^{-3s}}{s} + \frac{e^{-3s}}{s^2} \\
+    &= \frac{s+2se^{-3s}+e^{-3s}}{s^2}
+\end{align*}
+Thus 
+\[
+    Y = \frac{s^3+2s^2+s+2se^{-3s}+e^{-3s}}{s^3(s-1)(s+1)}
+\]
+\textbf{Problem 33}
+\begin{align*}
+    \lap{t^2y'}
+    &= (-1)^2 \der[2]{}{s} \lap{y'} \\
+    &= \der[2]{}{s} sY(s) - y(0) \\
+    &= \der{}{s} (sY'(s) + Y(s)) \\
+    &= sY''(s) + 2Y'(s)
+\end{align*}

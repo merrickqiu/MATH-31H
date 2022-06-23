@@ -1,0 +1,119 @@
+\subsection*{Review Problems Chapter 4}
+\textbf{Problem 6}
+The auxillary equation has roots
+\begin{align*}
+    r^2 + 8 r - 14
+    &\implies r = \frac{-8 \pm \sqrt{64 + 56}}{2} \\
+    &\implies r = -4 \pm \sqrt{30}
+\end{align*}
+
+The general solution is 
+\[
+    y = C_1e^{-4-\sqrt{30}} + C_2e^{-4+\sqrt{30}}
+\]
+\textbf{Problem 10}
+The auxillary equation has roots 
+\[
+    r^2 + 11 = 0
+    \implies r = i\sqrt{11}
+\]
+
+The general solution is 
+\[
+    y = C_1\cos{\sqrt{11} t} + C_2\sin{\sqrt{11} t}
+\]
+\textbf{Problem 13}
+The auxillary equation has roots 
+\[
+    r^2 + 16 = 0
+    \implies r = 4i
+\]
+The homogenous solution is
+\[
+    y_h = c_1\cos 4t + c_2\sin 4t
+\]
+The particular solution has form 
+\[
+    y_p = (A_1t + A_0)e^{t}
+\]
+Thus,
+\begin{align*}
+     A_1e^t(t+2)+ A_0e^t + 16e^{t}(A_1t + A_0) = te^t 
+     &\implies 17A_1 = 1, 2A_1 + 17A_0 = 0 \\  
+     &\implies A_1 = \frac{1}{17}, A_0 = -\frac{2}{289}  
+\end{align*}
+The general solution is 
+\[
+    y = c_1\cos 4t + c_2\sin 4t + \frac{te^t}{17} - \frac{2e^t}{289}  
+\]
+\textbf{Problem 20}
+The auxillary equation is 
+\[
+    2r^2 - 1 = 0
+    \implies r = \pm \frac{1}{\sqrt{2}}
+\]
+The homogeneous solution is 
+\[
+    y_h = C_1e^{\frac{t}{\sqrt{2}}} + C_2e^{-\frac{t}{\sqrt{2}}}
+\]
+The particular solution has form
+\[
+    y_p = (A_1t + A_0)\cos t + (B_1t + B_0)\sin t
+\]
+Thus, 
+\[
+    -2\cos (A_1t + A_0 -2B_0 + \sin t (2A_1 + B_1t + B_0))
+    - ((A_1t + A_0)\cos t + (B_1t + B_0)\sin t)
+    = t\sin t
+\]
+This yields $A_1 = 0$, $A_0 = -\frac{4}{9}$, $B_1 = -\frac{1}{3}$, $B_0 = 0$.
+The general solution is
+\[
+    y = C_1e^{\frac{t}{\sqrt{2}}} + C_2e^{-\frac{t}{\sqrt{2}}} 
+    -\frac{4}{9}\cos t - \frac{1}{3} t\sin t
+\]
+\textbf{Problem 25}
+The auxillary equation has roots
+\[
+    4r^2-12r+9 = (2r-3)^2 
+    \implies r = \frac{3}{2}
+\]
+The homogenous solution is 
+\[
+    y_h = C_1e^{\frac{3}{2}t} + C_2te^{\frac{3}{2}t}
+\]
+The particular solution has the form 
+\[
+    A_0e^{3t} + B_0e^{5t}
+\]
+Plugging this into the equation and solving for the coefficients yields
+$A_0 = \frac{1}{9}$ and $B_0 = \frac{1}{49}$
+The general solution is 
+\[
+    y = C_1e^{\frac{3}{2}t} + C_2te^{\frac{3}{2}t} + \frac{1}{9}e^{3t} + \frac{1}{49}e^{5t}
+\]
+\textbf{Problem 31}
+The auxillary equation has roots 
+\[
+    r^2-2r+10 
+    \implies r = \frac{2 \pm \sqrt{4-40}}{2}
+    \implies r = 1 \pm 3i
+\]
+The homogenous solution has form 
+\[
+    y_h = C_1e^t\cos 3t + C_2e^t\sin 3t
+\]
+The particular solution has form 
+\[
+    y_p = A_0\cos 3t + B_0\sin 3t
+\]
+Solving out for the constants yields $A_0 = 0$ and $B_0 = -1$.
+The general solution is 
+\[
+    y = C_1e^t\cos 3t + C_2e^t\sin 3t - \sin 3t
+\]
+In order for the initial values to hold, $C_1 = 2$ and $C_2 = -\frac{7}{3}$.
+The solution is 
+\[
+    y = 2e^t\cos 3t - \frac{7}{3} e^t\sin 3t - \sin 3t
+\]

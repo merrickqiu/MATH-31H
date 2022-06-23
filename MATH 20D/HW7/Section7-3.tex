@@ -1,0 +1,67 @@
+\subsection*{Section 7.3}
+\textbf{Problem 3}
+    For $s>6$
+    \begin{align*}
+        \mathscr{L}(e^{-t}\cos 3t + e^{6t} - 1)
+        &= \mathscr{L}(e^{-t}\cos 3t) + \mathscr{L}(e^{6t}) - \mathscr{L}(1) \\
+        &= \frac{s+1}{(s+1)^2+9} + \frac{1}{s-6} - \frac{1}{s}
+    \end{align*}
+\textbf{Problem 7}
+    For $s>0$
+    \begin{align*}
+        \mathscr{L}((t-1)^4)
+        &= \mathscr{L}(t^4-4t^3+6t^2-4t+1) \\
+        &= \frac{24}{s^5} - \frac{24}{s^4} + \frac{12}{s^3}
+            - \frac{4}{s^2} + \frac{1}{s}
+    \end{align*}
+\textbf{Problem 12}
+    For $s>0$
+    \begin{align*}
+        \mathscr{L}(\sin 3t \cos 3t)
+        &= \frac{1}{2} \mathscr{L}(\sin 6t) \\
+        &= \frac{3}{s^2+36}
+    \end{align*}
+\textbf{Problem 16}
+    For $s>0$
+    \begin{align*}
+        \mathscr{L}(t\sin^2 t)
+        &= \frac{1}{2}\mathscr{L}(t - t\cos 2t) \\
+        &= \frac{1}{2s^2} + \frac{d}{ds}(\frac{s}{s^2+4}) \\
+        &= \frac{1}{2s^2} + \frac{4-s^2}{2(s^2+4)^2} \\
+    \end{align*}
+\textbf{Problem 17}
+    For $s>0$
+    \begin{align*}
+        \mathscr{L}(\sin 2t \sin 5t)
+        &= \frac{1}{2}\mathscr{L}((\cos 3t - \cos 7t)) \\
+        &= \frac{s}{2(s^2+9)} - \frac{s}{2(s^2+49)}
+    \end{align*}
+\textbf{Problem 21}
+    Substituting in $s-a$ yields
+    \[
+        \mathscr{L}(e^{at}f(t))(s) 
+        = \frac{s-a}{((s-a)^2 + b^2)}
+    \]
+\textbf{Problem 26}
+
+    For $t \geq T$, $|f(t)| \leq Me^{\alpha t}$.
+    For $0 \leq t < T$, the function is bounded since 
+    since each piecewise function is continuous and the endpoints have limits.
+    If the upperbound of $0 \leq t < T$ is $N$, 
+    then $|f(t)| \leq Ke^{\alpha t}$ where $k = \max \{M, N\}$. \\
+
+    Since this function is bounded by $Ke^{\alpha t}$
+    \begin{align*}
+        \lim_{s \to \infty }|\mathscr{L}\{f(t)\}(s)|
+        &\leq \lim_{s \to \infty } \int_0^\infty Ke^{\alpha t}e^{-st} \\
+        &= \lim_{s \to \infty } \frac{K}{s-\alpha} \\
+        &= 0
+    \end{align*}
+\textbf{Problem 31}
+    Using the definition,
+    \[
+        \mathscr{L}\{g\}(s)
+        = \int_c^\infty e^{-st}f(t-c) \,dt 
+        = \int_0^\infty e^{-st-cs}f(t) \,dt 
+        = e^{-cs } \mathscr{L}\{f\}(s) 
+    \]

@@ -1,0 +1,87 @@
+\subsection*{Section 7.4}
+\newcommand{\invLap}[1]{\mathscr{L}^{-1} \left\{ #1 \right\}}
+\textbf{Problem 9}
+    Completing the square
+    \begin{align*}
+        \invLap{\frac{3s-15}{2s^2-4s+10}}
+        &= \invLap{\frac{\frac{3}{2}(s-1)}{(s-1)^2+4}} - \invLap{\frac{6}{(s-1)^2+4}} \\
+        &= \frac{3}{2}e^t\cos 2t - 3e^t\sin 2t
+    \end{align*}
+\textbf{Problem 12}
+    Solving out for the constants
+    \begin{align*}
+        \frac{-s-7}{(s+1)(s-2)} = \frac{A}{s+1} + \frac{B}{s-2}
+        &\implies -s-7 = A(s-2) + B(s+1) \\
+        &\implies -s-7 = (A+B)s - 2A + B \\
+        &\implies A=2, B=-3
+    \end{align*}
+    The partial fraction expansion is 
+    \[
+        \frac{-s-7}{(s+1)(s-2)} = \frac{2}{s+1} - \frac{3}{s-2}
+    \]
+\textbf{Problem 13}
+    Solving out for the constants
+    \begin{align*}
+        \frac{-2s^2-3s-2}{s(s+1)^2} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{(s+1)^2}
+        &\implies -2s^2-3s-2 = A(s+1)^2 + Bs(s+1) +Cs \\
+        &\implies -2s^2-3s-2 = (A+B)s^2+ (2A+B+C)s + A\\
+        &\implies A=-2, B=0, C=1
+    \end{align*}
+    The partial fraction expansion is
+    \[
+        \frac{-2s^2-3s-2}{s(s+1)^2} 
+        = \frac{1}{(s+1)^2} -\frac{2}{s}
+    \]
+\textbf{Problem 22}
+    Using partial fraction decomposition,
+    \begin{align*}
+        \frac{s+11}{(s-1)(s+3)} = \frac{A}{s-1} + \frac{B}{s+3} 
+        &\implies s+11 = A(s+3) + B(s-1) \\
+        &\implies s+11 = (A+B)s + 3A - B \\
+        &\implies A = 3, B= -2
+    \end{align*}
+    The inverse laplacian is,
+    \begin{align*}
+        \invLap{\frac{s+11}{(s-1)(s+3)}}
+        &= \invLap{\frac{3}{s-1} - \frac{2}{s+3}} \\
+        &= 3e^t - 2e^{-3t}
+    \end{align*}
+\textbf{Problem 23}
+    Using partial fraction decomposition,
+    \begin{align*}
+        \frac{5s^2+34s+53}{(s+3)^2(s+1)} = \frac{A}{s+1} + \frac{B}{s+3} + \frac{C}{(s+3)^2}
+        &\implies 5s^2+34s+53 = A(s+3)^2 + B(s+1)(s+3) + C(s+1) \\
+        &\implies 5s^2+34s+53 = (A+B)s^2 + (6A+4B+C)s + 9A+3B+C \\
+        &\implies A = 6, B = -1, C = 2
+    \end{align*}
+    The inverse laplacian is 
+    \begin{align*}
+        \invLap{\frac{5s^2+34s+53}{(s+3)^2(s+1)}}
+        &= \invLap{\frac{6}{s+1} - \frac{1}{s+3} + \frac{2}{(s+3)^2}} \\
+        &= 6e^{-t}-e^{-3t}+2te^{-3t}
+    \end{align*}
+\textbf{Problem 27}
+    Using partial fraction decomposition,
+    \begin{align*}
+        \frac{5}{(s+1)(s-2)(s+2)} = \frac{A}{s+1} + \frac{B}{s-2} + \frac{C}{s+2}
+        &\implies 5 = A(s-2)(s+2) + B(s+1)(s+2) + C(s+1)(s-2) \\ 
+        &\implies 5 = (A+B+C)s^2 + (3B-C)s -4A + 2B -2C \\
+        &\implies A = -\frac{5}{3}, B = \frac{5}{12}, C = \frac{5}{4}
+    \end{align*}
+    The inverse laplacian is 
+    \[
+        \invLap{-\frac{5}{3}\frac{1}{s+1} + \frac{5}{12}\frac{1}{s-2} + \frac{5}{4}\frac{1}{s+2}}
+        = -\frac{5}{3}e^{-t} + \frac{5}{12}e^{2t} + \frac{5}{4}e^{-2t}
+    \]
+\textbf{Problem 28}
+    Using partical fraction decomposition,
+    \begin{align*}
+        \frac{s^2+4}{s(s+1)(s+3)(s-2)} = \frac{A}{s} + \frac{B}{s+1} + \frac{C}{s+3} + \frac{D}{s-2}
+        &\implies s^2+4 = A(s+1)(s+3)(s-2) + Bs(s+3)(s-2)+Cs(s+1)(s-2) + Ds(s+1)(s+3) \\
+        &\implies A = -\frac{2}{3}, B = \frac{5}{6}, C = -\frac{13}{3}, D= \frac{4}{15}
+    \end{align*}
+    The inverse laplacian is 
+    \[
+        \invLap{-\frac{2}{3}\frac{1}{s} + \frac{5}{6}\frac{1}{s+1} - \frac{13}{3}\frac{1}{s+3} + \frac{4}{15}\frac{1}{s-2}}
+        = -\frac{2}{3} + \frac{5}{6}e^{-t} - \frac{13}{30}e^{-3t} + \frac{4}{15}e^{2t}
+    \]

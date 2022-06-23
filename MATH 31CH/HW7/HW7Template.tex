@@ -1,0 +1,384 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\pd}{\partial}
+
+\title{Math 31CH HW 7\\ Due May 31 at 11:59 pm by Gradescope Submission\\
+6.6.5 (skip part b), 6.7.3, 6.7.4, 6.7.6, 6.7.9,  6.8.6, 6.8.7, 6.8.12}
+\author{Merrick Qiu}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\begin{center}
+   \textbf{EXERCISES FOR SECTION 6.6}
+\end{center}
+
+
+
+\textcolor{red}{Exercise 6.6.5 (skip part b):}
+Consider the region $X=P \cap B \subset \RR^3$,
+where $P$ is the plane of equation $x+y+z=0$ and $B$ is the ball $x^2 +y^2 +z^2 \leq 1$.
+Orient $P$ by the normal
+$\vec N = \begin{bmatrix}1\\1\\1\end{bmatrix}$
+and orient the sphere $x^2 +y^2 +z^2 = 1$ by the
+outward-pointing normal.
+
+\textbf{a.} Which of $\operatorname{sgn} dx\wedge dy$,
+$\operatorname{sgn} dx\wedge dz$,
+$\operatorname{sgn} dy\wedge dz$
+give the same orientation of $P$ as $\vec N $?
+
+\textbf{c.} Is the parametrization
+\begin{equation*}
+    t \mapsto \begin{pmatrix}
+    \dfrac{\cos (t)}{\sqrt{2}} - \dfrac{\sin (t)}{\sqrt{6}} \\
+    -  \dfrac{\cos (t)}{\sqrt{2}} - \dfrac{\sin (t)}{\sqrt{6}} \\
+    2\, \dfrac{\sin (t)}{\sqrt{6}}
+    \end{pmatrix}
+\end{equation*}
+compatible with the boundary orientation of $\partial X$?
+
+\textbf{d.} Do any of $\operatorname{sgn} dx$,
+$\operatorname{sgn} dy$,
+$\operatorname{sgn} dz$
+define the orientation of $\partial X$ at every point?
+
+\textbf{e.} Do any of $\operatorname{sgn} x \,dy - y\,dx$,
+$\operatorname{sgn} x\,dz - z\, dx$,
+$\operatorname{sgn} y \,dz - z \, dy$
+define the orientation of $\partial X$ at every point?
+\medskip
+
+\textbf{Part A:} 
+$\operatorname{sgn} dx \wedge dy$ and $\operatorname{sgn} dy \wedge dz$ 
+give the same orientation of P as $\vec N$. 
+\begin{align*}
+    \det \begin{bmatrix}
+        1 & v_x & w_x \\
+        1 & v_y & w_y \\
+        1 & v_z & w_z 
+    \end{bmatrix}
+    &= (v_yw_z - v_zw_y) - (v_xw_z - v_zw_x) + (v_xw_y - v_yw_x) \\
+    &= (-v_y(w_x+w_y) + (v_x+v_y)w_y) - (-v_x(w_x+w_y) + (v_x+v_y)w_x) + (v_xw_y - v_yw_x) \\
+    &= -v_yw_x-v_yw_y + v_xw_y+v_yw_y + v_xw_x+v_xw_y - v_xw_x-v_yw_x + v_xw_y - v_yw_x \\
+    &= 3v_xw_y - 3v_yw_x = 3dx \wedge dy (\vec v, \vec w) \\
+    &= -3(v_x(-w_x-w_y) - (-v_x-v_y)w_x) = -3dx \wedge dy (\vec v, \vec w) \\
+    &= 3(v_y(-w_x-w_y) - (-v_x-v_y)w_y) = 3dy \wedge dz (\vec v, \vec w) 
+\end{align*}
+
+\textbf{Part C:}
+$\gamma(t)$ is an outward pointing normal of $X$ and
+the tangent vector of the parameterization is 
+\[
+    \gamma'(t) =
+    \begin{bmatrix}
+        -\frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}} \\
+        \frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}} \\
+        2\frac{\cos(t)}{\sqrt{6}}
+    \end{bmatrix}
+\]
+The parameterization is not consistent since 
+\begin{align*}
+    \det \left[\vec N, \gamma(t), \gamma'(t)\right]
+    &= 3dy \wedge dz \left[\gamma(t), \gamma'(t)\right] \\
+    &= 3 \det 
+    \begin{bmatrix}
+        -\frac{\cos(t)}{\sqrt{2}} - \frac{\sin(t)}{\sqrt{6}} & \frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}} \\
+        2\frac{\sin(t)}{\sqrt{6}} & 2\frac{\cos(t)}{\sqrt{6}}
+    \end{bmatrix} \\
+    &= 6 \left(\left(-\frac{\cos^2(t)}{2\sqrt{3}} - \frac{\sin(t)\cos(t)}{6}\right)
+        - \left(\frac{\sin^2(t)}{2\sqrt{3}} - \frac{\sin(t)\cos(t)}{6}\right)\right)
+    &= -\sqrt{3}
+\end{align*}
+
+\textbf{Part D}
+Since $\gamma$ is orientation reversing,
+any form directly orienting $\partial X$ must yield a negative yalue on $\gamma'(t)$
+Since none of the components of $\gamma'(t)$ are always negative,
+$\operatorname{sgn} dx$,
+$\operatorname{sgn} dy$, and
+$\operatorname{sgn} dz$ do not define the orientation for $\partial X$.
+
+\textbf{Part E}
+Calculating the forms on $\gamma'(t)$ yields that only $x\,dy - y\,dx$ and $y\,dz - z\,dy$ 
+define the orientation on $\partial X$.
+\begin{align*}
+    x\,dy - y\,dx
+    &\implies \left(\frac{\cos(t)}{\sqrt{2}} - \frac{\sin(t)}{\sqrt{6}}\right)\left(\frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}}\right)
+        - \left(-\frac{\cos(t)}{\sqrt{2}} - \frac{\sin(t)}{\sqrt{6}}\right)\left(-\frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}}\right) \\
+    &= -\frac{\cos^2(t)}{\sqrt{3}} - \frac{\sin^2(t)}{\sqrt{3}} \\
+    &= -\frac{1}{\sqrt{3}}
+\end{align*}
+\begin{align*}
+    x\,dz - z\,dx
+    &\implies \left(\frac{\cos(t)}{\sqrt{2}} - \frac{\sin(t)}{\sqrt{6}}\right)\left(2\frac{\cos(t)}{\sqrt{6}}\right)
+        - \left(2\frac{\sin(t)}{\sqrt{6}}\right)\left(-\frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}}\right) \\
+    &= \frac{\cos^2(t)}{\sqrt{3}} + \frac{\sin^2(t)}{\sqrt{3}} \\
+    &= \frac{1}{\sqrt{3}}
+\end{align*}
+\begin{align*}
+    y\,dz - z\,dy
+    &\implies \left(-\frac{\cos(t)}{\sqrt{2}} - \frac{\sin(t)}{\sqrt{6}}\right)\left(2\frac{\cos(t)}{\sqrt{6}}\right)
+        - \left(2\frac{\sin(t)}{\sqrt{6}}\right)\left(\frac{\sin(t)}{\sqrt{2}} - \frac{\cos(t)}{\sqrt{6}}\right) \\
+    &= \frac{-\cos^2(t)}{\sqrt{3}} - \frac{\sin^2(t)}{\sqrt{3}} \\
+    &= -\frac{1}{\sqrt{3}}
+\end{align*}
+\newpage
+\begin{center}
+   \textbf{EXERCISES FOR SECTION 6.7}
+\end{center}
+
+
+\textcolor{red}{Exercise 6.7.3:}
+In Example 6.7.7, confirm that:
+
+\textbf{a.} $d\Phi_{\vec F_2 }= 0$.
+
+\textbf{b.} $d\Phi_{\vec F_3} = 0$.
+\smallskip
+
+\textbf{Part A:}
+\begin{align*}
+    d\Phi_{\vec F_2 }
+    &= d \left(\frac{-y}{x^2+y^2}\,dx + \frac{x}{x^2+y^2}\,dy\right) \\
+    &= \left(D_1 \frac{-y}{x^2+y^2}\,dx + D_2 \frac{-y}{x^2+y^2}\,dy \right)\wedge \,dx + 
+        \left(D_1 \frac{x}{x^2+y^2}\,dx + D_2 \frac{x}{x^2+y^2}\,dy\right)\wedge \,dy \\
+    &= \left(\frac{2xy}{(x^2+y^2)^2}\,dx + \frac{y^2-x^2}{(x^2+y^2)^2}\,dy \right)\wedge \,dx +
+        \left(\frac{y^2-x^2}{(x^2+y^2)^2}\,dx + \frac{-2xy}{(x^2+y^2)^2}\,dy\right)\wedge \,dy \\
+    &= 0
+\end{align*}
+\textbf{Part B:}
+\begin{align*}
+    d\Phi_{\vec F_3}
+    &= d \left(\frac{x}{(x^2+y^2+z^2)^\frac{3}{2}}\,dy\wedge dz + \frac{y}{(x^2+y^2+z^2)^\frac{3}{2}}\,dz \wedge dx + \frac{z}{(x^2+y^2+z^2)^\frac{3}{2}}\,dx\wedge dy\right) \\
+    &= \frac{-2x^2+y^2+z^2}{(x^2 + y^2+z^2)^\frac{5}{2}}\,dx\wedge dy\wedge dz + \frac{-2y^2+x^2+z^2}{(x^2 + y^2+z^2)^\frac{5}{2}}\,dy\wedge dz\wedge dx + \frac{-2z^2+x^2+y^2}{(x^2 + y^2+z^2)^\frac{5}{2}}\,dz\wedge dx\wedge dy \\
+    &= 0
+\end{align*}
+
+
+\textcolor{red}{Exercise 6.7.4:}
+Let $\varphi$ be the $2$-form on $\RR^4$ given
+by
+\begin{equation*}
+    \varphi = x_1^2 x_3 \, dx_2 \wedge dx_3 + x_1 x_3 \, dx_1 \wedge dx_4 .
+\end{equation*}
+Compute $d\varphi$.
+\smallskip
+
+\textbf{Solution:}
+\begin{align*}
+    d(x_1^2 x_3 \, dx_2 \wedge dx_3 + x_1 x_3 \, dx_1 \wedge dx_4)
+    &= d(x_1^2 x_3 \, dx_2 \wedge dx_3) + d(x_1 x_3 \, dx_1 \wedge dx_4) \\
+    &= (D_1(x_1^2 x_3)\, dx_1) \wedge dx_2 \wedge dx_3 +
+        (D_3(x_1 x_3)\, dx_3) \wedge dx_1 \wedge dx_4\\
+    &= 2x_1 x_3 \,dx_1 \wedge dx_2 \wedge dx_3 -
+        x_1 \,dx_1 \wedge dx_3 \wedge dx_4\\
+\end{align*}
+
+\textcolor{red}{Exercise 6.7.6:}
+Let $f$ be a function from $\RR^3$ to $\RR$. Compute the exterior derivatives:
+
+\textbf{a.} $d(f\, dx\wedge dz)$.
+
+\textbf{b.} $d(f\, dy\wedge dz)$.
+\smallskip
+
+\textbf{Part A:}
+\begin{align*}
+    d(f\, dx\wedge dz)
+    &= (D_1(f) dx + D_2(f) dy + D_3(f) dz) \wedge dx\wedge dz \\
+    &= -D_2(f) \,dx \wedge dy\wedge dz
+\end{align*}
+
+\textbf{Part B:}
+\begin{align*}
+    d(f\, dy\wedge dz)
+    &= (D_1(f) dx + D_2(f) dy + D_3(f) dz) \wedge dy\wedge dz \\
+    &= D_1(f) \,dx \wedge dy\wedge dz
+\end{align*}
+
+\textcolor{red}{Exercise 6.7.9:}
+Find all the $1$-forms $\omega = p(y,z) \, dx + q(x,z) \, dy$ such that
+\begin{equation*}
+    d\omega = x\, dy\wedge dz + y \, dx \wedge dz.
+\end{equation*}
+\smallskip
+
+\textbf{Solution:}
+\begin{align*}
+    d(p\,dx + q \,dy)
+    &= (D_2 p \,dy + D_3 p \,dz)\wedge dx + (D_1 q \,dx + D_3 q \,dz)\wedge dy \\
+    &= (-D_3 q)\,dy\wedge dz + (-D_3 p)\,dx\wedge dz + (D_1 q - D_2 p)\,dx\wedge dy \\
+    &= x \,dy\wedge dz + y \,dx\wedge dz + 0 \,dx\wedge dy \\
+\end{align*}
+From this,
+\[
+    D_3 q = -x
+\]
+\[
+    D_3 p = -y
+\]
+\[
+    D_1 q = D_2 p
+\]
+Thus, $\omega$ must be in the form 
+\[
+    \omega = (-yz + F(y))\, dx + (-xz + G(x)) \, dy
+\]
+where $F$ and $G$ are arbitrary differentiable functions.
+
+\newpage
+\begin{center}
+   \textbf{EXERCISES FOR SECTION 6.8}
+\end{center}
+
+\textcolor{red}{Exercise 6.8.6:}
+Show that $df = W_{ \operatorname{grad} f}$ when $f \begin{pmatrix}x\\y\\z\end{pmatrix}
+=xyz$ by computing both from the definitions and evaluating on a vector $\vec v = \begin{pmatrix}a\\b\\c\end{pmatrix}$.
+\smallskip
+
+\textbf{Solution:} 
+The exterior derivative of $f$ is 
+\begin{align*}
+    df(\vec v) 
+    &= D_1(xyz) \,dx + D_2(xyz) \,dy + D_3(xyz) \,dz \\
+    &= yz \,dx + xz \,dy + xy \,dz
+\end{align*}
+    
+The work form of the gradient is 
+\[
+    W_{ \operatorname{grad} f}
+    = W_{\begin{bmatrix} yz \\ xz \\ xy \end{bmatrix}} 
+    = yz \,dx + xz \,dy + xy \,dz
+\]
+Thus $df = W_{ \operatorname{grad} f}$.
+
+\textcolor{red}{Exercise 6.8.7:}
+Let $\varphi = xy \, dx + z\, dy + yz \, dz$
+be a $1$-form on $\RR^3$.
+For what vector field $\vec F$ can $\varphi$ be written $W_{\vec F}$? Show the equivalence of $dW_{\vec F}$ and $\Phi_{\vec \nabla \times \vec F}$
+by computing both from the definitions.
+\smallskip
+
+\textbf{Solution: } 
+The 1-form can be rewritten as a work form with vector field
+\[
+    \vec F = \begin{bmatrix} xy \\ z \\ yz \end{bmatrix}
+\]
+The exterior derivative of the work form is 
+\begin{align*}
+    d(xy \, dx + z\, dy + yz \, dz)
+    &= d(xy \, dx) + d(z\, dy) + d(yz \, dz) \\
+    &= (D_2(xy) \,dy) \wedge \,dx + (D_3(z)\,dz)\wedge dy + (D_2(yz)\,dy)\wedge dz \\
+    &= -x \,dx \wedge dy + (z-1) \,dy \wedge dz
+\end{align*}
+
+The curl is 
+\[
+    \vec \nabla \times \vec F
+    = \begin{bmatrix}
+        D_1 \\ D_2 \\ D_3
+    \end{bmatrix} \times
+    \begin{bmatrix}
+        xy \\ z \\ yz
+    \end{bmatrix}
+    = \begin{bmatrix}
+        z-1 \\ 0 \\ -x
+    \end{bmatrix}
+\]
+
+The flux of the curl is equal to the exterior derivative of the work form
+\[
+    \Phi_{\vec \nabla \times \vec F}
+    = (z-1)\,dy \wedge dz - 0 \,dx \wedge dz - x\,dx \wedge dy
+    = W_{\vec F}
+\]
+\textcolor{red}{Exercise 6.8.12:}
+\textbf{a.} What is the divergence of
+$\vec F \begin{pmatrix}
+x\\y\\ z
+\end{pmatrix} = \begin{bmatrix}
+ x^2 \\ y^2 \\yz
+\end{bmatrix}$?
+\smallskip
+
+\textbf{b.} Use part (a) to compute $d\Phi_{\vec F} P_{\begin{pmatrix}
+1\\1\\2
+\end{pmatrix}} (\vec e_1 , \vec e_2 , \vec e_3)$.
+
+\textbf{c.} Compute it again, directly form the definition of exterior derivative.
+
+\textbf{Part A: }
+\[
+    \operatorname{div} \vec F =
+    \begin{bmatrix}
+        D_1 \\ D_2 \\ D_3
+    \end{bmatrix}
+    \cdot 
+    \begin{bmatrix}
+        x^2 \\ y^2 \\ z^2
+    \end{bmatrix} =
+    2x + 3y 
+\]
+
+\textbf{Part B: }
+Using part A, the derivative of the flux form of $\vec F$ is
+\[
+    d\Phi_{\vec F}
+    = M_{\operatorname{div} \vec F} \\ 
+    = (2x + 3y) \,dx \wedge dy \wedge dz
+\]
+Therefore,
+\[
+    d\Phi_{\vec F}P_{\begin{pmatrix}
+        1\\1\\2
+    \end{pmatrix}} (\vec e_1 , \vec e_2 , \vec e_3)
+    = (2+3) \det(\vec e_1 , \vec e_2 , \vec e_3)
+    = 5
+\]
+
+\textbf{Part C: }
+The exterior derivative is
+\begin{align*}
+    d\Phi_{\vec F} 
+    &= d(x^2 \,dy \wedge dz + y^2 \,dz \wedge dx + yz \,dx \wedge dy) \\
+    &= (2x \,dx) \wedge dy \wedge dz + (2y \,dy) \wedge dz \wedge dx + (y \,dz) \wedge dx \wedge dy \\
+    &= (2x+3y) \,dx \wedge dy \wedge dz
+\end{align*}
+This is the same form as from part b, so evaluating it at the same 
+parallelogram would also yield 5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

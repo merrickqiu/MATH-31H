@@ -1,0 +1,546 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\pd}{\partial}
+
+\title{Homework 6}
+\author{Merrick Qiu}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+\textcolor{red}{Exercise 6.4.1:}
+If the cone $M$ of equation $f(x,y,z) = x^2+y^2-z^2=0$ (Example 5.2.4) is oriented by $\nabla f$, does the parametrization $\gamma:(r,\theta)\mapsto (rcos\theta,rsin\theta,r)$ preserve orientation?
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    The gradient of the locus is 
+    \[
+        \nabla f =
+        \begin{bmatrix}
+            2x \\
+            2y \\
+            -2z
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            2r\cos \theta \\
+            2r\sin \theta \\
+            -2r
+        \end{bmatrix}
+    \]
+    The derivative of the parameterization is 
+    \[
+        D\gamma(r, \theta) =
+        \begin{bmatrix}
+            \cos \theta & -r\sin \theta\\
+            \sin \theta & r\cos \theta \\
+            1 & 0 
+        \end{bmatrix}
+    \]
+    The orientation of the transformation is orientation reversing since
+    \begin{align*}
+        \det 
+        \begin{bmatrix}
+            2r\cos \theta & \cos \theta & -r\sin \theta\\
+            2r\sin \theta & \sin \theta & r\cos \theta \\
+            -2r & 1 & 0 
+        \end{bmatrix} 
+        &= -2r(r\cos^2 \theta + r\sin^2 \theta) -(2r^2\cos^2 \theta + 2r^2\sin^2 \theta) \\
+        &= -2r^2 - 2r^2 \\
+        &= -4r^2 \\
+        &\leq 0
+    \end{align*}
+        
+\newpage
+
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.4.4:}
+What is the integral $\int_Sx_3dx_1\wedge dx_2\wedge dx_4$, where $S$ is the part of the $3$-dimensional manifold of equation
+$$
+x_4 = x_1x_2x_3\quad where\ 0\leq x_1,x_2,x_3\leq 1
+$$
+oriented by $\Omega = sgn\ dx_1\wedge dx_2\wedge dx_3$? Hint: This surface is a graph, so it is easy to parametrize.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    The manifold can be parameterized as 
+    \[
+        \gamma(x_1, x_2, x_3) =
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3 \\
+            x_1x_2x_3
+        \end{bmatrix}
+    \]
+    The derivative of the parameterization is 
+    \[
+        D\gamma = 
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            x_2x_3 & x_1x_3 & x_1x_2
+        \end{bmatrix}
+    \]
+    This parameterization is oriented since 
+    \[
+        dx_1\wedge dx_2\wedge dx_3 
+        \begin{bmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            x_2x_3 & x_1x_3 & x_1x_2
+        \end{bmatrix} = 1
+    \]
+    The integral is
+    \begin{align*}
+        \int_S x_3 dx_1\wedge dx_2\wedge dx_4
+        &= \int_0^1 \int_0^1 \int_0^1 (x_3 dx_1\wedge dx_2\wedge dx_4)
+            \left(
+                P_{\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_1x_2x_3 \end{pmatrix}}
+                \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 1 \\
+                    x_2x_3 & x_1x_3 & x_1x_2
+                \end{bmatrix}
+            \right)
+            \,dx_1 \,dx_2 \,dx_3 \\
+        &= \int_0^1 \int_0^1 \int_0^1 (x_1x_2x_3) \,dx_1 \,dx_2 \,dx_3 \\
+        &= \frac{1}{8}
+    \end{align*} 
+    
+\newpage
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.4:}
+Show that $\Phi_{\vec F\times \vec G} = W_{\vec F}\wedge W_{\vec G}$.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:} \\
+    Using the fact that the wedge product is distributive,
+    \begin{align*}
+        W_F\wedge W_G
+        &= (F_1 dx_1 + F_2 dx_2 + F_3 dx_3) \wedge (G_1 dx_1 + G_2 dx_2 + G_3 dx_3) \\
+        &= (F_2G_3 dx_2 \wedge  dx_3 + F_3G_2 dx_3 \wedge  dx_2) 
+            + (F_3G_1 dx_3 \wedge dx_1 +  F_1G_3 dx_1 \wedge dx_3) \\
+            &\hspace{189pt}+ (F_1G_2 dx_1 \wedge dx_2 +  F_2G_1 dx_2 \wedge dx_1) \\
+        &= (F_2G_3 - F_3G_2) dx_2 \wedge dx_3
+            + (F_3G_1 - F_1G_3) dx_3 \wedge dx_1 \\
+            &\hspace{12em}+ (F_1G_2 - F_2G_1) dx_1 \wedge dx_2 \\
+        &= \Phi_{F\times G} 
+    \end{align*}
+\newpage
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.5:}
+Show that $M_{\vec F\cdot\vec G} = W_{\vec F}\wedge \Phi_{\vec G} = W_{\vec G}\wedge\Phi_{\vec F}$.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:} \\
+    Distributing and factoring shows $M_{\vec F\cdot\vec G} = W_{\vec F}\wedge \Phi_{\vec G}$
+    \begin{align*}
+        W_F \wedge \Phi_G
+        &= (F_1 dx_1 + F_2 dx_2 + F_3 dx_3) \wedge 
+            (G_1 dx_2 \wedge dx_3 + G_2 dx_3 \wedge dx_1 + G_3 dx_1 \wedge dx_2) \\
+        &= F_1G_1 dx_1 \wedge dx_2 \wedge dx_3 
+           + F_2G_2 dx_2 \wedge dx_3 \wedge dx_1 
+           + F_3G_3 dx_3 \wedge dx_1 \wedge dx_2 \\
+        &= (F_1G_1 + F_2G_2 + F_3G_3) dx_1 \wedge dx_2 \wedge dx_3  \\
+        &= M_{F\cdot G}
+    \end{align*}
+    Since the dot product is commutative, 
+    $M_{\vec F\cdot\vec G} = M_{\vec G\cdot\vec F} = W_{\vec G}\wedge \Phi_{\vec F}$.
+\newpage
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.6:}
+What is the work form field $W_{\vec F}(P_{a}(\vec u))$ of the vector field
+$$
+\vec F(x,y,z) = (x^2y,x-y,-z)
+$$
+at $\vec a = (0,1,2)$, evaluated on the vector $\vec u = (1,-1,1)$.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    $F(a)$ is
+    \[
+        \vec F(a) = (0, -1, -2)
+    \]
+    The work form evaluated at $\vec u$ is
+    \[
+        W_{\vec F}(P_{a}(\vec u)) = 
+        (0, -1, -2) \cdot (1, -1, 1) =
+        -1
+    \]
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.9:}
+
+
+\textbf{a.} Construct an oriented parallelogram anchored at $(1,1,0)$ to which  the $2$-form $\Phi = ydy\wedge dz+ xdx\wedge dz-zdx\wedge dy$ of Example 6.5.3 will assign a positive number.
+
+
+\textbf{b.} At what point $x$ might you anchor $P_x(\vec e_1,\vec e_2)$ if you wanted $\Phi$ evaluated on the parallelogram to return  a positive number? A negative number?
+
+
+\bigskip
+
+\textcolor{blue}{Solution:} \\
+    The parallelogram $[\vec e_2, \vec e_3]$ yields a positive number
+    \[
+        ydy\wedge dz + xdx\wedge dz-zdx\wedge dy 
+        \left(
+            P_{\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}}
+            \begin{bmatrix}
+                0 & 0\\
+                1 & 0\\
+                0 & 1
+            \end{bmatrix}
+        \right)
+        = 1 + 0 - 0
+        = 1
+    \]
+    Evaluating at point $(0, 0, -1)$ would yield a positive number
+    \[
+        ydy\wedge dz + xdx\wedge dz-zdx\wedge dy 
+        \left(
+            P_{\begin{pmatrix} 0 \\ 0 \\ -1 \end{pmatrix}}
+            \begin{bmatrix}
+                1 & 0\\
+                0 & 1\\
+                0 & 0
+            \end{bmatrix}
+        \right)
+        = 0 + 0 -(-1)
+        = 1
+    \]
+    Evaluating at point $(0, 0, 1)$ would yield a negative number
+    \[
+        ydy\wedge dz + xdx\wedge dz-zdx\wedge dy
+        \left(
+            P_{\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}}
+            \begin{bmatrix}
+                1 & 0\\
+                0 & 1\\
+                0 & 0
+            \end{bmatrix}
+        \right)   
+        = 0 + 0 - 1
+        = -1
+    \]
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.13:}
+Verify that $\det(\vec F(x),\vec v_1,\dots,\vec v_{n-1})$ is an $(n-1)$-form field, so that Definition 6.5.10 of the flux form on $\mathbb R^n$ makes sense.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    Through development of the first column,
+    \[
+        \det(\vec F,\vec v_1,\dots,\vec v_{n-1})
+        = \sum_{i=1}^n (-1)^{i-1} F_i 
+            \,dx_1 \wedge \hdots  \wedge dx_{i-1} \wedge 
+            dx_{i+1} \wedge \hdots \wedge dx_n
+    \]
+    Since the flux form is a linear combination of elementary $(n-1)$-forms,
+    $\det(\vec F(x),\vec v_1,\dots,\vec v_{n-1})$ is a $(n-1)$-form field.
+\newpage
+
+
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.15:}
+Given $\vec F(x,y,z) = (y^2,x+z,xz)$ and $f(x,y,z) = xz+zy$, the point $x= (1,1,-1)$, and the vectors $\vec v_1=(0,1,1),\vec v_2=(1,1,0),\vec v_3=(-1,1,1)$, what is
+
+\textbf{a.} the work form $W_{\vec F}(P_x(\vec v_1))$?
+
+
+\textbf{b.} the flux form $\Phi_{\vec F}(P_x(\vec v_1,\vec v_2))$?
+
+\textbf{c.} the mass form $M_f(P_x(\vec v_1,\vec v_2,\vec v_3))$?
+
+
+\bigskip
+
+\textcolor{blue}{Solution:} \\
+    $F(x)$ is
+    \[
+        \vec F(x) = (1, 0, -1)
+    \]
+    The work form is
+    \[
+        W_{\vec F}(P_x(\vec v_1)) 
+        = (1, 0, -1) \cdot (0, 1, 1)
+        = -1
+    \]
+    The flux form is
+    \[
+        \Phi_{\vec F}(P_x(\vec v_1,\vec v_2)) 
+        = \det 
+        \begin{bmatrix}
+            1 & 0 & 1\\
+            0 & 1 & 1\\
+            -1 & 1 & 0
+        \end{bmatrix}
+        = -1 + 1
+        = 0
+    \]
+    Since $f(x) = -2$, the mass form is
+    \[
+        M_f(P_x(\vec v_1,\vec v_2,\vec v_3))
+        = -2 \det 
+        \begin{bmatrix}
+            0 & 1 & -1\\
+            1 & 1 & 1\\
+            1 & 0 & 1
+        \end{bmatrix}
+        = -2(1)
+        = -2
+    \]
+\newpage
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.17:}
+Let $R$ be the rectangle with vertices $(0,0),(0,a),(b,a),(b,0)$, with $a,b>0$, and oriented so that these vertices appear in that order. Find the work of the  vector field $\vec F(x,y) = (xy,ye^x)$ around the boundary of $R$.
+
+\bigskip
+
+\textcolor{blue}{Solution:} \\
+    The work from $(0, 0)$ to $(0, a)$ can be parameterized with 
+    $\gamma(t) = (0, t)$
+    \[
+        \int_0^a F(0, t) \cdot (0, 1) \,dt
+        = \int_0^a (0, t) \cdot (0, 1) \,dt
+        = \int_0^a t \,dt
+        = \frac{a^2}{2} 
+    \]
+    The work from $(0, a)$ to $(b, a)$ can be parameterized with 
+    $\gamma(t) = (t, a)$
+    \[
+        \int_0^b F(t, a) \cdot (1, 0) \,dt
+        = \int_0^b (at, ae^t) \cdot (1, 0) \,dt
+        = \int_0^b at \,dt
+        = \frac{ab^2}{2} 
+    \]
+    The work from $(b, a)$ to $(b, 0)$ can be parameterized with 
+    $\gamma(t) = (b, t)$
+    \[
+        \int_a^0 F(b, t) \cdot (0, 1) \,dt
+        = -\int_0^a (bt, te^b) \cdot (0, 1) \,dt
+        = -\int_0^a te^b \,dt
+        = - \frac{a^2e^b}{2} 
+    \]
+    The work from $(b, 0)$ to $(0, 0)$ can be parameterized with 
+    $\gamma(t) = (t, 0)$
+    \[
+        \int_b^0 F(t, 0) \cdot (1, 0) \,dt
+        = -\int_0^b (0, e^t) \cdot (1, 0) \,dt
+        = 0
+    \]
+    The total work is 
+    \[
+        \frac{a^2}{2} + \frac{ab^2}{2} - \frac{a^2e^b}{2} 
+    \]
+\newpage
+
+
+
+\textcolor{red}{Exercise 6.5.18:}
+Find the work of $\vec F(x,y,z) = (x^2,y^2,z^2)$ over the arc of helix parametrized by $\gamma(t) = (cost,sint,at)$ for $0\leq t\leq \alpha$, and oriented so that $\gamma$ is orientation preserving.
+
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    Evaluating the integral gives 
+    \begin{align*}
+        \int_0^\alpha F(\cos t, \sin t, at) \cdot (-\sin t, \cos t, a) \,dt
+        &= \int_0^\alpha (\cos^2 t, \sin^2 t, a^2t^2) \cdot (-\sin t, \cos t, a) \,dt \\
+        &= \int_0^\alpha -\sin t\cos^2 t + \sin^2 t \cos t + a^3t^2 \,dt \\
+        &= \frac{1}{3}\left[\cos^3 t + \sin^3 t + a^3t^3\right]_0^\alpha \\
+        &= \frac{\cos^3 \alpha + \sin^3 \alpha + a^3\alpha^3}{3} - \frac{1}{3}
+    \end{align*}
+\newpage
+
+
+
+
+
+\textcolor{red}{Exercise 6.5.20:}
+What is the flux of the vector field $\vec F(x,y,z) = (x,-y,xy)$ through the surface $z = \sqrt{x^2+y^2}$, $x^2+y^2\leq 1$, oriented by the outward normal?
+
+\bigskip
+
+\textcolor{blue}{Solution:}
+    % The derivative of the locus of the surface is 
+    % \[
+    %     Df =
+    %     \begin{bmatrix}
+    %         \frac{x}{x^2 + y^2} &
+    %         \frac{y}{x^2 + y^2} &
+    %         1
+    %     \end{bmatrix}
+    % \]
+    % A basis would be 
+    % \[
+    %     \begin{bmatrix}
+    %         x^2+y^2 & 0 \\
+    %         0 & x^2+y^2 \\
+    %         -x &  -y
+    %     \end{bmatrix}
+    % \]
+    % This basis is oriented since 
+    % \[
+    %     \det \begin{bmatrix}
+    %         x & x^2+y^2 & 0 \\
+    %         y & 0 & x^2+y^2 \\
+    %         z & -x &  -y
+    %     \end{bmatrix}
+    %     = x^2(x^2+y^2) - (x^2+y^2)(-y^2-z(x^2+y^2))
+    %     = (z+1)(x^2+y^2)^2
+    %     > 0
+    % \]
+    % Evaluating the integral gives 
+    % \begin{align*}
+    %     \int_{-1}^1 \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} 
+    %     \det \begin{bmatrix}
+    %         x & x^2+y^2 & 0 \\
+    %         -y & 0 & x^2+y^2 \\
+    %         xy & -x &  -y
+    %     \end{bmatrix}
+    %     \,dy \,dx
+    %     &= \int_{-1}^1 \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} 
+    %         x^5y + x^4 + 2x^3y^3 + xy^5 - y^4 \,dy \,dx
+    % \end{align*}
+    The surface can be parameterized as 
+    \[
+        \gamma(r, \theta) = 
+        \begin{bmatrix}
+            r\cos \theta \\
+            r\sin \theta \\
+            r
+        \end{bmatrix}
+    \]
+    The derivative of the parameterization is
+    \[
+        D\gamma = 
+        \begin{bmatrix}
+            \cos \theta & -r\sin \theta \\
+            \sin \theta & r\cos \theta\\
+            1 & 0
+        \end{bmatrix}
+    \]
+    The outward normal vector is 
+    \[
+        \vec n 
+        = \nabla F
+        = \begin{bmatrix}
+            2x \\ 2y \\ -2z
+        \end{bmatrix}
+        = 2 \begin{bmatrix}
+            r\cos \theta \\
+            r\sin \theta \\
+            -r
+        \end{bmatrix}
+    \]
+    $\gamma$ is orientation reversing since 
+    \begin{align*}
+        \det \begin{bmatrix}
+            r\cos \theta & \cos \theta & -r\sin \theta \\
+            r\sin \theta & \sin \theta & r\cos \theta\\
+            -r & 1 & 0
+        \end{bmatrix}
+        &= r(r\cos^2 \theta + r\sin^2 \theta) - 1(r^2\cos^2 \theta + r^2\sin^2 \theta) \\
+        &= -2r^2 \\
+        &\leq 0
+    \end{align*}
+    Integrating the flux through the surface yields 
+    \begin{align*}
+        -\int_0^{2\pi} \int_0^1 
+        \det \begin{bmatrix}
+            r\cos \theta & \cos \theta & -r\sin \theta \\
+            -r\sin \theta & \sin \theta & r\cos \theta\\
+            r^2\sin \theta \cos \theta & 1 & 0
+        \end{bmatrix}\,dr \,d\theta
+        &= -\int_0^{2\pi} \int_0^1 
+            \frac{1}{2}r^3\sin (2\theta)-r^2\cos (2\theta) \,dr \,d\theta \\
+        &= -\int_0^{2\pi} 
+            \frac{1}{6}\sin (2\theta)-\frac{1}{2}\cos (2\theta) \,d\theta \\
+        &= 0
+    \end{align*}
+\end{document}

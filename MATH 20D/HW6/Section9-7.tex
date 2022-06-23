@@ -1,0 +1,174 @@
+\subsection*{Section 9.7}
+\textbf{Problem 1}
+The characteristic polynomial is 
+\[
+    (6-\lambda)(3-\lambda) - 4
+    = 14 - 9\lambda + \lambda^2
+    = (\lambda - 2)(\lambda-7)
+\]
+The eigenvalues are $\lambda_1 = 2$ and $\lambda_2 = 7$
+
+The eigenvector for $\lambda_1$ is 
+\[
+    \begin{bmatrix}
+        4 & 1 \\
+        4 & 1
+    \end{bmatrix} x = 0
+    \implies x = 
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    \begin{bmatrix}
+        -1 & 1 \\
+        4 & -4
+    \end{bmatrix} x = 0
+    \implies x = 
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}
+\]
+The homogenous solution is in the form 
+\[
+    y = c_1e^{2t} 
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix} +
+    c_2e^{7t}
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}
+\]
+Solving the system of equations,
+\[
+    \begin{bmatrix}
+        0 \\
+        0
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        6 & 1 \\
+        4 & 3
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 \\
+        a_2
+    \end{bmatrix} +
+     \begin{bmatrix}
+         -11 \\ -5
+     \end{bmatrix}
+\]
+This has solution 
+\[
+    a = \begin{bmatrix}
+        2 \\ -1
+    \end{bmatrix}
+\]
+The final solution is 
+\[
+    y = c_1e^{2t} 
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix} +
+    c_2e^{7t}
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        2 \\ -1
+    \end{bmatrix}
+\]
+
+\textbf{Problem 2}
+The characteristic polynomial is 
+\[
+    (1-\lambda)^2-4
+    = -3 -2\lambda + \lambda^2
+    = (\lambda+1)(\lambda -3)
+\]
+The eigenvalues are $\lambda_1 = -1$ and $\lambda_2 = 3$.
+
+The eigenvector for $\lambda_1$ is 
+\[
+    \begin{bmatrix}
+        2 & 1 \\
+        4 & 2
+    \end{bmatrix} x = 0
+    \implies x = \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    \begin{bmatrix}
+        -2 & 1 \\
+        4 & -2
+    \end{bmatrix} x = 0
+    \implies x = \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+The homogenous solution is in the form 
+\[
+    y = c_1e^{-t} 
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix} +
+    c_2e^{3t}
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+Solving the system of equations for the particular solution,
+\[
+    \begin{bmatrix}
+        a_1 \\ a_2
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 & 1 \\
+        4 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1t + b_1 \\ a_2t + b_2
+    \end{bmatrix} +
+    \begin{bmatrix}
+        -t-1 \\ -4t-2
+    \end{bmatrix}
+\]
+This can be rewritten as 
+\[
+    \begin{bmatrix}
+        0 \\ 0
+    \end{bmatrix} = 
+    t \begin{bmatrix}
+        a_1 + a_2 - 1 \\
+        4a_1 + a_2 - 4
+    \end{bmatrix} +
+    \begin{bmatrix}
+        b_1 + b_2 - a_1 - 1 \\
+        4b_1 + b_2 - a_2 - 2
+    \end{bmatrix} 
+\]
+Having $a_1 = 1$ and $a_2 = 0$ solves the first system and 
+having $b_1 = 0$ and $b_2 = 2$ solves the second system.
+The final solution is 
+\[
+    y = c_1e^{-t} 
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix} +
+    c_2e^{3t}
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix} +
+    \begin{bmatrix}
+        t \\ 2
+    \end{bmatrix}
+\]
+\textbf{Problem 8}
+The particular solution has form 
+\[
+    t^2a + tb + c
+\]

@@ -1,0 +1,623 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\RR}{\mathbb{R}}
+
+\title{Math 31CH HW 5\\ Due May 10 at 11:59 pm by Gradescope Submission\\
+6.2.1, 6.2.2, 6.2.3, 6.3.1, 6.3.3, 6.3.4, 6.3.5, 6.3.6, 6.3.7, 6.3.8, 6.3.11, 6.3.12}
+\author{Professor Bennett Chow}
+\date{}
+
+\begin{document}
+\maketitle
+% % \newpage
+
+
+\begin{center}
+   \textbf{EXERCISES FOR SECTION 6.2}
+\end{center}
+
+\textcolor{red}{Exercise 6.2.1:}
+Set up each of the following integrals of form fields over parametrized domains as an ordinary multiple integral, and compute it.
+
+\textbf{a.} $\displaystyle \int_{[\gamma(I)]} x \, dy + y \, dz$,
+where $I=[-1,1]$, and $\displaystyle \gamma(t) = \begin{pmatrix} \sin (t) \\ \cos (t) \\ t \end{pmatrix}$.
+
+\textbf{b.} $\int_{[\gamma(U)]} x_1\, dx_2 \wedge dx_3 + x_2\, dx_3 \wedge dx_4$, where
+$\displaystyle U = \left\{ \left. \begin{pmatrix} u \\ v \end{pmatrix} \right| \, 0\leq u, v\,; \; u+ v \leq 2 \right\}$,
+$\gamma \begin{pmatrix} u \\ v \end{pmatrix} =\begin{pmatrix} uv \\ u^2+v^2 \\ u-v \\ \ln(u+v+1) \end{pmatrix}$.
+\smallskip
+
+\textcolor{blue}{Solution to 6.2.1:}
+For part a
+\begin{align*}
+    \int_{[\gamma(U)]} x \,dy + y \,dz
+    &= \int_{-1}^1 x \,dy + y \,dz
+        \left(P_{\begin{pmatrix} \sin t \\ \cos t \\ t \end{pmatrix}}
+            \begin{bmatrix}
+                \cos t \\ -\sin t \\ 1
+            \end{bmatrix}
+        \right) \,dt \\ 
+    &= \int_{-1}^1 \sin t (-\sin t) + \cos t (1) \,dt \\
+    &= \int_{-1}^1 \frac{1}{2}\cos 2t - \frac{1}{2} + \cos t \,dt\\
+    &= \left[\frac{\sin 2t}{4} - \frac{1}{2}t + \sin t \right]_{-1}^{1} \\
+    &= \frac{\sin 2}{2} + 2\sin 1 - 1
+\end{align*}
+
+For part b 
+\begin{align*}
+    &\int_{[\gamma(U)]} x_1\,dx_2 \wedge \,dx_3 +x_2\,dx_3 \wedge \,dx_4 \\
+    =& \int_0^2 \int_0^{2-u} x_1\,dx_2 \wedge \,dx_3 +x_2\,dx_3 \wedge \,dx_4
+        \left(P_{\begin{pmatrix} uv \\ u^2 + v^2 \\ u-v \\ \ln(u+v+1) \end{pmatrix}}
+            \begin{bmatrix}
+                v & u \\
+                2u & 2v \\
+                1 & -1 \\
+                \frac{1}{u+v+1} & \frac{1}{u+v+1}
+            \end{bmatrix}
+        \right) \,dv \,du \\ 
+    =& \int_0^2 \int_0^{2-u} uv(-2u-2v) + (u^2+v^2)\frac{2}{u+v+1} \,dv \,du \\
+    =& \frac{64}{45} - \frac{4}{3}\ln 3
+\end{align*}
+The last step was calculated using Matlab.
+\begin{verbatim}
+    >> syms u v
+    >> f = -2*u*v*(u+v) + 2*(u^2+v^2)/(1+u+v)
+    >> int(int(f,v,0,2-u),u,0,2)
+       ans = 64/45 - (4*log(3))/3
+\end{verbatim}
+\newpage
+
+\textcolor{red}{Exercise 6.2.2:}
+Repeat Exercise 6.2.1, for the following.
+
+\textbf{a.}
+$\displaystyle \int_{[\gamma(U)]} x\, dy \wedge dz$, where
+$U=[-1,1]\times [-1,1]$, and
+$\displaystyle \gamma
+\begin{pmatrix}
+u\\v
+\end{pmatrix} =
+\begin{pmatrix}
+u^2 \\u+v\\v^3
+\end{pmatrix}
+$.
+
+\textbf{b.}
+$\displaystyle \int_{[\gamma(U)]} x_2\, dx_1 \wedge dx_3 \wedge dx_4$, where
+$U= \left\{ \left. \begin{pmatrix}
+u\\v\\w
+\end{pmatrix}\right| \,
+0 \leq u,v,w\, ; \; u+v+w \leq 3
+\right\}$, and
+$\displaystyle \gamma
+\begin{pmatrix}
+u\\v\\w
+\end{pmatrix} =
+\begin{pmatrix}
+uv \\u^2+w^2\\u-v\\w
+\end{pmatrix}
+$.
+
+\smallskip
+
+\textcolor{blue}{Solution to 6.2.2:}
+For part a
+\begin{align*}
+    \int_{[\gamma(U)]} x\, dy \wedge dz
+    &= \int_{-1}^1 \int_{-1}^1 x\, dy \wedge dz
+        \left(
+            P_{\begin{pmatrix}
+                u^2 \\ u+v \\ v^3
+            \end{pmatrix}}
+            \begin{bmatrix}
+                2u & 0 \\
+                1 & 1 \\
+                0 & 3v^2
+            \end{bmatrix}
+        \right) \,dv \,du \\ 
+    &= \int_{-1}^1 \int_{-1}^1 3u^2v^2 \,dv \,du \\
+    &= \int_{-1}^1 2u^2 \,du \\
+    &= \frac{4}{3}
+\end{align*}
+For part b
+\begin{align*}
+    &\int_{[\gamma(U)]} x_2\, dx_1 \wedge dx_3 \wedge dx_4 \\
+    =& \int_0^3 \int_0^{3-u} \int_0^{3-u-v} x_2\, dx_1 \wedge dx_3 \wedge dx_4 
+        \left(
+            P_{\begin{pmatrix}
+                uv \\ u^2+w^2 \\ u-v \\ w
+            \end{pmatrix}}
+            \begin{bmatrix}
+                v & u & 0\\
+                2u & 0 & 2w\\
+                1 & -1 & 0\\
+                0 & 0 & 1
+            \end{bmatrix}
+        \right)
+    \,dw \,dv \,du \\
+    =& \int_0^3 \int_0^{3-u} \int_0^{3-u-v} (u^2+w^2)(-v-u) \,dw \,dv \,du \\
+    =& -12.15
+\end{align*}
+The last step was solved using \href[pdfnewwindow=true]{https://www.wolframalpha.com/input?i=%5Cint_0%5E3+%5Cint_0%5E%7B3-u%7D+%5Cint_0%5E%7B3-u-v%7D+%28u%5E2%2Bw%5E2%29%28-v-u%29+%5C%2Cdw+%5C%2Cdv+%5C%2Cdu}{Wolfram Alpha}.
+\newpage
+
+\textcolor{red}{Exercise 6.2.3:}
+Set up each of the following integrals of form fields over parametrized domains as an ordinary multiple integral.
+\smallskip
+
+\textbf{a.}
+$\displaystyle \int_{[\gamma(U)]} (x_1+x_4)\, dx_2 \wedge dx_3 $, where
+$U= \left\{ \left. \begin{pmatrix}
+u\\v
+\end{pmatrix}\right| \;
+|v| \leq u \leq 1
+\right\}$, and where
+\newline \bigskip
+$\displaystyle \gamma
+\begin{pmatrix}
+u\\v
+\end{pmatrix} =
+\begin{pmatrix}
+e^u \\ e^{-v} \\ \cos (u) \\ \sin (v)
+\end{pmatrix}
+$.
+\medskip
+
+\textbf{b.}
+$\displaystyle \int_{[\gamma(U)]} x_2\, x_4\, dx_1 \wedge dx_3 \wedge dx_4$, where
+$U= \left\{ \left. \begin{pmatrix}
+u\\v\\w
+\end{pmatrix}\right| \;
+(w-1)^2 \geq u^2+v^2, \;
+0 \leq w \leq 1
+\right\}$, and where
+\newline \bigskip
+$\displaystyle \gamma
+\begin{pmatrix}
+u\\v\\w
+\end{pmatrix} =
+\begin{pmatrix}
+u+v\\u-v\\w+v\\w-v
+\end{pmatrix}
+$.
+
+\medskip
+
+\textcolor{blue}{Solution to 6.2.3:}
+For part a
+\begin{align*}
+    \int_{[\gamma(U)]} (x_1+x_4)\, dx_2 \wedge dx_3
+    &= \int_0^1 \int_{-u}^u (x_1+x_4)\, dx_2 \wedge dx_3
+        \left(
+            P_{\begin{pmatrix}
+                e^u \\ e^{-v} \\ \cos u \\ \sin v
+            \end{pmatrix}}
+            \begin{bmatrix}
+                e^u & 0 \\
+                0 & -e^{-v} \\
+                -\sin u & 0\\
+                0 & \cos v
+            \end{bmatrix}
+        \right) \,du \,dv\\
+    &= -\int_0^1 \int_{-u}^u (e^u+\sin v)(e^{-v}\sin u) \,du \,dv
+\end{align*}
+For part b
+\begin{align*}
+    &\int_{[\gamma(U)]} x_2\, x_4\, dx_1 \wedge dx_3 \wedge dx_4 \\
+    =& \int_0^1 \int_{w-1}^{1-w} \int_{-\sqrt{(w-1)^2-v^2}}^{-\sqrt{(w-1)^2-v^2}} 
+        x_2\, x_4\, dx_1 \wedge dx_3 \wedge dx_4 
+        \left(
+            P_{\begin{pmatrix}
+                u+v \\ u-v \\ w+v \\ w-v
+            \end{pmatrix}}
+            \begin{bmatrix}
+                1 & 1 & 0\\
+                1 & -1 & 0\\
+                0 & 1 & 1\\
+                0 & -1 & 1
+            \end{bmatrix}
+        \right) \,du \,dv \,dw \\
+    =& \int_0^1 \int_{w-1}^{1-w} \int_{-\sqrt{(w-1)^2-v^2}}^{-\sqrt{(w-1)^2-v^2}} 
+        2(u-v)(w-v) dx_1 \,du \,dv \,dw
+\end{align*}
+\newpage
+
+\textcolor{red}{Exercise 6.3.1:}
+Is the constant vector field $\begin{bmatrix}1\\1\end{bmatrix}$
+a tangent vector field defining an orientation of the line of equation $x+y=0$?
+How about the line of equation $x-y=0$?
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.1:}
+    The line of equation $x+y=0$ has a tangent vector of 
+    $\begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix}$
+    so the constant vector field
+    $\begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}$
+    does not define an orientation.
+
+    The line of equation $x-y=0$ has a tangent vector of 
+    $\begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}$
+    so the constant vector field
+    $\begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}$
+    does define an orientation.
+\newpage
+
+\textcolor{red}{Exercise 6.3.3:}
+Does any constant vector field define an orientation of the unit sphere in $\mathbb{R}^3$?
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.3:}
+    No constant vector fields defines an orientation of the unit sphere since
+    a constant vector field is not transversal to the unit sphere.
+    This is because there exists a point in the unit sphere 
+    such that $x \in v^\perp$ for all $v$.
+
+\newpage
+
+\textcolor{red}{Exercise 6.3.4:}
+
+Find a vector that orients the curve given by
+$x+x^2+y^2 =2$.
+\smallskip
+
+
+
+\textcolor{blue}{Solution to 6.3.4:}
+    Using implicit differentiation,
+    \begin{align*}
+        x + x^2 + y^2 = 2
+        &\implies dx + 2x\,dx + 2y\,dy = 0 \\
+        &\implies 2y\,dy = (1+2x)\,dx \\
+        &\implies \frac{dy}{dx} = -\frac{1+2x}{2y}
+    \end{align*}
+    Therefore the following orients the curve in the counterclockwise direction.
+    \[
+        t(x,y) = 
+        \begin{bmatrix}
+            -2y \\
+            1+2x
+        \end{bmatrix}
+    \]
+
+\newpage
+
+\textcolor{red}{Exercise 6.3.5:}
+
+Which of the vector fields
+\begin{equation*}
+    \begin{bmatrix}
+    1\\1\\1
+    \end{bmatrix}, \quad
+      \begin{bmatrix}
+   - 1\\1\\1
+    \end{bmatrix}, \quad
+      \begin{bmatrix}
+   - 1\\-1\\1
+    \end{bmatrix}, \quad
+      \begin{bmatrix}
+    -1\\-1\\-1
+    \end{bmatrix}
+\end{equation*}
+define an orientation of the plane $P\subset \mathbb{R}^3$ of equation
+$x+y+z=0$, and among these, which pairs define the same orientation?\medskip
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.5:}
+    None of the four vectors solve the equation, 
+    so all of the vector fields orient the plane.
+    Choosing the basis vectors we can calculate the orientation of the 
+    vector fields.
+    \[
+        \begin{bmatrix}
+            0 \\ 1 \\ -1
+        \end{bmatrix},
+        \begin{bmatrix}
+            1 \\ 0 \\ -1
+        \end{bmatrix}
+    \]
+    \[
+        \det \begin{bmatrix}
+            1 & 0 & 1 \\
+            1 & 1 & 0 \\
+            1 & -1 & -1
+        \end{bmatrix} = (-1) + (-2) = -3
+    \]
+    \[
+        \det \begin{bmatrix}
+            -1 & 0 & 1 \\
+            1 & 1 & 0 \\
+            1 & -1 & -1
+        \end{bmatrix} = (1) + (-2) = -1
+    \]
+    \[
+        \det \begin{bmatrix}
+            -1 & 0 & 1 \\
+            -1 & 1 & 0 \\
+            1 & -1 & -1
+        \end{bmatrix} = (1) + (0) = 1
+    \]
+    \[
+        \det \begin{bmatrix}
+            -1 & 0 & 1 \\
+            -1 & 1 & 0 \\
+            -1 & -1 & -1
+        \end{bmatrix} = (1) + (2) = 3
+    \]
+    So
+    $
+        \begin{bmatrix}
+            1 \\ 1 \\ 1
+        \end{bmatrix},
+        \begin{bmatrix}
+            -1 \\ 1 \\ 1
+        \end{bmatrix}
+    $
+    are the same orientation and
+    $
+        \begin{bmatrix}
+            -1 \\ -1 \\ 1
+        \end{bmatrix},
+        \begin{bmatrix}
+            -1 \\ -1 \\ -1
+        \end{bmatrix}
+    $
+    are another orientation.
+\newpage
+
+\textcolor{red}{Exercise 6.3.6:}
+Find a vector field that orients the surface $S \subset \mathbb{R}^3$ given
+by $x^2+y^3+z=1$.
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.6:}
+    The gradient of the locus orients the surface
+    \[
+        \nabla f(x, y, z) =
+        \begin{bmatrix}
+            2x \\ 3y^2 \\ 1
+        \end{bmatrix} 
+    \]
+\newpage
+
+\textcolor{red}{Exercise 6.3.7:}
+Let $V$ be the plane of the equation $x+2y-z=0$. Show that the bases
+\begin{equation*}
+    \vec v_1 = \begin{bmatrix}
+        1\\0\\1
+    \end{bmatrix},\;
+    \vec v_2 = \begin{bmatrix}
+        0\\1\\2
+    \end{bmatrix}
+    \quad \text{and} \quad
+    \vec w_1 = \begin{bmatrix}
+        2\\-3\\-4
+    \end{bmatrix},\;
+    \vec w_2 = \begin{bmatrix}
+        1\\2\\5
+    \end{bmatrix}
+\end{equation*}
+give the same orientation
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.7:}
+    The change of basis matrix is 
+    \[
+        P_{w \to v} = 
+        \begin{bmatrix}
+            2 & 1 \\
+            -3 & 2
+        \end{bmatrix}
+    \]
+    This matrix has a determinant of $7$, 
+    so both basis have the same orientation.
+\newpage
+
+\textcolor{red}{Exercise 6.3.8:}
+Let $P$ be the plane of equation $x+y+z=0$.
+\smallskip
+
+\textbf{a.} Of the three bases
+\begin{equation*}
+        \begin{bmatrix}
+        1\\0\\-1
+    \end{bmatrix},\,
+     \begin{bmatrix}
+        0\\1\\-1
+    \end{bmatrix} ,\qquad
+        \begin{bmatrix}
+        -1\\0\\1
+    \end{bmatrix},\,
+     \begin{bmatrix}
+        -1\\1\\0
+    \end{bmatrix} ,\qquad
+            \begin{bmatrix}
+        1\\-1\\0
+    \end{bmatrix},\,
+     \begin{bmatrix}
+        0\\-1\\1
+    \end{bmatrix}
+\end{equation*}
+which gives a different orientation than the other two? \medskip
+
+\textbf{b.}
+Find a normal vector to $P$ that gives the same orientation as that basis.\medskip
+
+\textcolor{blue}{Solution to 6.3.8:} \\
+    The change of base matrix from the first to the second base is 
+    \[
+        P_{1 \to 2} = \begin{bmatrix}
+            -1 & -1\\
+            0 & 1
+        \end{bmatrix}
+    \]
+    The change of base matrix from the second to the third base is 
+    \[
+        P_{2 \to 3} = \begin{bmatrix}
+            -1 & -1\\
+            1 & 0
+        \end{bmatrix}
+    \]
+    $\det P_{1\to 2} = -1$ and $\det P_{2\to 3} = 1$, so the first basis 
+    has a different orientation than the other two.
+    The orientation 
+    $\begin{bmatrix}
+        1 \\ 1 \\ 1
+    \end{bmatrix}$
+    has the same orientation as the first base since
+    \[
+        \det \begin{bmatrix}
+            1 & 1 & 0 \\
+            1 & 0 & 1 \\
+            1 & -1 & -1
+        \end{bmatrix} 
+        = (1) - (-2)
+        = 3 > 0
+    \]
+\newpage
+
+\textcolor{red}{Exercise 6.3.11:}
+Let $S \subset \mathbb{R}^4$
+be the locus given by the equations
+$x_1^2-x_2^2 =x_3$
+and $2x_1x_2 = x_4$.
+\smallskip
+
+\textbf{a.}
+Show that $S$ is a surface.\medskip \\
+\textbf{b.}
+Find a basis for the tangent space to $S$ at the origin that is direct for the orientation given by Proposition 6.3.9.
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.11:} \\
+\textbf{a.}
+The locus of the surface is
+\[
+    f(x_1, x_2, x_3, x_4) = \begin{bmatrix}
+        x_1^2-x_2^2-x_3 \\ 2x_1x_2 - x_4
+    \end{bmatrix}
+\].
+The derivative is 
+\[
+    Df(x_1, x_2, x_3, x_4) =
+    \begin{bmatrix}
+        2x_1 & -2x_2 & -1 & 0 \\
+        2x_2 & 2x_1 & 0 & -1
+    \end{bmatrix}
+\]
+From Theorem 3.1.10, $S$ is a smooth manifold since the derivative is onto.
+
+\textbf{b.}
+The tangent space consists of points where the derivative is zero,
+so the following work as basis vectors .
+\[
+    \begin{bmatrix}
+        1 \\ 0 \\ 0 \\ 0
+    \end{bmatrix},
+    \begin{bmatrix}
+        0 \\ 1 \\ 0 \\ 0
+    \end{bmatrix}
+\]
+At the origin,
+\[
+    Df(0) =
+    \begin{bmatrix}
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{bmatrix}
+\]
+Using the orientation from Proposition 6.3.9,
+\[
+    \det 
+    \begin{bmatrix}
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        -1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0
+    \end{bmatrix}
+    = 1
+\]
+Thus this basis is direct at the origin.
+
+\newpage
+
+\textcolor{red}{Exercise 6.3.12:}
+Consider the manifold $M\subset \mathbb{R}^4$ of equation
+$x_1^2 +x_2^2 +x_3^2 -x_4=0$.
+Find a basis for the tangent space to $M$ at the point
+$\displaystyle \begin{pmatrix}
+1\\0\\0\\1
+\end{pmatrix}$
+that is direct for the orientation given by Proposition 6.3.9.
+\smallskip
+
+\textcolor{blue}{Solution to 6.3.12:}
+The derivative of the locus is 
+\[
+    Df(x_1,x_2,x_3,x_4) = 
+    \begin{bmatrix}
+        2x_1 & 2x_2 & 2x_3 & -1
+    \end{bmatrix}
+\]
+At the point it is 
+\[
+    Df(1, 0, 0, 1) = 
+    \begin{bmatrix}
+        2 & 0 & 0 & -1
+    \end{bmatrix}
+\]
+Thus the tangent space has a basis of 
+\[
+    \begin{bmatrix}
+        -1 \\ 0 \\ 0 \\ 2
+    \end{bmatrix},
+    \begin{bmatrix}
+        0 \\ 1 \\ 0 \\ 0
+    \end{bmatrix},
+    \begin{bmatrix}
+        0 \\ 0 \\ 1 \\ 0
+    \end{bmatrix}
+\]
+The basis is direct since 
+\[
+    \det 
+    \begin{bmatrix}
+        2 & -1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        -1 & 2 & 0 & 0
+    \end{bmatrix}
+    = 2(2) - (1) = 3
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

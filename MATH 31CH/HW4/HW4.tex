@@ -1,0 +1,833 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\vt}[1]{\textbf{#1}}
+\newcommand{\pder}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+
+\title{Math 31CH HW4}
+\author{Merrick Qiu}
+
+\begin{document}
+\maketitle
+\newpage
+
+
+
+\subsection*{Exercise 5.3.1}
+\textbf{Part a.}
+Let $(r(t),\theta(t))$ be a parametrization of a curve in polar coordinates. Show that the length of the piece of curve between $t = a$ and $t = b$ is given by the integral $\int_{a}^b\sqrt{(r'(t))^2+(r(t))^2(\theta'(t))^2}dt$.
+\medskip
+
+\textbf{Solution.}
+The derivative of the coordinates are
+\[
+\gamma'(t) = 
+  \begin{bmatrix}
+    r'(t)\cos(\theta(t)) - r(t)\theta'(t)\sin(\theta(t)) \\
+    r'(t)\sin(\theta(t)) + r(t)\theta'(t)\cos(\theta(t))
+  \end{bmatrix}
+\]
+The squared sum of the x and y coordinates are
+\begin{align*}
+  \gamma'(t)_x^2 + \gamma'(t)_y^2 
+  &= r'(t)^2\cos^2(\theta(t)) 
+    + r(t)^2\theta'(t)^2\sin^2(\theta(t))
+    + r'(t)^2\sin^2(\theta(t)) 
+    + r'(t)^2\theta'(t)^2\cos^2(\theta(t)) \\
+  &= r'(t)^2(\cos^2(\theta(t)) + \sin^2(\theta(t)))
+    + r(t)^2\theta'(t)^2(\cos^2(\theta(t)) + \sin^2(\theta(t))) \\
+  &= r'(t)^2 + r(t)^2\theta'(t)^2
+\end{align*}
+Therefore the path length is 
+\[
+  \int_{a}^b |\gamma'(t)| \,dt =
+  \int_{a}^b \sqrt{\gamma'(t)_x^2 + \gamma'(t)_y^2} \,dt =
+  \int_{a}^b \sqrt{(r'(t))^2+(r(t))^2(\theta'(t))^2} \,dt
+\]
+
+
+\bigskip
+
+\noindent \textbf{Part b.}
+Consider the spiral in polar coordinates when $r(t) = e^{-\alpha t}$ and $\theta(t) = t$, for $\alpha >0$. What is its length between $t = 0$ and $t = b$? What is the limit of this length as $\alpha\rightarrow 0$.
+\medskip
+
+\textbf{Solution.}
+  The path length is
+  \begin{align*}
+    \int_{0}^b \sqrt{(r'(t))^2+(r(t))^2(\theta'(t))^2} \,dt
+    &= \int_{0}^b \sqrt{\alpha^2e^{-2\alpha t}+e^{-2\alpha t}} \,dt \\
+    &= \int_{0}^b \sqrt{\alpha^2+1} e^{-\alpha t} \,dt \\
+    % &= \left[-\frac{\sqrt{\alpha^2+1}}{\alpha} e^{-\alpha t}\right]_0^b \\
+    &= -\frac{\sqrt{\alpha^2+1}}{\alpha} (e^{-\alpha b} - 1)
+  \end{align*}
+
+  The limit of of the path length as $\alpha\rightarrow 0$ is 
+  \begin{align*}
+    \lim_{\alpha \to 0} -\frac{\sqrt{\alpha^2+1}}{\alpha} (e^{-\alpha b} - 1)
+    &= \lim_{\alpha \to 0} -\frac{\sqrt{\alpha^2+1}}{\alpha} ((1-b\alpha+\frac{b^2\alpha^2}{2} \hdots) - 1) \\
+    &= \lim_{\alpha \to 0} -\sqrt{\alpha^2+1} (b(-1 + \frac{b\alpha}{2} \hdots)) \\
+    &= b
+  \end{align*}
+\bigskip
+
+\noindent \textbf{Part c.}
+Show that the spiral turns infinitely many times around the origin as $t\rightarrow\infty$. Does the length tend to $\infty$ as $b\rightarrow \infty$?
+\medskip
+
+\textbf{Solution.}
+$\theta$ grows without bound as $t$ increases, so it turns infinitely many times.
+\[
+  \lim_{t \to \infty} \theta(t) 
+  = \lim_{t \to \infty} t
+  = \infty
+\]
+The length does not tend towards $\infty$ since 
+\[
+  \lim_{b \to \infty} -\frac{\sqrt{\alpha^2+1}}{\alpha} (e^{-\alpha b} - 1)
+  = \frac{\sqrt{\alpha^2+1}}{\alpha}
+\]
+\newpage
+
+
+
+
+
+
+
+
+
+\subsection*{Exercise 5.3.3}
+\textbf{Part a.}
+Suppose that $t\mapsto (r(t),\theta(t),\phi(t))$ is a parametrization of a curve in  $\mathbb R^3$, written in spherical coordinates. Find the formula analogous to the integral in Exercise 5.3.1, part a, for the length of the arc between $t=a$ and $t = b$.
+\medskip
+
+\textbf{Solution.}
+The coordinates are given by 
+\[
+  \gamma(t) =
+  \begin{bmatrix}
+    r(t) \cos(\theta(t)) \cos(\varphi(t)) \\
+    r(t) \sin(\theta(t)) \cos(\varphi(t)) \\
+    r(t) \sin(\varphi(t))
+  \end{bmatrix}
+\]
+The derivative is 
+\[
+  \gamma(t) =
+  \begin{bmatrix}
+    r'(t) \cos(\theta(t)) \cos(\varphi(t)) 
+      - r(t) \theta'(t) \sin(\theta(t)) \cos(\varphi(t)) 
+      - r(t) \varphi'(t) \cos(\theta(t)) \sin(\varphi(t)) \\
+    r'(t) \sin(\theta(t)) \cos(\varphi(t))  
+      + r(t) \theta'(t) \cos(\theta(t)) \cos(\varphi(t)) 
+      - r(t) \varphi'(t) \sin(\theta(t)) \sin(\varphi(t)) \\
+    r'(t) \sin(\varphi(t)) + r(t)\varphi'(t) \cos(\varphi(t))
+  \end{bmatrix}
+\]
+After a lot of ugly algebra to calculate the norm,
+\[
+  \int_{a}^b |\gamma'(t)| \,dt =
+  \int_{a}^b \sqrt{\gamma'(t)_x^2 + \gamma'(t)_y^2 + \gamma'(t)_z^2} \,dt =
+  \int_{a}^b \sqrt{r'(t)^2 + r^2\phi'(t)^2 + r^2\cos^2(\varphi(t))\theta'(t)^2} \,dt
+\]
+\bigskip
+
+\noindent \textbf{Part b.}
+What is the length of the curve parametrized by $r(t) = cos\ t,\ \theta(t) = tan\ t,\ \phi(t) =  t$, between $t=0$ and $t = a$, where $0<a<\pi/2$?
+\medskip
+
+\textbf{Solution.}
+\begin{align*}
+  \int_{0}^a \sqrt{r'(t)^2 + r^2\phi'(t)^2 + r^2\cos^2(\varphi(t))\theta'(t)^2} \,dt
+  &= \int_{0}^a \sqrt{\sin^2(t) + \cos^2(t) + \cos^2(t) \cos^2(t)\sec^4(t)} \,dt \\
+  &= \int_{0}^a \sqrt{2} \,dt \\
+  &= \sqrt{2} a
+\end{align*}
+\newpage
+
+
+
+
+
+
+
+
+\subsection*{Exercise 5.3.5}
+\textbf{Part a.}
+Set up (but do not compute) the integral giving the surface area of the part of the surface of equation $z= \frac{x^2}{4}+\frac{y^2}{9}$, where $z\leq a^2$.
+\medskip
+
+\textbf{Solution.}
+The manifold can be parameterized by 
+\[
+  \gamma(r, \theta) = 
+  \begin{bmatrix}
+    2r\cos \theta \\
+    3r\sin \theta \\
+    r^2
+  \end{bmatrix}
+\]
+The Jacobian is 
+\[
+  D\gamma = 
+  \begin{bmatrix}
+    \pder{x}{r} & \pder{x}{\theta} \\
+    \pder{y}{r} & \pder{y}{\theta} \\
+    \pder{z}{r} & \pder{z}{\theta}
+  \end{bmatrix} =
+  \begin{bmatrix}
+    2\cos \theta & -2r\sin \theta \\
+    3\sin \theta & 3r\cos \theta \\
+    2r & 0
+  \end{bmatrix} 
+\]
+Multiplying by the transpose yields 
+\[
+  D\gamma^TD\gamma = 
+  \begin{bmatrix}
+    2\cos \theta & 3\sin\theta & 2r \\
+    -2r\sin\theta & 3r\cos\theta & 0
+  \end{bmatrix} 
+  \begin{bmatrix}
+    2\cos \theta & -2r\sin \theta \\
+    3\sin \theta & 3r\cos \theta \\
+    2r & 0
+  \end{bmatrix} =
+  \begin{bmatrix}
+    4 + 5\sin^2 \theta + 4r^2 & 5 r\sin\theta\cos\theta \\
+    5 r\sin\theta\cos\theta & 4r^2 + 5r^2\cos^2 \theta 
+  \end{bmatrix}
+\]
+The volume of the transformation is
+\[
+  \sqrt{\det[D\gamma^TD\gamma]}
+  = \sqrt{(4 + 5\sin^2 \theta + 4r^2)(4r^2 + 5r^2\cos^2 \theta) - (5 r\sin\theta\cos\theta)^2}
+  = 2r\sqrt{9 + r^2(4 + 5\cos^2 \theta)}
+\]
+The integral is therefore, 
+\[
+  \int_0^{2\pi} \int_0^a 2r\sqrt{9 + r^2(4 + 5\cos^2 \theta)} \,dr \,d\theta
+\]
+\bigskip
+
+\noindent \textbf{Part b.}
+What is the volume of the region $\frac{x^2}{4}+\frac{y^2}{9}\leq z\leq a^2$?
+\medskip
+
+\textbf{Solution.}
+We can use cylindrical coordinates to calculate the volume.
+\[
+  6\int_0^{2\pi} \int_0^a \int_{r^2}^{a^2} r \,dz \,dr \,d\theta
+  = 6\int_0^{2\pi} \int_0^a  a^2r-r^3 \,dr \,d\theta
+  = 6\int_0^{2\pi} \frac{a^4}{2} - \frac{a^4}{4} \,d\theta
+  = 3\pi a^4
+\]
+I multply by 6 since the
+\[
+  \det \begin{bmatrix}
+    2\cos \theta & -2r\sin \theta \\
+    2\sin \theta & 3r\cos \theta
+  \end{bmatrix} = 6
+\]
+\newpage
+
+
+
+
+
+
+
+
+\subsection*{Exercise 5.3.6}
+Let $S$ be the part of the paraboloid of revolution $z= x^2+y^2$ where $z\leq 9$. Compute the integral $\int_S(x^2+y^2+3z^2)|d^2x|$.
+
+\medskip
+
+\textbf{Solution.}
+Lets use the transformation 
+\[
+  \gamma(r,\theta) = 
+  \begin{bmatrix}
+    r\cos \theta \\
+    r\sin \theta \\ 
+    r^2
+  \end{bmatrix}
+\]
+The Jacobian of the transformation is 
+\[
+  D\gamma = 
+  \begin{bmatrix}
+    \cos \theta &  -r\sin \theta\\
+    \sin\theta & r\cos \theta \\
+    2r & 0
+  \end{bmatrix}
+\]
+The determinant of $D\gamma^T D\gamma$ is 
+\begin{align*}
+   \det D\gamma^T D\gamma 
+   &= \det \begin{bmatrix}
+    \cos \theta & \sin \theta & 2r \\
+    -r\sin \theta & r\cos \theta & 0
+  \end{bmatrix}
+  \begin{bmatrix}
+    \cos \theta &  -r\sin \theta\\
+    \sin\theta & r\cos \theta \\
+    2r & 0
+  \end{bmatrix} \\
+  &= \det \begin{bmatrix}
+    1+4r^2 & 0 \\
+    0 & r^2
+  \end{bmatrix} \\ 
+  &= r^2 + 4r^4
+\end{align*}
+Using the substitution $t = \sqrt{1+4r^2}$
+\begin{align*}
+  \int_S(x^2+y^2+3z^2)|d^2x|
+  &= \int_0^{2\pi} \int_0^{3} (r^3+3r^5)\sqrt{1 + 4r^2} \,dr \,d\theta \\
+  &= 2\pi \int_0^{3} r^3\sqrt{1 + 4r^2} \,dr
+    + 2\pi \int_0^{3} 3r^5\sqrt{1 + 4r^2} \,dr \\
+  &= \frac{\pi}{8} \int_1^{\sqrt{37}} t^4-t^2 \,dt
+    + \frac{3\pi}{32} \int_1^{\sqrt{37}} (t^2-1)(t^4-t^2) \,dt \\
+  &= \frac{7+277574\sqrt{37}}{420}\pi \\
+  &\approx 4020 \pi
+\end{align*}
+
+\newpage
+
+
+
+
+\subsection*{Exercise 5.3.8}
+What is the surface area of the part of the paraboloid of revolution  $z = x^2 + y^2$ where $z\leq 1$?
+
+\medskip
+
+\textbf{Solution.}
+We can repurpose the integral from the previous problem 
+\begin{align*}
+  \int_S|d^2x|
+  &= \int_0^{2\pi} \int_0^{1} r\sqrt{1 + 4r^2} \,dr \,d\theta \\
+  &= 2\pi \left[ \frac{1}{12} (4r^2+1)^{\frac{3}{2}}\right]_0^1 \\
+  &= 2\pi \frac{5\sqrt{5}-1}{12} \\
+  &= \frac{5\sqrt{5}-1}{6} \pi
+\end{align*}
+\newpage
+
+
+
+
+
+
+\subsection*{Exercise 5.3.13(a)}
+Let $S^2$ be the unit sphere and let $S_1$ be the part of the cylinder of equation $x^2+y^2 = 1$ with $-1\leq z\leq 1$. Show that the horizontal radial projection $S_1\rightarrow S^2$ preserves area.
+
+\medskip
+
+\textbf{Solution.}
+The unit sphere is given by the equation $x^2 + y^2 + z^2 = 1$.
+The radial projection using cylindrical coordinates is 
+\[
+  \gamma(z, \theta) = 
+  \begin{bmatrix}
+    \sqrt{1-z^2} \cos \theta \\
+    \sqrt{1-z^2} \sin \theta\\
+    z
+  \end{bmatrix}
+\]
+The Jacobian is 
+\[
+  D\gamma = 
+  \begin{bmatrix}
+    -\frac{z}{\sqrt{1-z^2}} \cos \theta & -\sqrt{1-z^2} \sin \theta \\
+    -\frac{z}{\sqrt{1-z^2}} \sin \theta & \sqrt{1-z^2} \cos \theta \\
+    1 & 0
+  \end{bmatrix}
+\]
+The determinant of the Jacobian times its transpose is 
+\begin{align*}
+  \det D\gamma^T D\gamma 
+  &= \det \begin{bmatrix}
+    -\frac{z}{\sqrt{1-z^2}} \cos \theta & -\frac{z}{\sqrt{1-z^2}} \sin \theta & 1 \\
+    -\sqrt{1-z^2} \sin \theta & \sqrt{1-z^2} \cos \theta & 0
+  \end{bmatrix}
+  \begin{bmatrix}
+    -\frac{z}{\sqrt{1-z^2}} \cos \theta & -\sqrt{1-z^2} \sin \theta \\
+    -\frac{z}{\sqrt{1-z^2}} \sin \theta & \sqrt{1-z^2} \cos \theta \\
+    1 & 0
+  \end{bmatrix} \\
+  &= \det \begin{bmatrix}
+    \frac{z^2}{1-z^2} + 1 & 0 \\
+    0 & 1-z^2
+  \end{bmatrix} \\
+  &= 1
+\end{align*}
+Since $\sqrt{\det D\gamma^T D\gamma} = 1$,
+the horizontal radial projection preserves area.
+\newpage
+
+
+
+
+
+\subsection*{Exercise 5.3.15}
+\textbf{Part a.}
+Show that when $\phi,\psi,\theta$ satisfy
+$$
+-\pi/2\leq \phi\leq \pi/2,\quad -\pi/2\leq \psi\leq \pi/2,\quad 0\leq \theta<2\pi
+$$
+the map $\gamma(\theta,\phi,\psi) = (\cos \psi \cos \phi \cos \theta, \cos \psi \cos \phi \sin \theta, \cos \psi \sin\phi,\sin \psi)$ parametrizes the unit sphere $S^3$ in $\mathbb R^4$.
+\medskip
+
+\textbf{Solution.}
+  For the unit sphere, $x^2 + y^2 + z^2 + w^2 = 1$.
+  Plugging the values in to show that the image of $\gamma$ is on the sphere, 
+  \begin{align*}
+    x^2 + y^2 + z^2 + w^2
+    &= (\cos^2 \psi \cos^2 \phi \cos^2 \theta + \cos^2 \psi \cos^2 \phi \sin^2 \theta) + \cos^2 \psi \sin^2 \phi + \sin^2 \psi \\
+    &= (\cos^2 \psi \cos^2 \phi  + \cos^2 \psi \sin^2 \phi) + \sin^2 \psi \\
+    &= (\cos^2 \psi  + \sin^2 \psi) \\
+    &= 1
+  \end{align*}
+   $w \in [-1, 1]$ since $-\pi/2\leq \psi\leq \pi/2$,
+  so all $w$ coordinates of the sphere are covered.
+  For a given $w$, the equation traces out 
+  the entire $S^2$ sphere of radius $\cos \psi$.
+  \[
+    x^2 + y^2 + z^2 + \sin^2 \psi = 1 
+    \implies x^2 + y^2 + z^2 = \cos^2 \psi
+  \]
+  Thus all points on $S^3$ are mapped onto.
+  
+\bigskip
+
+\noindent \textbf{Part b.}
+Use this parametrization to compute $vol_3(S^3)$.
+\medskip
+
+\textbf{Solution.}
+The Jacobian of the transformation is 
+\[
+  D\gamma =
+  \begin{bmatrix}
+    -\cos \psi \cos \phi \sin \theta & -\cos \psi \sin \phi \cos \theta & -\sin \psi \cos \phi \cos \theta\\
+    \cos \psi \cos \phi \cos \theta & -\cos \psi \sin \phi \sin \theta & -\sin \psi \cos \phi \sin \theta\\
+    0 & \cos \psi \cos \phi & -\sin \psi \sin \phi\\
+    0 & 0 & \cos \psi
+  \end{bmatrix}
+\]
+The determinant of the Jacobian times its transform is 
+\[
+  \det D\gamma^T D\gamma =
+  \det \begin{bmatrix}
+    \cos^2 \psi \cos^2 \phi & 0 & 0 \\
+    0 & \cos^2 \psi & 0 \\
+    0 & 0 & 1
+  \end{bmatrix} = 
+  \cos^4 \psi \cos^2 \phi
+\]
+The volume is thus 
+\begin{align*}
+  \int_{0}^{2\pi}
+  \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} 
+  \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}
+  \cos^2 \psi \cos \phi
+  \,d\phi \,d\psi \,d\theta
+  &= 2\pi
+  \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} 
+  2\cos^2 \psi \,d\psi \\
+  &= \pi\left[(\sin(2x) + 2x)\right]_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \\
+  &= 2\pi^2
+\end{align*}
+  
+\newpage
+
+
+
+
+
+\subsection*{Exercise 6.1.3}
+Compute the following numbers:
+$$a.\ dx_1\wedge dx_4
+        \begin{pmatrix}
+          \begin{bmatrix}
+           1 \\
+           0 \\
+           1 \\
+           2
+          \end{bmatrix},
+          \begin{bmatrix}
+           1\\-3\\-1\\2
+         \end{bmatrix}
+    \end{pmatrix}
+    \quad
+    b.\ (dx_1\wedge dx_2+2dx_2\wedge dx_3)
+     \begin{pmatrix}
+          \begin{bmatrix}
+            1\\0\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+          -2\\1\\0
+         \end{bmatrix}
+    \end{pmatrix}
+$$
+
+$$
+c.\ dx_4\wedge dx_2
+\begin{pmatrix}
+          \begin{bmatrix}
+            1\\0\\1\\2
+          \end{bmatrix},
+          \begin{bmatrix}
+           1\\-3\\-1\\2
+         \end{bmatrix}
+    \end{pmatrix}
+    \quad
+    d.\ dx_1\wedge dx_2\wedge dx_2
+    \begin{pmatrix}
+          \begin{bmatrix}
+            1\\3\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+           -2\\1\\4
+         \end{bmatrix}
+          \begin{bmatrix}
+           2\\2\\2
+         \end{bmatrix}
+    \end{pmatrix}
+$$
+\medskip
+
+\textbf{Solution.}
+\begin{enumerate}
+  \item \[
+    \det \begin{bmatrix}
+      1 & 1 \\
+      2 & 2 
+    \end{bmatrix}
+    = 0
+  \]
+  \item \[
+    \det \begin{bmatrix}
+      1 & -2 \\
+      0 & 1
+    \end{bmatrix}
+    + 2 \det \begin{bmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{bmatrix}
+    = 3 + 2(-1)
+    = 1
+  \]
+  \item \[
+    \det \begin{bmatrix}
+      2 & 2 \\
+      0 & -3 \\
+    \end{bmatrix}
+    = -6
+  \]
+  \item \[
+    \det \begin{bmatrix}
+      1 & -2 & 2 \\
+      3 & 1 & 2 \\
+      3 & 1 & 2 
+    \end{bmatrix}
+    = 1(0) + 2(0) + 2(0)
+    = 0
+  \]
+\end{enumerate}
+\newpage
+
+
+\subsection*{Exercise 6.1.6}
+Which of the following expressions make sense? Evaluate those that do.
+$$a.\ dx_1\wedge dx_2
+        \begin{pmatrix}
+          \begin{bmatrix}
+            1\\0\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+           2\\3\\1
+         \end{bmatrix}
+    \end{pmatrix}
+    \quad
+    b.\ dx_1\wedge dx_3
+     \begin{pmatrix}
+          \begin{bmatrix}
+            1\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+          2\\3
+         \end{bmatrix}
+    \end{pmatrix}
+$$
+
+$$
+c.\ dx_1\wedge dx_2
+\begin{pmatrix}
+          \begin{bmatrix}
+            1\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+           2\\3
+         \end{bmatrix}
+         \begin{bmatrix}
+           -2\\1
+         \end{bmatrix}
+    \end{pmatrix}
+    \quad
+    d.\ dx_1\wedge dx_2\wedge dx_4
+    \begin{pmatrix}
+          \begin{bmatrix}
+            1\\0\\3
+          \end{bmatrix},
+          \begin{bmatrix}
+           3\\7\\2
+         \end{bmatrix}
+          \begin{bmatrix}
+           2\\0\\1
+         \end{bmatrix}
+    \end{pmatrix}
+$$
+
+$$
+e.\ dx_1\wedge dx_2\wedge dx_3
+\begin{pmatrix}
+          \begin{bmatrix}
+            1\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+           2\\3
+         \end{bmatrix}
+    \end{pmatrix}
+    \quad
+    f.\ dx_1\wedge dx_2\wedge dx_3
+    \begin{pmatrix}
+        \begin{bmatrix}
+            1\\0\\3
+          \end{bmatrix},
+          \begin{bmatrix}
+           3\\7\\2
+         \end{bmatrix}
+          \begin{bmatrix}
+           2\\0\\1
+         \end{bmatrix}
+    \end{pmatrix}
+$$
+\medskip
+
+\textbf{Solution.}
+\begin{enumerate}
+  \item \[
+    \det \begin{bmatrix}
+      1 & 2 \\
+      0 & 3
+    \end{bmatrix}
+    = 3
+  \]
+  \item Does not make sense 
+  \item Does not make sense 
+  \item Does not make sense 
+  \item Does not make sense 
+  \item \[
+    \det \begin{bmatrix}
+      1 & 3 & 2 \\
+      0 & 7 & 0 \\
+      3 & 2 & 1
+    \end{bmatrix}
+    = 1(7) - 0 + 3(-14)
+    = -35
+  \]
+\end{enumerate}
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Exercise 6.1.8}
+Verify that the wedge product of two 1-forms does not commute, and that the wedge product of a 2-form and a 1-form does commute.
+
+\medskip
+
+\textbf{Solution.}
+Two 1-forms do not commute
+\begin{align*}
+  (\phi \wedge \omega) (v_1, v_2)
+  &= \phi(v_1)\omega(v_2) - \phi(v_2)\omega(v_1) \\
+  &= - (\omega(v_1)\phi(v_2) - \omega(v_2)\phi(v_1)) \\
+  &= - (\omega \wedge \phi) (v_1, v_2)
+\end{align*}
+However, the wedge product of a 2-from and a 1-form does commute.
+\begin{align*}
+  (\phi \wedge \omega) (v_1, v_2, v_3)
+  &= \phi(v_1, v_2)\omega(v_3)
+    - \phi(v_1, v_3)\omega(v_2)
+    + \phi(v_2, v_3)\omega(v_1) \\
+  &= \omega(v_1)\phi(v_2, v_3)
+    - \omega(v_2)\phi(v_1, v_3)
+    +  \omega(v_3)\phi(v_1, v_2) \\
+  &= (\omega \wedge \phi) (v_1, v_2, v_3) \\
+\end{align*}
+
+\newpage
+
+
+
+
+
+
+
+
+\subsection*{Exercise 6.1.10}
+Let $\vt a, \vt v, \vt w$ be vectors in $\mathbb R^3$ and let $\phi$ be the 2-form on $\mathbb R^3$ given by $\phi(\vt v,\vt w) = det(\vt a,\vt v,\vt w)$. Write $\phi$ as a linear combination of elementary 2-forms on $\mathbb R^3$, in terms of the coordinates of $\vt a$.
+
+\medskip
+
+\textbf{Solution.}
+Using the cofactor formula on the first column yields 
+\begin{align*}
+  \phi(v, w)
+  &= \det(a,v,w) \\
+  &= a_1(dx_2\wedge dx_3)- a_2 (dx_1\wedge dx_3)+ a_3(dx_1\wedge dx_2)
+\end{align*}
+\newpage
+
+
+
+
+
+
+
+
+\subsection*{Exercise 6.1.11}
+Let $\phi$ and $\psi$ be 2-forms. Use definition 6.1.12 to write the wedge product $\phi\wedge\psi(\vt v_1,\vt v_2,\vt v_3,\vt v_4)$ as a combination of values of $\phi$ and $\psi$ evaluated on appropriate vectors (as in equations 6.1.28 and 6.1.32).
+
+\medskip
+
+\textbf{Solution.}
+Simply sum up with the permutations, ensure the correct sign, 
+and make sure that it follows the "shuffle" rule.
+\begin{align*}
+  (\phi \wedge \psi)(v_1, v_2, v_3, v_4) 
+  &= \phi(v_1, v_2)\psi(v_3, v_4) \\
+  &- \phi(v_1, v_3)\psi(v_2, v_4) \\
+  &+ \phi(v_1, v_4)\psi(v_2, v_3) \\
+  &+ \phi(v_2, v_3)\psi(v_1, v_4) \\
+  &- \phi(v_2, v_4)\psi(v_1, v_3) \\
+  &+ \phi(v_3, v_4)\psi(v_1, v_2) 
+\end{align*}
+\newpage
+
+
+
+
+
+\subsection*{Exercise 6.1.6}
+Which of the following expressions make sense? Evaluate those that do.
+$$a.\ (x_1-x_4)dx_3\wedge dx_2
+        \begin{pmatrix}
+        P_0
+        \begin{pmatrix}
+          \begin{bmatrix}
+           1\\2\\3\\4
+          \end{bmatrix},
+          \begin{bmatrix}
+           0\\1\\-1\\1
+         \end{bmatrix}
+    \end{pmatrix}
+    \end{pmatrix}
+    \quad
+    b.\ e^xdy
+        \begin{pmatrix}
+        P_{\begin{bmatrix}
+         2\\1
+        \end{bmatrix}}
+        \begin{pmatrix}
+          \begin{bmatrix}
+           3\\2
+          \end{bmatrix},
+    \end{pmatrix}
+    \end{pmatrix}
+$$
+
+$$
+    c.\ x_1^2dx_3\wedge dx_2\wedge dx_1
+        \begin{pmatrix}
+        P_{\begin{bmatrix}
+         2\\0\\0\\0
+        \end{bmatrix}}
+        \begin{pmatrix}
+          \begin{bmatrix}
+           1\\2\\3\\4
+          \end{bmatrix},
+          \begin{bmatrix}
+           0\\1\\-1\\1
+          \end{bmatrix},
+          \begin{bmatrix}
+          1\\-1\\-1\\0
+          \end{bmatrix}
+    \end{pmatrix}
+    \end{pmatrix}
+$$
+\medskip
+
+\textbf{Solution.}
+\begin{enumerate}
+  \item Does not make sense 
+  \item $e^2 \det [2] = 2e^2$
+  \item \[
+    4 \det \begin{bmatrix}
+      3 & -1 & -1 \\
+      2 & 1 & -1 \\
+      1 & 0 & 1
+    \end{bmatrix}
+    = 4(7)
+    = 28
+  \]
+\end{enumerate}
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

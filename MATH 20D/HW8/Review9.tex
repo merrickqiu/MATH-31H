@@ -1,0 +1,198 @@
+\subsection{Review Problems Chapter 9}
+\textbf{Problem 1}
+The characteristic equation is 
+\[
+    (6-\lambda)(1-\lambda) + 6
+    = 12 - 7\lambda + \lambda^2
+    = (\lambda-3)(\lambda-4)
+\]
+For $\lambda_1 = 3$
+\[
+    A - \lambda I = \begin{bmatrix}
+        3 & -3 \\
+        2 & -2
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}
+\]
+For $\lambda_2 = 4$
+\[
+    A -\lambda I= \begin{bmatrix}
+        2 & -3 \\
+        2 & -3
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        3 \\ 2
+    \end{bmatrix}
+\]
+
+The general solution is thus 
+\[
+   x(t) = c_1e^{3t}
+   \begin{bmatrix}
+       1 \\ 1
+   \end{bmatrix} +
+   c_2e^{4t}
+   \begin{bmatrix}
+       3 \\ 2
+   \end{bmatrix} 
+\]
+\textbf{Problem 2}
+The characteristic equation is 
+\[
+    (3-\lambda)(1-\lambda) + 10
+    = 13 - 4\lambda + \lambda^2
+    \implies \lambda = \frac{4 \pm \sqrt{16-52}}{2}
+    \implies \lambda = 2 \pm 3i
+\]
+The eigenvector of $\lambda_1 = 2 + 3i$ is 
+\[
+    A-\lambda I = \begin{bmatrix}
+        1-3i & 2 \\
+        -5 & -1-3i
+    \end{bmatrix}
+    \implies \begin{bmatrix}
+        10 & 2+6i \\
+        -5 & -1-3i
+    \end{bmatrix}
+    \implies 
+    \implies \begin{bmatrix}
+        5 & 1+3i \\
+        0 & 0
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        -1-3i \\ 5
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    x(t) = c_1\left\{ 
+        e^{2t}\cos 3t \begin{bmatrix} -1 \\ 5 \end{bmatrix} 
+        - e^{2t}\sin 3t \begin{bmatrix} -3 \\ 0 \end{bmatrix} 
+    \right\} + 
+    c_2\left\{ 
+        e^{2t}\sin 3t \begin{bmatrix} -1 \\ 5 \end{bmatrix} 
+        + e^{2t}\cos 3t \begin{bmatrix} -3 \\ 0 \end{bmatrix} 
+    \right\} 
+\]
+\textbf{Problem 5}
+The characteristic equation is 
+\[
+    (1-\lambda)(4-\lambda)+2
+    = 6 -5\lambda + \lambda^2
+    = (\lambda-2)(\lambda-3)
+\]
+For $\lambda = 2$,
+\[
+    A = \begin{bmatrix}
+        -1 & -1 \\
+        2 & 2
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix}
+\]
+For $\lambda = 3$,
+\[
+    A = \begin{bmatrix}
+        -2 & -1 \\
+        2 & 1
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix}
+\]
+The fundamental matrix is 
+\[
+    \begin{bmatrix}
+        e^{2t} & e^{3t} \\
+        -e^{2t} & -e^{3t}
+    \end{bmatrix}
+\]
+\textbf{Problem 11}
+The characteristic polynomial is 
+\[
+    -\lambda(3-\lambda) + 2
+    = \lambda^2-3\lambda+2
+    = (\lambda-1)(\lambda-2)
+\]
+For $\lambda=1$
+\[
+    A-\lambda I = \begin{bmatrix}
+        -1 & 1 \\
+        -2 & 2
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}
+\]
+For $\lambda=2$
+\[
+    A-\lambda I = \begin{bmatrix}
+        -2 & 1 \\
+        -2 & 1
+    \end{bmatrix}
+\]
+The eigenvector is 
+\[
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    x(t) = c_1e^t
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix} +
+    c_2e^{2t}
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+Plugging in the initial values yield 
+\[
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix} 
+    =
+    c_1
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix} +
+    c_2
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+So $c_1 = 3$ and $c_2 = -2$.
+The final solution is 
+\[
+    x(t) = 3e^t
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix} -
+    2e^{2t}
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]

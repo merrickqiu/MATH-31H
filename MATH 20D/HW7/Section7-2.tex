@@ -1,0 +1,64 @@
+\subsection*{Section 7.2}
+\textbf{Problem 4}
+    For $s > 3$
+    \begin{align*}
+        F(s) 
+        &= \int_0^{\infty} e^{-st}f(t) \,dt \\
+        &= \int_0^{\infty} te^{(3-s)t} \,dt \\
+        &= \lim_{N \to \infty} \left[
+            \left(\frac{t}{3-s} - \frac{1}{(3-s)^2}\right)e^{(3-s)t}
+        \right]_0^N \\
+        &= \lim_{N \to \infty} \left[
+            \left(\frac{N}{3-s} - \frac{1}{(3-s)^2}\right)e^{(3-s)N}
+        \right]+ \frac{1}{(3-s)^2} \\
+        &= \lim_{N \to \infty} \left[
+            \frac{1}{-(3-s)^2e^{-(3-s)N}} 
+        \right] + \frac{1}{(3-s)^2} \\
+        &= \frac{1}{(3-s)^2}
+\end{align*}
+\textbf{Problem 6}
+    For $s > 0$,
+    \begin{align*}
+        F(s) 
+        &= \int_0^{\infty} e^{-st}f(t) \,dt \\
+        &= \int_0^{\infty} e^{-st}\cos bt \,dt \\
+        &= \lim_{N \to \infty} \left[ 
+            \frac{e^{-st}(-s\cos bt + b\sin bt)}{s^2+b^2}
+        \right]_0^N \\
+        &= \frac{s}{s^2+b^2}
+    \end{align*}
+\textbf{Problem 11}
+    For all $s$
+    \begin{align*}
+        F(s) 
+        &= \int_0^{\infty} e^{-st}f(t) \,dt \\
+        &= \int_0^\pi e^{-st}\sin t \,dt 
+            + \int_\pi^\infty 0 \,dt \\
+        &= \left[
+            -\frac{e^{-st}(s\sin(t)+\cos(t))}{s^2+1}
+        \right]_0^\pi \\
+        &= \frac{e^{-\pi s}}{s^2+1} + \frac{1}{s^2+1}
+    \end{align*}
+\textbf{Problem 17}
+    For $s>3$
+    \begin{align*}
+        \mathscr{L}(e^3t\sin6t - t^3 + e^t)
+        &= \mathscr{L}(e^3t\sin6t) - \mathscr{L}(t^3) + \mathscr{L}(e^t) \\
+        &= \frac{6}{(s-3)^2+36}  - \frac{6}{s^4} + \frac{1}{s-1}
+    \end{align*}
+\textbf{Problem 18}
+For $s>0$
+\begin{align*}
+    \mathscr{L}(t^4-t^2-t + \sin \sqrt{2}t)
+    &= \mathscr{L}(t^4) - \mathscr{L}(t^2) - \mathscr{L}(t) + \mathscr{L}(\sin \sqrt{2}t) \\
+    &= \frac{24}{s^5}  - \frac{2}{s^3} - \frac{1}{s^2} + \frac{\sqrt{2}}{s^2+2}
+\end{align*}
+\textbf{Problem 23}
+    The graph is only piecewise continuous.
+\textbf{Problem 28}
+    The graph is continuous since 
+    \[
+        \lim_{t \to 0} \frac{\sin t}{t}
+        = \lim_{t \to 0} \frac{\cos t}{1}
+        = 1
+    \]

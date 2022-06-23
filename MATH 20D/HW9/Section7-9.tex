@@ -1,0 +1,42 @@
+\subsection*{Section 7.9}
+\textbf{Problem 2}
+\[
+    \int_{-\infty}^\infty e^{3t}\delta(t) \,dt = e^0 = 1
+\]
+\textbf{Problem 19}
+\begin{align*}
+    \lap{w'' + 6w' + 5w} = \lap{e^{t}\delta(t-1)}
+    &\implies (s^2W -4) + 6(sW) + 5W = \lap{\delta(t-1)}(s-1) \\
+    &\implies (s^2+6s+5)W -4 =  e^{-(s-1)} \\
+    &\implies W =  \frac{e^{-(s-1)} + 4}{s^2+6s+5}\\
+    &\implies w = e^{-t} + e^{-5t} + \frac{e}{4}(e^{1-t}-e^{5-5t})u(t-1)
+\end{align*}
+\textbf{Problem 20}
+\begin{align*}
+    \lap{y'' + 5y' + 6y} = \lap{e^{-t}\delta(t-2)}
+    &\implies (s^2Y - 2s + 5) + 5(sY - 2) + 6Y = \lap{\delta(t-2)}(s+1) \\
+    &\implies (s^2+5s+6)Y -2s -5 =  e^{-2(s+1)} \\
+    &\implies Y = \frac{2s+5+e^{-2(s+1)}}{s^2+5s+6} \\
+    &\implies y = e^{-2t} + e^{-3t} + e^{-2}(e^{-2(t-2)}+e^{-3(t-2)})u(t-2)
+\end{align*}
+\textbf{Problem 22}
+\begin{align*}
+    \lap{y'' + y} = \lap{\delta(t-\frac{\pi}{2})}
+    &\implies (s^2+1)Y - 1 = e^{-\frac{\pi}{2}s} \\
+    &\implies Y = \frac{e^{-\frac{\pi}{2}s}+1}{s^2+1} \\
+    &\implies y = \sin t + (\cos t)u(t-\frac{\pi}{2})
+\end{align*}
+\textbf{Problem 23}
+\begin{align*}
+    \lap{y'' + y} = \lap{-\delta(t-pi)+\delta(t-2\pi)}
+    &\implies (s^2+1)Y - 1 = -e^{-\pi s} + e^{-2\pi s} \\
+    &\implies Y = \frac{-e^{-\pi s} + e^{-2\pi s}+1}{s^2+1} \\
+    &\implies y = (u(t-2\pi)+u(t-\pi)+1)\sin(t)
+\end{align*}
+\textbf{Problem 26}
+\begin{align*}
+    \lap{y'' - 6y' + 13} = \lap{\delta(t)}
+    &\implies s^2Y - 6sY + 13Y = 1 \\
+    &\implies Y = \frac{1}{s^2-6s+13} \\
+    &\implies y = h = \frac{1}{2}{e^{3t}}\sin 2t
+\end{align*}

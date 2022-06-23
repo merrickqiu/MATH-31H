@@ -1,0 +1,293 @@
+\subsection*{Section 9.5}
+\textbf{Problem 3}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda I) 
+    = (1-\lambda)(4-\lambda) + 2
+    = 6 - 5\lambda + \lambda^2
+    = (\lambda - 2)(\lambda - 3)
+\]
+The eigenvalues values are $\lambda_1 = 2$, $\lambda_2 = 3$.
+
+The eigenvector for $\lambda_1$ is
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        -1 & -1 \\
+        2 & 2
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        -2 & -1 \\
+        2 & 1
+    \end{bmatrix} x_2 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix}
+\]
+\textbf{Problem 9}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda I)
+    = \lambda^2 + 1
+\]
+The eigenvalues are $\lambda_1 = -i$ and $\lambda_2 = i$.
+
+The eigenvector for $\lambda_1$ is 
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        i & -1 \\
+        1 & i
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ i
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        -i & -1 \\
+        1 & -i
+    \end{bmatrix} x_2 = 0
+    \implies x_2 = 
+    \begin{bmatrix}
+        1 \\ -i
+    \end{bmatrix}
+\]
+\textbf{Problem 11}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda)
+    = (-1-\lambda)(3-\lambda) + \frac{15}{4}
+    = \frac{3}{4} - 2\lambda + \lambda^2
+    = (\lambda-\frac{1}{2})(\lambda-\frac{3}{2})
+\]
+The eigenvalues are $\lambda_1 = \frac{1}{2}$ and $\lambda_2 = \frac{3}{2}$
+
+The eigenvector for $\lambda_1$ is 
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        -\frac{3}{2} & \frac{3}{4} \\
+        -5 & \frac{5}{2}
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        -\frac{5}{2} & \frac{3}{4} \\
+        -5 & \frac{3}{2}
+    \end{bmatrix} x_2 = 0
+    \implies x_2 = 
+    \begin{bmatrix}
+        3 \\ 10
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    y = c_1e^\frac{t}{2}\begin{bmatrix} 1 \\ 2 \end{bmatrix} + 
+    c_2e^\frac{3t}{2} \begin{bmatrix} 3 \\ 10 \end{bmatrix}
+\]
+\textbf{Problem 12}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda I)
+    = (1-\lambda)^2 - 36
+    = 35 - 2\lambda + \lambda^2
+    = (\lambda + 5)(\lambda - 7)
+\]
+The eigenvalues are $\lambda_1 = -5$ and $7$
+
+The eigenvector for $\lambda_1$ is 
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        6 & 3 \\
+        12 & 6
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        -6 & 3 \\
+        12 & -6
+    \end{bmatrix} x_2 = 0
+    \implies x_2 = 
+    \begin{bmatrix}
+        1 \\ 2
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    y = c_1e^{-5t} \begin{bmatrix} 1 \\ -2 \end{bmatrix} +
+    c_2e^{7t} \begin{bmatrix} 1 \\ 2 \end{bmatrix}
+\]
+\textbf{Problem 18}
+\begin{enumerate}
+    \item The matrix multiplies $u_1$ by $-1$
+    \[
+        \begin{bmatrix}
+            -2 & 1 \\
+            1 & -2
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix}
+        = \begin{bmatrix}
+            -1 \\ -1
+        \end{bmatrix}
+    \]
+    The matrix multiplies $u_2$ by $-3$
+    \[
+        \begin{bmatrix}
+            -2 & 1 \\
+            1 & -2
+        \end{bmatrix}
+        \begin{bmatrix}
+            1 \\ -1
+        \end{bmatrix}
+        = \begin{bmatrix}
+            -3 \\ 3
+        \end{bmatrix}
+    \]
+    \item The equation is \[
+        y = e^{-t} \begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix}
+    \]
+    The equation starts at $(1,1)$ at $t=0$ and approaches 
+    the origin as $t \to \infty$ in a straight line.
+    \item The equation is \[
+        y = e^{-3t} \begin{bmatrix}
+            -1 \\ 1
+        \end{bmatrix}
+    \]
+    The equation starts at $(-1,1)$ at $t=0$ and approaches 
+    the origin as $t \to \infty$ in a straight line.
+    \item The equation is \[
+        y = e^{-t} \begin{bmatrix}
+            1 \\ 1
+        \end{bmatrix}
+        +
+        e^{-3t} \begin{bmatrix}
+            -1 \\ 1
+        \end{bmatrix}
+    \]
+    The equation starts at $(0, 2)$ at $t=0$ and approaches 
+    the origin as $t \to \infty$ in a curve that goes rightward.
+\end{enumerate}
+\textbf{Problem 19}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda I)
+    = (-1-\lambda)(1-\lambda) - 8
+    = -9 + \lambda^2
+    = (\lambda + 3)(\lambda - 3)
+\]
+The eigenvalues are $\lambda_1 = -3$ and $\lambda_2 = 3$.
+
+The eigenvector for $\lambda_1$ is
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        2 & 1 \\
+        8 & 4
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        -4 & 1 \\
+        8 & -2
+    \end{bmatrix} x_2 = 0
+    \implies x_2 = 
+    \begin{bmatrix}
+        1 \\ 4
+    \end{bmatrix}
+\]
+The fundamental matrix is
+\[
+    \begin{bmatrix}
+        e^{-3t} & e^{3t} \\
+        -2e^{-3t} & 4e^{3t}
+    \end{bmatrix}
+\]
+\textbf{Problem 20}
+The characteristic polynomial is 
+\[
+    \det(A-\lambda I)
+    = (5-\lambda)(-\lambda) + 4
+    = \lambda^2 - 5\lambda + 4
+    = (\lambda-1)(\lambda-4)
+\]
+The eigenvalues are $\lambda_1 = 1$ and $\lambda_2 = 4$.
+
+The eigenvector for $\lambda_1$ is 
+\[
+    (A-\lambda_1 I)x_1 = 0
+    \implies 
+    \begin{bmatrix}
+        4 & 4 \\
+        -1 & -1
+    \end{bmatrix} x_1 = 0
+    \implies x_1 = 
+    \begin{bmatrix}
+        1 \\ -1
+    \end{bmatrix}
+\]
+The eigenvector for $\lambda_2$ is 
+\[
+    (A-\lambda_2 I)x_2 = 0
+    \implies 
+    \begin{bmatrix}
+        1 & 4 \\
+        -1 & -4
+    \end{bmatrix} x_2 = 0
+    \implies x_2 = 
+    \begin{bmatrix}
+        4 \\ -1
+    \end{bmatrix}
+\]
+The fundamental matrix is 
+\[
+    \begin{bmatrix}
+        e^t & 4e^{4t} \\
+        -e^t & -e^{4t}
+    \end{bmatrix}
+\]

@@ -1,0 +1,127 @@
+\subsection*{Section 2.4}
+\textbf{Problem 4}
+
+Exact since both derivatives equal $xye^{xy}+x^{xy}$
+
+\textbf{Problem 5}
+
+Separable and linear
+
+\textbf{Problem 6}
+
+Exact since both derivatives equal $2y$
+
+\textbf{Problem 10}
+
+The equation is exact since both derivatives equal 1.
+Thus, 
+\[
+    F(x,y) = \int 2x + y \,dx + g(y) = x^2 + xy + g(y)
+\]
+Taking the derivative with respect to $y$, 
+\[
+    x-2y = x + g'(y)
+    \implies g'(y) = -2y
+    \implies g(y) = -y^2
+\]
+Thus the general solution is
+\[
+    F(x,y) = x^2 + xy - y^2 = C
+\]
+\textbf{Problem 22}
+The equation is exact so, 
+\[
+    F(x, y) 
+    = \int ye^{xy}-\frac{1}{y} \,dx 
+    = e^{xy} - \frac{x}{y} + g(y)
+\]
+Taking the derivative with respect to $y$,
+\[
+    xe^{xy}+\frac{x}{y^2} = xe^{xy} + \frac{x}{y^2} + g'(y)
+    \implies  g'(y) = 0 
+    \implies g(y) = C
+\]
+Thus the general solution is in form 
+\[
+    F(x, y) = e^{xy} - \frac{x}{y}  = C
+\]
+$C = e-1$ at $y(1) = 1$ so the solution is 
+\[
+    e^{xy} - \frac{x}{y}  = e-1
+\]
+\textbf{Problem 23}
+The equation is exact so,
+\[
+    F(x, y)
+    = \int e^ty + te^ty \,dt 
+    = te^ty + g(y)
+\]
+Taking the derivative with respect to $y$,
+\[
+    te^t+2 = te^t + g'(y)
+    \implies g'(y) = 2
+    \implies g(y) = 2y+C
+\]
+Thus the general solution is in form 
+\[
+    te^ty + 2y = C
+\]
+$C = -2$ at $y(0) = -1$ so the solution is 
+\[
+    te^ty + 2y = -2
+    \implies y = -\frac{2}{te^t+2}
+\]
+\textbf{Problem 26}
+The equation is exact so,
+\[
+    F(x,y)
+    = \int \tan y - 2 \,dx 
+    = x\tan y - 2x + g(y)
+\]
+Taking the derivative with respect to $y$,
+\[
+    x\sec^2y + \frac{1}{y} = x\sec^2 y + g'(y)
+    \implies g'(y) = \frac{1}{y}
+    \implies g(y) = \ln y + C
+\]
+Thus the general solution is in form 
+\[
+    x\tan y - 2x + \ln y = C
+\]
+$C= 0$ at $y(0) = 1$ so the solution is 
+\[
+    x\tan y - 2x + \ln y = 0
+\]
+\textbf{Problem 29}
+The equation is not exact since 
+\[
+    \pder{}{y} (y^2+2xy) = 2y+2x
+\]
+\[
+    \pder{}{x} -x^2 = -2x
+\]
+Multiplying by $y^{-2}$ yields an exact solution since
+\[
+    \pder{}{y} (1+2\frac{x}{y}) = -2\frac{x}{y^2}
+\]
+\[
+    \pder{}{x} (-\frac{x^2}{y^2}) = -2\frac{x}{y^2}
+\]
+Therefore,
+\[
+    F(x, y) 
+    = \int (1+2\frac{x}{y}) \, dx 
+    = x + \frac{x^2}{y} + g(y)
+\]
+Taking the derivative relative to $y$,
+\[
+    -\frac{x^2}{y^2} = - \frac{x^2}{y^2} + g'(y)
+    \implies g'(y) = 0
+    \implies g(y) = C
+\]
+The general solution is thus 
+\[
+    x + \frac{x^2}{y} = C
+    \implies y = \frac{x^2}{C-x}
+\]
+The solution, $y=0$, was lost.

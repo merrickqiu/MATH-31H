@@ -1,0 +1,264 @@
+\subsection*{Section 9.6}
+\textbf{Problem 1}
+The characteristic equation is 
+\[
+    \det(A-\lambda I)
+    = (2-\lambda)(-2-\lambda) + 8
+    = 4 + \lambda^2
+\]
+The eigenvalues are $\lambda_1 = -2i$ and $\lambda_2 = 2i$.
+
+The eigenvector of $\lambda_2$ is 
+\[
+    (A-\lambda_2I)x=0 \implies 
+    \begin{bmatrix}
+        2-2i & -4 \\
+        2 & -2-2i
+    \end{bmatrix} x = 0 \implies
+    x = 
+    \begin{bmatrix}
+        1+i \\ 1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix} +
+    i
+    \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix} 
+\]
+The general solution is 
+\[
+    y = c_1\left(\cos 2t \begin{bmatrix} 1 \\ 1 \end{bmatrix} 
+          - \sin 2t \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) +
+        c_2\left(\sin 2t \begin{bmatrix} 1 \\ 1 \end{bmatrix} 
+          + \cos 2t \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) 
+\]
+This can be rewritten as 
+\[
+    y = c_1 
+    \begin{bmatrix}
+        \cos 2t - \sin 2t \\
+        \cos 2t
+    \end{bmatrix} +
+    c_2 
+    \begin{bmatrix}
+        \sin 2t + \cos 2t \\
+        \sin 2t
+    \end{bmatrix}
+\]
+\textbf{Problem 2}
+The characteristic polynomial is 
+\[
+    (-2-\lambda)(2-\lambda) + 5
+    = 1 +\lambda^2
+\]
+The eigenvalues are $\pm i$
+The eigenvector is 
+\[
+    (A-\lambda I)x=0 \implies 
+    \begin{bmatrix}
+        -2-i & -5 \\
+        1 & 2-i
+    \end{bmatrix} x = 0 \implies
+    x = 
+    \begin{bmatrix}
+        i-2 \\ 1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        -2 \\ 1
+    \end{bmatrix} +
+    i
+    \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix} 
+\]
+The general solution is 
+\[
+    y = c_1\left(\cos t \begin{bmatrix} -2 \\ 1 \end{bmatrix} 
+          - \sin t \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) +
+        c_2\left(\sin t \begin{bmatrix} -2 \\ 1 \end{bmatrix} 
+          + \cos t \begin{bmatrix} 1 \\ 0 \end{bmatrix}\right) 
+\]
+This can be rewritten as 
+\[
+    y = c_1 
+    \begin{bmatrix}
+        -2\cos t - \sin t \\
+        \cos t
+    \end{bmatrix} +
+    c_2 
+    \begin{bmatrix}
+        -2\sin t + \cos t \\
+        \sin t
+    \end{bmatrix}
+\]
+\textbf{Problem 5}
+The characteristic polynomial is 
+\[
+    (-1-\lambda)^2 + 16
+    = 17 + 2\lambda + \lambda^2
+    \implies \lambda = 
+    \frac{-2 \pm \sqrt{4-68}}{2} =
+    -1 \pm 4i
+\]
+The eigenvector is 
+\[
+    (A-\lambda I)x=0 \implies 
+    \begin{bmatrix}
+        -4i & -2 \\
+        8 & -4i
+    \end{bmatrix} x = 0 \implies
+    x = 
+    \begin{bmatrix}
+        1 \\ -2i
+    \end{bmatrix} = 
+\]
+The general solution is
+\[
+    y = c_1\left(e^{-t}\cos 4t \begin{bmatrix} 1 \\ 0 \end{bmatrix} 
+          - e^{-t}\sin 4t \begin{bmatrix} 0 \\ -2 \end{bmatrix}\right) +
+        c_2\left(e^{-t}\sin 4t \begin{bmatrix} 1 \\ 0 \end{bmatrix} 
+          + e^{-t}\cos 4t \begin{bmatrix} 0 \\ -2 \end{bmatrix}\right) 
+\]
+The fundamental matrix is 
+\[
+    \begin{bmatrix}
+        e^{-t}\cos 4t & e^{-t}\sin 4t \\
+        2e^{-t}\sin 4t & -2e^{-t}\cos 4t
+    \end{bmatrix}
+\]
+\textbf{Problem 6}
+The characteristic polynomial is 
+\[
+    (-2-\lambda)(2-\lambda) + 8
+    = 4 + \lambda^2
+\]
+The eigenvalues are $\pm 2i$
+The eigenvector is 
+\[
+    (A-\lambda I)x=0 \implies 
+    \begin{bmatrix}
+        -2-2i & -2 \\
+        4 & 2-2i
+    \end{bmatrix} x = 0 \implies
+    x = 
+    \begin{bmatrix}
+        1 \\ -1-i
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    y = c_1\left(\cos 2t \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+          - \sin 2t \begin{bmatrix} 0 \\ -1 \end{bmatrix}\right) +
+        c_2\left(\sin 2t \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+          + \cos 2t \begin{bmatrix} 0 \\ -1 \end{bmatrix}\right) 
+\]
+The fundamental matrix is 
+\[
+    \begin{bmatrix}
+        \cos 2t & \sin 2t \\
+        -\cos 2t + \sin 2t & -\sin 2t -\cos 2t
+    \end{bmatrix}
+\]
+\textbf{Problem 13}
+The characteristic equation is
+\[
+    (-3-\lambda)(-1-\lambda) + 2
+    = 5 + 4\lambda + \lambda^2
+    \implies \lambda =
+    \frac{-4 \pm \sqrt{16-20}}{2} =
+    -2 \pm i
+\]
+The eigenvalues are $-2 \pm i$ 
+
+The eigenvector is
+\[
+    \begin{bmatrix}
+        -1 - i & -1 \\
+        2 & 1-i
+    \end{bmatrix} x = 0
+    \implies x = 
+    \begin{bmatrix}
+        1 \\ -1-i
+    \end{bmatrix}
+\]
+The general solution is 
+\[
+    y = c_1\left(e^{-2t}\cos t \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+          - e^{-2t}\sin t \begin{bmatrix} 0 \\ -1 \end{bmatrix}\right) +
+        c_2\left(e^{-2t}\sin t \begin{bmatrix} 1 \\ -1 \end{bmatrix} 
+          + e^{-2t}\cos t \begin{bmatrix} 0 \\ -1 \end{bmatrix}\right) 
+\]
+This can be rewritten as 
+\[
+    y = c_1
+    \begin{bmatrix}
+        e^{-2t}\cos t \\
+        -e^{-2t}\cos t + e^{-2t}\sin t
+    \end{bmatrix} + 
+    c_2
+    \begin{bmatrix}
+        e^{-2t}\sin t \\
+        -e^{-2t}\sin t - e^{-2t}\cos t
+    \end{bmatrix}
+\]
+Solving out for the constants yields 
+\begin{enumerate}
+    \item \[
+        x(0) = \begin{bmatrix}
+            c_1 \\
+            -c_1 -c_2
+        \end{bmatrix}
+    \]
+    This means that $c_1 = -1$ and $c_2 = 1$.
+    The solution is 
+    \[
+        \begin{bmatrix}
+            e^{-2t}\sin t - e^{-2t}\cos t \\
+            -2e^{-2t}\sin t
+        \end{bmatrix}
+    \]
+    \item \[
+        x(\pi) = e^{-2\pi}\begin{bmatrix}
+            -c_1 \\
+            c_1 -c_2
+        \end{bmatrix}
+    \]
+    This means that $c_1 = -e^{2\pi}$ and $c_2 = 0$.
+    The solution is 
+    \[
+        \begin{bmatrix}
+            e^{-2t+2\pi} \cos t\\
+            -e^{-2t+2\pi} \cos t + e^{-2t+2\pi} \sin t
+        \end{bmatrix}
+    \]
+    \item \[
+        x(-2\pi) = e^{4\pi}\begin{bmatrix}
+            c_1 \\
+            -c_1 -c_2
+        \end{bmatrix}
+    \]
+    This means that $c_1 = 2e^{-4\pi}$ and $c_2 = -3e^{-4\pi}$.
+    The solution is 
+    \[
+        \begin{bmatrix}
+            e^{-2t+4\pi}(2\cos t - 3 \sin t) \\
+            e^{-2t+4\pi}(\cos t + 5\sin t)
+        \end{bmatrix}
+    \]
+    \item \[
+        x(\pi/2) = e^{-\pi}\begin{bmatrix}
+            c_2 \\
+            c_1 -c_2
+        \end{bmatrix} 
+    \]
+    This means that $c_1 = e^\pi$ and $c_2 = 0$
+    The solution is 
+    \[ 
+        \begin{bmatrix}
+            e^{\pi - 2t}\cos t \\
+            e^{\pi - 2t}(\sin t - \cos t)
+        \end{bmatrix}
+    \]
+\end{enumerate}

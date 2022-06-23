@@ -1,0 +1,410 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{bigints}
+\usepackage{amssymb}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newcommand{\inv}{^{-1}}
+
+\title{Math 31CH HW2 \\ Due April 12 at 11:59 pm}
+\author{Merrick Qiu}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+
+
+
+\subsection*{Exercise 4.8.1} (For the matrix $A$ only.)
+Compute the determinant of the following matrix, using development by the first column or development by the first row.
+$$
+\begin{pmatrix}1&-2&3&0\\
+4&0&1&2\\5&-1&2&1\\
+3&2&1&0\end{pmatrix}
+$$
+
+\medskip
+
+\textbf{Solution.}
+Using the cofactor formula,
+\begin{align*}
+    \det A
+    &= \det 
+        \begin{bmatrix}
+            0 & 1 & 2 \\
+            -1 & 2 & 1 \\
+            2 & 1 & 0
+        \end{bmatrix}
+    + 2 \det 
+        \begin{bmatrix}
+            4 & 1 & 2 \\
+            5 & 2 & 1 \\
+            3 & 1 & 0
+        \end{bmatrix}
+    + 3 \det 
+        \begin{bmatrix}
+            4 & 0 & 2 \\
+            5 & -1 & 1 \\
+            3 & 2 & 0
+        \end{bmatrix} \\
+    &= (-(-2) + 2(-5)) + 2(4(-1)-(-3)+2(-1)) + 3(4(-2)+2(13)) \\
+    &= -8 -6 +54 \\
+    &= 40
+\end{align*}
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Exercise 4.8.5}
+Show by direction computation that if $A,B$ are $2\times 2$ matrices, then $tr(AB) = tr(BA)$.
+
+\medskip
+
+\textbf{Solution.}
+\[
+        AB = 
+        \begin{bmatrix}
+            a & b\\
+            c & d
+        \end{bmatrix}
+        \begin{bmatrix}
+            e & f\\
+            g & h
+        \end{bmatrix} =
+        \begin{bmatrix}
+            ae+bg & af+bh\\
+            ce+dg & cf+dh
+        \end{bmatrix}
+    \]
+    \[
+        BA = 
+        \begin{bmatrix}
+            e & f\\
+            g & h
+        \end{bmatrix}
+        \begin{bmatrix}
+            a & b\\
+            c & d
+        \end{bmatrix} =
+        \begin{bmatrix}
+            ae+cf & be+df\\
+            ag+ch & bg+dh
+        \end{bmatrix}
+    \]
+    \[
+        \operatorname{tr}(AB)
+        = (ae+bg) + (cf+dh)
+        = (ae+cf) + (bg+dh)
+        = \operatorname{tr}(BA)
+    \]
+\newpage
+
+
+
+
+
+
+
+
+
+\subsection*{Exercise 4.8.7}
+\textbf{Part a.}
+Use multilinearity to show that if a square matrix has a column of zeros, its determinant must be zero.
+\medskip
+
+\textbf{Solution.}
+Let $A$ be a $n\times n$ square matrix, 
+    let $a_j$ denote the $j$th column of $A$,
+    and let $0_n$ denote a column of zeros.
+    \begin{align*}
+        \det A
+        &= \det [a_1 \hdots 0_n \hdots a_n] \\
+        &= \det [a_1 \hdots 0_n + 0_n \hdots a_n] \\
+        &= \det [a_1 \hdots 0_n \hdots a_n] + \det [a_1 \hdots 0_n \hdots a_n] \\
+        &= 2 \det A
+    \end{align*}
+    Therefore, $\det A = 0$ if $A$ has a column of zeros.
+\bigskip
+
+\noindent \textbf{Part b.}
+Show that if two columns of a square matrix $A$ are equal, $\det(A) = 0$.
+\medskip
+
+\textbf{Solution.}
+Let columns $a_i$ and $a_j$ be equal.
+Using antisymmetry 
+\begin{align}
+    \det A 
+    &= \det [\hdots a_i \hdots a_j \hdots] \\
+    &= -\det [\hdots a_j \hdots a_i \hdots] \\
+    &= -\det A
+\end{align}
+Since $\det A  = -\det A$, then $\det A = 0$.
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Exercise 4.8.8}
+Let $A$ and $B$ be $n\times n$ matrices, with $A$ invertible. Show that the function
+$$
+f(B) = \frac{\det(AB)}{\det(A)}
+$$
+satisfies multilinearity, antisymmetry, normalization, so $f(B) = \det(B)$.
+
+\medskip
+
+\textbf{Solution.}
+
+$f(B)$ is multilinear:
+\begin{align*}
+    f(B)
+    &= f([\hdots c_1b_1+c_2b_2 \hdots]) \\
+    &= \frac{\det[\hdots A(c_1b_1+c_2b_2) \hdots]}{\det{A}} \\
+    &= \frac{c_1\det[\hdots Ab_1\hdots] + c_2\det[\hdots Ab_2\hdots]}{\det{A}} \\
+    &= c_1f([\hdots b_1 \hdots]) + c_2f([\hdots b_2 \hdots])
+\end{align*}
+$f(B)$ is antisymmetric:
+\begin{align*}
+    f(B)
+    &= f([\hdots b_i \hdots b_j \hdots]) \\
+    &= \frac{\det [\hdots Ab_i \hdots Ab_j \hdots]}{\det{A}} \\
+    &= -\frac{\det [\hdots Ab_j \hdots Ab_i \hdots]}{\det{A}} \\
+    &= - f([\hdots b_j \hdots b_i \hdots])
+\end{align*}
+$f(B)$ is normal:
+\[
+    f(I)
+    = \frac{\det AI}{\det{A}}
+    = \frac{\det A}{\det{A}}
+    = 1
+\]
+Therefore, $f(B) = \det B$.
+\newpage
+
+
+
+
+
+
+\subsection*{Exercise 4.8.11}
+Prove Theorem 4.8.10: If $A$ is an $n\times n$ matrix, $B$ is an $m\times m$ matrix, and $C$ is an arbitrary $n\times m$ matrix, then
+$$
+\det\begin{pmatrix}
+A&C\\0&B
+\end{pmatrix}
+=\det(A)\det(B)
+$$
+
+\medskip
+
+\textbf{Solution.}
+
+Let $R_A$ be the matrix where $R_A A$ is in RREF,
+and let $R_B$ be the matrix where $R_BB$ is in RREF.
+Then 
+\begin{align*}
+    \det \begin{bmatrix}
+        R_A A & C \\
+        0 & R_B B
+    \end{bmatrix}
+    &= \det \begin{bmatrix}
+            R_A & 0 \\
+            0 & I
+        \end{bmatrix}
+        \det \begin{bmatrix}
+            I & 0 \\
+            0 & R_B
+        \end{bmatrix}
+        \det \begin{bmatrix}
+            A & C \\
+            0 & B
+        \end{bmatrix}
+    &= \det R_A \det R_B
+        \det \begin{bmatrix}
+            A & C \\
+            0 & B
+        \end{bmatrix}
+\end{align*}
+
+If $\det A \neq 0$ and $\det B \neq 0$,
+then $R_A = A\inv$ and $R_B = B\inv$ so 
+\[
+    \det \begin{bmatrix}
+        A & C \\
+        0 & B
+    \end{bmatrix}
+    =  \frac{1}{\det R_A}
+        \frac{1}{\det R_B}
+        \det \begin{bmatrix}
+            R_A A & C \\
+            0 & R_B B
+        \end{bmatrix} 
+    =  \frac{1}{\det A\inv}
+        \frac{1}{\det B\inv}
+        \det \begin{bmatrix}
+            I & C \\
+            0 & I
+        \end{bmatrix} 
+    = \det A \det B
+\]
+
+If $\det A = 0$ or $\det B = 0$, then 
+$\det \begin{bmatrix}
+    R_A A & C \\
+    0 & R_B B
+\end{bmatrix} = 
+\det \begin{bmatrix}
+    A & C \\
+    0 & B
+\end{bmatrix} = 0$ since 
+$R_A A$ will have a column of zeros or
+$R_B B$ will have a row of zeros.
+Therefore the equation still holds 
+when A or B are not invertible. 
+\newpage
+
+\subsection*{Exercise 4.8.13}
+Confirm that the six permutations of the number $1,2,3$ have the signatures listed in Example 4.8.13.
+
+\medskip
+
+\textbf{Solution.} \\
+The following have an even number of transpositions 
+and so have positive signature.
+\begin{align*}
+    &123 \\
+    &231 \implies 132 \implies 123 \\
+    &312 \implies 213 \implies 123
+\end{align*}
+The following have an odd number of transpositions 
+and so have negative signature.
+\begin{align*}
+    &132 \implies 123 \\
+    &213 \implies 123 \\
+    &321 \implies 123 
+\end{align*}
+
+\newpage
+
+
+
+
+
+\subsection*{Exercise 4.8.14}
+
+Prove the Cayley-Hamiliton theorem:
+\medskip
+
+\noindent\textbf{Part a.}
+First prove it for diagonal matrices.
+\medskip
+
+\textbf{Solution.}
+Let $B$ be a $n\times n$ diagonal matrix 
+with diagonal elements $\mu_1 \hdots \mu_n$.
+Let $c_0 \hdots c_{n-1}$ be constants dependent on $\mu_1 \hdots \mu_n$.
+Then,
+\[
+    \chi_B(\lambda) 
+    = \det(\lambda I-B) 
+    = \prod_{i=1}^n (\lambda - \mu_i)
+    = \lambda^n + c_{n-1}\lambda^{n-1} + \hdots + c_0
+\]
+Therefore, 
+\[
+    \chi_B(B) = B^n + c_{n-1}B^{n-1} + \hdots + c_0I
+\]
+Since $B$ is a diagonal matrix, then
+\[
+    B^k = 
+    \begin{bmatrix}
+        \mu_1^k & 0 & \hdots  & 0 \\
+        0 & \mu_2^k &\hdots & 0 \\
+        \vdots & \vdots  & \ddots & 0 \\
+        0 & 0 & \hdots & \mu_n^k
+    \end{bmatrix}
+\]
+So to find the $i$th diagonal term in $\chi_B(B)$,
+each $B^k$ term can be replaced with $\mu_i^k$.
+The $i$th diagonal term in $\chi_B(B)$ ends up being
+$\mu_i^n + c_{n-1}\mu_i^{n-1} + \hdots + c_0 = \chi_B(\mu_i)$.
+Since $\mu_i$ is an eigenvalue, $\chi_B(\mu_i) = 0$ for all $i$,
+so the Cayley-Hamilton theorem holds for all diagonal matrices.
+\[
+    \chi_B(B) = 
+    \begin{bmatrix}
+        \chi_B(\mu_1) & 0 & \hdots  & 0 \\
+        0 & \chi_B(\mu_2) &\hdots & 0 \\
+        \vdots & \vdots  & \ddots & 0 \\
+        0 & 0 & \hdots & \chi_B(\mu_n)
+    \end{bmatrix} = 
+    [0]
+\]
+\bigskip
+
+\noindent \textbf{Part b.}
+Next show that $\chi_{P^{-1}BP} = \chi_B$. Use this and part a to prove the theorem for diagonalizable matrices.
+
+\medskip
+
+\textbf{Solution.}
+Substituting in $I = P\inv I P$,
+\begin{align*}
+    \chi_{P\inv BP}(\lambda)
+    &= \det(\lambda I - P\inv BP) \\
+    &= \det(\lambda P\inv IP - P\inv BP) \\ 
+    &= \det(P\inv) \det(\lambda I - B) \det(P) \\
+    &= \det(\lambda I - B) \\
+    &= \chi_{B}(\lambda)
+\end{align*}
+Therefore, the Cayley-Hamilton theorem holds for diagonalizable matrices.
+\bigskip
+
+\noindent \textbf{Part c.}
+Finally, use Theorem 4.8.26 to prove it in general.
+\medskip
+
+
+\textbf{Solution.}
+Theorem 4.8.26 says that there exists 
+a sequence of complex diagonalizable matrices, $A_i$,
+that converges to any square matrix $A$.
+Since $\chi_{A_i}(A_i) = 0$ for all $i$,
+and the characteristic polynomial is continuous,
+$\chi_A(A) = 0$ for any square matrix $A$. 
+
+
+
+
+
+
+
+
+\end{document} 
