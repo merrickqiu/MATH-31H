@@ -1,0 +1,138 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181A: Homework 5} \\
+	Merrick Qiu 
+\end{center}
+
+\subsection*{Problem 1}
+The fisher information of $X$ is 
+\[
+	\log f_X(X;\theta) 
+	= \log(\theta+1) + \theta \log(X)
+\]
+\[
+	\frac{\partial}{\partial \theta} \log f_X(X;\theta) 
+	= \frac{1}{\theta+1} + \log(X)
+\]
+\[
+	\frac{\partial^2}{\partial \theta^2} \log f_X(X;\theta) 
+	= -\frac{1}{(\theta+1)^2}
+\]
+\[
+	I(\theta) = \frac{1}{(\theta+1)^2}
+\]
+The asymptotic variance is 
+\[
+	\frac{1}{nI(\theta)} = \frac{(\theta+1)^2}{n}
+\]
+\newpage
+
+\subsection*{Problem 2}
+The fisher information of $X$ is 
+\[
+	\log f_X(X;p) 
+	= (X-1)\log(1-p) + \log(p)
+\]
+\[
+	\frac{\partial}{\partial p} \log f_X(X;p) 
+	= \frac{1-X}{1-p} + \frac{1}{p}
+\]
+\[
+	\frac{\partial^2}{\partial p^2} \log f_X(X;p)
+	= \frac{1-X}{(1-p)^2} - \frac{1}{p^2}
+\]
+\[
+	I(p) 
+	= \frac{1}{p^2} - \frac{1-1/p}{(1-p)^2}
+	= \frac{1}{p^2} + \frac{(1-p)/p}{(1-p)^2}
+	= \frac{1}{p^2} + \frac{1}{p(1-p)}
+	= \frac{1}{p^2(1-p)}
+\]
+The asymptotic variance is 
+\[
+	\frac{1}{nI(p)}
+	= \frac{p^2(1-p)}{n}
+\]
+The estimated value is 
+\[
+	p_e = \frac{1}{\bar{x}} = 0.592
+\]
+The marginal error is 
+\[
+	Z_{\alpha/2}\sqrt{\frac{\hat{p}^2(1-\hat{p})}{n}}
+	= 1.96\sqrt{\frac{0.592^2\cdot0.408}{100}}
+	=0.074
+\]
+The confidence interval is therefore $(0.518, 0.666)$.
+\newpage 
+
+\subsection*{Problem 3: 5.7.2}
+We have that $\mu=0$, $E[Y_i^2] = E[(Y_i-\mu)^2] = \sigma^2$.
+By the weak law of large numbers, $S_n^2$, which is the sample mean of $Y^2$,
+is a consistent estimator for $E[Y_i^2] = \sigma^2$.
+\newpage 
+
+\subsection*{Problem 4}
+\begin{enumerate}
+	\item $\hat{\lambda}_n$ is unbiased since
+	$E[\hat{\lambda}_n] = E[X_n] = \lambda$.
+	\item $\hat{\lambda}_n$ is not consistent since 
+	we are only using the $n$-th random variable.
+	The probability that the estimator is within some $\epsilon$
+	remains fixed at some constant value less than 1
+	and does not approach 1 as $n$ goes to infinity.
+\end{enumerate}
+\newpage 
+
+\subsection*{Problem 5}
+The probability that a random person will support the mayor is 
+$0.5*0.7+0.5*0.3 = 0.5$. 
+The variance is $\frac{p(1-p)}{n} = \frac{0.5\cdot 0.5}{500} = 0.0005$
+
+The variance of the male population is $\frac{0.7\cdot0.3}{250} = 0.00084$.
+The variance of the female population is $\frac{0.3\cdot0.7}{250} = 0.00084$.
+The overall variance is 
+$0.5^20.00084 + 0.5^20.00084 = 0.00042$.
+Thus the relative efficiency is $\frac{0.0005}{0.00042} = 1.19$.
+\newpage
+
+\subsection*{Problem 6: R Simulation}
+Here are the calculations for the critical values:
+
+\includegraphics*{parta.png}
+
+The values are relatively close to the theoretical values,
+with the $n=10000$ being slightly closer.
+
+Here is the histogram for $n=10$
+
+\includegraphics*{data10.png}
+
+Here is the histogram for $n=1000$
+
+\includegraphics*{data1000.png}
+
+Since the sample mean is a consistent estimator for $\mu$,
+its value will get closer and closer to $\mu$ for larger values of $n$,
+which is shown by the $x$ axis of the $n=1000$ histogram being tighter around 1.
+\end{document}
+
+
+
+

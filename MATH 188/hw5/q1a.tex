@@ -1,0 +1,14 @@
+\begin{tikzpicture}[main/.style = {draw, circle}] 
+    \node[main] (0) {$0$}; 
+    \node[main] (1) [right of=0] {$1$};
+    \node[main] (2) [right of=1] {$\hdots$}; 
+    \node[main] (3) [right of=2] {$k$};
+    
+    \draw[->] (0) -- (1);
+    \draw[->] (1) -- (2);
+    \draw[->] (2) -- (3);
+    \draw (0) edge [loop above] node {} (0);
+    \draw (1) edge [loop above] node {} (1);
+    \draw (2) edge [loop above] node {} (2);
+    \draw (3) edge [loop above] node {} (3);
+ \end{tikzpicture} 

@@ -1,0 +1,23 @@
+\begin{tikzpicture}[main/.style = {draw, circle}]
+   \node[main] (**) at (0, 1) {$**$};
+   \node[main] (*0) at (-1, 0) {$*0$};
+   \node[main] (00) at (-2, -2) {$00$};
+   \node[main] (01) at (-2, 2) {$01$};
+   \node[main] (*1) at (1, 0) {$*1$};
+   \node[main] (10) at (2, -2) {$10$};
+   \node[main] (11) at (2, 2) {$11$};
+
+   \draw[->] (**) -- (*1);
+   \draw[->] (**) -- (*0);
+   \draw[->] (*0) -- (00);
+   \draw[->] (*0) -- (01);
+   \draw[->] (*1) -- (10);
+   \draw[->] (*1) -- (11);
+
+   \draw[->] (00) -- (01);
+   \draw[->] (11) -- (10);
+
+   \draw[->] (01) -- (11);
+   \draw[->] (10) -- (00);
+   \draw[<->] (10) -- (01);
+\end{tikzpicture} 

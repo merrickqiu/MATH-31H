@@ -1,0 +1,125 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{listings}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\sumN}{\sum_{i=1}^{n}}
+\newcommand{\sumM}{\sum_{i=1}^{m}}
+\newcommand{\prodN}{\prod_{i=1}^{n}}
+\newcommand{\prodM}{\prod_{i=1}^{m}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181B: Homework 7} \\
+	Merrick Qiu 
+\end{center}
+\subsection*{Exercise 1}
+	\begin{align*}
+		\sum_{i=1}^{b} k(\bar{Y}_{i.} - \bar{Y}_{..})^2 
+		&= \sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta + \mu + \beta - \bar{Y}_{..})^2 \\
+		&= \sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta)^2
+			+ \sum_{i=1}^{b} k(\bar{Y}_{..} - \mu -\beta)^2
+			- 2 \sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta)(\bar{Y}_{..} - \mu -\beta) \\
+		&= \sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta)^2
+			+ bk(\bar{Y}_{..} - \mu -\beta)^2
+			- 2bk(\bar{Y}_{..} - \mu -\beta)^2 \\
+		&= \sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta)^2 - bk(\bar{Y}_{..} - \mu -\beta)^2 \\
+	\end{align*}
+	\begin{align*}
+		E\left[\sum_{i=1}^{b} k(\bar{Y}_{i.} - \mu -\beta)^2 - bk(\bar{Y}_{..} - \mu -\beta)^2\right]
+		&= \sum_{i=1}^{b} kE[(\bar{Y}_{i.} - \mu -\beta)^2] - bkE[(\bar{Y}_{..} - \mu -\beta)^2] \\
+		&= \sum_{i=1}^{b} k(\var(\bar{Y}_{i.}-\mu-\beta) + (E[\bar{Y}_{i.}-\mu-\beta])^2) -bk\var(\bar{Y}_{..}) \\
+		&= \sum_{i=1}^{b} k\left(\frac{\sigma^2}{k} + (\beta_i -\beta + \mu - \mu)^2\right) - bk\frac{\sigma^2}{bk} \\
+		&= \sigma^2(b-1) + \sum_{i=1}^{b} k(\beta_i -\beta)^2 \\
+	\end{align*}
+\newpage 
+
+\subsection*{Exercise 2}
+\begin{lstlisting}
+score = c(5, 6.1, 7.2, 6, 5.9, 7, 6.5, 6.3, 7.3)
+data = data.frame(score=score,
+                  block = c(rep('Sit', 3), rep('Wait', 3), rep('Drop it',3)),
+                  treatment = c(rep(c('Dog 1', 'Dog 2', 'Dog 3'), 3)))
+summary(aov(score ~treatment + block, data))
+
+#             Df Sum Sq Mean Sq F value Pr(>F)  
+# treatment    2 2.9867  1.4933   8.145 0.0389 *
+# block        2 0.5600  0.2800   1.527 0.3215  
+# Residuals    4 0.7333  0.1833       
+\end{lstlisting}
+
+The dogs are the treatment groups and the commands are the blocks.
+We have H0: $\mu_1 = \mu_2 = \mu_3$ and 
+H1: the dogs take different amount of time to respond.
+Since the p value of $0.0389$ is less than $0.05$,
+we reject the null and the dogs do take different amounts of time to respond to commands. \\
+
+To test if the commands have an effect, we have the hypothesis
+We have H0: $\beta_1 = \beta_2 = \beta_3$ and 
+H1: the commands have different response times.
+Since the p value for the commands is $0.3215$ is greater than $0.05$,
+we fail to reject the null and the commands do not have an important impact.
+\newpage
+
+\subsection*{Exercise 3}
+\begin{lstlisting}
+mu = c(1, 2, 3);
+findRejections = function(beta) {
+  df = data.frame();
+  for (i in 1:3) {
+    for (j in 1:3) {
+      newRow = c(
+        mu[i] + beta[j] + rnorm(1, 0,sqrt(0.4)),
+        toString(i),
+        toString(j)
+      )
+      df = rbind(df, newRow);
+    }
+  }
+  colnames(df) = c('score','treatment','block');
+  anova = summary(aov(score ~treatment, df));
+  rbd = summary(aov(score ~treatment + block, df));
+
+  anovaValue = anova[[1]][["Pr(>F)"]][1];
+  rbdValue = rbd[[1]][["Pr(>F)"]][1];
+  return(c(anovaValue < 0.05, rbdValue < 0.05))
+}
+# PART A
+rejectionsA = matrix(NA, nrow=1000, ncol=2);
+for (i in 1:1000) {
+  rejectionsA[i,] = findRejections(c(1,1,1));
+}
+colSums(rejectionsA)/1000
+# POWER OF ANOVA IS SLIGHTLY BETTER
+# > colSums(rejectionsA)/1000
+# [1] 0.761 0.627
+# PART B
+rejectionsB = matrix(NA, nrow=1000, ncol=2);
+for (i in 1:1000) {
+  rejectionsB[i,] = findRejections(c(1,2,3));
+}
+colSums(rejectionsB)/1000
+# POWER OF ANOVA IS TERRIBLE
+# > colSums(rejectionsB)/1000
+# [1] 0.100 0.605
+\end{lstlisting}
+
+When the block effects are the same, the power of the anova test is slightly better,
+but when the block effects are different, the rbd power is unaffected while the
+anova test power suffers greatly. 
+
+\end{document}
+
+
+
+
+
+

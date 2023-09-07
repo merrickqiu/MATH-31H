@@ -1,0 +1,190 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+% \newcommand{\max}{\operatorname{max}}
+\setlength{\parindent}{0pt}
+\begin{document}
+\begin{center}
+	\huge{\bf Math 188: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\subsection*{Problem 1: Closed Form of a Recurrence Relation.}
+
+The characteristic equation of $a_n = 5a_{n-1}-8a_{n-2}+4a_{n-3}$ is 
+\[
+    t^3-5t^2+8t-4 = (t-2)^2(t-1) 
+\]
+
+The closed form solution is in the form 
+\[
+    a_n = \alpha_1 2^n + \alpha_2 n 2^n + \alpha_3
+\]
+
+Plugging in the values of the starting conditions yields
+\begin{align*}
+    1 &= \alpha_1 + \alpha_3 \\
+    1 &= 2\alpha_1 + 2\alpha_2 + \alpha_3 \\
+    2 &= 4\alpha_1 + 8\alpha_2 + \alpha_3
+\end{align*}
+
+Solving for the constants yields 
+$\alpha_1 = -1, \alpha_2 = \frac{1}{2}, \alpha_3 = 2$.
+The closed formula for the recurrence relation is
+\[
+    a_n = -2^n + \frac{n2^n}{2} + 2
+\]
+I used Wolfram Alpha for factoring the characteristic equation
+and solving the system of equations for the constants.
+\newpage
+
+\subsection*{Problem 2: Vandermonde Matrix Determinant is Nonzero.}
+% The matrix has the form
+
+We will induct on $d$ to prove that the determinant is nonzero.
+For $d = 1$, the determinant is $1$.
+For $d=n$, suppose that $(r_i^{j-1})_{i,j=1,\hdots,n}$ has nonzero determinant 
+for all $r_1,\hdots,r_n$ distinct.
+Let $V = (r_i^{j-1})_{i,j=1,\hdots,n+1}$ for $r_1,\hdots,r_{n+1}$ distinct.
+\[
+    V = \begin{bmatrix}
+        1 & r_1 & r_1^2 & \hdots & r_1^n \\
+        1 & r_2 & r_2^2 & \hdots & r_2^n \\
+        1 & r_3 & r_3^2 & \hdots & r_3^n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & r_{n+1} & r_{n+1}^2 & \hdots & r_{n+1}^n
+    \end{bmatrix}
+\]
+Starting from the last column and ending at the second column, 
+subtract each column by $r_1$ times the previous column.
+Then use the laplace expansion formula along the first row, and
+then factor $(r_i - r_1)$ out every $i$th row.
+\begin{align*}
+    \det \begin{bmatrix}
+        1 & r_1 & r_1^2 & \hdots & r_1^n \\
+        1 & r_2 & r_2^2 & \hdots & r_2^n \\
+        1 & r_3 & r_3^2 & \hdots & r_3^n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & r_{n+1} & r_{n+1}^2 & \hdots & r_{n+1}^n
+    \end{bmatrix}
+    &= \det \begin{bmatrix}
+        1 & 0 & 0  & \hdots & 0 \\
+        1 & r_2 - r_1 & r_2^2 - r_2r_1& \hdots & r_2^n - r_2^{n-1}r_1 \\
+        1 & r_3 - r_1 & r_3^2  - r_3r_1& \hdots & r_3^n - r_3^{n-1}r_1 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & r_{n+1} - r_1 & r_{n+1}^2  - r_{n+1}r_1& \hdots & r_{n+1}^n -  r_{n+1}^{n-1}r_1
+    \end{bmatrix} \\
+    &= \det \begin{bmatrix}
+        r_2 - r_1 & r_2(r_2 - r_1)& \hdots & r_2^{n-1}(r_2 - r_1) \\
+        r_3 - r_1 & r_3(r_3 - r_1)& \hdots & r_3^{n-1}(r_3 - r_1) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        r_{n+1} - r_1 & r_{n+1}(r_{n+1} - r_1)& \hdots & r_{n+1}^{n-1}(r_{n+1} - r_1)
+    \end{bmatrix} \\
+    &= (r_2 - r_1)(r_3-r_1)\hdots(r_{n+1}-r_1)
+    \det \begin{bmatrix}
+        1 & r_2 & \hdots & r_2^{n-1} \\
+        1 & r_3 & \hdots & r_3^{n-1} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        1 & r_{n+1}& \hdots & r_{n+1}^{n-1}
+    \end{bmatrix} \\
+    &\neq 0
+\end{align*}
+
+Since all the $r_i$ terms are distinct, the $(r_i-r_1)$ terms are nonzero.
+By our inductive hypothesis, the determinant of the matrix on the right must be nonzero.
+Thus, the determinant of $(r_i^{j-1})_{i,j=1,\hdots,d}$ is nonzero. \\
+
+A nonzero determinant implies that each of the rows are linearly independent,
+meaning that the sequences $(r_1^n)_{n \geq 0}, \hdots, (r_d^n)_{n \geq 0}$ 
+that make up the rows of the matrix are linearly independent. \\
+    
+Proof adapted from \href{https://en.wikipedia.org/wiki/Vandermonde_matrix#By_row_and_column_operations}{Wikipedia}.
+
+\newpage
+
+\subsection*{Problem 3: Recurrence Relation as Piecewise Polynomials}
+The characacteristic polynomial, $(t^2-1)^d = (t-1)^d(t+1)^d$, 
+implies that for constants $\alpha$ and $\beta$, 
+the closed form solution of the recurrence relation is 
+\[
+    a_n = \sum_{i = 0}^{d-1} \alpha_i n^{i} (-1)^n 
+        + \sum_{i = 0}^{d-1} \beta_i n^{i}
+\]
+$(-1)^n = 1$ for even $n$ and $(-1)^n = -1$ for odd $n$ so 
+\[
+    a_n = 
+    \begin{cases} 
+        \sum_{i = 0}^{d-1} (\alpha_i + \beta_i) n^{i} & \text{n is even} \\
+        \sum_{i = 0}^{d-1} (\beta_i - \alpha_i) n^{i} & \text{n is odd}
+     \end{cases}
+\]
+Since the equations for each case are polynomials of degree $d-1$, 
+the statement is true.
+\newpage
+
+\subsection*{Problem 4: Equal Linear Recurrence Sequences}
+\begin{enumerate}
+    \item Since both sequences are of order $d$ and share the same $d$ terms after $k$,
+     all the terms $n \geq k+d$ can be uniquely determined through the linear recurrence relation equation.
+    The $a_{k-1}$th term is determined through the equation, 
+    \[
+        a_{k+d-1} = c_1a_{k+d-2} + c_2a_{k+d-3} + \hdots + c_da_{k-1}
+    \] 
+    Solving out for $a_{k-1}$ yields an equation that only depends on constants 
+    and $a_k$ through $a_{k+d-1}$.
+    \[
+        a_{k-1} = \frac{a_{k+d-1} - c_1a_{k+d-2} - c_2a_{k+d-3} - \hdots - c_{d-1}a_k}{c_d}
+    \]
+    Repeating this proceedure uniquely determines all terms from $0$ to $k-1$ to be the same
+    for both sequences. Since both sequences have the same terms, they are equal.
+    \item The $-1$st term can be found similarly to the $(k-1)$ term 
+    from the previous part by the equation 
+    \[
+        b_{-1} = \frac{b_{d-1} - c_1b_{d-2} - c_2b_{d-3} - \hdots - c_{d-1}b_0}{c_d}
+    \]
+    Repeating this process uniquely determines the values of the sequence for negative indexes
+    since the next negative index solely depends on the $d$ larger values in the sequence.
+    \item The next negative fibonacci number can be determined using
+    \[
+        f_{n-2} = f_{n} - f_{n-1}
+    \]
+    This gives the value that are the same as the fibonacci values but with alternating signs.
+    \begin{align*}
+        f_{-1} &= 1 \\
+        f_{-2} &= -1 \\
+        f_{-3} &= 2 \\
+        f_{-4} &= -3 \\
+        f_{-5} &= 5 \\
+        f_{-6} &= -8 \\
+        \vdots
+    \end{align*}
+\end{enumerate}
+\newpage 
+
+\subsection*{Problem 5: Limits of Sums and Products of Power Series}
+\begin{enumerate}
+    \item For all $n$, if $([x^n]A_i(x))_i = [x^n]A(x)$ for some $i \geq N_a(n)$ and 
+    $([x^n]B_i(x))_i = [x^n]B(x)$ for some $i \geq N_b(n)$, then 
+    \[
+        ([x^n](A_i(x) + B_i(x)))_i = [x^n](A(x)+B(x))
+    \] 
+    is true for $i \geq \max(N_a(n), N_b(n))$. 
+    Thus, $\lim_{i \to \infty}(A_i(x) +B_i(x)) = A(x) + B(x)$.
+    \item For all $n$, if $([x^n]A_i(x))_i = [x^n]A(x)$ for some $i \geq N_a(n)$ and 
+    $([x^n]B_i(x))_i = [x^n]B(x)$ for some $i \geq N_b(n)$, then 
+    \[
+        A(x)B(x) = \sum_{n \geq 0} \left(\sum_{i=0}^n a_i b_{n-i}\right)x^n
+    \]
+    Thus the coefficient in the $n$th term depends on the coefficients of
+    powers from $0$ to $n$ from $A$ and $B$. So the $n$th term in the product will converge
+    at $i \geq \max_{0 \leq m \leq n}(\max(N_a(m), N_b(m)))$.
+    Thus, $\lim_{i \to \infty}(A_i(x)B_i(x)) = A(x)B(x)$.
+\end{enumerate}
+\end{document}

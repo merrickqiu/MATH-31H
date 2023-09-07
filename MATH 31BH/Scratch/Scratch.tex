@@ -1,0 +1,40 @@
+%Set document class
+\documentclass{report}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%New commands
+\newcommand{\solution}{\textbf{Solution: }}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\pdiv}[1]{\frac{\partial}{\partial #1}}
+
+%Declare beginning of document
+\begin{document}
+
+\bigskip
+
+%Start a numbered list (there are other list formats, such as itemize and description}
+For all $a \in \mathbb{R}$ and $n \in \mathbb{Z^+}$, the function must have
+\[
+	f'(a) 
+	= \frac{f(a+n)-f(a)}{n} 
+	= \frac{\int_a^{a+n} f'(x) \,dx}{n}
+\]
+Thus, the derivative must be periodic with interval 1.
+Assume that the derivative is not constant,
+meaning there exists $b$ such that $f'(b) \neq f'(a)$.
+This implies
+\[
+	f'(a) 
+	= \frac{\int_a^{a+n} f'(x) \,dx}{n} 
+	\neq \frac{\int_b^{b+n} f'(x) \,dx}{n}
+	= f'(b)
+\]
+However this cannot be true since $f'$ is periodic and 
+the size of the intervals of integration are equal and a multiple of the period of $f'$.
+Thus the derivative must be constant, 
+implying that the only class of functions that satisfy the condition are linear functions.
+%Declare end of document
+\end{document}

@@ -1,0 +1,132 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181A: Homework 9} \\
+	Merrick Qiu 
+\end{center}
+
+\subsection*{Problem 1}
+\begin{enumerate}
+	\item The likelihood ratio is 
+	\[
+		\frac{L(1)}{L(2)} = \frac{1}{2x}
+	\]
+	This is a monotonically decreasing function of $x$.
+	Thus we need to find $x \geq c'$ with probability 0.05.
+	We have that 
+	\[
+		0.05 = \int_{c'}^1 1 \,dx = 1-c'.
+	\]
+	This implies that $c' = 0.95$ so $x \geq 0.95$ is the critical region.
+	\item Assuming that $\theta = 2$, the probability that $x \geq 0.95$ is
+	\[
+		\int_{0.95}^1 2x \,dx = 1 - 0.95^2 = 0.0975.
+	\]
+\end{enumerate}
+\newpage 
+
+\subsection*{Problem 2}
+\begin{enumerate}
+	\item The likelihood ratio is 
+	\[
+		\frac{L(4)}{L(\lambda_1)} 
+		= \frac{4e^{-4x}}{\lambda_1e^{-\lambda_1x}}
+		= \frac{4}{\lambda_1}e^{(\lambda_1-4)x}
+	\]
+	This is a monotonically increasing function of $x$.
+	Thus we need to find $x \leq c'$ with probability 0.05.
+	We have that 
+	\[
+		0.05 = \int_0^{c'} 4e^{-4x} \,dx = -e^{-4c'} + 1.
+	\]
+	This implies that $c' = -\frac{\ln(0.95)}{4} = 0.0128$.
+	The critical region is therefore $x \leq 0.0128$.
+	\item The likelihood ratio is the same, 
+	except it is now a monotonically decreasing function of $x$.
+	Thus we need to find $x \geq c'$ with probability 0.05.
+	We have that 
+	\[
+		0.05 = \int_{c'}^{\infty} 4e^{-4x} \,dx = 0 + e^{-4c'}
+	\]
+	This implies that $c' = -\frac{\ln(0.05)}{4} = 0.749.$
+	The critical region is therefore $x \geq 0.749$.
+\end{enumerate}
+\newpage 
+
+\subsection*{Problem 3}
+The likelihood ratio is 
+\[
+	\frac{L(\lambda_0)}{L(\lambda_1)} 
+	= \frac{\prod_{i=1}^n \frac{\lambda_0^{x_i}e^{\lambda_0}}{x_i!}}{\prod_{i=1}^n \frac{\lambda_1^{x_i}e^{\lambda_1}}{x_i!}}
+	= \prod_{i=1}^n \frac{\lambda_0^{x_i}e^{\lambda_0}}{\lambda_1^{x_i}e^{\lambda_1}}
+	= e^{\lambda_0 - \lambda_1} \frac{\lambda_0}{\lambda_1}^{n\bar{x}}
+\]
+Since $\lambda_1 > \lambda_0$, the likelihood ratio is a monotonically decreasing function of $\bar{x}$
+and so the likelihood ratio test rejects the null hypothesis when $\bar{X} \geq c'$.
+\newpage 
+
+\subsection*{Problem 4}
+
+Since $\Omega = \mathbb{R}$, the generalized likelihood ratio is 
+\begin{align*}
+	\frac{L(\lambda_0)}{L(\hat{\lambda}_{MLE})}
+	= \frac{\prod_{i=1}^n \lambda_0 e^{-\lambda_0x_i}}{\prod_{i=1}^n \frac{1}{\bar{x}}e^{-\frac{1}{\bar{x}}x_i}}
+	= \lambda_0^n e^{-\lambda_0 n\bar{x}} \bar{x}^n e^n 
+	= (\lambda_0e \bar{x} e^{-\lambda_0 \bar{x}}   )^n
+\end{align*}
+Since the likelihood ratio is a monotonically increasing function of $\bar{X}e^{-\lambda_0\bar{X}}$,
+it can be rewritten as $\bar{X}e^{-\lambda_0\bar{X}} \leq c'$.
+\newpage 
+
+\subsection*{Problem 5: 6.5.1}
+If $k$ is the sum of all the values of $k_i$, the generalized likelihood ratio is 
+\begin{align*}
+	\frac{L(p_0)}{L(\hat{p}_{MLE})}
+	&= \frac{\prod_{i=1}^n (1-p)^{k_i-1}p}{\prod_{i=1}^n (1-n/k)^{k_i-1}n/k} \\
+	&= \frac{p^n(1-p)^{k - n}}{(n/k)^n(1-n/k)^{k - n}} \\
+	&=\left(\frac{p}{nk}\right)^n \left(\frac{1-p}{1-n/k}\right)^{n-k}
+\end{align*}
+\newpage
+
+\subsection*{Problem 6}
+\begin{enumerate}
+	\item The ratio is 
+	\begin{align*}
+		\frac{L(0.5)}{L(\hat{p}_{MLE})}
+		&= \frac{\binom{n}{x}0.5^n}{\binom{n}{x}(x/n)^x(1-x/n)^{n-x}} \\
+		&= 0.5^n \binom{n}{x}(x/n)^{-x}(1-x/n)^{x-n}
+	\end{align*}
+	\item The critical region is $x = \{0, 1,11,12\}$
+	The significance level is therefore 
+	\[
+		\binom{12}{0} 0.5^{12} + \binom{12}{1} 0.5^{12} + \binom{12}{11} 0.5^{12} + \binom{12}{12} 0.5^{12}
+		= 26\cdot 0.5^{12}
+		= 0.00635
+	\]
+\end{enumerate}
+\newpage 
+
+\subsection*{R Problem}
+My code yielded a confidence interval for the mean of $(202.3892, 215.7476)$ and
+a confidence interval for the median of $(235, 250)$.
+The estimated probability of being 5 units away from the mean is $0.236$.
+\end{document}
+
+
+
+

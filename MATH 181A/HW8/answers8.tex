@@ -1,0 +1,120 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181A: Homework 8} \\
+	Merrick Qiu 
+\end{center}
+
+\subsection*{Problem 1: 7.4.12.}
+The mean of the sample is the center of the confidence interval.
+\[
+	\bar{y} = \frac{44.7+49.9}{2} = 47.3
+\]
+The margin of error is 
+\[
+	ME = \frac{49.9-44.7}{2} = 2.6 = t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}
+\]
+Since $t_{\alpha/2, n-1} = 2.1315$,
+\[
+	s = \frac{2.6}{2.1315}\sqrt{16} = 4.88
+\]
+\newpage 
+
+\subsection*{Problem 2: 7.4.20.}
+The critical value is $t_{\alpha/2, n-1} = 2.7333$.
+The margin of error is 
+\[
+	ME = 2.7333\cdot \frac{0.14139}{\sqrt{34}} = 0.066
+\]
+The critical region is 
+\[
+	(0.618-0.066, 0.618+0.066) = (0.552, 0.684)
+\]
+Since the sample mean falls into this region, we fail to reject the null hypothesis.
+
+
+The test statistic is 
+\[
+	t = \frac{0.6373 - 0.618}{0.14139/\sqrt{34}} = 0.795	
+\]
+Since $t_{0.2, 33} = 0.8527 > 0.795$, we know that the p-value is greater than 0.2,
+meaning we fail to reject the null hypothesis if $\alpha = 0.01$.
+\newpage 
+
+\subsection*{Problem 3: 7.4.21}
+We are testing $\mu = 0.0042$ for the null hypothesis
+and $\mu < 0.0042$ for the alternative hypothesis.
+The critical value is $t_{\alpha, n-1} = 1.8331$.
+The margin of error is 
+\[
+	ME = 1.8331\cdot \frac{0.000383}{\sqrt{10}} = 0.000222
+\]
+The critical region is 
+\[
+	(0.0042-0.000222, \infty) = (0.003978, \infty)
+\]
+The sample mean of $0.0039$ falls outside of this region, so 
+we reject the null hypothesis.
+
+The test statistic is 
+\[
+	t = \frac{0.0039 - 0.0042}{0.000383/\sqrt{10}} = -2.48 
+\]
+Looking at the tample p-value is between 0.025 and 0.01, which means
+that the null hypothesis should be rejected for $\alpha = 0.05$.
+\newpage 
+
+\subsection*{Problem 4: 7.5.8}
+With $\chi_{\alpha/2,n-1}^2 = 8.231$ and $\chi_{1-\alpha/2,n-1}^2 = 31.526$,
+the interval for which $S^2$ has a 95 percent chance of falling into is
+\[
+	\left(8.231\cdot \frac{12}{(19-1)}, 31.526\cdot \frac{12}{(19-1)}\right)
+	= (5.49, 21.01)
+\]
+\newpage 
+
+\subsection*{Problem 5: 7.3.4.}
+Since the variance of a chi square variable is twice its df,
+\begin{align*}
+	\var((n-1)S^2/\sigma^2) = 2n-2
+	&\implies \frac{(n-1)^2}{\sigma^4}\var{S^2} = 2n-2 \\
+	&\implies \var{S^2} = \frac{2\sigma^4}{n-1}
+\end{align*}
+\newpage 
+
+\subsection*{Problem 6: Variance estimators}
+\begin{enumerate}
+	\item \begin{align*}
+		MSE &= \var(c\sum_{i=1}^n (X_i - \bar{X})^2) + E[c\sum_{i=1}^n (X_i - \bar{X})^2 - \sigma^2]^2 \\
+		&= c^2\sigma^4\var(\sum_{i=1}^n \frac{1}{\sigma^2}(X_i - \bar{X})^2) +
+			(c\sigma^2 E[\sum_{i=1}^n \frac{1}{\sigma^2}(X_i - \bar{X})^2] - \sigma^2)^2 \\\\
+		&= 2c^2\sigma^4(n-1) + (c\sigma^2(n-1)-\sigma^2)^2 \\
+	\end{align*}
+	\item The derivative of the MSE with respect to c is 
+	\[	
+		\frac{\partial}{\partial c }(2c^2\sigma^4(n-1) + (c\sigma^2(n-1)-\sigma^2)^2)
+		= 2(n-1)\sigma^4(cn+c-1)
+	\]
+	This is equal to zero when $c = \frac{1}{n+1}$, so this is the value of c 
+	that minimizes the mean square error.
+\end{enumerate}
+\end{document}
+
+
+
+

@@ -1,0 +1,171 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 188: Homework 3} \\
+	Merrick Qiu
+\end{center}
+
+\section{Another Catalan Interpretation}
+   Let $T_n$ be the number of ways of triangulating 
+   a polygon with $(n+2)$ vertices.
+   Consider an arbitrary edge of this polygon.
+   The number of ways of triangulating that polygon
+   can be divided into disjoint subsets based on which triangle
+   that edge is a part of. 
+
+   Moving clockwise from the chosen edge, 
+   number the other vertexes from $0$ to $n-1$.
+   The triangle consisting of the chosen edge and the $i$th vertex 
+   divides the polygon into a $(i+2)$-gon and a $(n-i+1)$-gon.
+   Thus the number of ways of triangulating the polygon 
+   with the chosen edge connected to the $i$th vertex
+   is $T_iT_{n-i-1}$. Summing over all possible values of $i$ yields
+   \[
+      T_n = \sum_{i=0}^{n-1} T_i T_{n-i-1}.
+   \]
+
+   Since $T_0 = 1$ and $T_n$ has 
+   the same recurrence relation as the Catalan numbers,
+   it follows that $T_n = C_n$.
+\newpage
+
+\section{Balanced Parenthesis with Stars}
+   There are $a_{n-1}$ strings of length $n$ that start with "*".
+   For strings that begin with a "(", consider the ")" that pairs with it.
+   If there is a string of length $i$ inside the parentheses,
+   then there is a string of length $n-i-2$ to the right of the parenthesis.
+   Since both of these strings must contain balanced parenthesis as well,
+   there are $a_ia_{n-i-2}$ strings of length $n$ that start with "(", so
+   \[
+      a_n = a_{n-1} + \sum_{i=0}^{n-2} a_ia_{n-i-2}
+   \]
+   The right term is the coefficient of $x^{n-2}$ in $A(x)^2$, so 
+   \begin{align*}
+      A(x) &= 1 + x + \sum_{n \geq 2} a_n x^n \\
+           &= 1 + x + \sum_{n \geq 2} 
+            \left( a_{n-1} + \sum_{i=0}^{n-2} a_ia_{n-i-2}\right) x^n \\
+           &= 1 + x + \sum_{n \geq 2} a_{n-1}x^n + 
+            \sum_{n \geq 2}\left(\sum_{i=0}^{n-2} a_ia_{n-i-2}\right) x^n \\
+           &= 1 + x + x\sum_{n \geq 2} a_{n-1}x^{n-1} + 
+            x^2\sum_{n \geq 2}\left(\sum_{i=0}^{n-2} a_ia_{n-i-2}\right) x^{n-2} \\
+           &= 1+ x + x(A(x)-1) + x^2 A(x)^2 \\
+           &= 1 + xA(x) + x^2 A(x)^2.
+   \end{align*}
+   Rearranging the above equation yields 
+   \[
+      x^2A(x)^2 + (x-1)A(x) + 1 = 0.
+   \]
+   Thus, 
+   \begin{align*}
+      a(x) &= x^2 \\
+      b(x) &= x-1 \\
+      c(x) &= 1.
+   \end{align*}
+\newpage
+\section{Compositions of 2n into 8 Parts}
+      \begin{enumerate}
+         \item Each $x_i$ can be written as 
+            $x_i = 2k_i$ for some $k_i \geq 0$, so
+            \begin{align*}
+               x_1 + x_2 + \hdots + x_8 = 2n 
+               &\implies 2k_1 + 2k_2 + \hdots + 2k_8 = 2n \\
+               &\implies k_1 + k_2 + \hdots + k_8 = n.
+            \end{align*}
+            This is a weak composition of $n$ with 8 parts so
+            \[ 
+               \binom{8+n-1}{n} = \binom{n+7}{n}.
+            \]
+         \item Each $x_i$ can be written as 
+            $x_i = 2k_i+1$ for some $k_i \geq 0$, so
+            \begin{align*}
+               x_1 + x_2 + \hdots + x_8 = 2n 
+               &\implies (2k_1+1) + (2k_2+1) + \hdots + (2k_8+1) = 2n \\
+               &\implies k_1 + k_2 + \hdots + k_8 = n-4
+            \end{align*}
+            This is a weak composition of $n-4$ with 8 parts so
+            \[ 
+               \binom{8+(n-4)-1}{n-4} = \binom{n+3}{n-4}.
+            \]
+         \item For a given $x_8$, the ways of choosing the 
+         values for the other $x_i$ is a weak composition 
+         of $2n-x_8$ with 7 parts.
+         Summing over the possible values of $x_8$ yields 
+         \[
+            \sum_{i=0}^9 \binom{7+(2n-i)-1}{2n-i} = \sum_{i=0}^9 \binom{2n-i+6}{2n-i}.
+         \]
+      \end{enumerate}
+\newpage 
+\section{Sums over Compositions}
+      \begin{enumerate}
+         \item Let $D$ be the derivative.
+            Consider the product 
+            \begin{align*}
+               P(x) &= \left(\sum_{a_1 \geq 1} a_1x^{a_1}\right)
+                       \left(\sum_{a_2 \geq 2} a_2x^{a_2}\right)\hdots 
+                       \left(\sum_{a_n \geq 1} a_nx^{a_n}\right) \\
+                    &= \left(xD\left(\frac{1}{1-x}\right)\right)^n 
+                     = \left(\frac{x}{(1-x)^2}\right)^n
+            \end{align*}
+            Note that the $[x^k]$ term encodes the sum of products of
+            compositions of $k$ into $n$ parts, so
+            \[
+               [x^k]P(x) = \sum_{(a_1,\hdots,a_n)} a_1a_2\hdots a_n.
+            \]   
+            Using the binomial theorem yields and the fact that
+            $\binom{-n}{k} = (-1)^k\binom{n+k-1}{k}$,
+            \begin{align*}
+               P(x) &=  x^n(1-x)^{-2n} = x^n \sum_{k \geq 0} (-1)^{k} \binom{-2n}{k} x^k \\
+                    &= \sum_{k \geq n} (-1)^{k-n}\binom{-2n}{k-n} x^k = \sum_{k \geq n} (-1)^{k-n}\left((-1)^{k-n} \binom{2n+(k-n)-1}{k-n}\right) x^k \\
+                    &= \sum_{k \geq n} \binom{n+k-1}{k-n} x^k.
+            \end{align*}
+            Thus,
+            \[
+               \sum_{(a_1,\hdots,a_n)} a_1a_2\hdots a_n 
+               = [x^k]P(x)
+               = \binom{n+k-1}{k-n}
+            \]
+         \item Using the same idea as part a, consider the product 
+         \begin{align*}
+            P(x) &= \left(\sum_{a_1 \geq 1} 1^{a_1-1}x^{a_1}\right)
+                    \left(\sum_{a_2 \geq 2} 2^{a_2-1}x^{a_2}\right)\hdots 
+                    \left(\sum_{a_n \geq 1} n^{a_n-n}x^{a_n}\right) \\
+                 &= \left(\frac{x}{1-x}\right)
+                    \left(\frac{x}{1-2x}\right)\hdots 
+                    \left(\frac{x}{1-nx}\right) \\ 
+                 &= \frac{x^k}{(1-x)(1-2x)\hdots(1-kx)}.
+         \end{align*}
+
+         This is the generating function for the stirling numbers, so
+         \[
+            \sum_{(a_1,\hdots,a_n)}2^{a_2-1}3^{a_3-1}\hdots n^{a_n-1}
+            = [x^k]P(x) = S(k,n).
+         \] 
+      \end{enumerate}
+\newpage 
+\section{Tuples of subsets}
+   \begin{enumerate}
+      \item Each element of $[n]$ can either be in $S$ and $T$,
+         be in $T$ but not $S$, or not be in $T$ or $S$, so
+         there are $3^n$  pairs of subset such that $S \subseteq T$.
+         However there are $2^n$ ways in which $S=T$ so there are $3^n - 2^n$
+         pairs of subsets such that $S \subsetneqq T$.
+      \item Each element of $[n]$ has $2^k$ ways of appearing in $k$ subsets,
+         but since the element must appear in at least one subset, there are $2^k-1$ ways 
+         for the element to appear in the subsets $(S_1,\hdots,S_k)$.
+         Thus, there are $(2^k-1)^n$ $k$-tuples of subsets of $[n]$.
+
+   \end{enumerate}
+      
+
+\end{document}

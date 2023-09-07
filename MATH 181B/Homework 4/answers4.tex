@@ -1,0 +1,104 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{listings}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\sumN}{\sum_{i=1}^{n}}
+\newcommand{\sumM}{\sum_{i=1}^{m}}
+\newcommand{\prodN}{\prod_{i=1}^{n}}
+\newcommand{\prodM}{\prod_{i=1}^{m}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181B: Homework 4} \\
+	Merrick Qiu 
+\end{center}
+\subsection*{Exercise 1}
+\begin{align*}
+	\hat{y} = a+bx &\implies  \hat{y} = a + b\bar{x} + cbs_x \\
+	&\implies \hat{y} = \bar{y} + cbs_x \\
+	&\implies \hat{y} = \bar{y} + c\left(\frac{rs_y}{s_x}\right)s_x \\
+	&\implies \hat{y} = \bar{y} + crs_y
+\end{align*}
+\newpage 
+
+\subsection*{Exercise 2}
+\begin{enumerate}
+	\item We can take the reciprocal to linearize the equation, and we see that 
+	$\frac{1}{y}$ is linear in terms of $\frac{1}{x}$ with slope $a$ and intercept $b$
+	instead of slope $b$ and intercept $a$.
+	\[
+		\frac{1}{y} = a\frac{1}{x} + b
+	\]
+	Plugging in the reciprocals of $x$ and $y$ into the formulas 
+	for the slope and intercept yields
+	\[
+		a = \frac{n\sumN \frac{1}{x_iy_i} - \left(\sumN \frac{1}{x_i}\right)\left(\sumN \frac{1}{y_i}\right)}{n\left(\sumN \frac{1}{x_i^2}\right)-\left(\sumN \frac{1}{x_i}\right)^2}
+	\]
+	\[
+		b = \frac{\sumN \frac{1}{y_i} - a\sumN \frac{1}{x_i}}{n}
+	\]
+	\item Here is the function that finds $a$ and $b$
+	\begin{lstlisting}
+getAB = function(x, y) {
+	n = length(x)
+	aNumerator = n*sum(1/(x*y)) - sum(1/x)*sum(1/y)
+	aDenominator = n*sum(1/x^2) - sum(1/x)^2
+	a = aNumerator/aDenominator
+	
+	b = (sum(1/y) - a*sum(1/x))/n
+	
+	return(list(a=a, b=b))
+}
+	
+x = 1:10
+y = x/(2+3*x)
+
+ab = getAB(x, y)
+ab$a # [1] 2
+ab$b # [1] 3	
+	\end{lstlisting}
+\end{enumerate}
+\newpage 
+
+\subsection*{Exercise 3}
+We are using an estimator that is a linear combination of independent normals,
+so the estimator itself also has a normal distribution.
+\[
+	\hat{\beta}_1 = \frac{\sumN (x_i - \bar{x})Y_i}{\sumN (x_i - \bar{x})^2}
+\]
+
+The expected value of $\hat{\beta}_1$ is 
+\begin{align*}
+	E[\hat{\beta}_1] &= \frac{\sumN (x_i - \bar{x})E[Y_i]}{\sumN (x_i - \bar{x})^2}  \\
+	&= \frac{\sumN (x_i - \bar{x})(\beta_0 + \beta_1 x_i)}{\sumN (x_i - \bar{x})^2}  \\
+	&= \beta_0 \frac{\sumN (x_i - \bar{x})}{\sumN (x_i - \bar{x})^2}
+		+ \beta_1 \frac{\sumN (x_i - \bar{x})\cdot x_i}{\sumN (x_i - \bar{x})^2} \\
+	&= \beta_1
+\end{align*}
+
+Since $\var(Y_i) = \var(\epsilon_i) = \sigma_i^2$, the variance of $\hat{\beta}_1$ is 
+\begin{align*}
+	\var(\hat{\beta}_1) &= \frac{\var(\sumN (x_i - \bar{x})Y_i)}{(\sumN (x_i - \bar{x})^2)^2} \\
+	&= \frac{\sumN (x_i - \bar{x})^2 \var(Y_i)}{(\sumN (x_i - \bar{x})^2)^2} \\
+	&= \frac{\sumN (x_i - \bar{x})^2\sigma_i^2}{(\sumN (x_i - \bar{x})^2)^2} \\
+\end{align*}
+Since $\hat{\beta}_1$ is a normal distribution with mean $\beta_1$ and
+variance $\frac{\sumN (x_i - \bar{x})^2\sigma_i^2}{(\sumN (x_i - \bar{x})^2)^2}$, 
+we conclude that $\hat{\beta}_1 \sim N(\beta_1, \frac{\sumN (x_i - \bar{x})^2\sigma_i^2}{(\sumN (x_i - \bar{x})^2)^2} )$.
+\end{document}
+
+
+
+
+
+

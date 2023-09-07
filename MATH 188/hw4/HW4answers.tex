@@ -1,0 +1,218 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\qbinom}[2]{\binom{#1}{#2}_{q}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 188: Homework 4} \\
+	Merrick Qiu
+\end{center}
+
+\section{Stirling Numbers as Polynomials}
+   \begin{enumerate}
+      \item \textbf{Lemma: }
+      If a sequence is a polynomial of degree $0$, 
+      its first difference is of degree $0$.
+      If a sequence is a polynomial of degree $d+1>0$,
+      the first difference is a polynomial of degree $d$ since
+      \begin{align*}
+         \sum_{k=0}^{d+1} a_k(x+1)^k - \sum_{k=0}^{d+1} a_kx^k
+         &= \left(\sum_{k=0}^{d+1} a_kx^k + a_k\binom{k}{1}x^{k-1} + \hdots + a_k\right) - \sum_{k=0}^{d+1} a_kx^k \\
+         &=  \left(\sum_{k=0}^{d+1} a_k\binom{k}{1}x^{k-1} + a_k\binom{k}{2}x^{k-2} + \hdots + a_k\right).
+      \end{align*}
+      This implies that if the first difference of a sequence 
+      is a polynomial of degree $d$ where $d>0$,
+      then the sequence must be a polynomial of degree $d+1$ 
+      since polynomials of other degrees cannot have a first difference of degree $d$.
+
+      \textbf{Proof: }
+      We can induct on $r$ to show that 
+      $S(n+r, n)$ is a polynomial of $n$ of degree $2r$. 
+      For $r=0$, $S(n, n) = 1$ .
+      Assume that $S(n+r-1, n)$ is of degree $2r-2$.
+      For $r > 0$, applying the recursive formula yields
+      \begin{align*}
+         &S(n+r, n) = S(n+r-1, n-1) + nS(n+r-1, n) \\
+         \implies& S(n+r, n) - S(n+r-1, n-1) = nS(n+r-1, n). 
+      \end{align*}
+      
+      By the inductive hypothesis, $nS(n+r-1, n)$ is of degree $2r-1$.
+      Since the first difference of the sequence $(S(n+r, n))_{n \geq 0}$
+      is a polynomial of degree $2r-1$ and $2r-1 > 0$, 
+      $S(n+r, n)$ is a polynomial of degree $2r$. 
+      Similarly for $c(n+k, n)$, we have that $c(n, n) = 1$ for $r=0$
+      and for $r > 0$,
+      \begin{align*}
+         &c(n+r, n) = c(n+r-1, n-1) + (n+r-1)c(n+r-1, n) \\
+         \implies& c(n+r, n) - c(n+r-1, n-1) = (n+r-1)c(n+r-1, n). 
+      \end{align*}
+      The first difference of $(c(n+r, n))_{n \geq 0}$
+      is a polynomial of degree $2r-1>0$, so 
+      $c(n+r, n)$ is a polynomial of degree $2r$. 
+
+      \item Repeatedly applying the recursive formula for $S(n, k)$ yields 
+      \begin{align*}
+         &S(n+r, n) = S(n+r-1, n-1) + nS(n+r-1, n) \\
+         = &S(n+r-2, n-2) + (n-1)S(n+r-2, n-1) + nS(n+r-1, n) \\
+         \vdots \\
+         = &\sum_{i=1}^n i S(i+r-1 , i).
+      \end{align*}
+
+      For $r=2$ we have that 
+      \begin{align*}
+         S(n+2, n) 
+         &= \sum_{i=1}^n i S(i+1 , i) 
+            = \sum_{i=1}^n i \binom{i+1}{2} \\
+         &= \frac{1}{2}\sum_{i=1}^n i^3 + \frac{1}{2} \sum_{i=1}^n i^2 
+            = \frac{n^2(n+1)^2}{8} +  \frac{n(n+1)(2n+1)}{12} \\
+         &= \frac{1}{24}n(n+1)(n+2)(3n+1).
+      \end{align*}
+
+      For $r=3$ we have that 
+      \begin{align*}
+         S(n+3, n) 
+         &= \sum_{i=1}^n i S(i+2 , i) 
+            = \sum_{i=1}^n \frac{1}{24}i^2(i+1)(i+2)(3i+1) \\
+         &= \frac{1}{8}\sum_{i=1}^n i^5 + \frac{5}{12} \sum_{i=1}^n i^4
+            + \frac{3}{8}\sum_{i=1}^n i^3 + \frac{1}{12} \sum_{i=1}^n i^2 \\
+         &= \frac{1}{48}n^2(n+1)^2(n+2)(n+3)
+      \end{align*}
+
+      Repeatedly applying the recursive formula for $c(n, k)$ yields 
+      \begin{align*}
+         &c(n+r, n) = c(n+r-1, n-1) + (n+r-1)c(n+r-1, n) \\
+         = &c(n+r-2, n-2) + (n+r-2)c(n+r-2, n-1) + (n+r-1)c(n+r-1, n) \\
+         \vdots \\
+         = &\sum_{i=1}^{n} (i+r-1) c(i+r-1 , i)
+      \end{align*}
+
+      For $r=2$ we have that 
+      \begin{align*}
+         c(n+2, n) &= \sum_{i=1}^{n} (i+1) c(i+1, i) \\
+         &= \sum_{i=1}^{n} (i+1) \binom{i+1}{2} \\
+         &= \frac{1}{24}n(n+1)(n+2)(3n+5)
+      \end{align*}
+
+      For $r=3$ we have that 
+      \begin{align*}
+         c(n+3, n) &= \sum_{i=1}^{n} (i+2)c(i+2 , i) \\
+         &= \sum_{i=1}^{n} \frac{1}{24}i(i+1)(i+2)^2(3i+5) \\
+         &= \frac{1}{48}n(n+1)(n+2)^2(n+3)^2
+      \end{align*}
+   \end{enumerate}
+\newpage
+
+\section{Equality of Two Integer Partitions}
+The generating function for $a_n$ is 
+\[
+   \sum_{n \geq 0} a_n x^n
+   = \prod_{i \geq 0} (1+x^i+x^{2i})
+   = (1+x+x^2)(1+x^2+x^4)(1+x^3+x^6)\hdots .
+\]
+The generating function for $b_n$ is 
+\[
+   \sum_{n \geq 0} b_n x^n 
+   = \prod_{i \geq 0} \frac{1-x^{3i}}{1-x^i}
+   = \frac{1}{(1-x)(1-x^2)(1-x^4)(1-x^5)\hdots}.
+\]
+Since $1+x^i+x^{2i} = \frac{1-x^{3i}}{1-x^i}$,
+\[
+   \sum_{n \geq 0} a_n x^n
+   = \prod_{i \geq 0} (1+x^i+x^{2i})
+   = \prod_{i \geq 0} \frac{1-x^{3i}}{1-x^i}
+   = \sum_{n \geq 0} b_n x^n.
+\]
+Since the generating functions for both sequences are equal,
+we have that $a_n = b_n$ for all $n$.
+\newpage
+
+\section{Generalization of Example 3.27}
+The coefficient of $y^kx^n$ in $\prod_{i \geq 0}(1+x^{2i+1}y)$ counts 
+the number of partitions of $n$ that have $k$ parts.
+Under the bijection, the number of parts in the odd partitions 
+is equal to the number of "bends"
+(the number of pairs of columns and rows of the same index),
+in the Young Diagram. 
+Since a partition with a size $r$ Durfee square has $r$ bends,
+\[
+   \prod_{i \geq 0}(1+x^{2i+1}y)
+   = \sum_{r \geq 0} x^{r^2}y^r\sum p_{\leq r}(n)x^2n 
+   = \sum \frac{x^{r^2}y^r}{(1-x^2)(1-x^4)\hdots(1-x^{2r})}.
+\]
+\newpage
+\section{q-Binomial Constants}
+\begin{enumerate}
+   \item 
+      We can induct on d to show the identity.
+      For $d=0$ we have 
+      \[
+         \sum_{n \geq 0} \qbinom{n}{n} x^n 
+         = \sum_{n \geq 0} x^n
+         = \frac{1}{1-x}
+      \]
+      Assume that $\sum_{n \geq 0} \qbinom{n+d-1}{n} x^n 
+      = \prod_{i=0}^{d-1} (1-q^ix)^{-1}$.
+      Using the symmetry of the q-binomial coefficient
+      and the q-Pascal's identity yields
+      \begin{align*}
+         \sum_{n \geq 0} \qbinom{n+d}{n} x^n 
+         &= \sum_{n \geq 0} \qbinom{n+d}{d} x^n \\
+         &= q^d\sum_{n \geq 0} \qbinom{n+d-1}{d} x^n 
+            + \sum_{n \geq 0} \qbinom{n+d-1}{d-1} x^n \\
+         &= q^dx\sum_{n \geq 0} \qbinom{n+d-1}{n-1} x^{n-1} 
+            + \sum_{n \geq 0} \qbinom{n+d-1}{n} x^n \\
+         &= q^dx \sum_{n \geq 0} \qbinom{n+d}{n} x^n
+            + \prod_{i=0}^{d-1} (1-q^ix)^{-1}.
+      \end{align*}
+
+      Solving out for $\sum_{n \geq 0} \qbinom{n+d}{n} x^n$ shows that 
+      \begin{align*}
+         &\sum_{n \geq 0} \qbinom{n+d}{n} x^n 
+            = q^dx \sum_{n \geq 0} \qbinom{n+d}{n} x^n
+            + \prod_{i=0}^{d-1} (1-q^ix)^{-1} \\
+         \implies &(1-q^dx)\sum_{n \geq 0} \qbinom{n+d}{n} x^n 
+            = \prod_{i=0}^{d-1} (1-q^ix)^{-1} \\
+         \implies &\sum_{n \geq 0} \qbinom{n+d}{n} x^n 
+            = \prod_{i=0}^{d} (1-q^ix)^{-1}.
+      \end{align*}
+   \item 
+      The generating function $\prod_{i=0}^{d} (1-q^ix)^{-1}$
+      represents making a choice of integers $m_1, \hdots, m_d$ 
+      and selecting the terms $x^{m_i}q^{im_i}$, 
+      which corresponds to the partition where $i$ gets used $m_i$ times.
+
+      Therefore a term of degree $x^n$ corresponds
+      to a partition with $\leq n$ parts, and
+      a term of degree $q^s$ corresponds
+      to a partition of size $s$.
+      Since all the parts in the partition have size $\leq d$,
+      the coefficient of $x^n$ is the sum $\sum_{\lambda} q^{|\lambda|}$
+      over all integer partitions, $\lambda$, whose Young diagram fits in 
+      a $n \times d$ rectangle.
+\end{enumerate}
+\newpage 
+
+\section{Counting Linear Maps}
+   \begin{enumerate}
+      \item 
+         A linear map $V \to M$ can be uniquely represented as a $m \times n$ matrix. 
+         Thus, there are $q^{mn}$ linear maps.
+      \item 
+         The linear map is surjective if each of its $m$ rows are linearly independent.
+         Thus there are $\prod_{i=0}^{m-1} (q^n-q^i)$ surjective linear maps $V \to W$.
+      \item 
+         A rank k linear map $V \to W$ is equivalent to a surjective linear map 
+         onto a k-dimensional subspace of W.
+         Thus there are $\prod_{i=0}^{k-1} (q^n-q^i)$ rank $k$ linear maps.
+   \end{enumerate}
+
+\end{document}

@@ -1,0 +1,143 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181A: Homework 7} \\
+	Merrick Qiu 
+\end{center}
+
+\subsection*{Problem 1: 6.3.9.}
+The level of significance is 
+\begin{align*}
+	P(k \leq 3) &=
+	\binom{7}{0} (0.75)^0(0.25)^7 +
+	\binom{7}{1} (0.75)^1(0.25)^6 +
+	\binom{7}{2} (0.75)^2(0.25)^5 +
+	\binom{7}{3} (0.75)^3(0.25)^4 \\
+	&= 0.0706
+\end{align*}
+	
+
+When $p=0.65$, 
+\begin{align*}
+	P(k \leq 3) &=
+	\binom{7}{0} (0.65)^0(0.35)^7 +
+	\binom{7}{1} (0.65)^1(0.35)^6 +
+	\binom{7}{2} (0.65)^2(0.35)^5 +
+	\binom{7}{3} (0.65)^3(0.35)^4 \\
+	&= 0.1998
+\end{align*}
+\newpage 
+
+\subsection*{Problem 2: Population Exact Binomial Test}
+\begin{enumerate}
+	\item We have that $\alpha/2 = 0.05$ 
+	From the lefthand side, $0.006 + 0.040 = 0.046 < 0.05$.
+	From the righthand side, $0.000 + 0.002 + 0.011 = 0.013 < 0.05$.
+	The critical region is $k \leq 1$ or $k \geq 8$.
+	\item From the righthand side, $0.000 + 0.002 + 0.011 + 0.042 = 0.055$.
+	The critical region is $k \geq 7$.
+\end{enumerate}
+\newpage
+
+\subsection*{Problem 3: 6.4.3.}
+\textbf{6.2.2.}
+The test statistic is $z = \frac{\bar{y}-95}{15/\sqrt{22}}$.
+The critical region for $\alpha/2 = 0.03$ is $z \leq -1.88$ or $z \geq 1.88$.
+Thus a value of $\bar{y} \leq 88.99$ or $\bar{y} \geq 101.01$ would cause
+$H_0$ to be rejected.
+
+\textbf{6.4.3.}
+The power is 
+\begin{align*}
+	P(\bar{y} \leq 88.99 \,|\, \mu = 90) + P(\bar{y} \geq 101.01 \,|\, \mu = 90)
+	&= P(\frac{\bar{y}-90}{15/\sqrt{22}} \leq \frac{88.99-90}{15/\sqrt{22}}) +
+	P(\frac{\bar{y}-90}{15/\sqrt{22}} \geq \frac{101.01-90}{15/\sqrt{22}}) \\
+	&= P(Z \leq -0.32) + P(Z \geq 3.44) \\
+	&= 0.3745 + 0.0003 \\
+	&= 0.3748
+\end{align*}
+\newpage 
+
+\subsection*{Problem 4: 6.4.7}
+The test statistic is $z = \frac{\bar{y}-200}{15/\sqrt{n}}$
+The critical region for $\alpha = 0.10$ is $Z \leq -1.28$.
+$H_0$ is rejected when $\bar{y} \leq 200 - \frac{19.2}{\sqrt{n}}$.
+The power is 
+\begin{align*}
+	P(\bar{y} \leq 200 - \frac{19.2}{\sqrt{n}} \,|\, \mu = 197)
+	&= P (\frac{\bar{y}-197}{15/\sqrt{n}} \leq \frac{200 - \frac{19.2}{\sqrt{n}}-197}{15/\sqrt{n}}) \\
+	&= P(Z^* \leq \frac{3\sqrt{n}-19.2}{15}) = 0.75
+\end{align*}
+This means that $\frac{3\sqrt{n}-19.2}{15} \geq 0.67$
+which implies that $n \geq 95$.
+\newpage 
+
+\subsection*{Problem 5: 6.4.18}
+\begin{enumerate}
+	\item \begin{align*}
+		P(k \leq 2 \,|\, \lambda=6) 
+		&= \frac{e^{-6}6^0}{0!} +\frac{e^{-6}6^1}{1!} + \frac{e^{-6}6^2}{2!} \\
+		&= 0.062
+	\end{align*}
+	\item \begin{align*}
+		P(k > 2 \,|\, \lambda=4) 
+		&= 1 - P (k \leq 2) \\
+		&= 1- \frac{e^{-4}4^0}{0!} +\frac{e^{-4}4^1}{1!} + \frac{e^{-4}4^2}{2!} \\
+		&= 1- 0.238 \\
+		&= 0.762
+	\end{align*}
+\end{enumerate}
+\newpage 
+
+\subsection*{Problem 6: 6.4.20}
+We have that 
+\[
+	\beta = P(y \leq \ln 10)  =1- e^{-\lambda \ln 10} = 1- 10^{-\lambda}	
+\]
+\newpage
+
+\subsection*{R Problem}
+\begin{enumerate}
+	\item The test statistic is $z = \sqrt{n}(\bar{x} - \mu_0)$.
+	The critical region for $\alpha = 0.05$ is 
+	$\bar{x} < \mu_0-\frac{1.96}{\sqrt{n}}$ or $\bar{x} > \mu_0+\frac{1.96}{\sqrt{n}}$
+	The power is 
+	\begin{align*}
+		 & P(\sqrt{n}(\bar{x} - \mu) < \sqrt{n}(\mu_0-\frac{1.96}{\sqrt{n}} - \mu)) + P(\sqrt{n}(\bar{x} - \mu) > \sqrt{n}(\mu_0+\frac{1.96}{\sqrt{n}}-\mu)) \\
+		=& P(Z^* < \sqrt{n}(\mu_0-\frac{1.96}{\sqrt{n}} - \mu)) +P(Z^* > \sqrt{n}(\mu_0+\frac{1.96}{\sqrt{n}}-\mu)) \\
+		=& \Phi(\sqrt{n}(\mu_0-\frac{1.96}{\sqrt{n}}-\mu)) + \Phi(-\sqrt{n}(\mu_0+\frac{1.96}{\sqrt{n}}-\mu)) \\
+		=& \Phi(\sqrt{n}(-\frac{1.96}{\sqrt{n}}-\delta)) + \Phi(-\sqrt{n}(\frac{1.96}{\sqrt{n}}-\delta)) \\
+		=& \Phi(-1.96-\delta\sqrt{n}) + \Phi(-1.96+\delta\sqrt{n}) \\
+	\end{align*}
+	\item Here is a graph of $n=10$ 
+	
+	\includegraphics*[scale=1.2]{hw7n10.png} 
+	\newpage
+
+	Here is a graph of $n=40$
+
+	\includegraphics*[scale=1.2]{hw7n40.png}
+
+	We can see that the greater the absolute value of $\delta$ and 
+	the greater the value of $n$, the greater the power is
+\end{enumerate}
+\end{document}
+
+
+
+

@@ -1,0 +1,114 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\var}{\operatorname{Var}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 181A: Homework 3} \\
+	Merrick Qiu 
+\end{center}
+
+\subsection*{Problem 1: 5.3.2 and 5.3.10}
+\begin{enumerate}
+	\item Taking the average of all the subjects yields that $\bar{x} = 0.77$. 
+	The critical value for $95\%$ is $Z_{\alpha/2} = 1.96$.
+	The margin of error is $ME = 1.96\cdot\frac{0.09}{\sqrt{19}} = 0.04$.
+	We have that the confidence interval is $(0.73, 0.81)$.
+	Since $0.80$ is in the confidence interval, 
+	it is likely that the detergent does not cause respiratory illness.
+	\item Modeling his performance as a Bernoulli distribution,
+	he has standard deviation $\sigma = \sqrt{0.356\cdot(1-0.356)} = 0.479$.
+	Thus he has confidence interval
+	\[
+		(0.356-1.96\cdot\frac{ 0.479}{\sqrt{540}}, 0.356+1.96\cdot\frac{ 0.479}{\sqrt{540}})
+		= (0.316, 0.396)
+	\]
+\end{enumerate}
+\newpage
+
+\subsection*{Problem 2: 5.3.26}
+Assuming the upper bound of $\hat{p} = 0.4$ gives
+\[
+	n \geq \frac{2.58^2(0.4)(0.6)}{0.05^2} = 639.01.
+\]
+Thus $n=640$ is a lower-bound.
+\newpage
+
+\subsection*{Problem 3}
+The margin of error of the first sample is 
+\[
+	ME = 1.96\cdot\frac{0.45\cdot0.55}{n} = \frac{0.485}{n}
+\]
+The margin of error of the second sample is
+\[
+	ME_{new} = 1.645\cdot\frac{0.48\cdot0.52}{n_{new}} = \frac{0.411}{n_{new}}
+\]
+Setting $ME_{new}$ to be a third of $ME$ yields 
+\begin{align*}
+	ME_{new} = \frac{1}{3}ME 
+	&\implies \frac{0.411}{n_{new}} = \frac{0.162}{n} \\
+	&\implies n_{new} = 2.54n.
+\end{align*}
+\newpage
+
+\subsection*{Problem 4: 5.4.6}
+
+In order for $Y_{min} = y$, one of the $\binom{n}{1}$ variables must have value 
+$y$ with density $\frac{1}{\theta}$ and the other $n-1$ variables must have value
+$\geq y$ with probability $\frac{\theta-y}{\theta}$.
+Therefore, $f_{Y_{min}}(y) = n\frac{1}{\theta}\left(\frac{\theta-y}{\theta}\right)^{n-1}$.
+Finding the expected value of $Y_{min}$ yields
+\begin{align*}
+	\int_0^\theta n\frac{1}{\theta}\left(\frac{\theta-y}{\theta}\right)^{n-1} \,dy
+	&=\frac{n}{\theta} \int_0^\theta \left(\frac{\theta-y}{\theta}\right)^{n-1} \,dy \\
+	&= \frac{n}{\theta} \left[-\frac{\theta}{n(n+1)}(ny+\theta)\left(\frac{\theta-y}{\theta}\right)^n\right]_0^\theta \\
+	&= - \frac{1}{n+1}(0-\theta) \\
+	&= \frac{\theta}{n+1}.
+\end{align*}
+Therefore an unbiased estimator would be $\hat{\theta} = (n+1)Y_{min}$.
+\newpage 
+
+\subsection*{Problem 5: 5.4.9}
+
+The expected value of Y is 
+\begin{align*}
+	E[Y] &= \int_0^\frac{1}{\theta} 2y^2\theta^2 \\
+	&= \left[\frac{2}{3}y^3\theta^2\right]_0^\frac{1}{\theta} \\
+	&= \frac{2}{3}\frac{1}{\theta}
+\end{align*}
+We have that 
+\begin{align*}
+	E[c(Y_1+2Y_2)] &= 3cE[Y] \\
+	&= 2c \frac{1}{\theta}
+\end{align*}
+Therefore, $c=\frac{1}{2}$.
+\newpage 
+
+\subsection*{Problem 6: R Simulation}
+\begin{enumerate}
+	\item Here is the plot of the likelihood function, with the red line
+	representing the sample mean.
+
+	\includegraphics*[scale=0.35]{hw3likelihood.png}
+
+	\item Here is the plot of the log likelihood function, with the red line
+	representing the sample mean.
+
+	\includegraphics*[scale=0.35]{hw3loglikelihood.png}
+\end{enumerate}
+
+
+
+\end{document}
+

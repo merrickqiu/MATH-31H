@@ -1,0 +1,89 @@
+%Set document class
+\documentclass{article}
+
+%Load math symbol packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\qbinom}[2]{\binom{#1}{#2}_{q}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\Cn}{\textbf{C}_n}
+\newcommand{\Dn}{\textbf{D}_n}
+\newcommand{\inv}{^{-1}}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 188: Homework 7} \\
+	Merrick Qiu 
+\end{center}
+
+\section{Necklaces in the Dihedral Group}
+	The Dihedral group is composed of rotational symmetries and
+	reflection symmetries. 
+	The number of cycles of a rotation is 
+	$\gcd(n, i)$ if we rotate by $i$ places,
+	and the number of cycles of a reflection is $\lceil \frac{n}{2}\rceil$.
+	Thus, 
+	\[
+		|Y^X/G| 
+		= \frac{1}{|G|}\sum_{g\in G} |Y|^{c_X(g)} 
+		= \frac{1}{2n}  
+		\left(
+			nk^{\lceil \frac{n}{2}\rceil} +
+			\sum_{i=1}^n k^{\gcd(n, i)} 
+		\right)		
+	\]
+	\newpage 
+\section{Coloring a Matrix}
+	There are four elements in the group of rotations of the matrix.
+	The identity element has 9 1-cycles.
+	A rotation clockwise and a rotation counter-clockwise have
+	1 1-cycle and 2 4-cycles.
+	A 180 degree rotation has 1 1-cycle and 4 2-cycles.
+	Thus the number of colorings is,
+	\[
+		|Y^X/G| 
+		= \frac{1}{|G|}\sum_{g\in G} |Y|^{c_X(g)}
+		= \frac{1}{4} (k^9 + k^5 + 2k^3)
+	\].
+	The cyclic indicator is
+	\[
+		Z_X(G;t_1,\hdots,t_9)
+		= \frac{1}{4}(t_1^9 + t_1t_4^2 + t_1t_2^4)
+	\].
+	The number of ways to color the matrix with three colors 
+	for three entries each is 
+	\begin{align*}
+		&[y_1^3y_2^3y_3^3]\frac{1}{4}
+		\left(\left(\sum_{i=1}^k y_i\right)^9 + 
+		\left(\sum_{i=1}^k y_i\right)\left(\sum_{i=1}^k y_i^4\right)^2 + 
+		\left(\sum_{i=1}^k y_i\right)\left(\sum_{i=1}^k y_i^2\right)^4\right)\\
+		=& \frac{1}{4}\left( \binom{9}{3,3,3,0,\hdots} + 0 + 0\right) \\
+		=& 420
+	\end{align*}
+	\newpage
+\section{Theorem 7.9}
+	For each orbit $\alpha \in Y^X / G$, 
+	let $f \in \alpha$ be a representative.
+	A bijection between these orbits and 
+	weak compositions 
+	of $n$ with $d$ parts 
+	exists where $a_i = |f\inv[\{i\}]|$
+	for a weak composition $(a_1,\hdots,a_d)$. 
+	The number of orbits is therefore 
+	$\binom{d+n-1}{n}$.
+	Applying Theorem 7.9 yields 
+	\begin{align*}
+		\binom{d+n-1}{n} = \frac{1}{n!}\sum_{g\in G} d^{c_X(g)}
+		&\implies (d+n-1)_n = \sum_{g\in G} d^{c_X(g)} \\
+		&\implies (d+n-1)_n = \sum_{k=0}^n c(n, k)d^k \\
+	\end{align*}
+\end{document}
+
