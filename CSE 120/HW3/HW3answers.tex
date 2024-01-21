@@ -1,0 +1,146 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf CSE 120: Homework 3} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Nachos VM Worksheet}
+\begin{enumerate}
+    \item 4
+    \item 8
+    \item \begin{enumerate}
+        \item pageTable[0].vpn = 0
+        \item pageTable[0].ppn = 2
+        \item pageTable[1].vpn = 1
+        \item pageTable[1].ppn = 0
+        \item pageTable[2].vpn = 2
+        \item pageTable[2].ppn = 6
+        \item pageTable[3].vpn = 3
+        \item pageTable[3].ppn = 4
+    \end{enumerate}
+    \item 128*2 = 256 bytes
+    \item 128*6 = 768 bytes
+    \item It is in virtual page 2, which is in physical page 6.
+    \item 298-256 = 42 bytes
+    \item 128*6 + 42 = 810 bytes
+    \item Since the virtual and physical pages aren't always the same,
+    memory that is contiguous in the virtual address space might not be contiguous in the physical address space,
+    so we would need to check if there are page boundaries for the array we are copying.
+\end{enumerate}
+
+\section*{Question 2}
+\begin{enumerate}
+    \item 200 ns 
+    \item 0.75*100 + 0.25*200 = 125 ns 
+    \item 0.995*100 + 0.005*200 = 100.5 ns
+\end{enumerate}
+
+\section*{Question 3}\
+\begin{enumerate}
+    \item 22 bits are left.
+    \item We can take the first 22 bits and then shift by 10 bits(page size is $2^{10}$)
+    \begin{align*}
+        0x0000FFFF &= 0000 0000 0000 0000 1111 1111 1111 1111 \\
+        &\implies     0000 0000 0000 0000 1111 1100 0000 0000 \\
+        &\implies     0000 0000 0000 0000 0000 0000 0011 1111 \\
+        &= 0x3F = 63
+    \end{align*}
+    \item The offset is the last 10 bits which is 0b1111111111 = 0x3FF = 1023.
+    \item 4*1024 = 4096 bytes 
+    \item 4096 + 1023 = 5119 bytes
+\end{enumerate}
+
+\section*{Question 4}
+\begin{enumerate}
+    \item $2^{44-16} = 2^{28}$
+    \item A page can have $2^14$ entries so we need 14 bits to index into a page table.
+    The offset will be 16 bits since that is the size of a page.
+    Since there are two tables, we have a total of 14 + 14 + 16 = 44 bits.
+    \item 4 gigabytes is $2^32$ bytes which is $2^16$ pages.
+    Since page can hold $2^14$ entries, we need 4 pages, plus 1 root page table.
+    This is $2^16+5$ page frames.
+\end{enumerate}
+
+\section*{Question 5}
+For a 2 nanosecond instruction, it would be $2+10000000*\frac{1}{20000000} = 2.5 ns$.
+For a 1 nanosecond instruction, it would be 1.5 ns
+
+\section*{Question 6}
+There are a total of 8 page faults for FIFO
+
+\begin{tabular}{c c c}
+    Reference History & Queue & Faults\\
+    4 & 4 & 1 \\
+    42 & 42 & 2 \\
+    427 & 427 & 3 \\
+    4272 & 427 & 4 \\
+    42725 & 4275 & 4 \\
+    427253 & 2753 & 5 \\
+    4272533 & 2753 & 5 \\
+    42725332 & 2753 & 5 \\
+    427253323 & 2753 & 5 \\
+    4272533231 & 7531 & 6 \\
+    42725332312 & 5312 & 7 \\
+    427253323126 & 3126 & 8
+\end{tabular} \\
+
+There are a total of 7 page faults for LRU
+
+\begin{tabular}{c c c}
+    Reference History & Queue &Faults\\
+    4 & 4 & 1 \\
+    42 & 42 & 2 \\
+    427 & 427 & 3 \\
+    4272 & 472  & 4 \\
+    42725 & 4725 & 4 \\
+    427253 & 7253 & 5 \\
+    4272533 & 7253 & 5 \\
+    42725332 & 7532 & 5 \\
+    427253323 & 7523 & 5 \\
+    4272533231 & 5231 & 6 \\
+    42725332312 & 5312 & 6 \\
+    427253323126 & 3126 & 7
+\end{tabular}
+
+\section*{Question 7}
+The working set page replacement algorithm tries
+to keep the pages that the processes regularly need, the working set,
+so that page faults are not too burdensome.
+
+\section*{Question 8}
+\begin{enumerate}
+    \item The CPU speed is not what is stopping the utilization from increasing.
+    \item Probably wont help since the storage of the disk is not the issue
+    \item Multiprogramming will probably decrease utilization since they will require more memory
+    \item Decreasing multiprogramming will free up memory and increase cpu utilization
+    \item Increasing main memory will increase cpu utilization by decreasing the amount of page faults 
+    \item It will help
+    \item Can help if the algorithm works correctly
+    \item Doesn't change much.
+\end{enumerate}
+
+
+
+
+
+\end{document}
