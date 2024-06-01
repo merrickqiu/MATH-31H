@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[margin=1in]{geometry}
+
+%User defined commands
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\cond}{\kappa_{||\cdot||}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170B: Homework 4} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Since $x_k = \frac{k}{3}$, we can scale up all the numbers by 3 using the substitution 
+$x = \frac{1}{3}t$ to get rid of fractions
+\begin{align*}
+	W_0 &= \int_0^1 \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)} \,dx\\
+	&= \frac{1}{3} \int_0^3 \frac{(\frac{1}{3}t-\frac{1}{3})(\frac{1}{3}t-\frac{2}{3})(\frac{1}{3}t-1)}{(-\frac{1}{3})(-\frac{2}{3})(-1)} \,dt \\
+	&= -\frac{1}{18}\int_0^3 (t-1)(t-2)(t-3) \,dt \\
+	&= -\frac{1}{18} \left[\frac{1}{4}t^4 -2t^3 + \frac{11}{2}t^2 - 6t\right]_{t=3} \\
+	&= \frac{1}{8}
+\end{align*}
+
+\begin{align*}
+	W_1 &= \frac{1}{6}\int_0^3 t(t-2)(t-3) \,dt \\
+	&= \frac{1}{6} \left[\frac{1}{4}t^4 -\frac{5}{3}t^3 + 3t^2\right]_{t=3} \\
+	&= \frac{3}{8}
+\end{align*}
+
+\begin{align*}
+	W_2 &= \frac{1}{6}\int_0^3 t(t-1)(t-3) \,dt \\
+	&= -\frac{1}{6} \left[\frac{1}{4}t^4 -\frac{4}{3}t^3 + \frac{3}{2}t^2\right]_{t=3} \\
+	&= \frac{3}{8}
+\end{align*}
+
+\begin{align*}
+	W_3 &= \frac{1}{18} \int_0^3 t(t-1)(t-2) \,dt \\
+	&= \frac{1}{18} \left[\frac{1}{4}t^4 - t^3 + t^2\right]_{t=3} \\
+	&= \frac{1}{8}
+\end{align*}
+
+\begin{align*}
+	\int_0^1 f(x) \,dx &\approx W_0 f(x_0) +  W_1 f(x_1) + W_2 f(x_2) + W_3f(x_3) \\
+	&= \frac{1}{8} f(x_0) + \frac{3}{8} f(x_1) + \frac{3}{8} f(x_2) + \frac{1}{8} f(x_3)
+\end{align*}
+\newpage 
+
+\section*{Problem 2}
+Since for polynomials of degree $\leq 4$ the Lagrange interpolating polynomial exactly
+equals the polynomial, we just need to verify that the Newton-Cotes formula equals the given approximation
+when $a=0$ and $b=1$.
+Using the change of variables $x = a + th$ where $h = \frac{(b-2)}{2}$ and $x_k = a+kh$ for $k = 0,1,2,3,4$,
+we get that
+\begin{align*}
+	W_0 &= \int_a^b \frac{(x-x_1)(x-x_2)(x-x_3)(x-x_4)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)(x_0-x_4)} \\
+	&= \frac{h}{24} \int_0^4 (t-1)(t-2)(t-3)(t-4) \,dt \\
+	&= \frac{h}{24} \left[\frac{1}{5}t^5 - \frac{5}{2}t^4 + \frac{35}{3}t^3 - 25t^2 +24t\right]_{t=4} \\
+	&= \frac{14}{45}h
+\end{align*}
+
+\begin{align*}
+	W_1 &= \frac{1}{4} \int_0^4 t(t-2)(t-3)(t-4) \,dt \\
+	&= -\frac{h}{6} \left[\frac{1}{5}t^5 - \frac{9}{4}t^4 + \frac{26}{3}t^3 - 12t^2\right]_{t=4} \\
+	&= \frac{64}{45}h
+\end{align*}
+
+\begin{align*}
+	W_2 &= \frac{1}{4} \int_0^4 t(t-1)(t-3)(t-4) \,dt \\
+	&= \frac{h}{4} \left[\frac{1}{5}t^5 - 2t^4 + \frac{19}{3}t^3 - 6t^2\right]_{t=4} \\
+	&= \frac{8}{15}h
+\end{align*}
+
+\begin{align*}
+	W_3 &= \frac{1}{4} \int_0^4 t(t-1)(t-2)(t-4) \,dt \\
+	&= -\frac{h}{6} \left[\frac{1}{5}t^5 - \frac{7}{4}t^4 + \frac{14}{3}t^3 - 4t^2\right]_{t=4} \\
+	&= \frac{64}{45}h
+\end{align*}
+
+\begin{align*}
+	W_4 &= \frac{1}{4} \int_0^4 t(t-1)(t-2)(t-3) \,dt \\
+	&= \frac{h}{24} \left[\frac{1}{5}t^5 - \frac{3}{2}t^4 + \frac{11}{3}t^3 - 3t^2\right]_{t=4} \\
+	&= \frac{14}{45}h
+\end{align*}
+
+Thus the general formula(which equals the given approximation when $h=\frac{1}{4}$) is 
+\[	
+	\int_a^b f(x) \,dx= \frac{14}{45}hf(x_0) + \frac{64}{45}hf(x_1) + \frac{8}{15}hf(x_2) + \frac{64}{45}hf(x_3) + \frac{14}{45}hf(x_4)
+\]
+\newpage 
+
+\section*{Problem 3}
+The problem can be solved as a system of equations.
+\[
+	f(x) = ae^x + b\cos\left(\frac{\pi}{2}x\right)
+\]
+\[
+	f(0) = a+b
+\]
+\[
+	f(1) = ea
+\]
+\begin{align*}
+	\int_0^1 ae^x + b\cos\left(\frac{\pi}{2}x\right) &= \left[ae^x + \frac{2b}{\pi}\sin\left(\frac{\pi}{2}x\right)\right]_{x=0}^{x=1} \\
+    &= \left(ae + \frac{2b}{\pi}\right) - a \\
+	&= (e-1)a + \frac{2}{\pi}b \\
+	&= \frac{2}{\pi} f(0) + \frac{(e-1)\pi-2}{e\pi}f(1)
+\end{align*}
+which we get from solving 
+\[	
+	\begin{bmatrix}
+		1 & e \\
+		1 & 0 \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		A_0 \\ A_1
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		e-1 \\ \frac{2}{\pi}
+	\end{bmatrix}
+\]
+\newpage 
+
+\section*{Problem 4}
+\begin{align*}
+	W_1 &= \int_a^b \frac{x-\frac{2}{3}}{-\frac{1}{3}} \\
+	&= -3 \left[\frac{1}{2}x^2 - \frac{2}{3}x\right]_a^b\\
+	&=-\frac{1}{2}((3b^2-4b) - (3a^2-4a))
+\end{align*}
+\begin{align*}
+	W_2 &= \int_a^b \frac{x-\frac{1}{3}}{\frac{1}{3}} \\
+	&= 3 \left[\frac{1}{2}x^2 - \frac{1}{3}x\right]_a^b\\
+	&=\frac{1}{2}((3b^2-2b) - (3a^2-2a))
+\end{align*}
+For generalize $a,b$ with $h= \frac{b-a}{3}$ we have that
+\[
+	\int_a^b f(x) \,dx \approx W_1f\left(a+h\right) + W_2f\left(a+2h\right)\\
+\]
+
+When $a=0$ and $b=1$ we have that
+\begin{align*}
+	\int_0^1 f(x) \,dx &\approx W_1f\left(\frac{1}{3}\right) + W_2f\left(\frac{2}{3}\right)\\
+	&= \frac{1}{2}f\left(\frac{1}{3}\right)  + \frac{1}{2}f\left(\frac{2}{3}\right)
+\end{align*}
+\newpage 
+
+\section*{Matlab}
+
+\lstinputlisting[style=Matlab-editor]{GaussQuad4.m}
+Using the change of variables $t = \frac{1}{3}$ we get that
+\[
+	\int_{-3}^3 -\frac{5}{9}x^2 + 5 \,dx = \int_{-1}^1 -15x^2 + 15 \,dx = 20
+\]
+\begin{verbatim}
+>> GaussQuad4(@(x) -15*x^2 + 15)
+
+ans =
+
+	20.0000
+\end{verbatim}
+\newpage
+\end{document}
+
+

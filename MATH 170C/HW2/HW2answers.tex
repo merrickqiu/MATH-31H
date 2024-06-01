@@ -1,0 +1,181 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170C: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+We need to solve the following integrals
+\[
+	a_{ij} = \int_0^{c_i} \ell(\tau) \,d\tau \qquad b_i = \int_0^1 \ell_i(\tau) \,d\tau.
+\]
+The lagrange interpolating polynomials are
+\[
+	\ell_1(\tau) 
+	= \frac{(\tau - \frac{1}{2})(\tau - \frac{3}{4})}{(\frac{1}{4} - \frac{1}{2})(\frac{1}{4} - \frac{3}{4})}
+    = 8\left(\tau - \frac{1}{2}\right)\left(\tau - \frac{3}{4}\right)
+	= 8\tau^2 -10\tau +3
+\]
+\[
+	\ell_2(\tau) 
+	= \frac{(\tau - \frac{1}{4})(\tau - \frac{3}{4})}{(\frac{1}{2} - \frac{1}{4})(\frac{1}{2} - \frac{3}{4})}
+    = -16\left(\tau - \frac{1}{4}\right)\left(\tau - \frac{3}{4}\right)
+	= -16\tau^2 + 16\tau - 3
+\]
+\[
+	\ell_3(\tau)
+	= \frac{(\tau - \frac{1}{4})(\tau - \frac{1}{2})}{(\frac{3}{4} - \frac{1}{4})(\frac{3}{4} - \frac{1}{2})}
+    = 8\left(\tau - \frac{1}{4}\right)\left(\tau - \frac{1}{2}\right)
+	= 8\tau^2 -6\tau +1.
+\]
+The indefinite integrals are 
+\[
+	\int \ell_1(\tau) \,d\tau = \frac{8}{3}\tau^3 -5\tau^2 + 3\tau + C
+\]
+\[
+	\int \ell_2(\tau) \,d\tau = -\frac{16}{3}\tau^3 + 8\tau^2 - 3\tau + C
+\]
+\[
+	\int \ell_3(\tau) \,d\tau = \frac{8}{3}\tau^3 -3\tau^2 + \tau + C
+\]
+The weights are 
+\[
+	b_1 = \int_0^1 \ell_1(\tau) \,d\tau = \frac{2}{3} \quad 
+	b_2 = \int_0^1 \ell_2(\tau) \,d\tau = -\frac{1}{3} \quad
+	b_3 = \int_0^1 \ell_3(\tau) \,d\tau = \frac{2}{3} \quad
+\]
+\[
+	a_{11} = \int_0^{\frac{1}{4}} \ell_1(\tau) \,d\tau = \frac{23}{48}\quad 
+	a_{12} = \int_0^{\frac{1}{4}} \ell_2(\tau) \,d\tau = -\frac{1}{3} \quad
+	a_{13} = \int_0^{\frac{1}{4}} \ell_3(\tau) \,d\tau =  \frac{5}{48}\quad
+\]
+\[
+	a_{21} = \int_0^{\frac{1}{2}} \ell_1(\tau) \,d\tau = \frac{7}{12} \quad 
+	a_{22} = \int_0^{\frac{1}{2}} \ell_2(\tau) \,d\tau =  -\frac{1}{6} \quad
+	a_{23} = \int_0^{\frac{1}{2}} \ell_3(\tau) \,d\tau =  \frac{1}{12} \quad
+\]
+\[
+	a_{31} = \int_0^{\frac{3}{4}} \ell_1(\tau) \,d\tau = \frac{9}{16} \quad 
+	a_{32} = \int_0^{\frac{3}{4}} \ell_2(\tau) \,d\tau =  0 \quad
+	a_{33} = \int_0^{\frac{3}{4}} \ell_3(\tau) \,d\tau = \frac{3}{16}.
+\]
+The butcher table is
+\[
+	\begin{array}{c|ccc}
+	1/4 &23/48 &-1/3 &5/48 \\
+	1/2 &7/12 &-1/6 &1/12 \\
+	3/4 &9/16 &0 &3/16 \\
+	\hline
+	&2/3  &-1/3  &2/3 \\
+	\end{array}
+\]
+The order of accuracy of the method is $s+m = 3+1 = 4$ since the only inner product that equals 0 is
+\[
+	\langle q, \tau^0 \rangle = 
+	\int_0^1 \left(\tau-\frac{1}{4}\right)\left(\tau-\frac{1}{2}\right)\left(\tau-\frac{3}{4}\right)\tau^0 = 0.
+\]
+\newpage 
+
+\section*{Problem 2}
+The Adams-Bashford method estimates the integral with
+\[
+	\int_{t_n}^{t_n+h} f(x) \,dx \approx A_0 f_{n-3} + A_1 f_{n-2} + A_2 f_{n-1} + A_3 f_{n}.
+\]
+For the Adams-Bashford method to be exact for polynomials of degree $\leq 3$,
+the method must be exact for $1, x, x^2, x^3$ so
+\begin{align*}
+	\int_0^h 1 \,dx = h &= A_0 + A_1 + A_2 + A_3 \\
+	\int_0^h x \,dx = \frac{h^2}{2} &= -3hA_0 -2hA_1 -hA_2 \\
+	\int_0^h x^2 \,dx = \frac{h^3}{3} &= 9h^2A_0 + 4h^2A_1 + h^2A_2\\
+	\int_0^h x^3 \,dx = \frac{h^4}{4} &= -27h^3A_0 -8h^3A_1 -h^3 A_2.  \\
+\end{align*}
+
+Solving this system of equations yields
+\[
+	A_0 = -\frac{3}{8}h \quad A_1 = \frac{37}{24}h \quad 
+	A_2 = -\frac{59}{24}h \quad A_3 = \frac{55}{24}h.
+\]
+Plugging these values into the fundamental theorem of calculus gives us 
+\begin{align*}
+	x_{n+1} &= x_n + \int_{t_n}^{t_n+h} f(x) \,dx \\
+	&= x_n -\frac{3}{8}h f_{n-3} + \frac{37}{24}h f_{n-2} -\frac{59}{24}h f_{n-1} + \frac{55}{24}h f_{n} \\
+	&= x_n + \frac{h}{24}[55f_n - 49f_{n-1} + 37f_{n-2} - 9f_{n-3}].
+\end{align*}
+\newpage 
+
+\section*{Problem 3}
+We have that 
+\[
+	c_\ell = \int_{t_k}^{t_{k+1}} \left(\prod_{\substack{j=0 \\ j \neq \ell}}^3 \frac{s- t_{k+1-j}}{t_{k+1-\ell}- t_{k+1-j}}\right) \,ds
+\]
+\[
+	c_0 = \int_0^h \frac{(s-0)(s+h)(s+2h)}{(h-0)(h+h)(h+2h)} \,ds = \frac{3}{8}h
+\]
+\[
+	c_1 = \int_0^h \frac{(s-h)(s+h)(s+2h)}{(0-h)(0+h)(0+2h)} \,ds = \frac{19}{24}h 
+\]
+\[
+	c_2 = \int_0^h \frac{(s-h)(s-0)(s+2h)}{(-h-h)(-h-0)(-h+2h)} \,ds = -\frac{5}{24}h 
+\]
+\[
+	c_3 = \int_0^h \frac{(s-h)(s-0)(s+h)}{(-2h-h)(-2h-0)(-2h+h)} \,ds = \frac{1}{24}h.
+\]
+Putting these constants into the Adams-Moulton formula gives us 
+\[
+	x_{n+1} = x_n + \frac{h}{24}[9f_{n+1} + 19f_n - 5f_{n-1} + f_{n-2}]
+\]
+\newpage 
+
+\section*{Problem 4}
+We can do the change of variable $u = t_0+hx$, $du = h dx$
+\[
+	\int_0^1 f(x) \,dx =
+	\int_{t_0}^{t_0+h} f\left(\frac{u-t_0}{h}\right) \,\frac{du}{h}
+	\approx \sum_{i=-n}^n A_i f(i).
+\]
+Thus, we get that 
+\[
+	\int_{t_0}^{t_0+h} f\left(\frac{u-t_0}{h}\right) \,du \approx h\sum_{i=-n}^n A_i f(i)
+\]
+We can then evaluate $f$ at points $i = t_0 + ih$ and likewise $u = t_0 + hx$
+to get our final formula 
+\[
+	\int_{t_0}^{t_0+h} f(x) \,dx \approx h\sum_{i=-n}^n A_i f(t_0 + ih)
+\]
+\newpage 
+
+\section*{Problem 5}
+If it is exactly for all polynomials of degree $m$, it will be exact for $x^m$
+for all choices of $n$, $h$, and $A$.
+
+Choosing $n=1$, $h=1$, and $A= 0$ yields
+\begin{align*}
+	x_{n+1} &= x_n + \frac{5}{12}x'_{n+1} + \frac{8}{12}x'_n -x'_{n-1}\\
+	2^m &= 1 + \frac{5}{12}m2^{m-1} + \frac{8}{12}m \\
+	\left(2-\frac{5}{12}m\right)2^{m-1} &= 1+\frac{2}{3}m \\
+	\left(\frac{24-5m}{12}\right)2^{m-1} &= \frac{3+2m}{3} \\
+	2^{m-1} &= \frac{12+8m}{24-5m}
+\end{align*}
+which has solutions at $m=2,3$.
+
+Choosing $n=1$, $h=1$, and $A= 1$ yields
+\begin{align*}
+	x_{n+1} &= x_{n-1} + \frac{4}{12}x'_{n+1} + \frac{16}{12}x'_n + 4 x'_{n-1}\\
+	2^m &= \frac{1}{3}m2^{m-1} + \frac{4}{3}m \\
+	\left(2-\frac{1}{3}m\right)2^{m-1} &= \frac{4}{3}m \\
+	\left(\frac{6-m}{3}\right)2^{m-1} &= \frac{4m}{3} \\
+	2^{m-1} &= \frac{4m}{6-m}
+\end{align*}
+which has solutions at $m=2,3,4$. Thus, $m=3$ and $A=1$.
+\newpage
+\end{document}

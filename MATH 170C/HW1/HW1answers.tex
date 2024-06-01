@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170C: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+We have that
+\begin{align*}
+  & &x(0) = 2 \\
+  &x'(t) = -tx^2 &x'(0) = 0 \\
+  &x''(t) = -x^2 - 2txx' = -x^2 + 2t^2x^3 &x''(0) = -4
+\end{align*}
+
+\begin{align*}
+  x(0.1) &\approx x(0) + 0.1 x'(0) + \frac{0.1^2}{2}x''(0)\\
+  &= 2 + 0 - 0.02 \\
+  &= 1.98
+\end{align*}
+\newpage 
+
+\section*{Problem 2}
+The second derivative is
+\begin{align*}
+  x''(t) &= 2xx' + xe^t + x'e^t  \\
+  &= (2x^3 + 2x^2e^t) + (xe^t) + (x^2e^t + xe^{2t}) \\
+  &=  2x^3 + 3x^2e^t + xe^t + xe^{2t}.
+\end{align*}
+
+The third derivative is
+\begin{align*}
+  x'''(t) &= (6x^2x') + (6xx'e^t + 3x^2e^t) + (x'e^t + xe^t) + (x'e^{2t} + 2xe^{2t})\\
+  &= (6x^4 + 6x^3e^t) + (6x^3e^t + 6x^2e^{2t} + 3x^2e^t) + (x^2e^t + xe^{2t} + xe^t) + (x^2e^{2t} + xe^{3t} + 2xe^{2t})\\
+  &=  6x^4 +12x^3e^t + 7 x^2e^{2t} + 4x^2e^t + 3xe^{2t} + xe^t + xe^{3t}
+\end{align*}
+
+We have that
+\begin{align*}
+  & &x(0) = 1 \\
+  &x'(t) = x^2 + xe^t &x'(0) =  2\\
+  &x''(t) = 2x^3 + 3x^2e^t + xe^t + xe^{2t}&x''(0) = 7 \\
+  &x'''(t) = 6x^4 +12x^3e^t + 7 x^2e^{2t} + 4x^2e^t + 3xe^{2t} + xe^t + xe^{3t} & x'''(0) = 34
+\end{align*}
+
+\begin{align*}
+  x(0.01) &\approx x(0) + 0.01 x'(0) + \frac{0.01^2}{2}x''(0) + \frac{0.01^3}{6}x'''(0)\\
+  &= 1+ 0.02 + 0.00035 + 0.000005\overline{6} \\
+  &= 1.020355\overline{6}
+\end{align*}
+\newpage 
+
+\section*{Problem 3}
+\[
+  x' = \cos(tx)
+\]
+\[
+  x'' = -\sin(tx)(x + tx') 
+\]
+\[
+  x''' = -\sin(tx)(x' + x' + tx'') - \cos(tx)(x + tx')^2
+  = -\sin(tx)(2x' + tx'') - \cos(tx)(x + tx')^2
+\]
+\[
+  x^{(4)} = -\sin(tx)(3x'' + tx''')-\cos(tx)(x + tx')(2x' + tx'') -2\cos(tx)(x + tx')(2x' + x'')+\sin(tx)(x + tx')^3
+\]
+\newpage 
+
+\section*{Problem 4}
+We need to impose 
+\begin{align*}
+  w_1 + w_2 &= 1 \\
+  w_2\alpha &= \frac{1}{2} \\
+  w_2\beta &= \frac{1}{2}
+\end{align*}
+Thus when $\alpha=\beta=\frac{2}{3}$, 
+$w_1 = \frac{1}{4}$ and $w_2 = \frac{3}{4}$.
+Substituting these values in the form of Runge-Kutta yields
+\[
+  x(t+h) = x + \frac{1}{4}hf + \frac{3}{4}h\left[f+ \frac{2}{3}hf_t + \frac{2}{3}hff_x\right] + \mathcal{O}(h^3) 
+\]
+\newpage 
+
+\section*{Problem 5}
+Euler's formula for some error term $Ch^2$ is 
+\[
+  x(t+h) = x(t) + hf(t, x(t)) + Ch^2
+\]
+Using step size $\frac{h}{2}$ gives
+\[
+  x\left(t+\frac{h}{2}\right) = x(t) + \frac{h}{2}f(t, x(t)) + \frac{C}{4}h^2
+\]
+\begin{align*}
+  x(t+h) &= x\left(t+\frac{h}{2}\right) + \frac{h}{2}f\left(t+\frac{h}{2}, x\left(t+\frac{h}{2}\right)\right) + \frac{C}{4}h^2\\
+  &= x(t) + \frac{h}{2}f(t, x(t)) + \frac{h}{2}f\left(t+\frac{h}{2}, x(t) + \frac{h}{2}f(t, x(t))\right)
+  + \frac{C}{4}h^2
+\end{align*}
+\[
+  4x(t+h) = 4x(t) + 2hf(t, x(t)) + 2hf\left(t+\frac{h}{2}, x(t) + \frac{h}{2}f(t, x(t))\right)
+  + 2Ch^2
+\]
+Subtracting the two equations to get rid of the local error term yields 
+\[
+  3x(t+h) = 3x(t) + hf(t, x(t)) + 2hf\left(t+\frac{h}{2}, x(t) + \frac{h}{2}f(t, x(t))\right)
+\]
+\[
+  x(t+h) = x(t) + \frac{1}{3}hf(t, x(t)) + \frac{2}{3}hf\left(t+\frac{h}{2}, x(t) + \frac{h}{2}f(t, x(t))\right)
+\]
+
+\end{document}

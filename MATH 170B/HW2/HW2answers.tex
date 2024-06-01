@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[margin=1in]{geometry}
+
+%User defined commands
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\cond}{\kappa_{||\cdot||}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170B: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Fixed Point Method}
+Since $-x\sin^2(1/x)$ is continuous, we just need to prove 
+that $g$ is continuous at $0$.
+Since $-1 \leq \sin^2 (1/x)\leq 1$,
+by the squeeze theorem
+\[
+	\lim_{x \to 0} -x\sin^2(1/x) = 0.
+\]
+Thus $g$ is continuous everywhere including $0$.
+If there did exist a point $x_0 \in (0,1]$ then it must
+be that $\sin^2 (1/x_0) = -1$. However this is impossible
+since a square cannot be negative. Thus $x = 0$ is the only fixed point.
+	
+\section*{Interpolation 1}
+\begin{align*}
+	p_3(x) &= \sum_{k=0}^3 L_k(x)y_k \\
+	&= 10\frac{(x-7)(x-1)(x-2)}{-8} +  146\frac{(x-3)(x-1)(x-2)}{120} + 2\frac{(x-3)(x-7)(x-2)}{-12} + 1\frac{(x-3)(x-7)(x-1)}{5} \\
+	&= -\frac{5(x-7)(x-1)(x-2)}{4} +  \frac{73(x-3)(x-1)(x-2)}{60} - \frac{(x-3)(x-7)(x-2)}{6} + \frac{(x-3)(x-7)(x-1)}{5}
+\end{align*}
+
+\section*{Interpolation 2}
+When $x = x_0$ we have that $x_0 - x_0 = 0$ so
+\[
+	g(x_0) + \frac{x_0 - x_0}{x_n - x_0}[g(x) - h(x)] =  g(x_0) = f(x_0) 
+\]
+When  $x = x_i$ for $i = 1,\dots,n-1$ we have that $[g(x_i) - h(x_i)] = 0$ so
+\[
+	g(x_i) + \frac{x_0 - x_i}{x_n - x_0}[g(x_i) - h(x_i)] = g(x_i) = f(x_i)
+\]
+When $x = x_n$ 
+\[
+	g(x_n) + \frac{x_0 - x_n}{x_n - x_0}[g(x_n) - h(x_n)] = g(x_i) - [g(x_n) - h(x_n)] = h(x_n) = f(x_n)
+\]
+Thus the function interpolates $f$ at $x_0,\dots,x_n$.
+
+\section*{Interpolation 3}
+Since $f^{(n)}(\eta_x) = \sinh(\eta_x)$ or $f^{(n)}(\eta_x) = \cosh(\eta_x)$
+and both functions are less than 2 in the interval $[-1,1]$, we have that 
+$f^{(n)}(\eta_x)x \leq 2$.
+The error term is 
+\begin{align*}
+	E(x) &= \frac{f^{(n)}(\eta_x)}{n!}\prod_{j=0}^{n-1}(x-x_j) \\
+	&\leq \frac{f^{(n)}(\eta_x)}{n!}2^{n-1}(x-0) \\
+	&\leq \frac{2^{n}}{n!}
+\end{align*}
+
+\section*{Interpolation 4}
+The Lagrange form is 
+\begin{align*}
+	p_2(x) &= \sum_{k=0}^3 L_k(x)y_k \\
+	&= 0L_0(x) + 1\frac{(x+2)(x-1)}{-2} - 1\frac{(x+2)x}{3} \\
+	&= -\frac{(x+2)(x-1)}{2} - \frac{(x+2)x}{3} \\
+	&= -\frac{5}{6}x^2 - \frac{7}{6}x + 1
+\end{align*}
+The Newton form is 
+\[
+	p_0 = 0
+\]
+\[
+	C_1 = \frac{1}{x_1+2} = \frac{1}{2}
+\]
+\[
+	p_1 = 0 + C_1(x+2) = \frac{1}{2}(x+2)
+\]
+\[
+	C_2 = \frac{-1 - \frac{1}{2}(x_2+2)}{(x_2+2)x_2} = -\frac{5}{6}
+\]
+\[
+	p_2 = \frac{1}{2}(x+2) + C_2(x+2)x = \frac{1}{2}(x+2) -\frac{5}{6} (x+2)x = -\frac{5}{6}x^2 - \frac{7}{6}x + 1
+\]
+
+\section*{Interpolation 5}
+The left hand side is the Lagrange interpolant and the right hand side is 
+the Newton interpolant written using the divided differences.
+By the uniqueness of the interpolating polynomial, both sides must be equal.
+
+\section*{Interpolation 6}
+Since both polynomials are equal, they must have equal coefficients.
+The coefficient for $x^n$ in the Netwon interpolant is $f[x_0,\dots,x_n]$.
+The coefficient for $x^n$ in the Lagrange interpolant is 
+$\sum_{i=0}^{n} f(x_i) \prod_{\substack{j=0\\ j\neq i}}^{n} (x_i - x_j)^{-1}$.
+Thus the equality holds.
+
+\section*{Interpolation 7}
+\begin{center}
+	\begin{tabular}{ c|c|c|c|c} 
+	$x_i$ & $f[x_i]$ & $f[x_i,x_{i+1}]$ & $f[x_i,x_{i+1},x_{i+2}]$ & $f[x_i,x_{i+1},x_{i+2},x_{i+3}]$\\
+	 \hline
+	 4 & 63 & $\frac{11-63}{2-4} = 26$ & $\frac{2-26}{0-4} = 6$ & $\frac{5-6}{3-4} = 1$\\ 
+	 2 & 11 & $\frac{7-11}{0-2} = 2$ & $\frac{7-2}{3-2} = 5$\\ 
+	 0 & 7 & $\frac{28-7}{3-0} = 7$  \\ 
+	 3 & 28 \\ 
+	\end{tabular}
+\end{center}
+
+The final polynomial is 
+\[
+	63 + 26(x-4) + 6(x-4)(x-2) + (x-4)(x-2)x
+\]
+
+\section*{Bisection Method}
+Applying this function to $f(x) = x - 2e^{-x}$ on $[0,1]$ yields $x=0.8526$
+\lstinputlisting[style=Matlab-editor]{BisectionRoot.m}
+\end{document}

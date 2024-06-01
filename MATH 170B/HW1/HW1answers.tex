@@ -1,0 +1,236 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[margin=1in]{geometry}
+
+%User defined commands
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\cond}{\kappa_{||\cdot||}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170B: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Bisection Method}
+Since the interval is of length $1$,
+$\log_2(10^6)-1 = 18.93$ so $19$ steps are needed to get an accuracy of $10^{-6}$.
+Since $|x_T| \geq 2$, we only need $18$ steps to get a relative accuracy of $10^{-6}$.
+\newpage 
+
+\section*{Newton Method}
+We are trying to find the roots of
+\[
+	f = \begin{bmatrix}
+		4x_1^2 - x_2^2 \\
+		4x_1x_2^2 - x_1 - 1
+	\end{bmatrix}.
+\]
+The Jacobian is 
+\[
+	f' = \begin{bmatrix}
+		8x_1  && -2x_2\\
+		4x_2^2 - 1 && 8x_1x_2
+	\end{bmatrix}.
+\]
+The first iteration is 
+\begin{align*}
+	x_1 &= x_0 - f'(x_0)^{-1}f(x_0) \\
+	&= \begin{bmatrix}
+		0 \\ 1
+	\end{bmatrix} -
+	\begin{bmatrix}
+		0 & -2 \\
+		3 & 0
+	\end{bmatrix}^{-1}
+	\begin{bmatrix}
+		-1 \\
+		-1
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		0 \\ 1
+	\end{bmatrix} -
+	\begin{bmatrix}
+		0 & \frac{1}{3} \\
+		-\frac{1}{2} & 0
+	\end{bmatrix}
+	\begin{bmatrix}
+		-1 \\
+		-1
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		\frac{1}{3} \\ \frac{1}{2}
+	\end{bmatrix}
+\end{align*}
+The second iteration is 
+\begin{align*}
+	x_2 &= x_1 - f'(x_1)^{-1}f(x_1) \\
+	&= \begin{bmatrix}
+		\frac{1}{3} \\ \frac{1}{2}
+	\end{bmatrix} -
+	\begin{bmatrix}
+		\frac{8}{3} & -1 \\
+		0 & \frac{4}{3}
+	\end{bmatrix}^{-1}
+	\begin{bmatrix}
+		\frac{7}{36} \\
+		-1
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		\frac{1}{3} \\ \frac{1}{2}
+	\end{bmatrix} -
+	\begin{bmatrix}
+		\frac{3}{8} & \frac{9}{32} \\
+		0 & \frac{3}{4}
+	\end{bmatrix}
+	\begin{bmatrix}
+		\frac{7}{36} \\
+		-1
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		\frac{13}{24} \\ \frac{5}{4}
+	\end{bmatrix}
+\end{align*}
+\newpage
+
+\section*{Problem 1.3}
+The derivatives are 
+\[
+	f(x) = e^x - x - 2
+\]
+\[
+	f'(x) = e^x -  1
+\]
+\[
+	f''(x) = e^x
+\]
+
+Note that $f'(x) > 0$ and $f''(x) > 0$ when $x>0$
+and $f'(x) < 0$ and $f''(x) > 0$ when $x<0$.
+Thus by theorem 1.9, Newton's method converges to the positive root when $x>0$
+and Newton's method converges to the negative root when $x<0$.
+\newpage 
+
+\section*{Problem 1.6}
+
+The taylor expansion around $x_k$ is 
+\begin{align*}
+	&0 = f(\xi) = f(x_k) + f'(x_k)(\xi-x_k) + \frac{f''(\eta)}{2}(\xi-x_k)^2 \implies \\
+	&0 = \frac{f(x_k)}{f'(x_k)} + (\xi-x_k) + \frac{f''(\eta)}{2f'(x_k)}(\xi-x_k)^2 \implies \\
+	&\frac{f(x_k)}{f'(x_k)} =  -(\xi-x_k)  -\frac{f''(\eta)}{2f'(x_k)}(\xi-x_k)^2 \\
+\end{align*}
+By the mean value theorem there exists $\chi_k$ such that 
+\[
+	f'(x_k) - f'(\xi) = (x_k - \xi) f''(\chi_k)
+\]
+\[
+	\xi - x_k = -\frac{f'(x_k) - f'(\xi)}{f''(\chi_k)} = -\frac{f'(x_k)}{f''(\chi_k)}
+\]
+
+Substituting these in yields
+\begin{align*}
+	\xi - x_{k+1} &= \xi - x_k + \frac{f(x_k)}{f'(x_k)} \\
+	&= \xi - x_k - (\xi-x_k)  - \frac{f''(\eta_k)}{2f'(x_k)}(\xi-x_k)^2 \\
+	&= -\frac{f''(\eta_k)}{2f'(x_k)}(\xi-x_k)^2 \\
+	&=  \left(-\frac{f''(\eta_k)(\xi-x_k)}{2f'(x_k)}\right)\left(-\frac{f'(x_k)}{f''(\chi_k)}\right)\\
+	&= (\xi-x_k)\frac{f''(\eta_k)}{2f''(\chi_k)}
+\end{align*}
+
+Note that $f''(\eta_k) < M$, $f''(\chi_k) > m$, and $M < 2m$ so $\frac{f''(\eta_k)}{2f''(\chi_k)} < 1$,
+so $x_0$ will converge.
+Additionally since $\eta_k \to \xi$ and $\chi_k \to \xi$,
+$f''(\eta_k) \to f''(\xi)$ and $f''(\chi_k) \to f''(\xi)$.
+Thus,
+\[
+	\frac{\xi - x_{k+1}}{\xi - x_k} = \frac{f''(\eta_k)}{2f''(\chi_k)} \to \frac{1}{2}
+\]
+The asymptotic rate of convergence is thus $\rho = -\log \frac{1}{2} = \log 2$.
+Using newtons method we find that it converges to the correct root of 0 by the rate of convergence we found.
+$x_0 = 1$, $x_1 = 0.58$, $x_2 = 0.32$, $x_3 = 0.17$, $x_4 = 0.09$, $x_5 = 0.04$, \dots
+\newpage 
+
+\section*{Problem 1.7}
+
+The taylor expansion around $\xi$ is 
+\[
+	f(x_k) = f(\xi) + f'(\xi)(x_k-\xi) + \frac{f''(x_k)}{2}(x_k-\xi)^2 + \frac{f'''(\eta_k)}{6}(x_k-\xi)^3 = \frac{f'''(\eta_k)}{6}(x_k-\xi)^3\\
+\]
+\[
+	f'(x_k) = f'(\xi) + f''(\xi)(x_k-\xi) + \frac{f'''(\chi_k)}{2}(x_k-\xi)^2 = \frac{f'''(\chi_k)}{2}(x_k-\xi)^2\\
+\]
+Substituting yields 
+\begin{align*}
+	\xi - x_{k+1} &= \xi - x_k + \frac{f(x_k)}{f'(x_k)} \\
+	&= \xi - x_k + \frac{\frac{f'''(\eta_k)}{6}(x_k-\xi)^3}{\frac{f'''(\chi_k)}{2}(x_k-\xi)^2} \\
+	&= \xi - x_k  + \frac{f'''(\eta_k)(x_k-\xi)}{3f'''(\chi_k)} \\
+	&= (\xi - x_k) \left(1 - \frac{f'''(\eta_k)}{3f'''(\chi_k)}\right)
+\end{align*}
+If we assume that $\eta_k$ and $\chi_k$ both lie between $\xi$ and $x_k$ and that 
+$0 < m < |f'''(x)| < M$ and $M < 3m$ then 
+\[
+	\frac{\xi - x_{k+1}}{\xi - x_k} = 1 - \frac{f'''(\eta_k)}{3f'''(\chi_k)} < 1 - \frac{M}{m} < 1
+\]
+\[
+	\frac{\xi - x_{k+1}}{\xi - x_k} \to \frac{2}{3}
+\]
+\newpage
+
+\section*{Problem 1.10}
+We have the secant method is 
+\[
+	x_{k+1} = \frac{x_kf(x_{k-1})-x_{k-1}f(x_k)}{f(x_{k-1})-f(x_k)}
+\]
+Substituting into the function yields
+\begin{align*}
+	\varphi(x_k, x_{k-1}) &= \frac{x_{k+1}-\xi}{(x_k-\xi)(x_{k-1}-\xi)} \\
+	&=\frac{\frac{x_kf(x_{k-1})-x_{k-1}f(x_k)}{f(x_{k-1})-f(x_k)}-\xi}{(x_k-\xi)(x_{k-1}-\xi)} \\
+	&= \frac{x_kf(x_{k-1})-x_{k-1}f(x_k) - \xi f(x_{k-1}) +\xi f(x_k)}{(f(x_{k-1})-f(x_k))(x_k-\xi)(x_{k-1}-\xi)}
+\end{align*}
+
+By L'Hospitals rule on $x_k$,
+\begin{align*}
+	\lim_{x_k \to \xi}\frac{x_kf(x_{k-1})-x_{k-1}f(x_k) - \xi f(x_{k-1}) +\xi f(x_k)}{(f(x_{k-1})-f(x_k))(x_k-\xi)(x_{k-1}-\xi)} &= 
+	\lim_{x_k \to \xi}\frac{f(x_{k-1})-x_{k-1}f'(x_k) +\xi f'(x_k)}{(x_{k-1}-\xi)(f(x_{k-1})-f(x_k) - f'(x_k)(x_k - \xi))} \\
+	&= \frac{f(x_{k-1})-x_{k-1}f'(\xi) +\xi f'(\xi)}{(x_{k-1}-\xi)(f(x_{k-1})-f(\xi))} 
+\end{align*}
+	
+
+By L'Hopitals rule on $x_{k-1}$ twice,
+\begin{align*}
+	\lim_{x_{k-1} \to \xi} \frac{f(x_{k-1})-x_{k-1}f'(\xi) +\xi f'(\xi)}{(x_{k-1}-\xi)(f(x_{k-1})-f(\xi))}  
+	&= \lim_{x_{k-1} \to \xi} \frac{f'(x_{k-1})-f'(\xi)}{(x_{k-1}-\xi)f'(x_{k-1}) + f(x_{k-1})-f(\xi)} \\
+	&= \lim_{x_{k-1} \to \xi} \frac{f''(x_{k-1})}{(x_{k-1}-\xi)f''(x_{k-1}) +  f'(x_{k-1}) + f'(x_{k-1})} \\
+	&= \frac{f''(\xi)}{2f'(\xi)}
+\end{align*}
+If we assume that 
+\[
+	\lim_{k \to \infty} \frac{|x_{k+1}-\xi|}{|x_k - \xi|^q} = A
+\]
+then
+\[
+	\lim_{k \to \infty} \frac{|x_k-\xi|^{\frac{1}{q}}}{|x_{k-1} - \xi|} = A^{\frac{1}{q}}
+\]
+so 
+\[
+	\lim_{k \to \infty} \frac{|x_{k+1}-\xi|}{|x_k - \xi|^{q-1/q}|x_{k-1} - \xi|} = A^{1+\frac{1}{q}}
+\]
+When $q - 1/q = 1$ we have that $A^{1+\frac{1}{q}} = \frac{f''(\xi)}{2f'(\xi)}$ from our first limit.
+Solving out for $q^2 - q - 1$ yields positive root $q = \frac{1 +\sqrt{5}}{2}$.
+Finally solving out for $A$ yields 
+\[
+	\lim_{k \to \infty} \frac{|x_{k+1}-\xi|}{|x_k - \xi|^q} = A = \left(\frac{f''(\xi)}{2f'(\xi)}\right)^{q/(1+q)}
+\]
+	
+
+
+
+
+\end{document}

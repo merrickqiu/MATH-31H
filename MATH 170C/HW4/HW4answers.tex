@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{bm}
+\usepackage{matlab-prettifier}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170C: Homework 4} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1}
+Letting $x_0 = t$, $x_1 = x$, $x_2 = x'$, and $x_3 = x''$ yields
+\[
+	\begin{cases}
+		x'_0 = 1 \\
+		x'_1 = x_2 \\
+		x'_2 = x_3\\
+		x'_3 = e^{x_0} -2x_3 + x_2 + 2x_1
+	\end{cases}
+\]
+with initial condition $X = (8, 3,2,1)^T$
+\newpage 
+
+\section*{Problem 2}
+We can transform the first problem to the second with the change of variables
+$t = 3+4s$,  $y(s) = x(3+4s)$, $y'(s) = 4x'(3+4s)$, $y''(s) = 16x''(3+4s)$
+\begin{align*}
+	x(3) = \alpha \implies y(0) &= \alpha \\
+	x(7) = \beta \implies y(1) &= \beta \\
+	x'' = t+x^2-3x' \implies y'' &= 16((3+4s)+y^2-3(y'/4)) \\
+	&= 48 +64s + 16y^2 - 12 y'.
+\end{align*}
+Thus, theorem 2 holds for this problem.
+\newpage
+
+\section*{Problem 3}
+Suppose we find a solution $x_1$ with initial conditions $x_1(a)$ and $x_1'(a)$
+such that $c_{11}x_1(a) + c_{12}x'_1(a) = \alpha$.
+Then consider $x_2$ such that $x_2(a) = -c_{12}$ and $x'_2(a) = c_{11}$.
+Consider the solution $x_1 + \lambda x_2$.
+This satisfies the initial condition at $a$ since 
+\begin{align*}
+	c_{11}(x_1(a) + \lambda x_2(a)) + c_{12}(x'_1(a) + \lambda x'_2(a)) 
+	&= (c_{11}x_1(a) + c_{12}x'_1(a)) + (-\lambda c_{11}c_{12} + \lambda c_{12}c_{11}) \\
+	&= \alpha + 0 \\
+	&= \alpha
+\end{align*}
+We then want to select $\lambda$ such that 
+\[
+	c_{21}(x_1(b) + \lambda x_2(b)) + c_{22}(x'_1(b) + \lambda x'_2(b)) = \beta
+\]
+Solving for $\lambda$ yields 
+\[
+	\lambda = \frac{\beta - c_{21}x_1(b) - c_{22}x'_1(b)}{x_2(b) + x'_2(b)}.
+\]
+\end{document}
