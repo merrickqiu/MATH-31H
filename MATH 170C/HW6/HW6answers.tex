@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{bm}
+\usepackage{matlab-prettifier}
+\usepackage[margin=1in]{geometry}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170C: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+We are attempting to solve the system of equations $X' = AX$ where 
+\[
+	A = 
+	\begin{bmatrix}
+		3 & -5 \\
+		2 & 1
+	\end{bmatrix}.
+\]
+This has solution $X(t) = e^{\lambda t}V$
+where $\lambda$ and $V$ are the eigenvalue and eigenvector of $A$.
+
+The characteristic polynomial and its eigenvalues are
+\[
+	\left|\begin{matrix}
+		\lambda - 3 & 5 \\
+		-2 & \lambda - 1
+	\end{matrix} \right|
+	= (\lambda - 3)(\lambda - 1) + 10
+	= \lambda^2 -4\lambda + 13
+\]
+\[
+	\lambda = \frac{4 \pm \sqrt{16-52}}{2} = 2 \pm 3i.
+\]
+The eigenvectors for $\lambda_1 = 2 + 3i$ and $\lambda_2 = 2 - 3i$ are
+\[
+\begin{bmatrix}
+	-1+3i & 5 \\
+	-2 & 1+3i
+\end{bmatrix}V_1 = 0 \implies 
+V_1 = 
+\begin{bmatrix}
+	1+3i \\ 2
+\end{bmatrix},
+\]
+\[
+\begin{bmatrix}
+	-1-3i & 5 \\
+	-2 & 1-3i
+\end{bmatrix}V_2 = 0 \implies 
+V_1 = 
+\begin{bmatrix}
+	1-3i \\ 2
+\end{bmatrix}.
+\]
+Thus for a constants $C_1$ and $C_2$, the solutions are 
+\[
+	X(t) = C_1e^{(2+3i)t}
+	\begin{bmatrix}
+		1+3i \\ 2
+	\end{bmatrix} +
+	C_2e^{(2-3i)t}
+	\begin{bmatrix}
+		1-3i \\ 2
+	\end{bmatrix}
+\]
+\newpage 
+
+\section*{Problem 2}
+If $x_1 = x$ and $x_2 = x'$ then we can rewrite the problem as
+\[
+	\begin{cases}
+		x_1' = x_2 \\
+		x_2' = -19x_1 -20x_2
+	\end{cases}
+\]
+with $X(0) = [2,-20]^T$.
+Note that 
+\[
+	A =
+	\begin{bmatrix}
+		0 & 1 \\
+		-19 & -20
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		-1 & -1 \\
+		19 & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		-19 & 0 \\
+		0 & -1
+	\end{bmatrix}
+	\begin{bmatrix}
+		\frac{1}{18} & \frac{1}{18} \\
+		-\frac{19}{18} & -\frac{1}{18}
+	\end{bmatrix}
+\]
+It has solution 
+\begin{align*}
+	X(t) &= e^{At}X(0) \\
+	&= \begin{bmatrix}
+		0 & 1 \\
+		-19 & -20
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		-1 & -1 \\
+		19 & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		e^{-19t} & 0 \\
+		0 & e^{-t}
+	\end{bmatrix}
+	\begin{bmatrix}
+		\frac{1}{18} & \frac{1}{18} \\
+		-\frac{19}{18} & -\frac{1}{18}
+	\end{bmatrix}
+	\begin{bmatrix}
+		2 \\ -20
+	\end{bmatrix} \\
+	&= 
+	\begin{bmatrix}
+		e^{-19t} + e^{-t} \\
+		-19e^{-19t} - e^{-t}
+	\end{bmatrix}.
+\end{align*}
+
+Looking at the eigenvalues and the solution,
+we can see that the problem is stiff.
+$-19$ is much larger in magnitude than $-1$ and so there is a 
+``wide disparity in the time scales of the components in the vector solution".
+$e^{-19}$ is transient and we need very small time steps to account for its effects.
+% For example, if we were to use Euler's method on the system of equations,
+% \[
+% 	X_{n+1} = X_n + hAX_n = (I + hA)X_n
+% \]
+% \[
+% 	X_n = (I + hA)^n X(0)
+% \]
+\newpage 
+
+\section*{Problem 3}
+The relevant polynomials are
+\[
+	p(z) = z^2 + \alpha z - (1+\alpha)
+\]
+\[
+	q(z) = - \frac{\alpha}{2}z^2 + \frac{4+3\alpha}{2}z
+\]
+\[
+	\phi(z) = \left(1+\lambda h\frac{\alpha}{2}\right)z^2 + \left(\alpha - \lambda h\frac{4+3\alpha}{2}\right)z - (1+\alpha)
+\]
+For stability we need that all the roots of $p$ lie in the disk $|z| \leq 1$ and
+roots of modulus $1$ are simple.
+We need $-2 < \alpha < 0$ since the roots of $p$ are 
+\[
+	z = \frac{-\alpha \pm \sqrt{\alpha^2 + 4(1+\alpha)}}{2} 
+	= \frac{-\alpha \pm (\alpha+2)}{2}
+	= 1, -\alpha-1
+\]
+Our method is already consistent since $p(1) = 0$ and $p'(1) = q(1)$ for all $\alpha$.
+\[
+	p(1) = 1 + \alpha - (1+\alpha) = 0
+\]
+\[
+	p'(1) = 2 + \alpha 
+\]
+\[
+	q(1) = - \frac{\alpha}{2} + \frac{4+3\alpha}{2} = 2 + \alpha
+\]
+
+Convergence directly follows from stability and consistency. 
+
+The method is second order since
+\begin{align*}
+	d_0 &= a_2 + a_1 + a_0 \\
+	&= 1 + \alpha - (1+\alpha)\\
+	&= 0
+\end{align*}
+\begin{align*}
+	d_1 &= (2a_2 - b_2) + (a_1 - b_1) - b_0 \\
+	&= \left(2 + \frac{\alpha}{2}\right) + \left(\alpha -\frac{(4+3\alpha)}{2}\right) - 0\\
+	&= 0
+\end{align*}
+
+For A-stablility, we need the roots of $\phi$ ti
+lie in the unit disk $|z| < 1$.
+For this to happen, we can choose $\alpha = -1$ so that
+\[
+	\phi(z) = \left(1-\frac{h\lambda}{2}\right)z^2 - \left(1+\frac{h\lambda}{2}\right)z.
+\]
+Then our roots lie inside of the unit circle when $\Re(h\lambda) < 0$.
+\[
+	z=0 \quad z = \frac{2+h\lambda}{2-h\lambda}
+\]
+\newpage
+
+
+\end{document}
