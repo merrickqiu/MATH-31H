@@ -1,0 +1,123 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 8} \\
+	Merrick Qiu
+\end{center}
+
+\section*{A}
+\begin{enumerate}
+	\item From theorem 3.37 we have that 
+	\[	
+		\infty = \lim \inf n+1 = \lim \inf \frac{(n+1)!}{n!} \leq \lim \inf \sqrt[^n]{n!}
+	\]
+	Thus this sequence diverges and the limit is $\infty$.
+	\item
+	The term can be rewritten as
+	\[
+		\frac{\sqrt[^n]{n!}}{n} = \sqrt[^n]{\frac{n!}{n^n}}
+	\]
+	From theorem 3.37,
+	\[
+		\lim \inf \frac{c_{n+1}}{c_n} \leq \lim \inf \sqrt[^n]{c_n} \leq \lim \sup \sqrt[^n]{c_n} \leq \lim \sup \frac{c_{n+1}}{c_n}
+	\]
+	Using $c_n = \frac{n!}{n}$,
+	\[
+		\frac{c_{n+1}}{c_n} = \frac{\frac{(n+1)!}{(n+1)^{n+1}}}{\frac{n!}{n^n}} = \frac{(n+1)n^n}{(n+1)^{n+1}}=\left(\frac{n}{n+1}\right)^n
+	\]
+	\[
+		 \frac{1}{e} = \lim \inf \left(\frac{n}{n+1}\right)^n \leq \lim \inf \sqrt[^n]{\frac{n!}{n^n}} \leq \lim \sup \sqrt[^n]{\frac{n!}{n^n}} \leq \lim \sup \left(\frac{n}{n+1}\right)^n = \frac{1}{e}
+	\]
+	Thus 
+	\[
+		\lim_{n \to \infty} \frac{\sqrt[^n]{n!}}{n} = \frac{1}{e}
+	\]
+\end{enumerate}
+\newpage 
+
+\section*{B}
+Let $\epsilon > 0$ and choose $N$ such that $c^Nd(x, f(x)) < \epsilon$.
+Then for all $n\geq N$ ,
+\begin{align*}
+	d(f^n(x), f^{n+1}(x)) &= cd(f^{n-1}(x), f^{n}(x))\\
+	&= c^2d(f^{n-2}(x), f^{n-1}(x))\\
+	&\vdots \\
+	&= c^n d(x, f(x)) \\
+	&< \epsilon
+\end{align*}
+By the triangle inequality, for all $m \geq n \geq N$ 
+\begin{align*}
+	d(f^n(x), f^{m}(x)) &\leq d(f^{n}(x), f^{n+1}(x)) + d(f^{n+1}(x), f^{n+2}(x)) + \cdots + d(f^{m-1}(x), f^{m}(x))\\
+	&= c^n d(x, f(x)) + c^{n+1}d(x, f(x)) + \cdots + c^{m-1}d(x, f(x))\\
+	&< \epsilon + c\epsilon + \cdots +c^{m-n}\epsilon \\
+	&< \frac{\epsilon}{1-c} \\
+\end{align*}
+
+We can readjust our choice of $N$ such that $c^{N}d(x, f(x)) < (1-c)\epsilon$,
+and then for all $n,m \geq N$
+\[
+	d(f^n(x), f^{m}(x)) < \epsilon
+\]
+Thus the sequence is cauchy.
+\newpage 
+
+\section*{Rudin 7}
+Since $(\sqrt{a_n}-\frac{1}{n})^2 \geq 0$,
+this implies that $\frac{1}{2}(a_n + \frac{1}{n^2}) \geq \frac{\sqrt{a_n}}{n}$.
+Since $\sum a_n$ converges and $\sum \frac{1}{n^2}$ converges,
+$\frac{\sqrt{a_n}}{n}$ must also converge by the comparison test.
+\newpage 
+
+\section*{Rudin 8}
+Since $\{b_n\}$ is monotonic and bounded, there exists $\sup |b_n|$.
+Because $\sup |b_n| \sum a_n$ converges since it is just multiplying everything by a constant,
+and $|b_n| < \sup |b_n|$ for all $n$,
+$\sum a_n b_n$ converges as well.
+\newpage 
+
+\section*{Rudin 10}
+When $z>1$ all the terms in the series are $\geq a_n$.
+Since all coefficients must be nonzero integers, $|a_n| \geq 1$ for all $a_n$.
+Thus $\lim_{n \to \infty} a_nz^n \neq 0$ so $\sum a_nz^n$ diverges.
+Thus the radius of convergence is at most 1.
+\newpage 
+
+\section*{Rudin 11}
+\begin{enumerate}
+	\item If $\sum a_n$ is unbounded then $\frac{a_n}{1+a_n}$ does not approach $0$ so $a_n$ diverges,
+	and if $a_n$ is bounded by $M$ then $\frac{1}{1+M}a_n \leq \frac{a_n}{1+a_n}$,
+	so by comparison, $a_n$ diverges.
+	\item \begin{align*}
+		\frac{a_{N+1}}{S_{N+1}} + \cdots + \frac{a_{N+k}}{S_{N+k}} 
+		&\geq \frac{a_{N+1}}{S_{N+k}} + \cdots + \frac{a_{N+k}}{S_{N+k}} \\
+		&= \frac{S_{N+k} - S_{N}}{S_{N+k}} \\
+		&= 1 - \frac{S_{N}}{S_{N+k}}
+	\end{align*}
+	Thus this series cannot be cauchy convergent since the RHS
+	can be made arbitrarily close to 1 by taking sufficiently large $k$.
+	\item 
+	\[
+		\frac{1}{s_{n-1}} - \frac{1}{s_{n}} = \frac{s_n - s_{n-1}}{s_{n-1}s_n} = \frac{a_n}{s_{n-1}s_n} \geq \frac{a_n}{s_n^2}
+	\]
+	Since $\sum_{n=2}^N \frac{1}{s_{n-1}} - \frac{1}{s_{n}} = \frac{1}{a_1}- \frac{1}{s_n}$,
+	this sequence approaches $\frac{1}{a_1}$ and so by comparison, $\frac{a_n}{s_n^2}$ converges.
+	\item Since $\frac{a_n}{1+n^2a_n} < \frac{1}{n^2}$, $\sum \frac{a_n}{1+n^2a_n}$ converges.
+	However $\sum \frac{a_n}{1+na_n}$ may converge or diverge.
+	
+\end{enumerate}
+
+
+
+
+\end{document}

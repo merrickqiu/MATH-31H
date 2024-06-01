@@ -1,0 +1,168 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{mathrsfs}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 4} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 19}
+If $\gamma_1$ is an arc, it is 1-1.
+Since $\phi$ is 1-1, $\gamma_2$ must also be 1-1
+and so it is an arc as well.
+Similarly since $\phi^{-1}$ exists and is 1-1,
+$\gamma_1$ must be 1-1 if $\gamma_2$ is.
+
+If $\gamma_1$ is a closed curve, then $\gamma_1(a) = \gamma_1(b)$.
+Since $\phi$ is 1-1, continuous, and $\phi(c) = a$, it must be that $\phi(d) = b$.
+Thus $\gamma_2(c) = \gamma_2(d)$ and $\gamma_2$ is also a closed curve.
+Similarly since $\phi^{-1}$ exists and is 1-1,
+$\gamma_2(c) = \gamma_2(d)$ implies $\gamma_1(a) = \gamma_1(b)$.
+
+Since $\phi$ and $\phi^{-1}$ create corresponding partitions between
+$[a,b]$ and $[c,d]$, one curve must be rectifiable if the other is,
+and they must have the same length.
+This is clear since if $\{x_i\}$ is a partition of $[c,d]$ then
+\[
+	\sum |\gamma_1(\phi(x_i)) - \gamma_1(\phi(x_{i-1}))| = \sum |\gamma_2(x_i) - \gamma_2(x_{i-1})|
+\]
+\newpage 
+
+\section*{Rudin 1}
+By definition, a sequence of functions uniformly converges $f_n \to f$
+if for all $\epsilon > 0$ there exists $N$ such that $n \geq N$ implies 
+\[
+	|f_n(x) - f(x)| \leq \epsilon
+\]
+We can bound functions with $n \geq N$ below by $\inf f(x) - \epsilon$
+and above by $\sup f(x) + \epsilon$.
+Since there is a finite number of functions where $n < N$,
+we can bound it below by $\inf_{n < N} \inf_{x \in \mathbb{R}} f_n(x)$
+and above by $\sup_{n < N} \sup_{x \in \mathbb{R}} f_n(x)$.
+Thus every uniformly convergent sequence of bounded functions is uniformly bounded.
+\newpage 
+
+\section*{Rudin 2}
+If $(f_n)$ converges uniformly then there exists $N_1$ such that $n \geq N_1$ implies 
+\[
+	|f_n(x) - f(x)| < \frac{\epsilon}{2}.
+\]
+Similarly there exists $N_2$ such that for $n \geq N_2$
+\[
+	|g_n(x) - g(x)| < \frac{\epsilon}{2}.
+\]
+Thus for $n \geq \max (N_1,N_2)$,
+\[
+	|(f_n + g_n)(x) - (f+g)(x)| < \epsilon.
+\]
+Since $f_n$ and $g_n$ are uniformly bounded, there exists $M$
+such that $|f_n(x)| < M$ and $|g_n(x)| < M$ for all $n$ and $x$.
+Then choose $N_1$  so that for $n > N_1$
+\[
+	|f_n(x) - f(x)| < \frac{\epsilon}{2M}
+\]
+and choose $N_2$ so that for $n > N_2$
+\[
+	|g_n(x) - g(x)| < \frac{\epsilon}{2M}.
+\]
+Thus, 
+\begin{align*}
+	|f_n(x)g_n(x) - f(x)g(x)| &\leq |f_n(x)g_n(x) - f_n(x)g(x)| + |f_n(x)g(x) - f_n(x)g(x)| \\
+	&\leq M |g_n(x) - g(x)| + M|f_n(x) - f(x)| \\
+	&< M\frac{\epsilon}{2M} + M\frac{\epsilon}{2M} \\
+	&= \epsilon
+\end{align*}
+\newpage 
+
+\section*{Rudin 3}
+$f_n(x) = x$ converges uniformly to $f(x) = x$ and 
+$g_n(x) = \frac{1}{n}$ converges uniformly to $g(x) = 0$
+but $f_n(x)g_n(x)$ does not converge because when $x=n$,
+$f_n(x)g_n(x) = 1$.
+\newpage 
+
+\section*{Rudin 4}
+The series diverges when $x=0$ since all the terms
+are $1$ and the series diverges when $x = -\frac{1}{n^2}$
+for all natural numbers $n$ since there is division by $0$
+on the $n$th term.
+For intervals $[\delta, \infty)$ for $\delta > 0$ the series converges uniformly
+since we can bound each term with
+\[
+	\frac{1}{n^2x} \leq \frac{1}{n^2\delta}.
+\]
+For intervals $(-\infty, -\delta]$ and $x\neq -\frac{1}{n^2}$ the interval also converges uniformly
+since for a sufficiently large $n$ such that $n^2 \geq \frac{2}{\delta}$ 
+\[
+	\left|\frac{1}{1+n^2x} \right| = \frac{1}{n^2}\frac{1}{\frac{1}{n^2}+x} 
+	\leq \frac{1}{n^2}\frac{1}{\frac{1}{n^2}+\delta}
+	\leq \frac{2}{\delta n^2} 
+\]
+\newpage 
+
+\section*{Rudin 5}
+$f_n$ converges to 0 since all points $x \leq 0$ always evaluate to $0$
+and all positive points are $\frac{1}{n} < x$ for a sufficiently large $n$.
+However it does not converge uniformly since for every $f_n$,
+$f_n\left(\frac{1}{n+\frac{1}{2}}\right) = 1$.
+\newpage 
+
+\section*{Rudin 6}
+The series can be rewritten as 
+\[
+	x^2 \sum \frac{(-1)^n}{n^2} + \sum \frac{(-1)^n}{n}
+\]
+The left series converges since $x^2\frac{(-1)^n}{n^2} \leq \frac{M}{n^2}$
+if $M$ is the sup over an interval for that term.
+The right sequence also converges, so the overall sequence converges uniformly.
+However the series does not converge absolutely since 
+each term is greater than $\frac{1}{n}$, which diverges.
+\newpage 
+
+\section*{Rudin 8}
+Since each term is $< |c_n$ and $c_n$ converges,
+$f_n$ converges uniformly.
+Since each individual term is continuous for $x \neq x_n$,
+the overall function is continuous as well.
+\newpage 
+
+\section*{Rudin 9}
+Since $f_n$ converges uniformly, there exists $N_1$ such that
+\[
+	|f_n(x_n) - f_n(x)| < \frac{\epsilon}{2}.
+\]
+Since $f$ is continuous, there exists $N_2$ such that
+\[
+	|f(x_n) - f_n(x)| < \frac{\epsilon}{2}.
+\] 
+By triangle inequality,
+\[
+	|f_n(x_n) - f(x)| \leq |f_n(x_n) - f(x_n)| + |f(x_n) - f(x)| < \epsilon
+\]
+The converse is not true, as exemplified by $f_n = x^n$ for points approaching $1$.
+
+
+
+
+
+
+
+
+
+
+\end{document}

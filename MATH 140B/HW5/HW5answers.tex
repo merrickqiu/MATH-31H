@@ -1,0 +1,166 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{mathrsfs}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 5} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+% Since $F$ is equicontinuous we have that for all $\epsilon > 0$,
+% there exists $\delta > 0$ such that 
+% \[
+% 	d(x,y) < \delta \implies |f_c(x) - f_c(y)| < \epsilon
+% \]
+% for all $x, y \in \mathbb{R}$ and $f_c \in F$.
+
+Since $F$ is equicontinuous,
+for all $\epsilon > 0$ there exists $\delta > 0$ such that
+for all points $x, y$ where $|x-y| < \delta$ 
+\[
+	|f_c(x) - f_c(y)| < \epsilon
+\]
+for all $c \in S$.
+Assume that $f$ is not constant
+and choose $x,y$ and $\epsilon > 0$ such that 
+$|f_c(x) - f_c(y)| > \epsilon$ for some $c \in S$.
+Let $L < \frac{\delta}{|x-y|}$ and let $p = Lx$, $p = Ly$, and 
+$k \in S$ such that $k \geq \frac{c}{L}$.
+Note that 
+\[
+	|p-q| = L|x-y| < \delta
+\]
+but that 
+\[
+	|f(kp) - f(kq)| = |f(kLx) - f(kLy)| > |f(cx) - f(cy)| > \epsilon
+\]
+which contradicts the equicontinuity of $F$.
+Thus $f$ must be constant.
+\newpage 
+
+\section*{Rudin 12}
+For every fixed $n$, 
+\[
+	\int_t^T f_n(x) \,dx \leq \left|\int_t^T f_n(x) \,dx \right| \leq \int_t^T g(x) \,dx \leq \int_0^\infty g(x) \,dx < \infty
+\]
+so as $T \to \infty$ $\int_t^\infty f_n(x) \,dx$ converges.
+
+If we define $h(t)$ to be
+\[
+	h_n(t) = \int_t^\infty f_n(x) \,dx \quad\quad\quad h(t) = \int_t^\infty f(x) \,dx
+\]
+then we just need to show that 
+\[
+	\lim_{n \to \infty} \lim_{t \to 0} h_n(t) = \lim_{t \to 0} \lim_{n \to \infty}  h_n(t) = \lim_{t \to 0} h(t)
+\]
+which is true if $h_n \to h$ uniformly.
+Since $\int_0^\infty g(x) \,dx$ converges, we can choose $0 < a < b < \infty$
+such that 
+\[
+	\int_0^a g(x) \,dx < \frac{\epsilon}{2} \quad\quad\quad \int_b^\infty g(x) \,dx < \frac{\epsilon}{2} 
+\]
+Since $f_n \to f$ uniformly on $[a,b]$, there exists $N$ such that for $n > N$,
+\[
+	|f_n(x) - f(x)| < \frac{\epsilon}{b-a}
+\]
+Thus $h_n \to h$ converges uniformly since 
+\begin{align*}
+	|h_n(t) - h(t)| &= \int_t^\infty |f_n(x) - f(x)| \,dx \\
+	&\leq \int_t^a |f_n(x) - f(x)| \,dx + \int_a^b |f_n(x) - f(x)| \,dx + \int_b^\infty |f_n(x) - f(x)| \,dx \\
+	&\leq 2\int_0^a g(x) \,dx +\frac{\epsilon}{b-a}(b-a) + 2\int_b^\infty g(x) \,dx \\
+	&< 3\epsilon
+\end{align*}
+\newpage 
+
+\section*{Rudin 16}
+Since $\{f_n\}$ is equicontinuious,
+for all $\epsilon > 0$ there exists $\delta > 0$ such that
+for all points $x, y$ where $|x-y| < \delta$ 
+\[
+	|f_n(x) - f_n(y)| < \epsilon
+\]
+for all $n$.
+Since $\{f_n\}$ converges pointwise there exists $N$ such that,
+\[
+	|f_n(x) - f(x)| < \epsilon.
+\]
+for a fixed $x$ and for $n > N$.
+By the triangle inequality 
+\begin{align*}
+	|f_n(x) - f(y)| &\leq |f_n(x) - f_n(y)| + |f_n(y) - f(y)| \\
+	&< 2\epsilon
+\end{align*}
+for all $|x-y| < \delta$.
+Since $\epsilon$ was arbitrary, $\{f_n\}$ is uniformly convergent.
+\newpage 
+
+\section*{Rudin 18}
+Since $\{f_n\}$ is uniformly bounded, there exists $M$ such that $|f_n(x)| \leq M$
+for all $n$ and $x$.
+$F_n$ is uniformly bounded as well since $|F_n(x)| \leq M(b-a)|$.
+For all $\epsilon > 0$, $|y-x| < \frac{\epsilon}{M}$ implies 
+\[
+	|F_n(y) - F_n(x)| = \left|\int_x^y f_n(t)\right| < M|x-y| <\epsilon
+\]
+so $\{f_n\}$ is equicontinuous.
+Thus by the Arzela-Ascoli theorem, $\{f_n\}$ is also sequentially compact.
+\newpage 
+
+\section*{Rudin 19}
+For the backwards direction, by Arzela-Ascoli we have that 
+closed, pointwise bounded, and equicontinuous implies 
+$S$ is sequentially compact.
+
+For the forwards direction, suppose that $S$ was not equicontinuous.
+Thus for some $\epsilon > 0$ and for all $\delta > 0$,
+there exists $x, y$ and $f \in S$ such that $d(x,y) < \delta$
+and $|f(x) - f(y)| \geq \epsilon$.
+Let $x_n$ and $y_n$ be sequences of point in $K$
+such that $d(x_n, y_n) < \frac{1}{n}$ and $|f_n(x) - f_n(y)| \geq \epsilon$
+for a sequence $(f_n)$.
+No subsequence of $(f_n)$ is equicontinuous,
+so no subsequence of $(f_n)$ can converge uniformly,
+which contradicts the fact that $S$ is compact.
+
+
+
+
+\newpage
+
+
+
+
+% If we can find two other points $p,q$ where $0< d(x,y) < \delta$ 
+% but
+% \[
+% 	|f_k(p) - f_k(q)| > \epsilon
+% \]
+% then we win.
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

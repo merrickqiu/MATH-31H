@@ -1,0 +1,130 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 5} \\
+	Merrick Qiu
+\end{center}
+\section*{A}
+$(\implies)$ \textbf{Prove compactness implies finiteness.}
+Assume by contradiction that $A$ is infinite.
+Choose the open cover of $A$ that is made up of the open 
+neighborhoods around all the points in $A$ with radius $r < 1$.
+Since each of these neighborhoods only covers the point 
+that is is centered on,
+a finite subcover does not exist since 
+removing any one of these open neighborhoods would result 
+in $A$ not being covered.
+This is a contradiction so compact sets must be finite 
+for metric spaces with the discrete metric.
+
+$(\impliedby)$ \textbf{Prove finiteness implies compactness.}
+Suppose there is an open cover of $A$.
+For each point in $A$, choose a open set from the open cover 
+that covers that point.
+Since there is a finite number of points in $A$,
+these open sets constitue a finite subcover of $A$.
+
+\section*{Rudin 12}
+Let $\{G_{\alpha}\}$ be an open covering of $K$.
+Let $G_{\alpha_0}$ be the open set that covers $0$.
+Include this set in the finite subcover.
+Since $G_{\alpha_0}$ is open, $0$ is an interior point 
+of $G_{\alpha_0}$ so there exists a radius $r > 0$
+where $N_r(0) \subset G_{\alpha_0}$.
+
+The set $K$ only contains the limit point $0$,
+so there is a finite number of points not within the 
+neighborhood of $0$ and so there is a finite number of points 
+not covered by $G_{\alpha_0}$.
+For each point not covered by $G_{\alpha_0}$,
+pick an open set in the open covering that covers that point 
+and add it into the finite subcover.
+We have constructed a finite subcover so $K$ is compact.
+
+\section*{Rudin 23}
+Since $X$ is separable, let 
+$Y \subset X$ be a countable dense subset of $X$.
+Let $\{V_{\alpha}\}$ be a collection of all the 
+open neighborhoods centered around points in $Y$
+with rational radiuses.
+Since $Y$ is countable and rational numbers are countable,
+$\{V_{\alpha}\}$ is also countable.
+
+For every $x \in X$ and open set $G \subset X$ with $x \in G$,
+we can find an open neighborhood around $x$ with rational radius 
+such that $x \in N_r(x) \subset G$, so $\{V_{\alpha}\}$ 
+acts as a countable base.
+\newpage 
+
+\section*{Rudin 24}
+Let $\delta > 0$ and pick $x_1 \in X$.
+Choose $x_1, \cdots x_j \in X$
+such that $d(x_i, x_{i+1}) \geq \delta$ if possible.
+This process must stop after a finite number of steps,
+because if it was infinite, then this sequence would have 
+a limit point and all the points could not be $\delta$
+apart from each other.
+
+Thus, $X$ can therefore be covered by finitely
+many neighborhoods of radius $\delta$
+since if it couldn't, 
+we could add another point $x_{j+1}$ to the sequence.
+We can take the union of all 
+$\delta = \frac{1}{n}$ for all $n \in \mathbb{N}$
+in order to generate a set of countable points
+that are dense in $X$.
+Thus $X$ is separable.
+
+
+\section*{Rudin 25}
+We can choose a cover of $K$ composing of open neighborhoods of radius $\frac{1}{n}$,
+and since $K$ is compact, we can find a finite subcover of this cover.
+If we union together the finite subcovers we get for all $n = 1,2,3,\cdots$,
+we get a set that also covers $K$, and the centers of all these neighborhoods
+forms a countable base for $K$. 
+This is a countable base because for every $x \in K$ and every open set $G \subset K$ with $x \in G$,
+$x$ is an interior point of $G$ and so we can find an open neighborhood that is 
+from one of the finite subcovers where $x \in N_{\frac{1}{n}}(x) \subset G$.
+
+Since every point in $K$ is arbitrarily close to some point in this 
+countable base, $K$ is also separable.
+
+\section*{Rudin 26}
+Exercise 24 implies $X$ has a separable base, and exercise 23 implies that 
+since $X$ has a separable base, it has a countable base.
+It follows that every open cover of $X$ has a countable subcover $\{G_n\}$,
+which we can obtain as a union of a subcollection of the countable base.
+Assume by contradiction that there did not exist a finite subcollection of 
+$\{G_n\}$ that covered $X$. 
+Then the complement, $F_n$ of $G_1 \cup \cdots \cup G_n$,
+must be nonempty for each $n$ since no set of $G_1 \cup \cdots \cup G_n$
+completely covers $X$.
+
+However $\cap F_n$ is empty because $\cup G_n$ covers $X$.
+Let $E$ is a set which contains a point from each $F_n$.
+$E$ has a limit point, $p \in E$, since every infinite subset of $X$ has a limit point.
+$p$ must also belong to one of the sets $G_n$, and since $G_n$ is open,
+there is a neighborhood around $p$ that is contained by $G_n$. 
+But this neighborhood around $p$ cannot contain any point in $F_m$
+where $m > n$ which is a contradiction.
+
+
+
+
+
+
+
+
+
+\end{document}

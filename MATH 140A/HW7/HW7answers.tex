@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{A}
+\begin{enumerate}
+	\item $\{x_n\}$ is bounded so $s_N$ and $r_n$ exists for all $N \in \mathbb{N}$.
+	For all $N \in \mathbb{N}$, $s_N$ cannot exceed $s_1$ since the sup of a subsequence cannot be larger
+	than the sup of the whole sequence(since the existence of the larger sup contradicts
+	the fact that the sup is supposed to be the best upper bound),
+	and $s_N$ is bounded below by $r_1$ since the sup of a subsequence cannot be 
+	smaller than the inf of the whole sequence.
+	Likewise, $r_N$ is bounded below by $r_1$ and bounded above by $s_1$ so 
+	both $\{s_N\}$ and $\{r_n\}$ are bounded.
+	\item The sup of a sequence cannot be smaller than the sup of a subsequence
+	and the inf of a sequence cannot be larger than the inf of a subsequence.
+	This means that $s_K \geq s_{K+1}$  and $r_K \leq r_{K+1}$ for all $K \in \mathbb{N}$
+	so $\{s_N\}$ is non-increasing and $\{r_n\}$ is non-decreasing.
+	\item It cannot be that $s < \lim \sup x_n$. There must exist a 
+	subsequence $\{x_{n_k}\}$
+	with $s +c <\lim \{x_{n_k}\}$ for all $c > 0$.
+	However, this subsequence must have infinitely many elements that are greater 
+	than $s+c$, but this contradicts the fact that there exists some$s_N$ with $s < s_N < s+c$
+	and $x_n < s_N < s+c$ for all $n > N$.
+
+	It also cannot be that $s > \lim \sup x_n$.
+	Suppose that $s - \lim \sup x_n = c$.
+	Choose a subsequence $x_{n_k}$ so that $|s_k - x_{n_k}| < \frac{c}{4}$ for all $k$.
+	Then choose $K$ such that for all $k > K$, $|s - s_{k}| < \frac{c}{4}$.
+	Thus $|s - x_{n_k}| = |s - s_{k} + s_{k} - x_{n_k}| \leq  |s - s_{k}| + |s_{k} - x_{n_k}| < \frac{c}{2}$
+	for all $k > K$, so this subsequence is bounded by $\lim \sup x_n + \frac{c}{2}$ from below.
+	Thus there must exist a subsequence of this subsequence that converges to something 
+	$\geq \lim \sup x_n + \frac{c}{2}$ which contradicts the definition of $\lim \sup$.
+\end{enumerate}
+\newpage 
+
+\section*{B}
+Let $\{G_{\alpha, \epsilon}\}$ be an open cover of $K$ of open neighborhoods of radius $<\epsilon $
+and let $\{G_{i, \epsilon}\}$ be a finite subcover of $K$ chosen from $\{G_{\alpha, \epsilon}\}$.
+Create a sequence by appending all the centers of the neighborhoods of $\{G_{i, \epsilon}\}$ into the sequence
+for all $\epsilon = \frac{1}{n}$ where $n = 1,2,3, \dots$.
+Thus for every point in $p \in K$, we are able to choose a subsequence that contains
+one point from each of the open covers whose neighborhood contains $p$
+and get a subsequence that converges to $p$.
+\newpage 
+
+\section*{C}
+$a_n \to a$ implies that for all $\epsilon > 0$, 
+there exists some $N$ such that for all $n > N$,
+$|a-a_n| < \epsilon$.
+We need to prove that for all $\epsilon' > 0$,
+there exists some $N'$ such that for all $n > N'$,
+$|\sqrt{a}-\sqrt{a_n}| < \epsilon'$.
+Since square roots are always positive,
+\[
+	|\sqrt{a}-\sqrt{a_n}| = 
+	|\frac{a-a_n}{\sqrt{a}+\sqrt{a_n}}| = 
+	\frac{1}{\sqrt{a}+\sqrt{a_n}}|a-a_n| \leq 
+	\frac{1}{\sqrt{a}}|a-a_n| <
+	\frac{1}{\sqrt{a}} \epsilon
+\]
+Thus we can choose $N'$ such that for all $n>N'$,
+$|a-a_n| < \sqrt{a}\epsilon'$, and this implies that 
+$|\sqrt{a}-\sqrt{a_n}| < \epsilon'$,
+so we have shown that $\sqrt{a_n} \to \sqrt{a}$.
+\newpage 
+
+\section*{Rudin Question 5}
+If $\lim \sup a_n + b_n = -\infty$, then the statement trivially true.
+If $\lim \sup a_n + b_n = \infty$, then $\lim \sup a_n = \infty$
+or $\lim \sup b_n = \infty$ since if they were both not infinity,
+then both sequences would be bounded above and so $\lim \sup a_n + b_n = \infty$ couldn't be true.
+
+Thus consider the case where all the terms are finite.
+Let $\{a_{n_k} + b_{n_k}\}$ be a subsequence such that converges to $\lim \sup a_n + b_n$.
+Choose $\{a_{n_{k_m}}\}$  such that it converges to $\lim \sup a_{n_k}$
+which means that $\{a_{n_{k_m}} + b_{n_{k_m}}\}$ converges to $\lim \sup a_n + b_n$.
+Since $\lim \sup a_n$ is greater than or equal to what $\{a_{n_{k_m}}\}$ converges to 
+and likewise for $\lim \sup a_n$ for $\{b_{n_{k_m}}\}$, the inequality holds.
+\newpage 
+
+\section*{Rudin Question 20}
+Since $p_{n_i} \to p$, then for some $K$, for all $\epsilon>0$,
+and for $i > K$, $d(p_{n_i}, p) < \epsilon$.
+Since $\{p_n\}$ is cauchy, there exists $N$ such that for all $m, n > N$,
+$d(p_n, p_m) < \epsilon$.
+Choose $M\geq N$ large enough so that $k > K$ and $n_k > N$ for all $k > M$. 
+Then $d(p_n, p) \leq d(p_n, p_{n_{K+1}}) + d(p_{n_{K+1}}, p) < 2\epsilon$,
+so the original sequence also converges to $p$.
+\newpage
+
+\section*{Rudin Question 21}
+Suppose the intersection contained more than one point.
+Pick two points $p_1$ and $p_2$ from the interesection.
+Since $\lim \operatorname{diam} E_n = 0$,
+there exists $E_n$ with $\operatorname{diam} E_n < d(p_1, p_2)$.
+However both these points cannot exist inside of $E_n$ anymore
+by the definition of diameter, which is a contradiction.
+\newpage
+
+
+
+\end{document}

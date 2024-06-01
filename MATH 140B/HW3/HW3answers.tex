@@ -1,0 +1,159 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{mathrsfs}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 3} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 1}
+Let $P$ be a partition on $[a,b]$.
+If $x_0 \in [x_{i-1},x_i]$ then $m_i = 0$ and $M_i = 1$ and 
+$m_i = M_i = 0$ for all other intervals.
+Since $\Delta x_i$ can be chosen to be arbitrarily small
+and $\alpha$ is continuous at $x_0$,
+\[
+	\lowint_a^b f(x) \,d\alpha = \sup L(P,f,\alpha) = \sup 0 = 0
+\]
+\[
+	\upint_a^b f(x) \,d\alpha = \inf U(P,f,\alpha) = \inf \alpha(x_i) - \alpha(x_{i-1}) = 0
+\]
+Thus $f \in \mathscr{R}(\alpha)$ and $\int_a^b f(x) \,d\alpha = 0$.
+
+\section*{Rudin 2}
+Suppose $f(x_0) \neq 0$ for some $x_0$.
+Since $f$ is continuous at $x_0$, there exists $\delta > 0$
+such that 
+\[
+	|x-x_0| < \delta \implies|f(x) - f(x_0)| < \frac{f(x_0)}{2}.
+\]
+Since $f$ is continuous, nonnegative, and bounded, it is Riemann integrable.
+Since all $x \in B_\delta(x_0)$ is positive,
+\[
+	\int_a^b f(x) \,dx \geq \int_{\max(a, x-\delta)}^{\min(b, x+\delta)} f(x) \,dx > 0
+\]
+
+\section*{Rudin 4}
+Since the rationals and the irrationals are both dense in the reals,
+$M_i = 1$ and $m_i = 0$ for all intervals for all partitions.
+Thus every lower Riemann sum equals $0$ and every upper Riemann sum equals $b-a$,
+so $f \notin \mathscr{R}$.
+\newpage 
+
+\section*{Rudin 5}
+The rational indicator function from problem 4 is a counterexample. 
+It is not Riemann integrable but its square is just the constant function.
+However the integrability of $f^3$ does imply the integrability of $f$
+by theorem 6.11.
+
+\section*{Rudin 6}
+Cover $P$ with open intervals $(u_j, v_j)$ where each interval has length 
+$\alpha(v_j) - \alpha(u_j) <\epsilon$.
+If we remove these open intervals from $[0,1]$ we get another compact set $K$,
+which $f$ is uniformly continuous on, meaning
+$|s-t| < \delta \implies |f(s) - f(t)| < \epsilon$.
+If we form a partition where each $u_j,v_j$ occurs in $P$, no point of 
+any segument $(u_j,v_j)$ occurs in $P$, and each $x_{i-1} \neq u_j$ has $\Delta x_i < \delta$
+then 
+\[
+	U(P,f,\alpha) - L(P,f,\alpha) \leq [\alpha(b) - \alpha(b)]\epsilon + 2M\epsilon
+\]
+where $m \leq f(x) \leq M$ as bounds.
+Thus since $\epsilon$ was arbitrary we have that $f \in \mathscr{R}$ on $[0,1]$.
+\newpage
+
+\section*{Rudin 7}
+Let $\epsilon > 0$ and $M = \sup |f(x)|$.
+Let $P$ be a partition that contains $c$ when
+$0 < c \leq \frac{\epsilon}{4M}$ and 
+the difference between the upper and lower Riemann sums is $<\frac{\epsilon}{4}$.
+Then the upper and lower Riemann sums on $[c,1]$ using the points of $P$
+inside that intervals are also $<\frac{\epsilon}{4}$.
+Finally note that the value of the upper and lower Riemann sums in $[0,c]$
+are also $<\frac{\epsilon}{4}$.
+Thus it must be that 
+\[
+	\left|\int_0^1 f(x) \,dx -  \int_c^1 f(x) \,dx\right| < \epsilon
+\]
+The function $f(x) = (-1)^n(n+1)$ for $\frac{1}{n+1} < x \leq \frac{1}{n}$
+has a limit 
+\[
+	\int_c^1 f(x) \,dx = (-1)^N(N+1)(\frac{1}{N}-c) + \sum_{k=1}^{N-1} \frac{(-1)^k}{k}
+\]
+where $\frac{1}{N+1} < c \leq \frac{1}{N}$.
+However this limit does not exist for $|f|$ since 
+\[
+	\int_c^1 |f(x)| \,dx = (N+1)(\frac{1}{N}-c) + \sum_{k=1}^{N-1} \frac{1}{k}
+\]
+
+\section*{Rudin 8}
+Note that for a partition of $[0,n]$ with the points $0,1,2,\cdots,n$,
+If the sum does not converge, then the integral does not converge since
+\[
+	 \sum_{n=1}^n f(n) = L(f,P) \leq  \int_0^n f(x) \,dx
+\]
+Likewise if the integral does not converge then the sum does not converge since
+\[
+	\int_0^n f(x) \,dx \leq  U(f,P) =\sum_{n=0}^n f(n)
+\]
+\newpage 
+
+\section*{Rudin 11}
+Define
+\[
+	P(\lambda) = \int_a^b (\lambda u(x) + v(x))^2 \,d\alpha
+	= \lambda^2 \int_a^b u^2(x)\,d\alpha + 2\lambda \int_a^b u(x)v(x) \,d\alpha + \int_a^b v^2(x)\,d\alpha \geq 0
+\]
+This implies a negative determinant so 
+\begin{align*}
+	&\left(2 \int_a^b u(x)v(x) \,d\alpha \right)^2 - 4\int_a^b u^2(x)\,d\alpha  \int_a^b v^2(x)\,d\alpha \leq 0 \\
+	\implies& 4\left(\int_a^b u(x)v(x) \,d\alpha \right)^2 \leq 4\int_a^b u^2(x)\,d\alpha  \int_a^b v^2(x)\,d\alpha \\
+	\implies & \int_a^b u(x)v(x) \,d\alpha  \leq \left(\int_a^b u^2(x)\,d\alpha\right)^\frac{1}{2}  \left(\int_a^b v^2(x)\,d\alpha\right)^\frac{1}{2}  \\
+	\implies & \int_a^b |u(x)||v(x)| \,d\alpha  \leq ||u||_2||v||_2 \\
+\end{align*}
+Expanding out the definition yields 
+\begin{align*}
+	||f-h||_2^2 &= \int_a^b |f-h|^2 \,d\alpha \\
+	&=\int_a^b |(f-g) + (g-h)|^2 \,d\alpha \\
+	&= \int_a^b |f-g|^2 \,d\alpha  + \int_a^b |f-g||g-h| \,d\alpha + \int_a^b |g-h|^2 \,d\alpha\\
+	&\leq ||f-g||_2^2 + 2||f-g||_2||g-h||_2 + ||g-h||_2^2 \\
+	&= (||f-g||_2 +||g-h||_2)^2
+\end{align*}
+
+\section*{Rudin 12}
+Define for a partition $P = \{x_0,\cdots,x_n\}$
+\[
+	g(t) = \frac{x_i-t}{\Delta x_i}f(x_{i-1}) + \frac{t-x_{i-1}}{\Delta x_i}f(x_i) 
+\]
+Since $g$ is continuous, and $|f-g|$ is bounded by $M_i - m_i$.
+We can choose a partition such that the upper riemann sum of $f$ is bounded by $\frac{\epsilon^2}{2M}$
+where $M$ is the max of $|f(x)|$,
+which implies that 
+\[
+	\sum (M_i - m_i)^2[\alpha(x_i) - \alpha(x_{i-1})] < \epsilon^2
+\]
+so $||g-f||_2 < \epsilon$.
+
+
+
+
+
+
+
+
+\end{document}

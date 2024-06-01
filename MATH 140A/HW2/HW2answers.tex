@@ -1,0 +1,137 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{A}
+Let $\epsilon > 0$ and $x > 0$ be real numbers.
+If $ x \leq \epsilon$, we can choose $a$ such that $ 0 < a < x$ from property (2).
+If $x > \epsilon$, we need to choose some $x- \epsilon < a < x$ for $0 < x-a < \epsilon$ to hold.\\
+
+Choose $b \in A$ such that $0 < b < \epsilon$ using property (2).
+By property (1), we can repeatedly add $b$ to itself to get another element in $A$,
+so $nb \in A$ for all positive integers $n$.\\
+
+By the archimedean principle we know that there exists some $nb > x - \epsilon$,
+and if we choose the smallest such $n$ we know that $x- \epsilon < nb < x$
+since $b < \epsilon$. Therefore for every $x$ there exists $a \in A$ where $0 < x-a < \epsilon$.
+
+
+\section*{B}
+\begin{enumerate}
+    \item We can use the bijection 
+    $f: (a, b) \rightarrow (c, d)$, $f(x) = c + (x-a)\cdot \frac{d-c}{b-a}$.
+    \item We can use the bijection 
+    $g: [a, b] \rightarrow [c, d]$, $g(x) = c + (x-a)\cdot \frac{d-c}{b-a}$.
+    \item Let $g: [a, b] \rightarrow [0, 1]$ from part (2) and 
+    $f(x): (0, 1) \rightarrow (c, d)$ from part (1).
+    Let $h: [0,1] \rightarrow (0,1)$
+    \[
+        f(x) = \begin{cases}
+            \frac{1}{2}  & x = 0 \\
+            \frac{1}{n+2} & x = \frac{1}{n} \\
+            x & \text{otherwise}
+        \end{cases}
+    \]
+    We can use the bijection $k: [a,b] \rightarrow (c,d)$, $k(x) = f(h(g(x)))$.
+    \item Let $k: [a,b] \rightarrow (-\frac{\pi}{2},\frac{\pi}{2})$ from (3).
+    We can use $l: [a,b] \rightarrow \mathbb{R}, l(x) = \tan(h(x))$.
+\end{enumerate}
+\section*{C}
+\subsection*{7}
+\begin{enumerate}
+    \item For the base case $n=1$, $b^1 -1 \geq 1(b-1)$.
+    Assume that $b^k - 1\geq k(b-1)$. 
+    This implies that $b^{k+1} - 1\geq (k+1)(b-1)$ since
+    \begin{align*}
+        b^{k+1} -1 &= b\cdot b^k - 1\\
+        &= b(b^k-1) + (b-1) \\
+        &\geq b(k(b-1)) + (b-1) \\ 
+        &= (b-1)(bk+1) \\
+        &\geq (b-1)(k+1).
+    \end{align*}
+    Thus, $b^n - 1\geq n(b-1)$ for all positive integers $n$.
+    \item Substituting in $b^{\frac{1}{n}} \rightarrow b$ into the previous step 
+    implies $b - 1\geq n(b^{\frac{1}{n}}-1)$ for all positive integers $n$.
+    \item $n > \frac{b-1}{t-1}$ implies $n(t-1) > b-1$. 
+    Since $b - 1\geq n(b^{\frac{1}{n}}-1)$, we have that  
+    $n(t-1)> b - 1 \geq n(b^{\frac{1}{n}}-1)$.
+    This then implies $n(t-1)> n(b^{\frac{1}{n}}-1)$ which 
+    implies $t > b^{\frac{1}{n}}$.
+    \item Applying part (c) with $t = yb^{-w}$ yields $b^{\frac{1}{n}} < yb^{-w}$.
+    This then implies that $b^{w+\frac{1}{n}} < y$ when the conditions in part (c) are met.
+    $b^w < y$ implies that $t > 1$, but since there needs to be 
+    $n > \frac{b-1}{t-1}$, this statement is only true for sufficiently large $n$.
+    \item If in (d) we used $t = y^{-1}b^w$, we would find that $b^{w-\frac{1}{n}} > y$.
+    \item Suppose that $b^x \neq y$. Then either $b^x < y$ or $b^x > y$.
+    If $b^x < y$ then we can pick $x+\frac{1}{n}$ for a sufficiently large $n$ such that 
+    $b^{w+\frac{1}{n}} < y$ by part (d). This would lead to a contradiction since it would imply 
+    that $x \neq \sup A$ since $x$ is not an upper bound. \\
+
+    Likewise if $b^x > y$ then we can pick $x-\frac{1}{n}$ for a sufficiently large $n$ such that 
+    $b^{w-\frac{1}{n}} > y$ by part (e). This would lead to a contradiction since it would also imply 
+    that $x \neq \sup A$ since $x$ is not the best upper bound. 
+    Therefore $b^x = y$.\\
+
+    \item Since the supremum is unique, $x$ is unique.
+\end{enumerate}
+\subsection*{13}
+In the case where $|x| - |y| \geq 0$ then we need to prove that $|x| - |y| \leq |x-y|$.
+\[
+    |x| = |x - y + y| \leq |x-y| + |y| \implies |x| - |y| \leq |x-y|.
+\]
+In the case where $|x| - |y| < 0$ then we need to prove that $|y| - |x| \leq |x-y|$.
+\[
+    |y| = |y - x + x| \leq |y-x| + |x| \implies |y| - |x| \leq |x-y|.
+\]
+\subsection*{14}
+Let $z = a+bi$. $z\bar{z} = 1$ implies $a^2+b^2 = 1$.
+\begin{align*}
+    |1+z|^2 + |1-z|^2 &= (1+a)^2 + b^2 +  (1-a)^2 + b^2 \\
+    &=(1 + 2a + a^2) +  (1 - 2a + a^2) + 2b^2 \\
+    &= 2 + (2a^2 + 2b^2) \\
+    &= 4
+\end{align*}
+\subsection*{17}
+\begin{align*}
+    |x+y|^2 + |x-y|^2 &= (x+y)\cdot(x+y) + (x-y)\cdot(x-y)\\
+    &= |x|^2 + 2x\cdot y + |y|^2 + |x|^2 - 2x\cdot y + |y|^2 \\
+    &= 2|x|^2 + 2|y|^2
+\end{align*}
+The sum of the areas of all squares drawn on the sides of a parallelograms
+is equal to the squares formed from the diagonals of the parallelogram.
+
+\newpage
+\section*{Extra Practice Problem}
+\begin{enumerate}
+    \item 
+    \begin{align*}
+        \lambda &\sum z_j \bar{w}_j  = \lambda(z, w) \\
+        =& \sum \lambda z_j \bar{w}_j = (\lambda z, w) \\
+        =& \sum z_j \overline{\overline{\lambda} w}_j = (z, \overline{\lambda}w)\\   
+    \end{align*}
+    \item $z_j\overline{z_j}$ is always nonnegative so the sum is as well.
+    Forward direction can be proved by contradiction. Backwards is trivial.
+    \item 
+    \begin{align*}
+        (z, w) &= \sum z_j \overline{w}_j \\
+               &= \sum \overline{w_j \overline{z}_j} \\
+               &= \overline{\sum w_j \overline{z}_j} \\
+               &= \overline{(w,z)}
+    \end{align*}
+    \item Use pythagorean theorem since u and w are orthogonal.
+    
+    
+\end{enumerate}
+\end{document}

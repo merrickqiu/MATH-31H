@@ -1,0 +1,157 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 10} \\
+	Merrick Qiu
+\end{center}
+
+\section*{A}
+Choose $\epsilon > 0$. From the limits we know that there exist
+$c_1, c_2$ such that $x > c_1$ implies that $|x-\ell_1| < \frac{\epsilon}{2}$
+and $x < c_2$ implies that $|x-\ell_2| < \frac{\epsilon}{2}$.
+For all $c_2-1 \leq x \leq c_1+1$, $f$ is uniformly continuous since 
+$[c_2-1, c_1+1]$ is a compact set. Assume that we choose a $\delta < 1$.
+$[c_1, \infty]$ and $[-\infty, c_2]$
+are uniformly continuous for any $\delta$ since we chose $c_1$ and $c_2$
+such that all points are within $\epsilon$ of each other.
+Thus, the function is uniformly continuous.
+\newpage 
+
+\section*{B}
+Choose $\epsilon > 0$.
+If we choose $\delta < \left(\frac{\epsilon}{c}\right)^{\frac{1}{\alpha}}$,
+Then 
+\[
+	d(f(x), f(y)) \leq Cd(x,y)^{\alpha} < \epsilon
+\]
+so $f$ is uniformly continuous.
+
+\newpage 
+
+\section*{C}
+$f$ is a homeomorphism iff the image of an open set is an open set as well.
+All connected sets in $\mathbb{R}$ are intervals, and the image of $f$ 
+on a connected set must also be connected, so $f((a,b))$ must also be an interval for all $a,b \in \mathbb{R}$. 
+This interval must be open as well since 
+continuous bijections map open intervals to open intervals.
+Since all open sets can be expressed as the countable union of open intervals,
+$f$ maps open sets to open sets.
+Thus f is a homeomorphism.
+\newpage 
+
+\section*{Rudin 2}
+Let $y \in f(\overline{E})$ and 
+$x \in \overline{E}$ with $f(x) = y$.
+Since $\overline{E}$ is a closure,
+there must exist a sequence $x_i \to x$
+where $x_i \in E$ for all $i$.
+Thus all the points in the sequence $f(x_i)$ are in 
+the image, $f(E)$, and $\lim f(x_i) = f(\lim x_i) = y$ due to the continuity of $f$,
+so $y \in \overline{f(E)}$.
+Since $y$ was arbitrary, we have that 
+$f(\overline{E}) \subset \overline{f(E)}$. \\
+
+If $f: [1, \infty) \to \mathbb{R}$, $f(x) = \frac{1}{x}$
+and $E = [1, \infty)$, then 
+$f(\overline{E}) = (0,1]$ but $\overline{f(E)} = [0,1]$
+\newpage
+
+\section*{Rudin 4}
+Since $E$ is dense in $X$, every point $x\in X$
+is the limit of some sequence of points, $x_i \to x$ 
+where $x_i \in E$, for all $i$.
+Since $f$ is continuous we have that 
+$\lim f(x_i) = f(\lim x_i) = f(x)$,
+so every point $f(x)$ can also be represented as a 
+sequence of points from $f(E)$.
+Thus $f(E)$ is dense in $f(X)$.
+
+If $g(x_i) = f(x_i)$ for all $x_i \in E$,
+then $f(x) = \lim f(x_i) = \lim g(x_i) = g(x)$,
+so $f(x) = g(x)$.
+\newpage 
+
+\section*{Rudin 6}
+($\implies$)
+Take a sequence of points in the graph $(x_n, f(x_n))$.
+Since $E$ is compact, there is a subsequence $x_{n_k} \to x$
+for some $x$.
+Since $f$ is continuous, we also have that $f(x_{n_k}) \to f(x)$,
+so any sequence of points in the graph has a convergent subsequence,
+so the graph is compact.
+
+($\impliedby$)
+Let $x \in E$.
+Take a sequence of points in the graph $(x_n, f(x_n))$ such that
+$x_n \to x$.
+By compactness, there exists a convergent subsequence 
+$(x_{n_k}, f(x_{n_k})) \to (x, f(x))$.
+It is the case that $f(x_{n_k}) \to f(x)$
+because if it did not, then 
+the graph would fail to contain the limit point $(x, f(x))$,
+which would contradict the fact that the graph is compact.
+\newpage 
+
+\section*{Rudin 8}
+Let $a = \inf E$ and $b = \sup E$
+For some $\epsilon > 0$,
+there exists $\delta$ such that all points 
+$p,q \in E$ with $|p-q| < \delta$ implies that 
+$|f(p) - f(q)| < \epsilon$.
+We can "divide up" $E$ into $N = \lceil \frac{b-a}{\delta} \rceil$
+sections.
+We have that $\inf f(E) \geq f(a) - N*\epsilon$
+and $\sup f(E) \leq f(a) + N*\epsilon$
+since the maximum amount of change that can occur within
+a delta neighborhood of a point is $\epsilon$.
+Thus, $f(E)$ is bounded.
+\newpage 
+
+\section*{Rudin 14}
+If we define $g(x) = f(x) - x$,
+$0 \leq g(0) \leq 1$ and 
+$-1 \leq g(1) \leq 0$. 
+By the intermediate value theorem,
+$g(x) = 0$ at some point,
+so there exists some point where $f(x) = x$.
+\newpage 
+
+\section*{Rudin 18}
+At every point $p$, the limit is $0$.
+For any $\epsilon > 0$ we can find $n$ such that  $\frac{1}{n} < \epsilon$
+by the archimedes principle.
+Then we can choose $\delta$ such that all rational numbers with 
+denominator $<n$ are not in the delta neighborhood around $p$.
+This is possible because there is a finite number of rational numbers
+with denominators from $1$ to $n$.
+
+All the points $x$ in this $\delta$ neighborhood have $|x - 0| < \epsilon$,
+so the function converges to $0$ at all points.
+However only irrational points evaluate to $0$
+so the function is only continuous at irrational points, but 
+it has simple discontinuity at every rational point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

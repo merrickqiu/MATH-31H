@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 4} \\
+	Merrick Qiu
+\end{center}
+\section*{A}
+\begin{enumerate}
+    \item The statement is false. 
+    In $\mathbb{R}$, the intervals $(0,1)$ and $(1,2)$ are disjoint but 
+    their distance is $0$.
+    \item The statement is false.
+    The intervals $(0,1)$ and $(1,2)$ are separate since 
+    $[0,1] \cap (1,2) = \emptyset$ and $(0,1) \cap [1,2] = \emptyset$ but 
+    their distance is $0$.
+    \item The statement is false.
+    The intervals $(0,1)$ and $(1,2)$ are disjoint open sets but 
+    their distance is $0$.
+    \item The statement is false.
+    Let $A = \mathbb{N}$ and let $B = \{n + \frac{1}{n+1} : n \in \mathbb{N}\}$.
+    $A$ and $B$ both only have isolated points so they are both closed.
+    They are also both disjoint.
+    However $d(A,B) = 0$, so this statement is false.
+\end{enumerate}
+\newpage 
+
+\section*{B}
+\begin{enumerate}
+    \item We need to show that all points in the closed neighborhood
+    are limit points and all points not in the closed neighborhood 
+    are not limit points.
+    If $y \in \overline{N}_r(x)$, then we need to show that $y$ is a limit point by
+    finding a point in $N_{r'}(y)$ for an arbitrary $r'$.
+    If $r' > r - d(x,y)$, then choose $r' \leq r - d(x,y)$ since a point in 
+    a smaller neighborhood will also be in the larger neighborhood.
+    Any point $z \in N_{r'}(y)$ will also be in $\overline{N}_r(x)$ since 
+    by the triangle inequality, 
+    \[
+        d(x, z) \leq d(x,y) + d(y,z) \leq r
+    \]
+    If $y \not\in \overline{N}_r(x)$,  then we need to show that $y$ is not a limit point
+    by finding a $r'$ such that $\overline{N}_r(x) \cap N_{r'}(y) = \emptyset$.
+    Choose $r' < d(x,y) - r$. 
+    For all points $z \in N_{r'}(y)$
+    \[
+        r < d(x,y) - d(y,z) \leq d(x,z)
+    \]
+    by the triangle inequality(with $d(y,z)$ subtracted from both sides).
+    Thus the closed neighborhood is a closed set.
+    \item We need to show that points inside the closed neighborhood are limit points 
+    of the open neighborhood
+    and points outside the closed neighborhood are not limit points.
+    If $y \in \overline{N}_r(x)$ then $d(x,y) \leq r$.
+    For all $r'$ we need to find a point $z\in N_{r'}(y)$
+    such that $z \in N_r(x)$ as well.
+    Choose $c$ such that $ \frac{r - r'}{r} < c < 1$ 
+    and let $z = cx + (1-c)y$.
+    This point is both in the neighborhood of $y$ as well as in 
+    neighborhood $x$ so $y$ is a limit point.
+
+    If $y \not\in \overline{N}_r(x)$ then $d(x,y) > r$.
+    We need to find a $r'$ such that $N_{r'}(y) \cap N_r(x) = \emptyset$.
+    Choose $r' < d(x,y) - r$.
+    For all points $z \in N_{r'}(y)$
+    \[
+        r < d(x,y) - d(y,z) \leq d(x,z)
+    \]
+    by the triangle inequality, so $y$ is not a limit point.
+    \item It is not true in general.
+    For the discrete metric, a $N_1(x)$ only contains $x$ and its closure
+    also just contains $x$. 
+    However, $\overline{N}_1(x)$ contains all the points in the metric space.
+\newpage
+\section*{C}
+    ($\implies$)All non-empty open subsets $O$
+    must contain a point $x \in O$,
+    and this point is an interior point because the set is open.
+    For some neighborhood $N_r(x)$, $N_r(x) \subset O$
+    since $x$ is an interior point, but since $A$ is dense,
+    $x$ is also a limit point of $A$ and $a \in N_r(x)$
+    for some $a \in A$.
+    Thus $A \cap O \neq \emptyset$ for all $O$.
+
+    ($\impliedby$)
+    Since all open neighborhoods are open and $A \cap O \neq \emptyset$ for all open sets,
+    we know that every open neighborhood contains a point in $A$, which
+    is the definition of $A$ being dense.
+\newpage
+\section*{Rudin Question 9}
+\begin{enumerate}
+    \item For all $x \in \interior{E}$, we know that there exists $r$
+    such that  $N_r(x) \subset E$ by the definition of an interior point. 
+    It is sufficient to show that $x$ is an interior point of $\interior{E}$
+    by showing that all points $y \in N_r(x)$ are also in $\interior{E}$.
+    If we choose $r' < r-d(x,y)$, then $N_{r'}(y)\subset N_r(x) \subset E$ 
+    (since by the triangle inequality, a point $z \in N_{r'}(y)$
+    will have $d(x,z) \leq d(x,y) + d(y,z)$)
+    so we know that $y$ is also an interior point of $E$.
+    Thus $\interior{E}$ is always open.
+    \item If $\interior{E} = E$ then every point of $E$ is an interior point 
+    so $\interior{E} = E$ implies that $E$ is open.
+    If $E$ is open, then every point of $E$ is an interior point of $E$
+    so $E \subset \interior{E}$.
+    Likewise, if a point is an interior point, it must be in $E$.
+    So a set being open implies $E = \interior{E}$.
+    \item This is true since $G \subset E = \interior{E}$.
+    \item Since $E$ is open, its complement is closed.
+    This means that $E^c = \overline{E^c}$.
+    Also since $E = \interior{E}$ we have that 
+    \begin{align*}
+        \interior{E} &= E\\
+        \implies {\interior{E}}^c &= E^c \\
+        \implies {\interior{E}}^c &= \overline{E^c} \\
+    \end{align*}
+    \item No, the set $\mathbb{R} \setminus \{0\}$ does not have an interior point 
+    at 0 but its closure does.
+    \item No the rational numbers have a closure that is the real numbers,
+    but the rational numbers have no interior points.
+\end{enumerate}
+\newpage
+\section*{Rudin Question 22}
+The set of points which have only rational coordinates are dense in $R^k$.
+Let $(x_1, x_2, \cdots, x_k) \in \mathbb{R}^k$, with a neighborhood around that point 
+of radius $r$.
+
+We can choose $(y_1, y_2, \cdots, y_k) \in \mathbb{Q}^k$
+such that $|x_i - y_i|^2 < \frac{r^2}{k}$ for all $i$
+by the density of the rationals in the reals,.
+Under the standard metric this point in $\mathbb{Q}^k$ will
+be at most $r$ distance away from the original point in $\mathbb{R}^k$,
+thus $\mathbb{R}^k$ is separable.
+\newpage
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}

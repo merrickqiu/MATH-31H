@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf CSE 120: Homework 4} \\
+	Merrick Qiu
+\end{center}
+\section*{Question 1}
+A total of 10 reads are necessary.
+There are 5 directories/files,
+and there has to be a read for the inode and 
+a read for the data block.
+
+\section*{Question 2}
+The 10 direct pointers can point to 
+$40K$ of data. The indirect pointer 
+points to a block of entirely direct pointers,
+so there are $1K$ direct pointers in here. That is $4M$ of data.
+The double indirect pointer has $1M$ of direct pointers,
+which stores $4G$ of data.
+In total that is $4,004,040K$ bytes of data.
+
+\section*{Question 3}
+\begin{enumerate}
+    \item There is a total of $2KB * 1M = 2GB$ of waste.
+    \item There is a total of $256B * 1M = 256MB$ of waste.
+    \item Unless I had a very large amount of storage space,
+    I would probably want this benefit.
+\end{enumerate}
+
+\section*{Question 4}
+It does not necessarily fit in the same inode.
+All zip can do is access files and directories,
+but it is up to the operating system file system 
+to create the inodes.
+
+\section*{Question 5}
+\begin{enumerate}
+    \item In Unix I could individually
+    give each 4990 users permission, or I could make a group.
+    \item I could make a blacklist of the users that do not 
+    have access to the file.
+\end{enumerate}
+
+\section*{Question 6}
+A file system cache helps improve performance by
+storing block location pointers in physical memory instead
+of disk, which is much faster.
+However physical memory is limited, so systems cannot 
+use incredibly large caches.
+
+\section*{Question 7}
+\begin{tabular}{c||c|c|c|c}
+    I\textbackslash X & 100ms & 10 ms & 1 ms & 0.1 ms \\
+    \hline \hline
+    25 ms & 20\% & 71\% & 96\% & 99.6\% \\
+    5 ms & 4.8\% & 33\% & 83\% & 98\% \\
+    0.1 ms & 0.0999\% & 0.99\% & 9.09\% & 50\% \\
+    0.005 ms & 0.005\% & 0.05\% & 0.498\% & 4.76\% \\
+    0.001 ms & 0.001\% & 0.01\% & 0.1\% & 0.99\% \\
+    
+\end{tabular}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,175 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{A}
+(\textbf{Connected implies only $\emptyset$ and $X$ clopen})
+Suppose that there existed a set $A$ 
+that was clopen that was not $\emptyset$ or $X$.
+Let $B = X \setminus A$, which is also clopen since $A$ is clopen.
+Since $A = \overline{A}$ and $B = \overline{B}$ and $A \cap B = \emptyset$,
+we have that $A \cap \overline{B} = \emptyset$ and $\overline{A} \cap B = \emptyset$.
+Thus $X$ is not connected, which is a contradiction. \\
+
+(\textbf{Only $\emptyset$ and $X$ clopen implies connected})
+Supposed that only $\emptyset$ and $X$ were clopen but that 
+$X$ was not connected.
+Then there exists two subsets $A, B \subset X$ such that
+$A \cap \overline{B} = \emptyset$, $\overline{A} \cap B = \emptyset$,
+and $X = A \cup B$. This would imply that $A$ is closed 
+since if there was $x \in \overline{A}$ and $x \not\in A$,
+then $x \in B$, but we have that $\overline{A} \cap B = \emptyset$. \\
+
+This would also imply $A$ is open since 
+if there was a point $x \in A$ and $x \not\in \interior{A}$,
+then every neighborhood of $x$ would contain a point in $B$,
+so $x$ would be a limit point of $B$ but this contradicts 
+$A \cap \overline{B} = \emptyset$.
+Thus $A$ is a set that is clopen that is neither $\emptyset$
+or $X$, which is a contradiction.
+\newpage 
+
+\section*{B}
+($\implies$) If $\ell \in \mathbb{R}$ is a subsequential limit of $\{a_n\}$,
+then there exists a subsequence $\{a_{n_i}\}$ that converges to $\ell$.
+By the definition of convergence, for all $\epsilon$,
+we can choose $N$ such that for all $n_i \geq N$, $|a_{n_i} - \ell| < \epsilon$.
+Thus there are infinite elements with $|a_{n_i} - \ell| < \epsilon$ 
+in the subsequence, and there are also infinite elements in $\{n \in \mathbb{N} : |a_n - \ell| < \epsilon\}$.
+
+($\impliedby$) If we choose a subsequence by
+discarding elements $a_n$ where $|a_n - \ell| \geq |a_{n-1} - \ell|$,
+then we get a sequence that converges to $\ell$.
+This is because for all $\epsilon > 0$, there must exist an index $N$ where $|a_N - \ell| < \epsilon$
+(by the hypothesis that for every $\epsilon > 0$, $\{n \in \mathbb{N} : |a_n - \ell| < \epsilon\}$ is infinite)
+and all indicies $n > N$ have it so that $|a_n - \ell| < |a_N - \ell| < \epsilon$
+by the construction of this subsequence.
+
+\newpage
+
+\section*{Rudin 19}
+\begin{enumerate}
+	\item Since $A$ and $B$ are disjoint, $A \cap B = \emptyset$.
+	Since $A$ and $B$ are closed, $A = \overline{A}$ and $B = \overline{B}$.
+	Thus $A \cap \overline{B} = \emptyset$ and $\overline{A} \cap B = \emptyset$,
+	so $A$ and $B$ are separated.
+	\item Supposed that $A \cap \overline{B} \neq \emptyset$.
+	Then there exists $x \in A$ such that x is a limit point of $B$, $x \in B'$.
+	Since $A$ is an open set, $x$ is an interior point of $A$,
+	but this contradicts the fact that $x$ is a limit point of $B$
+	since every neighborhood around $x$ will contain a point in $B$.
+	Thus $A \cap \overline{B} = \emptyset$, and we can repeat
+	the argument to also show that $\overline{A} \cap B = \emptyset$.
+	Thus disjoint open sets are separated.
+	\item $A$ is simply the open neighborhood around $p$, so it is open.
+	$B$ is also an open set, because for all $x \in B$, you can choose 
+	a neighborhood of radius $r < d(p,x) - \delta$ which is a subset of $B$
+	by the triangle inequality.
+	Since by the previous part disjoint open sets are separated,
+	$A$ and $B$ are also separated.
+	\item If $X$ is a connected metric space, then it cannot be split
+	into two separated sets.
+	If for some $\delta$ there did not exist any points $q$ such that 
+	$d(p,q) = \delta$, then $A$ and $B$ would be separate sets whose union is $X$,
+	which contradicts the fact that $X$ is connected.
+	Thus for all $\delta$, there exists some $q$ such that $d(p,q) = \delta$,
+	and since there is uncountable number of possible values of $\delta$,
+	$X$ must also be uncountable.
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 20}
+The closure of a connected set is indeed connected.
+Supposed that the closure of a set $X$ was not connected.
+Then there exists $A$ and $B$ where $A \cap \overline{B} = \emptyset$ or $\overline{A} \cap B = \emptyset$.
+If we remove the points that are in the closure but not in $X$,
+then we get two sets which are also separated.
+This is a contradiction, so the closure of a connected set is connected.
+
+The interior of a connect set is not always connected.
+Let $A \subset \mathbb{R}^2$ be the closed ball around $(1,0)$ of radius $1$ 
+and $B \subset \mathbb{R}^2$ be the closed ball around $(-1,0)$ of radius $1$.
+The set $A \cup B$ is connected but its interior is not.
+\newpage 
+
+\section*{Rudin 21}
+\begin{enumerate}
+	\item $A_0$ and $B_0$ are disjoint since $A$ and $B$ are disjoint.
+	Suppose that there was a $t_0 \in A_0$ that was a limit point of $B_0$.
+	Since $t_0$ is a limit point of $B_0$, 
+	there exists a point, $x \in B_0$, for all
+	balls around $t_0$ of radius $r$.
+
+	All points $p(x) \in B$ are also
+	distance $<r(|a| + |b|)$ from $p(t_0)$, meaning $p(t_0)$ is a limit point of $B$.
+	Since $p(t_0) \in A$ is also a limit point of $B$, 
+	$A \cap \overline{B} \neq \emptyset$ so $A$ and $B$ would no longer be separated,
+	which is a contradiction so we know that $A_0 \cap \overline{B_0} = \emptyset$.
+	We can repeat the above argument to also show that
+	$\overline{A_0} \cap B_0 = \emptyset$ thus $A_0$ and $B_0$ are separated.
+	
+	\item Supposed that $t \in A \cup B$ for all $t \in [0,1]$.
+	$[0,1]$ can then be written as the union of the separate sets $[0,1] \cap A_0$
+	and $[0,1] \cap B_0$, but this would imply that $[0,1]$ is not connected, which is 
+	not the case. Thus there must exist some $t_0$ such that $t_0 \in A \cup B$
+	\item If it wasn't connected, then there would exist
+	 separated subsets $A$ and $B$ whose union is the entire convex subset,
+	but there would be a $t_0$ such that  $p(t_0) \not\in A \cup B$
+	which is a contradiction.
+\end{enumerate}
+\newpage
+
+\section*{Rudin 1}
+If $\{s_n\}$ converges to some point $\ell$, then that means that
+for all $\epsilon > 0$, there exists $N$ such that for all $n \geq N$,
+$|s_n - \ell| < \epsilon$.
+By the reverse triangle inequality we have that 
+\[
+	 ||s_n| - |\ell|| \leq |s_n - \ell| < \epsilon.
+\]
+Thus $\{|s_n|\}$ converges to $|\ell|$.
+The converse is not true as $s_n = i^n$ does not converge but 
+$\{|s_n|\}$ converges to 1.
+\newpage 
+
+\section*{Rudin 3}
+Since $s_1 < 2$ and if $s_n < 2$, then $\sqrt{2 + \sqrt{s_n}} < \sqrt{2 + 2} = 2$
+$s_n < 2$ for all $n$ by induction.
+This sequence is also strictly increasing since 
+\[
+	\frac{s_{n+1}}{s_n} = \sqrt{\frac{2+\sqrt{s_n}}{s_n^2}} > \sqrt{1+ \frac{\sqrt{s_n}}{s_n^2}} > 1
+\]
+Since it is strictly increasing and bounded, this sequence converges.
+\newpage 
+
+\section*{Rudin 5}
+If $\lim_{n \to \infty} \sup a_n = \infty$, then the inequality is clearly true.
+Otherwise $\{a_n\}$ is bounded above. Let $\{a_{n_i}\}$ and $\{b_{n_i}\}$ be subsequences such that 
+$\lim_{i \to \infty} (a_{n_i} + b_{n_i}) = \lim_{n \to \infty} \sup (a_n + b_n)$.
+Then choose a subsequence $\{a_{n_{i_j}}\}$ such that $\lim_{j \to \infty}  a_{n_{i_j}} = \lim_{i \to \infty}  \sup a_{n_i}$.
+$a_{n_{i_j}} + b_{n_{i_j}}$ still converges to  $\lim_{n \to \infty}  \sup (a_n + b_n)$
+and since $a_{n_k}$ is bounded above we have that $b_{n_{i_j}}$ converges to the difference
+\[
+	\lim_{j \to \infty} b_{n_{i_j}} = \lim_{j \to \infty}  (a_{n_{i_j}} + b_{n_{i_j}}) - \lim_{j \to \infty} a_{n_{i_j}}.
+\]
+We've shown that there are subsequences whose sum converges to the limit of the supremum
+of the sum of the sequences, and since the limit of these two sequences 
+are less than or equal to the limit of the supremum of the original two sequences,
+we've shown the inequality is true.
+
+
+\end{document}

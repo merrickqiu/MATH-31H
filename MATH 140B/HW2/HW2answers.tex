@@ -1,0 +1,199 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Let $x, y \in [0,1]$.
+By MVT, there exists $a$ such that $x \leq a \leq y$ and
+$f'(a)(x-y) = f(x)-f(y)$.
+Since a continuous function on a compact set attains a maximum,
+let $M = \sup_{{x\in[0,1]}} f'(x)$.
+Since $f'(a) \leq M$, we have that 
+\[
+	|f(x)-f(y)| = |f'(a)(x-y)| \leq M|x-y|.
+\]
+\newpage 
+
+\section*{Problem 2}
+% Let $x$ be a critical point, where $f'(x) = 0$.
+% $f'$ is uniformly continuous on $[0,1]$ since $[0,1]$ is compact.
+% Let $\epsilon > 0$ and choose $\delta > 0$ such that 
+% $|a - b| < \delta \implies |f'(a) - f'(b)| < \epsilon$ for $a,b \in (x-\delta,x+\delta)$.
+% In other words, the image is $f'(x-\delta,x+\delta) = (-\epsilon,\epsilon)$.
+
+% C is compact, look at B(x,\delta) for x in C
+% Pick E1 to EN where C subseteq union of Ej, they are disjoint, each interval >= delta/4, Ej subseteq B(x_j', delta)
+% I_j = f(E_j)
+Let $C = \{x \in [0,1] : f'(x)\}$ be the set of critical points.
+We want to show that the image $f(C)$ has no interval, $I = (a,b)$.
+For all $n \in \mathbb{N}$, there exists $I_1, \cdots, I_N$ such that
+\[
+	f(C) \subseteq \bigcup_{j=1}^N I_j
+\]
+and 
+\[
+	\sum_{j=1}^N |I_j| \leq \frac{K}{n}
+\]
+for some $K > 0$.
+Pick $n_0$ such that $\frac{K}{n_0} < b-a$ for $(a,b) \subseteq f(C) \subseteq \bigcup_{j=1}^N I_j$.
+Thus 
+\[
+	 b-a = |(a,b)| \leq \left|\bigcup_{j=1}^N I_j\right| \leq \sum_{j=1}^N |I_j| \leq \frac{K}{n_0} < b-a
+\]
+which is a contradiction, so $f(C)$ cannot contain an interval.
+A function like $f(x) = \frac{1}{x} \sin(\frac{1}{x})$ has infinite critical points.
+
+
+\newpage 
+\section*{Problem 3}
+Since the function is monotonic and continuous, the Riemann integral exists.
+\begin{align*}
+	\int_0^1 x^2 \,dx &= \lim_{n \to \infty}  \sum_{i=1}^{n} \left(\frac{i}{n}\right)^2 \frac{1}{n}\\
+	&= \lim_{n \to \infty}  \frac{1}{n^3} \sum_{i=1}^{n} i^2\\
+	&= \lim_{n \to \infty}  \frac{1}{n^3} \frac{n(n+1)(2n+1)}{6}\\
+	&= \lim_{n \to \infty}   \frac{(n+1)(2n+1)}{6n^2}\\
+	&= \lim_{n \to \infty}   \frac{4n+3}{12n}\\
+	&= \frac{1}{3}\\
+\end{align*}
+\newpage 
+
+\section*{Rudin 8}
+The definition of the derivative is 
+\[
+	f'(x) =\lim_{t \to x} \frac{f(t) - f(x)}{t-x}.
+\]
+By the definition of the limit,
+for all $\epsilon > 0$ there exists a $\delta > 0$ such that when $0 < |t-x| < \delta$
+\[
+	\left|\frac{f(t) - f(x)}{t-x} -f'(x)\right| < \epsilon.
+\]
+This holds for vector valued functions of dimension $n$ 
+as well since we can choose $\delta$ such that 
+each component of $\frac{f(t) - f(x)}{t-x}$ is less than $\frac{\epsilon}{n}$ away from $f'(x)$.
+\newpage
+	
+\section*{Rudin 11}
+Using L'Hospital's rule,
+\begin{align*}
+	\lim_{h\to 0} \frac{f(x+h) + f(x-h) - 2f(x)}{h^2} &= \lim_{h\to 0} \frac{f'(x+h) + f'(x-h)}{2h} \\
+	&= \lim_{h\to 0} \frac{f'(x+h) + f'(x)}{2h} + \frac{f'(x) + f'(x-h)}{2h} \\
+	&= f''(x)
+\end{align*}
+The following function has a limit that evaluates to 0 but has no second derivative
+\[
+	f(x) = 
+	\begin{cases}
+		x^2 & x\geq 0 \\
+		-x^2 & x < 0
+	\end{cases}
+\]
+\newpage
+
+\section*{Rudin 14}
+The definition of convex is that for all $x < y$,
+\[
+	f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1- \lambda)f(y)
+\]
+If we let $t= \lambda x + (1-\lambda)y$ be the point that is the linear combination of $x$ and $y$,
+then $\lambda = \frac{y-t}{y-x}$, $1-\lambda = \frac{t-x}{y-x}$ where $x < t < y$.
+By the mean value theorem,
+there are values $c_1 < c_2$ such that 
+\[
+	\frac{f(t) - f(x)}{t-x} = f'(c_1) \leq f'(c_2) = \frac{f(y) - f(t)}{y-t}.
+\]
+Since $y-t = \lambda(y-x)$ and $t-x = (1-\lambda)(y-x)$,
+\[
+	\lambda(f(t) - f(x)) \leq (1-\lambda)(f(y)-f(t))
+\]
+Isolating for $f(t)$ gives us the definition for convex
+\[
+	f(t) \leq \lambda f(x) + (1-\lambda)f(y)
+\]
+The proof in the other direction is very similar.
+If $f''(x) \geq 0$ then $f'(x)$ must be monotonically increasing and 
+vice versa.
+\newpage 
+
+\section*{Rudin 15}
+For $h>0$, Taylor's theorem says that 
+\[
+	f(x+2h) = f(x) + f'(x)\cdot 2h + \frac{f''(\xi)}{2}\cdot (2h)^2
+\]
+so if we take $h = \sqrt{\frac{M_0}{M_2}}$ then
+\begin{align*}
+	|f'(x)| &= \left|\frac{1}{2h}(f(x+2h)-f(x)) - hf''(\xi)\right| \\
+	&\leq |\frac{2M_0}{2h} + hM_2| \\
+	&= |hM_2 + \frac{M_0}{h}| \\
+	&\leq 2\sqrt{M_0M_2}
+\end{align*}
+This means that  $M1 \leq 2\sqrt{M_0M_2}$ which is equivalent to
+\[
+	M_1^2 \leq 4M_0M_2
+\]
+
+
+
+\newpage
+
+\section*{Rudin 25}
+\begin{enumerate}
+	\item Newton's method estimates the root by finding where the 
+	tangent line at $x_k$ intersects the x-axis.
+	\item Since $x_1 \in (\xi, b)$ and $f$ is monotonically increasing,
+	$f(x_1) > 0$. Since $f'(x_1) > 0$ as well, $x_2 = x_1 - \frac{f(x_1)}{f'(x_1)} < x_1$.
+	By MVT, there exists $y$ such that $f'(y) = \frac{f(x_1) - f(x_2)}{x_1 - x_2}$.
+	Thus $f(x_2) = f(x_1)-f'(y)(x_1 - x_2) > f(x_1)-f'(x_1)(x_1 - x_2) = 0$
+	because $f'(y) < f'(x_1)$. Since $f(x_2) > 0$, we have that $\xi < x_2$.
+	Using induction, we can show that $\xi < x_{n+1} < x_n$ for all $n$.
+	Since the sequence of iterates is decreasing but bounded, it must converge to some
+	value $l$, but since $l = l - \frac{f(l)}{f'(l)}$ , it must be that $l = \xi$.
+	\item Expanding the taylor series around $x_n$ yields 
+	\[	
+		0 = f(\xi) = f(x_n) + f'(x_n)(\xi - x_n) + \frac{1}{2}f''(t_n)(\xi - x_n)^2
+	\]
+	Rearranging shows that 
+	\[
+		\frac{f(x_n)}{f'(x_n)} = -(\xi - x_n) - \frac{f''(t_n)}{2f'(x_n)}(\xi - x_n)^2
+	\]
+	Substituting this in to Newton's iteration yields our desired equation
+	\[
+		x_{n+1} - \xi = x_n - \frac{f(x_n)}{f'(x_n)} - \xi= \frac{f''(t_n)}{2f'(x_n)}(\xi - x_n)^2
+	\]
+	\item  Since $A = M/2\delta$, $0 \leq f''(t_n) \leq M$ and $\delta < f'(x_n)$, we have that
+	\[	
+		0 \leq x_{n+1} - \xi \leq A(x_n-\xi)^2 = \frac{1}{A}[A(x_{n-1}-\xi)]^2 \leq \frac{1}{A}[A^2(x_{n-2}-\xi)^2]^2 \cdots \leq \frac{1}{A}[A(x_{1}-\xi)]^{2n}
+	\]
+	\item When $f(x) = x$ then $f(x) = 0$ and vice versa.
+	Since $g'(x) = \frac{f(x)f''(x)}{f'(x)^2}$, $g'(x)$ goes to zero as $x$ goes to $\xi$ as well.
+	\item The derivative of $x^\frac{1}{3}$ is $\frac{1}{3x^\frac{2}{3}}$ so 
+	\[	
+		x_{n+1} = x_n - \frac{x_n^\frac{1}{3}}{\frac{1}{3x_n^\frac{2}{3}}} =  -2x_n
+	\]
+	Newtons method thus diverges.
+
+\end{enumerate}
+\newpage
+
+
+
+
+
+
+
+
+
+\end{document}

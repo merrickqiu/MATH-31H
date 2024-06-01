@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 3} \\
+	Merrick Qiu
+\end{center}
+\section*{A}
+\begin{enumerate}
+    \item \textbf{Closed: }The integers have no limit points because
+    any sufficiently small neighborhood around a point 
+    will have no neighboring integers.
+    There are also no interior points since any neighborhood around 
+    an integer will have non-integer numbers.
+    Vacuously, the integers are closed.
+    \item \textbf{Neither: }The limit points are $[a,b]$ and the set is neither open nor closed.
+    This set is not closed since $a$ is a limit point
+    that is not in the set.
+    This set is also not open since $b$ is in a point in the set 
+    that is not an interior point.
+    \item \textbf{Neither: } Since the rationals are dense in the reals,
+    every real number is a limit point.
+    The rationals are not closed since nonrational reals 
+    are limit points.
+    The rationals are also not open since the set has no interior points.
+    \item \textbf{Neither: } This set has limit points $-1$ and $1$ since the 
+    $\frac{1}{m}$ term can get arbitrarily close to 0.
+    The set is not closed since both limit terms are not in the set.
+    The set has no interior points, so it is not open either.
+    \item \textbf{Neither: }$0$ is a limit point since $\frac{1}{n} + \frac{1}{m}$
+    can get arbitrarily close to $0$ and numbers of the form $\frac{1}{n}$
+    are limit points since $\frac{1}{m}$ can get arbitrarily close to 0 as well.
+    The set is not closed since $0$ is not in the set.
+    The set is also not open since $2$ is in the set but it is not an interior point.
+    \item \textbf{Neither: } The limit points are $1$ and $-1$.
+    The set is not closed since the limit points are not in the set.
+    The set is not open since none of the points are interior points.
+\end{enumerate}
+\newpage 
+
+\section*{B}
+\begin{enumerate}
+    \item Let $a + bi \in \mathbb{C}$ be a complex number with a neighborhood of radius $r$.
+    Since $\mathbb{Q}$ is dense in $\mathbb{R}$, we can find a rational number $a'$ 
+    that is in the neighborhood around $a$ of radius $\frac{r}{\sqrt{2}}$
+    and a rational number $b'$ that is in the neighborhood around $b$ of radius $\frac{r}{\sqrt{2}}$.
+    By the usual metric, $a' + b'i$ is guaranteed to be in the neighborhood around $a+bi$ of radius $r$.
+    $a'+b'i$ is also in the neighborhood of $a+bi$ so $A$ is dense in $\mathbb{C}$.
+    \item If there is a neighborhood around $(a_1, a_2,\cdots, a_n) \in \mathbb{R}^n$ with radius $r$,
+    then we can choose $(a_1', a_2', \cdots, a_n') \in \mathbb{Q}^n$ 
+    where for all $i$, $a_i'$ is a rational number in the neighborhood around $a_1$ of radius $\frac{r}{\sqrt{n}}$.
+    Thus $\mathbb{Q}$ is dense in $\mathbb{R}$.
+    \item If there is a neighborhood around $(c_1, c_2,\cdots, c_n) \in \mathbb{C}^n$ with radius $r$,
+    then we can choose $(c_1', c_2', \cdots, c_n') \in \mathbb{A}^n$ ,
+    where for all $i$, $c_i'\in A$ is in the neighborhood around 
+    $c_i$ of radius $\frac{r}{\sqrt{n}}$ by using (1).
+\end{enumerate}
+\newpage 
+
+\section*{C}
+Either $A$ has limit points or it has no limit points.
+If it has no limit points, then by definition it is a discrete set.
+If $A$ has a limit point $p$, then we can show every interval 
+$(x,x + \epsilon)$ for $x, \epsilon \in \mathbb{R}$ 
+contains a point in $A$ to show that $A$ is dense. \\
+
+Since $p$ is a limit point, we can find some $q \in A$ within the 
+neighborhood of radius of $\epsilon$.
+Let $a = p-q$, and since $A-A=A$, we know that $a \in A$.
+If we add a multiple of $a$ to $l$, we are guaranteed
+to find some $l + na \in (x, x + \epsilon)$ for $n \in \mathbb{Z}$ since $|a| < \epsilon$.
+So $A$ is dense in this case and every additive subgroup must be either discrete or dense in the reals.
+\newpage 
+
+\section*{D Problem 2}
+Since the union of a sequence of 
+at most countable sets is also at most countable,
+we just need to show that the set of algebraic numbers with 
+positive integer $N$ such that
+\[
+    n + |a_0| + \cdots + |a_n| = N
+\]
+is at most countable to show that the algebraic numbers are countable.
+This is because the set of algebraic numbers is the union 
+of these sets over all $N$.\\
+
+Since there are only a finite number of integer coefficients that satisfy that equation 
+for a given $N$ and each set of coefficients corresponds to a finite number of 
+complex numbers, we know that the set of algebraic numbers for a given $N$
+is finite.\\
+
+Thus the algebraic numbers are countable.
+(We know that it is countable instead of just being at most countable 
+because the natural numbers are a subset of the algebraic numbers).
+\newpage 
+
+\section*{D Problem 5}
+All numbers of the form $a + \frac{1}{n}$ where $a \in \{0, 1, 2\}$ and $n \in \mathbb{N}$
+has only three limit points, which are 0, 1, and 2.
+\newpage 
+
+\section*{D Problem 6}
+\textbf{E' is closed} \\
+Let $p$ be a limit point of $E'$.
+Within the neighborhood of radius $r$, 
+we can find a point $q \in E'$ that is a limit point for $E$.
+Choosing $r' < r - d(p, q)$ as the radius for a neighborhood 
+around $q$, we can choose a point $s \in E$ in this neighborhood.
+Since $d(p, s) \leq d(p, q) + d(q,s)$, we know that 
+$s$ is also in the neighborhood of $p$, so $p$ is also a 
+limit point of $E$.
+Thus every limit point of $E'$ is in $E'$ so $E'$ is closed.
+
+\textbf{E and E' have the same limit points} \\
+The neighborhoods of any limit point $p \in E'$, 
+contain some $q \neq p$ with $q \in E$.
+Since $\overline{E} = E \cup E'$,
+$q \in \overline{E}$ as well so 
+all limit points of $E'$ are limit points of $\overline{E}$.
+
+For a limit point $p \in \overline{E}'$, 
+all the neighborhoods of $p$ will at least contain 
+either a point in $E$ or a point in $E'$.
+If it is a point $q \in E'$ then we can choose a sufficiently
+small radius(like we did in the first part of this problem) 
+around $q$ such that this neighborhood is a subset of the neighbhorhood 
+around $p$ (by the triangle inequality).
+Thus either way, an arbitrary neighborhood around $p$ will contain a point in $E$
+so all limit points of $\overline{E}$ are limit pionts of $E$.
+
+Thus $E$ and $\overline{E}$ have the same limit points.
+$E$ and $E'$ have the same limit points as well, 
+which can be shown by the same argument.
+\newpage 
+
+\section*{D Problem 8}
+Since every point in an open set is an interior point,
+and interior points are limit points in $\mathbb{R}^2$,
+every point in every open set is a limit point in $\mathbb{R}^2$.
+By definition every point in a closed set is limit point as well.
+
+
+
+
+
+
+\end{document}

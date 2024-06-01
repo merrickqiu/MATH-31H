@@ -1,0 +1,212 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Note that $C_M^\alpha([0,1])$ is the set of all Holder continuous
+functions on $[0,1]$ with exponent $\alpha$.
+Thus, $C_M^\alpha([0,1])$ is equicontinuous since 
+for all $\epsilon > 0$, we can choose $\delta < \left(\frac{\epsilon}{M}\right)^\frac{1}{\alpha}$
+to bound $|f(x) - f(y)| < \epsilon$ for all $f \in C_M^\alpha([0,1])$ and $x, y \in [0,1]$.
+Subsets of $C_M^\alpha([0,1])$ will also be equicontinuous, and if these
+subsets are also closed and bounded, they are compact due to Arzela-Ascoli theorem.
+\newpage 
+
+\section*{Rudin 7.20}
+Since the integral is linear operator and $\int_0^1 f(x)x^n\, dx = 0$ for all $n \in \mathbb{Z}$,
+$\int_0^1 f(x)P(x)\, dx = 0$ for any polynomial $P(x)$ as well.
+By the Weierstrass theorem, there exist a sequence of polynomials $P_n$ such that 
+\[
+  \lim_{n\to \infty} P_n(x) = f(x).
+\]
+If we take the sequence of the integrals of the product of $f$ with these polynomials,
+then by Theorem $7.16$,
+\[
+  \lim_{n\to \infty} \int_0^1 f(x)P_n(x)\, dx = \int_0^1 f^2(x)\, dx = 0.
+\]
+Thus, $f(x) = 0$ on $[0,1]$.
+\newpage 
+
+\section*{Rudin 7.25}
+Fix $n$. For $i = 0, \cdots, n$ put $x_i = i/n$. 
+Let $f_n$ be a continuous function on $[0,1]$ such that $f_n(0) = c$,
+\begin{equation}
+  f_n'(t) = \phi(x_i, f_n(x_i)) \qquad \text{if } x_i < t < x_{i+1}
+\end{equation}
+and put 
+\begin{equation}
+  \Delta_n(t) = f'_n(t) - \phi(t,f_n(t))
+\end{equation}
+except at points $x_i$ where $\delta_n(t) = 0$. Then 
+\begin{equation}
+  f_n(x) = c \int_0^x [\phi(t,f_n(t)) + \Delta_n(t)] \,dt
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item Choose $M < \infty$ so that $|\phi| \leq M$, 
+        which implies that $|f_n'| \leq M$ from $(1)$
+        and $|\Delta_n| \leq 2M$ from $(2)$.
+        $\Delta_n \in \mathscr{R}$ is Riemann integrable because
+        $f_n'$ is a step function and $\phi$ is continuous, so from $(2)$
+        $\Delta_n$ has finitely many discontinuities.
+        Since $\Delta_n$ is Riemann-integrable over $[0,1]$, 
+        $|f_n| \leq |c| + M = M_1$.
+  \item Since $|f_n'| \leq M$ and $|f_n(x) - f_n(y)| =\leq\int_x^y |f_n'(t)| \,dt \leq M|x-y|$,
+        $(f_n)$ is equicontinuous with $\delta = \frac{\epsilon}{M}$.
+  \item Since $(f_n)$ is equicontinuous and bounded uniformly by $M_1$,
+        by Arzela-Ascoli theorem there exists a subsequence that converges to some $f$ uniformly.
+  \item Since $\phi$ is uniformly continuous, the sequence $f_{n_k} \to f$ converging uniformly
+        implies that 
+        \[
+          \phi(t, f_{n_k}(t)) \to \phi(t,f(t))
+        \]
+        converges uniformly as well since $f_{n_k} - f$ can be arbitrarily small.
+  \item Since $\phi$ converges uniformly and 
+  \[
+    \Delta_n(t) = \phi(x_i, f_n(x_i)) - \phi(t, f_n(t))
+  \]
+  $\Delta_n(t) \to 0$ since $f_{n_k} \to f$ uniformly and $x_i \to t$ as well.
+  \item Thus the solution to the problem exists and is
+  \[  
+      f(x) = c + \int_0^x \phi(t, f(t)) \,dt
+  \]
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 8.1}
+Note that from induction,
+\[
+  \frac{d^n}{dx^n} e^{-1/x^2} = \frac{P_n(x)}{Q_n(x)} e^{-1/x^2}.
+\]
+In the base case where $n=1$,
+\[
+  \frac{d}{dx} e^{-1/x^2} = \frac{2}{x^3}e^{-1/x^2}
+\]
+When the statement is true for $n=k$ then for $n=k+1$
+\begin{align*}
+  \frac{d^{k+1}}{dx^{k+1}} e^{-1/x^2} 
+  &= \frac{d}{dx} \left(\frac{P_k(x)}{Q_k(x)} e^{-1/x^2}\right) \\
+  &= \frac{P_k(x)}{Q_k(x)} \frac{2}{x^3}e^{-1/x^2} + \frac{P_k'(x)Q_k(x) - P_k(x)Q_k'(x)}{Q_k(x)^2}e^{-1/x^2} \\
+  &=\left( \frac{P_k(x)}{Q_k(x)} \frac{2}{x^3} + \frac{P_k'(x)Q_k(x) - P_k(x)Q_k'(x)}{Q_k(x)^2} \right)e^{-1/x^2} \\
+\end{align*}
+
+
+For all $n \in \mathbb{Z}$ if $y = \frac{1}{x}$ then from Theorem 8.6(f)
+\[
+  \lim_{x^+\to 0}\frac{e^{-1/x^2}}{x^n} 
+  = \lim_{y\to \infty}y^ne^{-y^2}
+  = 0
+\]
+\[
+  \lim_{x^-\to 0}\frac{e^{-1/x^2}}{x^n} 
+  = \lim_{y\to -\infty}y^ne^{-y^2}
+  = 0
+\]
+Thus, the derivative evaluated at zero exists and is 
+\[
+  f^(n)(0) = \lim_{x\to 0} \frac{P_n(x)}{Q_n(x)} e^{-1/x^2} = 0
+\]
+\newpage 
+
+\section*{Rudin 8.4}
+\begin{enumerate}[label=(\alph*)]
+  \item \[
+    \lim_{x\to 0} \frac{b^x - 1}{x}
+    = \frac{d}{dx}_{x=0} e^{x\log b}
+    = [\log (b) e^{x\log b}]_{x=0}
+    =\log b
+  \]
+  \item \[
+    \lim_{x\to 0} \frac{\log(1+x)}{x}
+    = \frac{d}{dx}_{x=0} \log(1+x)
+    = \left[\frac{1}{1+x}\right]_{x=0}
+    = 1
+  \]
+  \item \[
+    \lim_{x\to 0} (1+x)^{1/x}
+    = \lim_{x\to 0} e^\frac{\log(1+x)}{x}
+    = e
+  \]
+  \item \[
+    \lim_{x\to 0} \left(1+\frac{x}{n}\right)^n 
+    = \left(\left(1 + \frac{x}{n}\right)^{1/(x/n)}\right)^n
+    = e^x
+  \]
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 8.5}
+\begin{enumerate}[label=(\alph*)]
+  \item \[
+    \lim_{x\to 0} \frac{e-(1+x)^{1/x}}{x} 
+    = \frac{d}{dx}_{x=0} (1+x)^{1/x}
+    = \lim_{x\to 0} (1+x)^{1/x}\left(\frac{(1+x)\log(1+x) - x}{x^2(x+1)}\right)
+    = \frac{e}{2}
+  \]
+  \item \[
+  \lim_{n\to \infty} \frac{n}{\log n}[n^{1/n}-1]
+  = \lim_{n\to \infty} \frac{e^{\frac{\log n}{n}}-1}{\frac{\log n}{n}}
+  = \frac{d}{dx}_{x=0} e^x
+  = 1
+  \]
+  \item \[
+    \lim_{x\to 0} \frac{\tan x - x}{x(1-\cos x)} =
+    \lim_{x\to 0} \frac{\sin x - x\cos x}{x\cos x (1-\cos x)} = 
+    \lim_{x\to 0} \frac{x\sin x}{x\sin x -\cos x + 1} = 
+    \lim_{x\to 0} \frac{\sin x + x\cos x}{2\sin x + x\cos x} = 
+    \frac{2}{3}
+  \]
+  \item \[
+    \lim_{x\to 0} \frac{x-\sin x}{\tan x - x} =
+    \lim_{x\to 0} \frac{(x-\sin x)\cos x}{\sin x - x\cos x} = 
+    \lim_{x\to 0} \frac{1-\cos x}{x\sin x} = 
+    \lim_{x\to 0} \frac{\sin x}{x\cos x + \sin x} =
+    \lim_{x\to 0} \frac{\cos x}{2\cos x} =
+    \frac{1}{2}
+  \]
+\end{enumerate}
+\newpage
+
+\section{Rudin 8.6}
+For $x\neq 0$ and $y=0$,  $f(x)f(0) = f(x+0)$ implies $f(0) = 1$.
+We have that 
+\[
+  f'(x) = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}
+  = \lim_{h\to 0} \frac{f(x)f(h) - f(x)}{h}
+  = f(x) f'(0)
+\]
+If $c= f'(0)$ then the function $g(x) = e^{cx}$
+satisfies the given conditions.
+$f(x) = g(x)$ since both these functions have $f(0) = g(0) = 1$
+and $\frac{d}{dx} \frac{f}{g} = 0$.
+\newpage 
+
+\section*{Rudin 8.7}
+$\frac{\sin x}{x} < 1$ since $\sin x$ achieves a supremum of $1$ over the interval $[0, \frac{\pi}{2}]$.
+$\frac{2}{\pi} < \frac{\sin x}{x}$ since over the interval $[0, \frac{\pi}{2}]$,
+\[
+  \frac{d}{dx} \frac{\sin x}{x}  = \frac{x\cos x -\sin x}{x^2} < 0
+\]
+so $\frac{\sin x}{x}$ is strictly decreasing.
+Since $\frac{\sin(\pi/2)}{\pi/2} = \frac{2}{\pi}$, the inequality holds.
+\newpage 
+\end{document}

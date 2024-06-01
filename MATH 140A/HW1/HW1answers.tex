@@ -1,0 +1,171 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140A: Homework 1} \\
+	Merrick Qiu
+\end{center}
+\section*{A.}
+    \[
+        \sup E = \frac{13}{11}
+    \]
+    $\frac{13}{11}$ is an upper bound since all elements in $E$ are less than or equal to it.
+    For any $c<\frac{13}{11}$, choose $b=\frac{13}{11}$ from $E$.
+    Since $c < b \leq \frac{13}{11}$, $\frac{13}{11}$ is the supremum.
+
+    \[
+        \inf E = \frac{5}{11}
+    \]
+    $\frac{5}{11}$ is a lower bound since all elements in $E$ are greater than it.
+    Let $c>\frac{5}{11}$ where $c = \frac{5}{11} + \epsilon$ for some $\epsilon > 0$.
+    Choose $b \in E$ where $b = \frac{5n+8}{11n}$ and $n > \frac{8}{11\epsilon}$.
+    Since $\frac{5}{11} \leq b < c$, $\frac{5}{11}$ is the infimum.   
+    \newpage
+\section*{B.}
+    Let $a = \max(\sup T, \sup S)$.
+    For all $x \in T \cup S$, $x \in T$ or $x \in S$.
+    Thus $x < \sup T$ or $x < \sup S$ and so $x < \max(\sup T, \sup S)$.
+    Therefore $a$ is an upperbound.
+
+    \textbf{Case 1} If $\sup T \leq \sup S$, then $a=\sup S$.
+    For any $c$ we choose, there exists some $b \in S$ such that $c < b \leq a$
+    by the definition of the supremum.
+
+    \textbf{Case 2} Similarly if $\sup T > \sup S$, we can choose some $b \in T$ such that $c < b \leq a$.
+    Therefore, $a$ is the best upperbound and so it is the supremum.
+    \newpage
+\section*{C.}
+    Let $a=(\sup S)*(\sup T)$.
+    For all $x \in ST$, $x=st$ for some $s \in S$ and $t \in T$.
+    Since $s \leq \sup S$, $t \leq \sup T$, and s and t are positive, 
+    $st \leq (\sup S)(\sup T)$.
+    Thus, $a$ is an upperbound for $ST$.
+
+    Let $c < a$ where $c = c_Sc_T$ for some $c_S < \sup S$ and $c_T < \sup T$.
+    Choose some $b_S$ and $b_T$ such that
+    $c_S< b_S \leq \sup S$ and $c_T< b_T \leq \sup T$.
+    Let $b = b_Sb_T$.
+    Since these are subsets of the positive real numbers, this implies that 
+    $c < b \leq (\sup S)(\sup T)$, meaning that $a$ is the supremum of $ST$.\\
+
+    Let $a=\sup S + \sup T$.
+    For all $x \in S + T$, $x=s + t$ for some $s \in S$ and $t \in T$.
+    Since $s \leq \sup S$ and  $t \leq \sup T$, 
+    $s + t \leq \sup S + \sup T$.
+    Thus, $a$ is an upperbound for $S + T$.
+
+    Let $c < a$ where $c = c_S + c_T$ for some $c_S < \sup S$ and $c_T < \sup T$.
+    Choose some $b_S$ and $b_T$ such that
+    $c_S< b_S \leq \sup S$ and $c_T< b_T \leq \sup T$.
+    Let $b = b_S + b_T$.
+    This implies that 
+    $c < b \leq \sup S + \sup T$, meaning that $a$ is the supremum of $S+T$.
+\newpage
+\section*{D}
+\begin{enumerate}
+    \item The addition of two rational functions is rational
+    since the functions can be rewritten with a common denominator and then added to yield another rational function.
+    Since addition of functions is commutative and associative, so is the addition of rational functions.
+    0 is a rational function and adding 0 to any rational function yields that rational function.
+    The inverse of every rational function can be found by negating the coefficients of the numerator and
+    adding a rational function to its inverse yields 0.
+
+    The multiplication of two rational functions is rational
+    since the multiplication of the numerators is a polynomial and the multiplication of the denominators is a polynomial.
+    Since multiplication of functions is commutative and associative, so is the multiplication of rational functions.
+    1 is a rational function and multiplying 1 to any rational function yields that rational function.
+    The inverse of every rational function can be found by swapping the numerator and the denominator, and 
+    multiplying a rational function to its inverse yields 1.
+
+    Since the distributive law holds for functions, it also holds for rational functions.
+    \item For any two rational functions $\frac{p}{q}$ and $\frac{f}{g}$, $\frac{p}{q} - \frac{f}{g}$ 
+    either has $a_nb_m > 0$, $a_nb_m = 0$, or $a_nb_m < 0$.
+    This means that either $\frac{p}{q} > \frac{f}{g}$, 
+    $\frac{p}{q} = \frac{f}{g}$, or $\frac{p}{q} < \frac{f}{g}$.
+    Also for any three rational functions $\frac{p}{q}$, $\frac{f}{g}$, and $\frac{a}{b}$,
+    if $\frac{p}{q} > \frac{f}{g}$ and $\frac{f}{g} > \frac{a}{b}$, then
+    $\frac{p}{q} - \frac{f}{g} > 0$ and $\frac{f}{g} - \frac{a}{b} > 0$. This would imply that 
+    $\frac{p}{q} - \frac{a}{b} > 0$ and $\frac{p}{q} > \frac{a}{b}$.
+    Thus F is an ordered set.
+
+    Let $\frac{p}{q}$, $\frac{f}{g}$, and $\frac{a}{b}$ be three rational functions.
+    $\frac{p}{q} > \frac{f}{g}$ implies that $\frac{p}{q} - \frac{f}{g} > 0$, which implies
+    $(\frac{p}{q} + \frac{a}{b}) - (\frac{f}{g} + \frac{a}{b}) > 0$, which is equivalent to
+    $\frac{p}{q} + \frac{a}{b} > \frac{f}{g} + \frac{a}{b}$.
+
+    For rational functions $\frac{p}{q} > 0$ and $\frac{f}{g} > 0$,
+    $a_n$ of $\frac{p}{q}\cdot\frac{f}{q}$ is the product of $a_n$ of $\frac{p}{q}$
+    and $a_n$ of $\frac{f}{q}$.
+    Similarly, $b_m$ of $\frac{p}{q}\cdot\frac{f}{q}$ is the product of $b_m$ of $\frac{p}{q}$
+    and $b_m$ of $\frac{f}{q}$.
+    Since the sign $a_n$ and $b_m$ match for $\frac{p}{q}$ and $\frac{f}{g}$
+    the sign of $a_n$ and $b_m$ in the product must match, 
+    so $\frac{p}{q} \cdot \frac{f}{g} > 0$.
+    Since all the axioms of an ordered field have been met, $F$ is an ordered field.
+    \item The order defined in (ii) is equivalent to the dictionary ordering since 
+    we only check the sign of the most significant terms in the numerator and denominator.
+    \[
+        -x^5, 3-2x, 2, x+6, x^2
+    \]
+    \item For all $a \in \mathbb{R}$, $x-a > 0$ since $a_nb_m = 1 > 0$, so $x > a$.
+\end{enumerate}
+\newpage
+
+\section*{E.}
+    \textbf{Exercise 1}
+    Since $r$ is rational it can be written as $r = \frac{f}{g}$.
+    Assume that $r+x$ is rational. 
+    Then there exists integers $p$ and $q$ such that $\frac{p}{q} = r+x$.
+    Then $x$ could be written as $\frac{p}{q} - \frac{f}{g} = \frac{pg-fq}{qg}$,
+    which is a contradiction.
+    Therefore, $r+x$ must be irrational.
+
+    Also assume that $rx$ is rational.
+    Then there exists integers $p$ and $q$ such that $\frac{p}{q} = rx$.
+    Then x could be written as $\frac{\frac{p}{q}}{\frac{f}{g}} = \frac{pg}{qf}$,
+    which is a contradiction.
+    Therefore, $rx$ must be irrational.\\
+
+    \textbf{Exercise 2}
+    Assume that there exists a rational number $\frac{p}{q}$ in simplified form
+    such that $\frac{p^2}{q^2} = 12$.
+    $p^2 = 12q^2$ implies that $p^2$ and $p$ are a multiple of 3,
+    so $p=3k$ for some $k$.
+    Substituting this in for $p$ yields $3k^2 = 4q^2$, which implies that $q^2$
+    and $q$ are a multiple of 3.
+    This is a contradiction since we assumed that 
+    $\frac{p}{q}$ was already simplified, so $12$ has no rational root.\\
+
+    \textbf{Exercise 5}
+    Let $a = -\sup(-A)$.
+    For all $x\in A$, $-x$ is an element of $-A$.
+    By the definition of the supremum $-a \geq -x$ for all $-x$,
+    which implies $a \leq x$ for all $x$ and so $a$ is a lower bound for $A$.
+
+    From the definition of the supremum, for all $c < -a$, there exists 
+    $b$ such that $c < b \leq -a$.
+    Therefore for all $-c > a$, you can choose 
+    $-b$ such that  $a \leq -b < -c$, so $a$ is the infimum.
+
+    \textbf{Exercise 8}
+    The square of a number is always nonnegative in an ordered field,
+    but $i^2 = -1$, so the complex numbers cannot be an ordered field.
+
+
+
+
+
+\newpage
+
+
+
+
+\end{document}

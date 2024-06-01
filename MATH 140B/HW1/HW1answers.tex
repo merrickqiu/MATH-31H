@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+
+%User defined commands
+\newcommand{\interior}[1]{
+  {\kern0pt#1}^{\mathrm{o}}
+}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 1} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1}
+A function $f: A \to \mathbb{R}$ is Holder continuous if 
+there exists $C\geq 0$, $\alpha > 0$ such that for all $x, y \in A$,
+\[
+	d(f(x), f(y)) \leq C|x-y|^\alpha.
+\]
+For all $\epsilon > 0$, if we choose $\delta = \left(\frac{\epsilon}{C}\right)^\frac{1}{\alpha}$
+then $f$ is uniformly continuous since 
+\[
+	d(f(x), f(y)) \leq C|x-y|^\alpha < C\delta^\alpha = \epsilon.
+\]
+Lipschitz continuous functions are Holder continuous with $\alpha = 1$,
+so they are also uniformly continuous.
+\newpage 
+
+\section*{Problem 2}
+Let $\epsilon > 0$ and $x \in \mathbb{R}$.
+Since $\alpha > 1$, $\frac{1}{n^{\alpha-1}}$ converges to 0 and it is possible to
+choose $n \in \mathbb{N}$ such that $n\left(\frac{1}{n}\right)^\alpha < \epsilon$.
+Since $f$ is holder continuous, $|f(\frac{b}{n}) - f(0)| < \frac{\epsilon}{n}$ 
+and likewise $|f(\frac{(k+1)b}{n}) - f(\frac{kb}{n})| < \frac{\epsilon}{n}$
+for all $ 0 \leq k < n$. 
+Thus, $|f(x) - f(0)| < \epsilon$ by the triangle inequality,
+and since $\epsilon$ was arbitrary, $f(x) = f(0)$ for all x.
+\newpage 
+
+\section*{Problem 3}
+Since $ff'' \geq 0$ and $(f')^2 \geq 0$,
+\[
+	(ff')' = ff'' + (f')^2 \geq 0.
+\]
+Note that the derivative of the square of the function is nonnegative
+\[
+	(f^2)' = 2ff' \geq 0.
+\]
+Therefore $|f|$ must monotonically increase, meaning that $f$
+increases when $f(x) > 0$, $f$ decreases
+when $f(x) < 0$  and $f$ can increase or decrease when $f(x) = 0$.
+Since $f(0) = 0$, if $f'(0) > 0$ it must remain monotonically increasing 
+since $f > 0$ for all other points, and if $f'(0) < 0$ then $f$ will 
+be monotonically decreasing.
+If $f(0) \neq 0$, then a function like $f=(x-0.5)^2$ shows that 
+$f(0) = 0$ is necessary for the monotonicity to hold.
+\newpage 
+
+\section*{Rudin 2}
+
+For all intervals $[c, d] \subset (a,b)$, there exists a point 
+$x \in [c,d]$ such that $f'(x)(d-c) = f(d) - f(c)$ by the mean value theorem.
+This implies that $f(d) > f(c)$ since $f'(x) > 0$.
+Since the choices of points $c$ and $d$ were arbitrary, 
+$f$ is strictly increasing in $(a,b)$.
+
+% Since $g$ is the inverse of $f$ and each interval $[c, d]$ is compact,
+% $g$ is continuous for each interval $[c, d]$ and so it is continuous 
+% over $(a,b)$.
+
+Let $t \to x$. Since $f$ is continuous, the derivative exists and has the value of
+\begin{align*}
+	g'(f(x)) &= \lim_{f(t) \to f(x)} \frac{g(f(t))-g(f(x))}{f(t) - f(x)} \\
+	&= \lim_{t \to x} \frac{t-x}{f(t)-f(x)} \\
+	&= \lim_{t \to x} \frac{1}{\frac{f(t)-f(x)}{t-x}} \\
+	&= \frac{1}{f'(x)}.
+\end{align*}
+\newpage 
+
+\section*{Rudin 3}
+$f(x)$ is one to one if it is monotonic.
+The derivative is 
+\[
+	f'(x) = 1 + \epsilon g'(x)
+\]
+If we choose $\epsilon < \frac{1}{M}$,
+then $f'(x) > 0$ since $|g'(x)| < M$.
+Thus, $f$ is monotonically increasing and therefore it is one-to-one.
+\newpage 
+
+\section*{Rudin 4}
+Let $f(x)$ be
+\[
+	f(x) = C_0x + \frac{C_1}{2}x^2 +  \cdots + \frac{C_n}{n+1}x^{n+1}
+\]
+The derivative is 
+\[
+	f'(x) = C_0 + C_1x +  \cdots + C_nx^{n}.
+\]
+Since $f(0) = 0$ and $f(1) = C_0 + \frac{C_1}{2} +  \cdots + \frac{C_n}{n+1} = 0$,
+by the mean value theorem there is a point where the derivative of $f$ is zero as well.
+Since the derivative is equal to the equation in question,
+the equation has a root between 0 and 1.
+\newpage 
+
+\section*{Rudin 5}
+Let $\epsilon > 0$
+Since $f'(x) \to 0$, there exists $M$ 
+such that if $x > M$ then $|f'(x)| < \epsilon$.
+For all $x > M$, there is a point such that 
+\[
+	f'(x_1) = f(x+1) - f(x)
+\]
+by the mean value theorem.
+Since $|f'(x_1)| < \epsilon$, $g(x) = f(x+1) - f(x) < \epsilon$ as well so $g(x) \to 0$.
+\newpage 
+\section*{Rudin 6}
+Choose $a,b$ where $0 < a < b$.
+Applying MVT on $f$ for $[0,a]$ and $[a,b]$ implies that there exists $c$ and $d$ such that
+\[
+	f'(c) = \frac{f(a) - f(0)}{a-0} = \frac{f(a)}{a}
+\]
+\[
+	f'(d) = \frac{f(b) - f(a)}{b-a}
+\]
+Since $f'$ is monotonically increasing, $f'(c) < f'(d)$ so 
+\begin{align*}
+	f'(c) < f'(d) &\implies \frac{f(a)}{a} < \frac{f(b) - f(a)}{b-a} \\
+	&\implies bf(a) - af(a) < af(b) - af(a) \\
+	&\implies bf(a) < af(b) \\
+	&\implies \frac{f(a)}{a} < \frac{f(b)}{b} \\
+	&\implies g(a) < g(b).
+\end{align*}
+Thus $g$ is also monotonically increasing.
+
+
+
+\newpage 
+
+
+
+
+\end{document}
