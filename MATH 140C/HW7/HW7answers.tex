@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+By Theorem 11.24, we can treat $\phi(A)$ as a measure where
+\[
+	\phi(A) = \int_A x^\alpha \,dx.
+\]
+Let $A_n = (\frac{1}{n}, 1)$ and $A = (0,1)$.
+Since $x^\alpha$ is Riemann integrable on $(\frac{1}{n},1)$, we can write
+\begin{align*}
+	\int_0^1 x^\alpha &= \phi(A) \\
+	&= \lim_{n \to \infty} \phi(A_n) \\
+	&= \lim_{n \to \infty} \int_\frac{1}{n}^1 x^\alpha \\
+	&= \lim_{n \to \infty} \left[\frac{x^{\alpha+1}}{\alpha+1}\right]_{1/n}^1 \\
+	&= \frac{1}{\alpha + 1}
+\end{align*}
+
+Thus, the function is Lebesgue integrable when $\alpha > -1$.
+When $\alpha \leq -1$, the sequence of integrals diverges so the Lebesgue integral
+diverges as well.
+\newpage
+
+\section*{Rudin 11.8}
+Theorem 6.20 says that $F'(x) = f(x)$ when $f$ is continuous.
+Theorem 11.33 says that $f \in \mathcal{R}$ iff $f$ is continuous almost everywhere.
+Therefore $F'(x) = f(x)$ almost everywhere on $[a,b]$.
+\newpage
+
+\section*{Rudin 11.9}
+We can show that $F$ is continuous at $x$ if 
+$F(x_n) \to F(x)$ for any sequence $x_n \to x$.
+To do so, we can apply the dominated convergence theorem.
+For any sequence $x_n \to x$, we can define $f_n \to f$ by
+\[
+	f_n(x) = 
+	\begin{cases}
+		f(x) & a \leq x < x_n \\
+		0	& \text{otherwise}
+	\end{cases}.
+\]
+Then choose $g = |f|$ to be the dominating function.
+Then we have that
+\[
+	\lim_{n\to \infty} F(x_n) = \lim_{n\to \infty} \int_a^x f_n = \int_a^x f = F(x)
+\]
+which implies that $F$ is continuous since $x$ was arbitrary.
+\newpage
+
+\section*{Rudin 11.10}
+$f \in \mathscr{L}^2(\mu)$ on $X$ implies 
+\[
+	\int_X |f|^2 \,d\mu < \infty.
+\]
+We can break $X$ into two sets:
+let $X_1$ be the set where $|f(x)| > 1$ and 
+$X_2$ be the set where $|f(x)| \leq 1$.
+Note that $\mu(X_2) < \infty$ since $\mu(X) < \infty$.
+Thus 
+\begin{align*}
+	\int_X |f| \,d\mu &= \int_{X_1} |f| \,d\mu + \int_{X_2} |f| \,d\mu \\
+	&< \int_{X_1} |f|^2 \,d\mu  + \mu(X_2) \\
+	&< \infty.
+\end{align*}
+If we choose $X = \mathcal{R}$, then $f(x) = \frac{1}{1+|x|}$ is in
+$\mathscr{L}^2$ since
+\begin{align*}
+	\int_{\mathbb{R}} \left(\frac{1}{1+|x|}\right)^2 \,d\mu 
+	&= 2\int_0^\infty \frac{1}{(1+x)^2} \,d\mu  \\
+	&< 2\int_0^\infty \frac{1}{x^2} \,d\mu \\
+	&<\infty 
+\end{align*}
+but $f \notin \mathscr{L}$ since
+\begin{align*}
+	\int_{\mathbb{R}} \frac{1}{1+|x|} \,d\mu &\geq \int_0^\infty \frac{1}{1+x} \\
+	&= \left[\ln(1+x)\right]_0^\infty \\
+	&\to \infty
+\end{align*}
+
+\newpage
+
+\section*{Rudin 11.11}
+Suppose $\{f_n\}$ is a Cauchy sequence.
+Thus, we can find a sequence $\{n_k\}$ so that
+\[
+	|| || < \frac{1}{}
+\]
+\[
+	\int_X |f_m - f_n| \,du < \epsilon
+\]
+\newpage
+
+\section*{Rudin 11.12}
+\newpage
+
+
+\end{document}

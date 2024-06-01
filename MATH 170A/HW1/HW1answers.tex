@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170A: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Question 1}
+\begin{enumerate}
+    \item \begin{align*}
+        X &= L_{ji}^aA \\
+        &= (I_n + B_{ji}^a)A \\
+        &= A + B_{ji}^aA \\
+    \end{align*}
+    For all rows $k \neq j$, the $k$th row of $B_{ji}^aA$ is all zeros
+    since the $k$th row of $B_{ji}^a$ is all zeros.
+    The $j$th row of $B_{ji}^aA$ is $aR_i$ since the $ji$th entry 
+    of $B_{ji}^a$ is $a$.
+    Adding $A$ to $B_{ji}^aA$ yields in all the rows being equal to 
+    the row in $A$ except for the $j$th row, which is equal to $R_j + aR_i$.
+    Thus, $X = L_{ji}^aA = A + B_{ji}^aA$ 
+    is the result of the row operation $R_j + aR_i \rightarrow R_j$.
+    \item A matrix that is $(L_{ji}^a)^{-1}$ will perform the row operation $R_j - aR_i$.
+    From part (a), we know that this matrix is 
+    \begin{align*}
+        (L_{ji}^a)^{-1} &= L_{ji}^{-a} \\
+        &= I_n + B_{ji}^{-a} \\
+        &= I_n - B_{ji}^{a}
+    \end{align*}
+\end{enumerate}
+\newpage 
+
+\section*{Question 2}
+Since $1 \leq i < j < n$ and $1 \leq i < l < k \leq n$,
+$B_{ji}^aB_{kl}^b = 0$.
+\begin{align*}
+    L_{ji}^aL_{kl}^b &= (I + B_{ji}^a)(I + B_{kl}^b) \\
+    &= I + B_{ji}^a + B_{kl}^b + B_{ji}^aB_{kl}^b \\
+    &= I + B_{ji}^a + B_{kl}^b \\
+    &= I + D
+\end{align*}
+\newpage
+
+\section*{Question 3}
+\begin{enumerate}
+    \item For the base case row $n$, $a_{nn} x_n = 0$ so $x_n = 0$.
+    For row $j$ where $i< j < n$, assume that $x_k = 0$ for all $k > j$.
+    Then we have that $a_{jj}x_j + \sum_{k=j+1}^n a_{jk}x_k = 0$.
+    Substituting in $x_k = 0$ for all $k > j$, implies that $x_j = 0$.
+    By induction we have that $x_j = 0$ for all  $i< j \leq n$,
+    so $x$ has the same pattern of zeros as $b$.
+    \item We have that $AA^{-1} = I$, 
+    which implies that for $j$th column of $A^{-1}$
+    \[  
+        Ax_j = e_j \quad j=1,\cdots, n
+    \]
+    where $n$ is the size of the matrix and $e_j$ is the j-th unit vector.
+    Since $e_j$ has all zeros after $j$, invoking part (a)
+    implies that $x_j$ also has all zeros after $j$.
+    Applying this to every column in $A^{-1}$ shows that 
+    $A^{-1}$ is also upper triangular.
+\end{enumerate}
+\newpage
+
+\section*{Question 4}
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{multiplyA_BX.m}
+Line 12 has $2$ flops and it is run $n^2$ times.
+This is also true of line 19 so there are a total of 
+$4n^2$ flops to calculate $A(Bx)$.
+\newpage
+
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{multiplyAB_X.m}
+Line 13 has 2 flops and it is run for $n^3$ times.
+Line 21 has 2 flops and it is run for $n^2$ times.
+There are a total of $2n^3 + 2n^2$ flops
+to calculate $(AB)x$. \\
+
+Comparing the two algorithms, we see that 
+$4n^2 < 2n^3 + 2n^2$ so computing $A(Bx)$ is
+more efficient than $(AB)x$.
+
+
+
+
+
+
+
+
+\end{document}

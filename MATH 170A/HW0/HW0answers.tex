@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170A: Homework 0} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Question 1}
+
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{multiply.m}
+
+        
+\begin{verbatim}
+>> A = rand(9);
+>> x = rand(9, 1);
+>> A*x
+
+ans =
+
+    3.4243
+    3.2543
+    3.5680
+    3.1967
+    2.6078
+    2.0030
+    2.4774
+    2.7110
+    3.3496
+
+>> multiply(A,x)
+
+ans =
+
+    3.4243
+    3.2543
+    3.5680
+    3.1967
+    2.6078
+    2.0030
+    2.4774
+    2.7110
+    3.3496
+\end{verbatim}
+The inside for loop does $3n$ operations and 
+the outside for loop loops $m$ times, so there are $3mn$ flops.
+\newpage
+
+\section*{Question 2}
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{multiplyAB.m}
+
+\begin{verbatim}
+>> A = rand(9,4);
+>> B = rand(4,6);
+>> A*B
+
+ans =
+
+    0.5601    0.8339    0.7232    0.5796    0.7100    0.6261
+    1.2457    1.9806    1.7908    1.3379    1.7244    1.4657
+    0.9912    1.3138    1.5655    0.5909    1.4228    1.5787
+    0.6251    1.1983    1.0191    0.8751    0.9974    0.6766
+    0.4712    1.3692    1.6492    0.6806    1.6021    1.1497
+    0.7390    1.5050    1.6385    0.8429    1.5931    1.2708
+    0.7440    1.0066    1.0009    0.5917    1.0366    1.0455
+    0.8851    1.2795    1.3087    0.7378    1.3029    1.2701
+    0.6987    0.9972    1.0369    0.5697    0.9068    0.9171
+
+>> multiplyAB(A, B)
+
+ans =
+
+    0.5601    0.8339    0.7232    0.5796    0.7100    0.6261
+    1.2457    1.9806    1.7908    1.3379    1.7244    1.4657
+    0.9912    1.3138    1.5655    0.5909    1.4228    1.5787
+    0.6251    1.1983    1.0191    0.8751    0.9974    0.6766
+    0.4712    1.3692    1.6492    0.6806    1.6021    1.1497
+    0.7390    1.5050    1.6385    0.8429    1.5931    1.2708
+    0.7440    1.0066    1.0009    0.5917    1.0366    1.0455
+    0.8851    1.2795    1.3087    0.7378    1.3029    1.2701
+    0.6987    0.9972    1.0369    0.5697    0.9068    0.9171
+\end{verbatim}
+
+The inner loop has $3n$ FLOPs. 
+The middle loop runs $p$ times and the outer loop runs $m$ times
+so there are $3mnp$ FLOPs in total.
+\end{document}
