@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\norm}[1]{||#1||}
+\newcommand{\cond}{\kappa_{||\cdot||}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170A: Homework 5} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Q1}
+\begin{enumerate}
+    \item Note that $\inv{U} = U^T$ and $\inv{V} = V^T$
+    since these matricies are orthonormal and that 
+    $\Sigma^\dagger = \inv{(\Sigma^T \Sigma)}\Sigma^T$
+    since $\Sigma^T \Sigma \Sigma^\dagger = \Sigma^T$
+    \begin{align*}
+        \inv{(A^TA)}A^T &= \inv{((U\Sigma V^T)^TU\Sigma V^T)} (U\Sigma V^T)^T \\
+        &= \inv{(V\Sigma^T U^T  U\Sigma V^T)}(V\Sigma^T U^T) \\
+        &= \inv{(V\Sigma^T \Sigma V^T)}(V\Sigma^T U^T) \\
+        &= (V\inv{(\Sigma^T \Sigma)} V^T)(V\Sigma^T U^T) \\
+        &= V\inv{(\Sigma^T \Sigma)}\Sigma^T U^T \\
+        &= V \Sigma^\dagger U^T \\
+        &= A^\dagger
+    \end{align*}
+    \item 
+    \[
+        A^\dagger A = \inv{(A^TA)}A^TA = I 
+    \]
+    \item \begin{align*}
+        A A^\dagger &=  U\Sigma V^T (V\Sigma^\dagger U^T) \\
+        &= U \Sigma \Sigma^\dagger U^T \\
+        &= U \begin{bmatrix} I_r & 0 \\ 0 & 0 \\\end{bmatrix} U^T \\
+        &= U_r U_r^T \\
+    \end{align*}
+\end{enumerate}
+
+\section*{Q2}
+$||A||_2 = 3$, $||\inv{A}||_2 = 1$, $\kappa_2(A)= 3$, 
+$||B||_2 = 4$.
+ \[
+    B^\dagger = Q^T 
+    \begin{bmatrix}
+        \frac{1}{4} & 0 & 0 \\
+        0 & \frac{1}{2} & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+    \end{bmatrix}P^T
+ \]
+ \newpage 
+
+\section*{Q3}
+\begin{align*}
+    A^TA &= (U\Sigma V^T)^T U\Sigma V^T \\
+    &= V\Sigma^T U^T U\Sigma V^T \\
+    &= V (\Sigma^T \Sigma) V^T
+\end{align*}
+If $m = n$ and $A$ is full rank then 
+\[
+    A^TA = V (\Sigma^T \Sigma) V^T = V\Sigma^2V^T
+\]
+Thus 
+\[
+    ||A^TA||_2 = \sigma_1^2 = ||A||_2^2
+\] 
+\[
+    \kappa_2(A^TA) = \frac{\sigma_1^2}{\sigma_r^2} = \kappa_2(A)^2
+\]
+\section*{Q4}
+\begin{enumerate}
+    \item 1
+    \item $U_r$ is $3\times1$, $\Sigma_r$ is $1\times1$, $V_r^T$ is $1\times2$.
+    \item We can use the column vector as $U_r$, the row vector as $V_r^T$,
+    and $\Sigma_r = ||U_r||||V_r^T||$
+    \[
+        A = \begin{bmatrix}
+            \frac{1}{\sqrt{6}} \\
+            \frac{2}{\sqrt{6}} \\
+            -\frac{1}{\sqrt{6}} \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            2\sqrt{3}
+        \end{bmatrix}
+        \begin{bmatrix}
+            \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+        \end{bmatrix}
+    \]
+\end{enumerate}
+\newpage
+
+\section*{Q5}
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{low_rank_approximation.m}
+
+The code approximates a grayscale image 
+using powers of 2 up to the actual rank of the image 
+and then displays them in a plot.
+Using $k=32$ is a way to compress the image,
+but we lose some detail.
+
+
+
+
+\end{document}

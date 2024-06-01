@@ -1,0 +1,196 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+
+%User defined commands
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170A: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Question 1}
+The matrix does not have an LU decomposition because $A_{1,1} = 0$.
+The operations on $A$ are as follows.
+\begin{align*}
+    &\begin{bmatrix}
+        0 & 1 & 1 & 2 \\
+        2 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 3 \\
+        1 & 0 & 2 & 4
+    \end{bmatrix} \implies 
+    \begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        1 & 1 & 1 & 3 \\
+        1 & 0 & 2 & 4
+    \end{bmatrix} \implies
+    \begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        0 & 1 & 1 & 3 \\
+        0 & 0 & 2 & 4
+    \end{bmatrix} \implies \\
+    &\begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        0 & 1 & 1 & 3 \\
+        0 & 0 & 2 & 4
+    \end{bmatrix} \implies
+    \begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 2 & 4
+    \end{bmatrix} \implies 
+    \begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        0 & 0 & 2 & 4 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\end{align*}
+
+The operations on $L$ are as follows.
+\begin{align*}
+    &\begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{bmatrix} \implies 
+    \begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{bmatrix} \implies 
+    \begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0.5 & 0 & 0 & 0 \\
+        0.5 & 0 & 0 & 0
+    \end{bmatrix} \implies \\
+    &\begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0.5 & 0 & 0 & 0 \\
+        0.5 & 0 & 0 & 0
+    \end{bmatrix} \implies
+    \begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0.5 & 1 & 0 & 0 \\
+        0.5 & 0 & 0 & 0
+    \end{bmatrix} \implies 
+    \begin{bmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 \\
+        0.5 & 0 & 0 & 0 \\
+        0.5 & 1 & 0 & 0
+    \end{bmatrix} 
+\end{align*}
+We swapped $R_1$ with $R_2$ and $R_3$ with $R_4$ so the permutation matrix is 
+\[
+    P = \begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0
+    \end{bmatrix}
+\]
+We add the identity to $L$ to get
+\[
+    L = \begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0.5 & 0 & 1 & 0 \\
+        0.5 & 1 & 0 & 1
+    \end{bmatrix}
+\]
+U is the resulting matrix after the the row operations 
+\[
+    U = \begin{bmatrix}
+        2 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 2 \\
+        0 & 0 & 2 & 4 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+\newpage 
+\section*{Question 2}
+\begin{align*}
+    r_{11} &= \sqrt{a_{11}} = 1 \\
+    r_{12} &= \frac{a_{12}}{r_{11}} = -2 \\
+    r_{13} &= \frac{a_{13}}{r_{11}} = 0 \\
+    r_{22} &= \sqrt{a_{22}-r_{12}^2} = 3 \\
+    r_{23} &= \frac{a_{23} - r_{12}r_{13}}{r_{22}} = 2\\
+    r_{33} &= \sqrt{a_{33} - r_{13}^2 - r_{23}^2} = 1
+\end{align*}
+\[
+    R = \begin{bmatrix}
+        1 & -2 & 0 \\
+        0 & 3 & 2 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\]
+Since we were able to perform all the math for the Cholesky-factorization 
+and since the matrix is symmetric, we know that $A$ is positive-definite.
+
+The first and second row of $B$ are not independent, so 
+$B$ has an eigenvalue of 0 and it does not 
+have a Cholesky factorization.
+\newpage 
+
+\section*{Question 3}
+$B$ is symmetric since 
+\begin{align*}
+    B^T &= (X^TAX)^T \\
+    &= X^TA^T(X^T)^T \\
+    &= X^TAX \\
+    &= B
+\end{align*}
+
+Let $y \in \mathbb{R}^n$ and define $x = Xy$.
+$B$ is positive definite since
+\begin{align*}
+    y^TBy &= y^T(X^TAX)y \\
+    &= (Xy)^T A (Xy) \\
+    &= x^T A x \\
+    &> 0
+\end{align*}
+\newpage 
+
+\section*{Question 4}
+We can see that $AP^T$ is equivalent to 
+tranposing A so that the columns are now rows,
+permuting the rows, and then transposing the resulting matrix 
+back such that the columns are permuted.
+\[
+    AP^T = ((AP^T)^T)^T = (PA^T)^T
+\]
+In row $i$ of $P$, the 1 is in column $p(i)$.
+Since $P^T$ permutes the columns in $P$, it will send the $p(i)$th 
+column to the $i$th column.
+This will result in the 1 being in position $A_{ii}$ for all $i$,
+which is the identity matrix.
+\newpage 
+
+\section*{Question 5}
+The Backsub function used is the same as listed in the problem.
+\lstinputlisting[
+frame=single,
+numbers=left,
+style=Matlab-editor
+]{ge_pp_solve.m}
+
+
+
+
+\end{document}

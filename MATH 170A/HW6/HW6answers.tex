@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{matlab-prettifier}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+
+%User defined commands
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\norm}[1]{||#1||}
+\newcommand{\cond}{\kappa_{||\cdot||}}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170A: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Q1}
+\begin{enumerate}
+    \item 
+    \begin{align*}
+        ||UA||_F^2 &= trace((UA)^TUA) \\
+        &= trace(A^TU^TUA) \\
+        &= trace(A^TA)\\
+        &= ||A||_F^2
+    \end{align*}
+    \item 
+    \begin{align*}
+        ||AV||_F^2 &= ||(AV)^T||_F^2  \\
+        &= trace(AV(AV)^T) \\
+        &= trace(AVV^TA) \\
+        &= trace(AA^T) \\
+        &= ||A^T||_F^2 \\
+        &= ||A||_F^2 \\
+    \end{align*}
+    \item Since we can write any $n \times n$ matrix as 
+    $A = U\Sigma V$ using singular value decomposition,
+    and since $U$ and $V$ are orthonormal, $A$ has the same 
+    frobenius norm as $\Sigma$, which has frobenius norm 
+    $\sqrt{\sum_{i=1}^n \sigma_i^2}$.
+\end{enumerate}
+\newpage 
+
+\section*{Q2}
+Normalizing $q_0$ yields $[1, \frac{b}{a}]^T$, but repeatedly
+applying $A$ simply switches the coordinates back and forth
+\[
+    \tilde{q_0} = [1, \frac{b}{a}]^T
+\]
+\[
+    A\tilde{q_0} = [\frac{b}{a},1]^T
+\]
+\[
+    A^2\tilde{q_0} = [1, \frac{b}{a}]^T
+\]
+\[
+    A^3\tilde{q_0} = [\frac{b}{a},1]^T
+\]
+\[
+    \vdots
+\]
+
+The power method relies on there existing a largest eigenvalue,
+but the two eigenvalues of this matrix, $1$ and $-1$ have the same magnitude.
+\newpage 
+
+\section*{Q3}
+The power method will converge to $v_2$.
+Since $q$ does not depend on $v_1$, the power method will 
+not be able to amplify $v_1$ so it will instead amplify $v_2$,
+the eigenvector with the next largest eigenvalue.
+This is why a random initial $q$ needs to be chosen for the power method.
+\newpage 
+\section*{Q4}
+\begin{enumerate}
+    \item The characteristic polynomial is $(\lambda - 1)^2 = \lambda^2 - 2\lambda + 1$,
+    eigenvalue $\lambda = 1$ which has algebraic multiplicity 2
+    from its factorization.
+    \item Using the quadratic equation,
+    \[
+        \hat{\lambda} = \frac{2 \pm \sqrt{4 - 4(1-\epsilon)}}{2} = 1 \pm \sqrt{\epsilon}
+    \]
+    \item 
+    \[
+        |\hat{\lambda} -\lambda|=  |1 \pm\sqrt{10^{-12}}{2} - 1| = \times 10^{-6}
+    \]
+    \[
+        \frac{10^{-6}}{10^{-12}} = 10^6 \text{ times bigger}
+    \]
+    \item Since a very small change in the coefficients can lead to an arbitrarily
+    large relative change in the eigenvalues(by choosing a sufficiently small epsilon),
+    the computation is numerically unstable.
+\end{enumerate}
+\newpage 
+\section*{Q5}
+\begin{enumerate}
+    \item MATLAB says the rank of $A$ is 3
+    \item The pseudoinverse is 
+    \[  
+        \begin{bmatrix}
+            0.5 & 0 & 0 & -1 \\
+            1 & -0.4 & -0.2 & -1 \\
+            -1 & 0.4 & 0.2 & 2
+        \end{bmatrix}
+    \]
+    \item Yes they agree, $A^\dagger A = I$ and 
+    \[
+        AA^\dagger = U_rU_r^T = \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 0.8 & 0.4 & 0 \\
+            0 & 0.4 & 0.2 & 0 \\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \]
+\end{enumerate}
+\end{document}
