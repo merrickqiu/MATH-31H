@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\DeclareMathOperator{\Span}{span}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 4} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 9.26}
+Let $f(x,y) = g(x)$, where $g$ is a function that is nowhere continuous.
+Thus, $D_2 f = 1$ and $D_{1 2} f = 0$ but $D_1 f$ doesn't exist.
+\newpage 
+
+\section*{Rudin 9.27}
+\begin{enumerate}
+  \item $f$ is continuous away from $(0,0)$, so we just need to show it is continuous at the origin.
+  Using polar coordinates shows us that $f$ is continuous at the origin.
+  \begin{align*}
+    f(r\cos \theta, r\sin \theta) &= \frac{r^2\cos \theta \sin \theta (r^2\cos^2 \theta - r^2\sin^2 \theta)}{r^2}\\
+    &= \frac{r^2\cos 2\theta (\cos^2 \theta - \sin^2 \theta)}{2}  \\
+    &= \frac{r^2\cos 2\theta \sin 2\theta}{2}  \\
+    &= \frac{r^2 \sin 4\theta}{4}
+  \end{align*}
+  \[
+    \lim_{r \to 0} |f(x,y)| 
+    = \lim_{r \to 0}  \frac{r^2 \sin 4\theta}{4} 
+    \leq \lim_{r \to 0}  \frac{r^2}{4} 
+    = 0 = f(0,0)
+  \]
+  At the origin,
+  \[
+    D_1 f(0,0) \lim_{x \to 0} \frac{f(x,0)- f(0,0)}{x} 
+    = \lim_{x \to 0} \frac{0}{x} = 0
+  \]
+  \[
+    D_2 f(0,0) \lim_{y \to 0} \frac{f(0,y)- f(0,0)}{y} 
+    = \lim_{y \to 0} \frac{0}{y} = 0
+  \]
+
+  $D_1 f$ exists away from the origin and it is continuous since
+  \begin{align*}
+    D_1 f(x,y) &= \frac{(x^2+y^2)(3x^2y - y^3) - (2x)(x^3y - xy^3)}{(x^2+y^2)^2} \\
+    &= \frac{x^4y + 4x^2y^3 - y^5}{(x^2+y^2)^2}
+  \end{align*}
+  \[
+    D_1 f(r\cos \theta,r\sin \theta) = \frac{r^5(\cos^4 \theta \sin \theta + 4\cos^2 \theta \sin^3 \theta - \sin^5 \theta)}{r^4}
+  \]
+  \[
+    \lim_{r \to 0} |D_1 f(r\cos \theta, r\sin \theta)| 
+    \leq \lim_{r \to 0}  6r
+    = 0 = D_1 f(0,0).
+  \]
+  $D_2 f$ exists away from the origin and it is continuous since
+  \begin{align*}
+    D_2 f(x,y) &= \frac{(x^2+y^2)(x^3-3xy^2) - (2y)(x^3y - xy^3)}{(x^2+y^2)^2} \\
+    &= \frac{x^5 -4x^3y^2 - xy^4}{(x^2+y^2)^2}
+  \end{align*}
+  \[
+    D_2 f(r\cos \theta,r\sin \theta) = \frac{r^5(\cos^5 \theta - 4\cos^3 \theta \sin^2 \theta - \cos \theta \sin^4 \theta)}{r^4}
+  \]
+  \[
+    \lim_{r \to 0} |D_2 f(r\cos \theta, r\sin \theta)| 
+    \leq \lim_{r \to 0}  6r
+    = 0 = D_2 f(0,0).
+  \]
+  \item Away from the origin, $D_{1 2}$ is continuous and has value
+  \begin{align*}
+    D_{1 2} f(x, y) &= \frac{(x^2+y^2)(5x^4 -12x^2y^2 - y^4) - 4x(x^5 -4x^3y^2 - xy^4)}{(x^2+y^2)^3} \\
+    &= \frac{x^6 + 9x^4y^2 - 9x^2y^4 - y^6}{(x^2+y^2)^3}
+  \end{align*}
+  \[
+    D_{1 2} f(r\cos \theta, r\sin \theta) 
+    = \cos^6 \theta + 9\cos^4 \theta \sin^2 \theta - 9\cos^2 \theta \sin^4 \theta - \sin^6 \theta.
+  \]
+  Since $D_{1 2}$ is independent of $r$ but has different values for different $\theta$,
+  $D_{1 2}$ does not converge as $r \to 0$.
+  Since we are in $\mathbb{R}^2$, $D_{1 2} f = D_{2 1} f$ so $D_{2 1} f$
+  is not continuous at the origin either.
+  \item 
+  \begin{align*}
+    D_{1 2} f(0,0) &= \lim_{x \to 0} \frac{D_2 f(x,0) - D_2 f(0,0)}{x} \\
+    &= \lim_{x \to 0} \frac{x^5}{x^5} \\
+    &= 1
+  \end{align*}
+  \begin{align*}
+    D_{2 1} f(0,0) &= \lim_{y \to 0} \frac{D_1 f(0,y) - D_1 f(0,0)}{y} \\
+    &= \lim_{y \to 0} -\frac{y^5}{y^5} \\
+    &= -1
+  \end{align*}
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 9.28}
+Since each piece is continuous, we just need to check that 
+the pieces equal each other at the boundaries.
+
+When $x = 0$,
+\[
+  0 = x
+\]
+When $x = \sqrt{t}$,
+\[
+  x = -x + 2\sqrt{t}.
+\]
+
+When $x = 2\sqrt{t}$
+\[
+  -x + 2\sqrt{t} = 0.
+\]
+
+Since the same boundaries hold for $t<0$, $f$ is continuous.
+Note that $\varphi(x,t) = 0$ in the neighborhood 
+$\frac{1}{4}x^2< t < \frac{1}{4} x^2$, so $(D_2 \varphi)(x,0) = 0$.
+
+When $|t| < \frac{1}{4}$,
+\begin{align*}
+  f(t) &= \int_{-1}^1 \varphi(x,t) \,dx \\
+  &= \int_{-1}^0 0 \,dx + \int_0^{\sqrt{t}} x \,dx + \int_{\sqrt{t}}^{2\sqrt{t}} -x + 2\sqrt{t} \,dx + \int_{2\sqrt{t}}^1 0 \,dx \\
+  &= \left[\frac{1}{2}x^2\right]_0^{\sqrt{t}} + \left[-\frac{1}{2}x^2 + 2\sqrt{t} x\right]_{\sqrt{t}}^{2\sqrt{t}} \\
+  &=\frac{1}{2}t + (-2t+4t) - \left(-\frac{1}{2}t + 2t\right) \\
+  &= t.
+\end{align*}
+Thus,
+\[
+  f'(0) = 1 \neq 0 = \int_{-1}^1 (D_2 \varphi)(x,0) \,dx.
+\]
+\newpage 
+
+\section*{Rudin 9.29}
+We want to show that for any permutation $\sigma$, 
+\begin{align*}
+  D_{i_1 i_2 \ldots i_k} f = D_{i_{\sigma(1)} i_{\sigma(2)} \ldots i_{\sigma(k)}} f.
+\end{align*}
+Theorem 9.41 says that we can choose any two adjacent indices and switch them,
+$D_{i_{k-1} i_k} f =D_{i_k i_{k-1} } f$.
+Note that we can repeatedly apply theorem 9.41 in order to switch any two indices
+in a permutation.
+Also note that any permutation can be written as the composition index switches.
+Thus through the repeated application of theorem 9.41,
+our conclusion holds for all $k$ and for all $\sigma$.
+\newpage 
+
+\section*{Problem 2}
+\begin{enumerate}
+  \item Each component of $f$ is continuous, so $f$ is continuous.
+  The Jacobian matrix is
+  \[  
+    f'(x,y,z) = 
+    \begin{bmatrix}
+      2(x+z) & -1 & 2(x+z) \\
+      -2x & 1 & -1 \\
+    \end{bmatrix}.
+  \]
+  Since all the partial derivatives exist and are continuous, $f \in C^1(E)$.
+  \item Since $f \in C^1(E)$ is a mapping from $\mathbb{R}^{1+2}$ into $\mathbb{R}^1$
+  and  $f(a,b) =f(1,1,0) = 0$, by the implicit function theorem, there exists $U \in \mathbb{R}^{1+2}$, 
+  $W \in \mathbb{R}^1$, and $g$ such that $g(1) = (1,0)$ and $f(x,g(x)) = 0$ for all $x \in W$.
+  \item 
+  \begin{align*}
+    g'(1) &= -(A_x)^{-1}A_y \\
+    &= -\begin{bmatrix}
+      -1 & 2(x+z) \\
+      1 & -1 \\
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+      2(x+z) \\ -2x
+    \end{bmatrix} \\
+    &= -\begin{bmatrix}
+      -1 & 2 \\
+      1 & -1 \\
+    \end{bmatrix}^{-1}
+    \begin{bmatrix}
+      2 \\ -2
+    \end{bmatrix} \\
+    &= -\begin{bmatrix}
+      1 & 2 \\
+      1 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      2 \\ -2
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+      2 & 0
+    \end{bmatrix}
+  \end{align*} 
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,163 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140B: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 8.11}
+Let $\epsilon > 0$.
+Since $f(x) \to 1$ as $x \to \infty$, we can choose $A$ so that $1-\epsilon < f(x) < 1+\epsilon$
+when $x \geq A$. \\
+
+Since
+\[
+  (1-\epsilon)e^{-tx} = t\int_A^\infty e^{-tx}(1-\epsilon) \,dx \leq 
+  t\int_A^\infty e^{-tx}f(x) \,dx \leq 
+  t\int_A^\infty e^{-tx}(1+\epsilon) \,dx = (1+\epsilon)e^{-tx}
+\]
+we have that 
+\[
+  \lim_{t\to 0} t\int_A^\infty e^{-tx}f(x) \,dx = 1.
+\]
+Since $e^{-tx} \leq 1$ when $x \geq 0$
+\[
+  \lim_{t\to 0} \left| t\int_0^A e^{-tx}f(x) \,dx\right| \leq 
+  \lim_{t\to 0} t\int_0^A |f(x)|\,dx = 0
+\]
+Thus finally we have that
+\[
+  \lim_{t\to 0} t\int_0^\infty e^{-tx}f(x) \,dx = 
+  \lim_{t\to 0} t\int_0^A e^{-tx}f(x) \,dx +
+  \lim_{t\to 0} t\int_A^\infty e^{-tx}f(x) \,dx= 1
+\]
+\newpage 
+
+\section*{Problem 8.12}
+\begin{enumerate}
+  \item If the Fourier series is
+  \[
+      \frac{1}{2}a_0 + \sum_{n=1}^N(a_n\cos (nx) + b_n \sin (nx)) 
+  \]
+  then
+  \[
+    a_0 = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x) = \frac{2\delta}{\pi}
+  \]
+  \[
+    a_n = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\cos(nx) 
+    = \frac{1}{\pi}\int_{-\delta}^{\delta} \cos(nx)
+    = \frac{2\sin(n\delta)}{\pi n}
+  \]
+  \[
+    b_n = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\sin(nx) = 0
+  \]
+  \item When $f(x)$ is Lipschitzs continuous, we have that
+  \[
+    f(x) = \frac{\delta}{\pi} + \frac{2}{\pi}\sum_{n=1}^N\frac{\sin(n\delta)}{n} \cos (nx).
+  \]
+  Since $f(x)$ is Lipschitzs at $x=0$ we get that,
+  \[
+    \frac{\delta}{\pi} + \frac{2}{\pi}\sum_{n=1}^N\frac{\sin(n\delta)}{n} = 1.
+  \]
+  Solving for the sum yields
+  \[
+    \sum_{n=1}^N\frac{\sin(n\delta)}{n} = \frac{\pi -\delta}{2}
+  \]
+  \item From Parseval's theorem,
+  \[  
+     \frac{2\delta}{\pi} = \frac{1}{\pi} \int_{-\pi}^{\pi} |f(x)|^2 \,dx = 
+     \sum_{n=0}^{\infty} |a_n|^2 = \frac{2\delta^2}{\pi^2} + \sum_{n=1}^{\infty} \frac{4\sin^2(n\delta)}{\pi^2 n^2}
+  \]
+  Solving for the sum yields 
+  \[
+    \sum_{n=1}^{\infty} \frac{\sin^2(n\delta)}{n^2\delta} = \frac{\pi - \delta}{2}
+  \]
+  \item If we let $\delta \to 0$, then this is simply the Riemann integral of $\frac{\sin x}{x}$
+  with $\Delta x = \delta$.
+  Thus 
+  \[
+    \int \left(\frac{\sin x}{x} \right)^2 \,dx = \frac{\pi}{2} = \frac{\pi}{2}
+  \]
+  \item Putting $\delta = \frac{\pi}{2}$ yields 
+  \[  
+      \frac{2}{\pi} \sum_{n=1}^{\infty} \frac{\sin^2 (n\pi /2)}{n^2}= \frac{\pi}{4}
+      \implies \sum_{n=1}^{\infty} \frac{1}{(2n-1)^2}  = \frac{\pi^2}{8}
+  \]
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 8.13}
+Note that the fourier series of $f(x) = x$ is 
+\[
+  f(x) = c_0 + \sum_{n=-\infty}^{\infty} c_n e^{inx} = \pi + \sum_{n=-\infty}^{\infty} \frac{i}{n} e^{inx}
+\]
+since 
+\[
+  c_0 = \frac{1}{2\pi} \int_{0}^{2\pi}x \,dx = \pi
+\]
+\begin{align*}
+  c_n &= \frac{1}{2\pi} \int_{0}^{2\pi} xe^{-inx} \\
+  &=\frac{1}{2\pi} \left[-\frac{1}{in}xe^{-inx} + \frac{1}{n^2} e^{-inx}\right]_0^{2\pi} \\
+  &= \frac{1}{2\pi}\left[\left(-\frac{2\pi}{in} + \frac{1}{n^2}\right) - \left(\frac{1}{n^2}\right)\right]\\
+  &=-\frac{1}{in} = \frac{i}{n}
+\end{align*}
+
+From Parseval's theorem 
+\[
+  \frac{4\pi^2}{3}= \frac{1}{2\pi} \int_{0}^{2\pi} |x|^2 \,dx = \sum_{-\infty}^{\infty} |c_n|^2 = \pi^2 + 2\sum_{n=1}^{\infty} \frac{1}{n^2}
+\]
+Solving for the sum of inverse squares yields 
+\[
+  \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+\newpage 
+\section*{Rudin 8.14}
+Note that the fourier series of $f(x) = (\pi - |x|)^2$ is 
+\[
+    f(x) = \frac{1}{2}a_0 + \sum_{n=1}^N(a_n\cos (nx) + b_n \sin (nx))
+    = \frac{\pi^2}{3} +  \sum_{n=1}^N \frac{4}{n^2} \cos nx
+\]
+since 
+\[
+  a_0 = \frac{1}{\pi} \int_{-\pi}^{\pi} (\pi - |x|)^2\,dx = 
+  \frac{2}{\pi} \int_{0}^{\pi} (\pi - x)^2\,dx = \frac{2\pi^2}{3}
+\]
+\[
+  a_n = \frac{2}{\pi} \int_{0}^{\pi} (\pi - x)^2 \cos(nx)\,dx
+  = (-1)^n \frac{2}{\pi} \int_{0}^{\pi} x^2 \cos(nx)\,dx
+  = \frac{4}{n^2}
+\]
+\[
+  b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} (\pi - |x|)^2 \sin(nx)\,dx
+  = 0
+\]
+Since $f(x)$ is Lipschitzs continuous, we can evaluate at $x=0$ to get 
+\[
+  f(0) = \pi^2 = \frac{\pi^2}{3} +  \sum_{n=1}^N \frac{4}{n^2} \implies \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+From Parseval's theorem,
+\[
+  \frac{2\pi^4}{5} = \frac{1}{\pi}\int_{-\pi}^{\pi} (\pi - |x|)^4 = \frac{2}{9}\pi^4 + 16\sum_{n=1}^\infty \frac{1}{n^4}
+\]
+This implies that 
+\[
+  \sum_{n=1}^\infty \frac{1}{n^4} = \frac{\pi^4}{90}
+\]
+\end{document}

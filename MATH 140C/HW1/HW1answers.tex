@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\DeclareMathOperator{\Span}{span}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+\begin{enumerate}
+  \item ($\implies$) Since $\bm{y} \in \Span(E)$, we can write $\bm{y} = c_1\bm{v_1} + \cdots + c_r\bm{v_r}$
+  for some $c_i \in \mathbb{R}$. Thus we have that
+  \[
+    c_1\bm{v_1} + \cdots + c_r\bm{v_r} - \bm{y} = 0
+  \]
+  which implies that $E \cup \{\bm{y}\}$ is linearly dependent.
+  
+  ($\impliedby$) Since $E \cup \{\bm{y}\}$ is linearly dependent,
+  we can write 
+  $c_1\bm{v_1} + \cdots + c_r\bm{v_r} + c_{r+1}\bm{y} = 0$
+  for some $c_i \in \mathbb{R}$.
+  Thus 
+  \[
+    \bm{y} = -\frac{c_1}{c_{r+1}}\bm{v_1} - \cdots - \frac{c_r}{c_{r+1}}\bm{v_r} 
+  \]
+  which implies that $\bm{y} \in \Span(E)$.
+
+  \item 
+  If $\bm{x} \in \Span(E)$ then $\bm{x} = a_1\bm{v_1} + \cdots + a_r\bm{v_r}$ 
+  for some $a_i \in \mathbb{R}$.
+  It is also true that $\bm{x} = a_1\bm{v_1} + \cdots + a_r\bm{v_r} + 0\bm{y}$ 
+  so $\bm{x} \in \Span(E\cup \{\bm{y}\})$. 
+
+  If $\bm{x} \in \Span(E \cup \{\bm{y}\})$ then
+  $\bm{x} = a_1\bm{v_1} + \cdots + a_r\bm{v_r} + a_{r+1}\bm{y}$  for some $a_i \in \mathbb{R}$.
+  Since $E \cup \{\bm{y}\}$ is linearly dependent, $\bm{y} \in \Span(E)$ so 
+  $\bm{y} = c_1\bm{v_1} + \cdots + c_r\bm{v_r}$ for some $c_i \in \mathbb{R}$.
+  Thus 
+  \[
+    \bm{x} = (a_1 + a_{r+1}c_1)\bm{v_1} + \cdots + (a_r + a_{r+1}c_r)\bm{v_r}
+  \]
+  so $\bm{x} \in \Span(E)$
+\end{enumerate}
+\newpage 
+\section*{Rudin 9.1}
+If $\bm{x} \in \Span(S)$ and $\bm{y} \in \Span{S}$ then for some 
+set of $\bm{v_1},\cdots,\bm{v_n} \in S$  and constants $a_i, b_i \in \mathbb{R}$, we can write
+\[
+  \bm{x} = \sum_{i=1}^{n} a_i \bm{v_i} \qquad  \bm{y} = \sum_{i=1}^{n} b_i \bm{v_i}
+\]
+$\Span(S)$ is a vector space since for all $c \in \mathbb{R}$ and $\bm{x}, \bm{y} \in \Span(S)$,
+\[
+  c\bm{x} = \sum_{i=1}^{n} ca_i \bm{v_i} \in \Span(S)
+\]
+\[
+  \bm{x} + \bm{y} = \sum_{i=1}^{n} (a_i + b_i) \bm{v_i} \in \Span(S).
+\]
+\newpage
+
+\section*{Rudin 9.2}
+If $A$ and $B$ are linear transformations in $X$ then for all $\bm{x}, \bm{v_1}, \bm{v_2} \in X$
+\begin{align*}
+  BA(\bm{v_1} + \bm{v_2}) &= B(A(\bm{v_1} + \bm{v_2})) \\
+  &= B(A\bm{v_1} + A\bm{v_2}) \\
+  &= BA\bm{v_1} + BA\bm{v_2} 
+\end{align*}
+
+\[
+  BA(c\bm{x}) = B(cA\bm{x}) = cBA\bm{x}
+\]
+
+Thus $BA$ is also a linear transformation.
+
+If $A$ is one-to-one from $X$ onto $X$ then for all $\bm{x}, \bm{v_1}, \bm{v_2} \in X$
+we can write 
+\[
+  \bm{x} = A\bm{y} \qquad \bm{v_1} = A\bm{v_1} \qquad \bm{v_2} = A\bm{v_2}
+\]
+for some vectors $\bm{y}, \bm{v_1}, \bm{v_2} \in X$.
+$A^{-1}$ is a linear operator since
+\begin{align*}
+  A^{-1}(\bm{v_1} + \bm{v_1}) &= A^{-1}(A\bm{v_1} + A\bm{v_2}) \\
+  &= A^{-1}A(\bm{v_1} + \bm{v_2}) \\
+  &= \bm{v_1} + \bm{v_2} \\
+  &= A^{-1}\bm{v_1} + A^{-1}\bm{v_1}
+\end{align*}
+\[
+  A^{-1}(c\bm{x}) =  A^{-1}(cA\bm{y}) = A^{-1}A(c\bm{y}) = c\bm{y} = cA^{-1}\bm{x}.
+\]
+The inverse of $A^{-1}$ is $A$ since 
+\begin{align*}
+  A(A^{-1}\bm{x}) =  A(A^{-1}A\bm{y}) = A\bm{y} = \bm{x}
+\end{align*}
+\newpage
+
+\section*{Rudin 9.3}
+Suppose $A$ is not 1-1. 
+Then for some $\bm{y} \in Y$, there exists distinct $\bm{v}, \bm{w} \in X$
+such that $A\bm{v} = \bm{y}$ and  $A\bm{w} = \bm{y}$.
+Subtracting these two equations implies that
+\[
+  A(\bm{v}-\bm{w}) = 0
+\]
+which contradicts our assumption that $A\bm{x} = 0$ only when $\bm{x} = 0$.
+\newpage
+
+\section*{Rudin 9.4}
+Let $A \in L(X, Y)$ be a linear transformation
+Let $\bm{x}, \bm{y} \in \mathcal{N}(A)$.
+$\mathcal{N}(A)$ is a vector space since 
+\[
+  A(\bm{x} + \bm{y}) = A\bm{x} + A\bm{y} = \bm{0}
+\]
+\[
+  A(c\bm{x}) = cA\bm{x} = \bm{0}
+\]
+Let $\bm{x}, \bm{y} \in \mathcal{R}(A)$.
+We can write $\bm{x} = A\bm{p}$ and $\bm{y} = A\bm{q}$
+for some $\bm{p}, \bm{q} \in X$.
+By the linearity of $A$,
+\[
+  \bm{x} + \bm{y} = A\bm{p} + A\bm{q} = A(\bm{p} + \bm{q}) \in \mathcal{R}(A)
+\]
+\[
+  c\bm{x} = cA\bm{p} = A(c\bm{p}) \in \mathcal{R}(A)
+\]
+\newpage 
+
+\section*{Rudin 9.5}
+Let $\bm{x} = \bm{x}_1\bm{e_1} + \cdots \bm{x}_n\bm{e_n}$ 
+for the standard basis vectors $\bm{e}_i$.
+If we let $\bm{y} \in \mathbb{R}^n$ with $\bm{y}_i = A\bm{e_i}$ then
+\[
+  A\bm{x} = A(\bm{x}_1\bm{e_1} + \cdots \bm{x}_n\bm{e_n}) =
+   c_1\bm{y}_1 + \cdots + c_n\bm{y}_n =
+   \bm{x} \cdot \bm{y}.
+\]
+It is unique since if there was $\bm{z}$ such that $A\bm{x} = \bm{x} \cdot \bm{z}$,
+then 
+\[
+  \bm{y} - \bm{z}|^2 = 
+  \bm{y}\cdot \bm{y} - \bm{y}\cdot \bm{z} - \bm{z}\cdot \bm{y} - \bm{z}\cdot \bm{z} =
+  A(\bm{y}) - A(\bm{y}) - A(\bm{z}) + A(\bm{z}).
+\]
+By the Schwarz inequality,
+\begin{align*}
+  ||A|| = \sup |A \bm{x}|
+        = \sup |\bm{x} \cdot \bm{y}|
+        \leq \sup |\bm{x}||\bm{y}|.
+\end{align*}
+which implies that $||A|| \leq |y|$.
+Also note that $A\left(\frac{\bm{y}}{|\bm{y}|}\right) = \frac{\bm{y}}{|\bm{y}|}\cdot \bm{y} = |\bm{y}|$
+so  $||A|| \geq |y|$.
+\end{document}

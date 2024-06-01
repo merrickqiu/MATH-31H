@@ -1,0 +1,160 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\DeclareMathOperator{\Span}{span}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 2} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 9.6}
+When $(x,y) = \bm{0}$, the partial derivatives are $0$ since $f(0,0) = 0$ and
+\[
+  (D_1 f)(0, 0) = \lim_{h \to 0} \frac{f(h,0) - f(0,0)}{h} = 0
+\]
+\[
+  (D_2 f)(0, 0) = \lim_{h \to 0} \frac{f(0,h) - f(0,0)}{h} = 0
+\]
+When $(x,y) \neq \bm{0}$ the partial derivative can be taken by holding the other variable constant.
+\[
+  f(x,y) = \frac{xy}{x^2+y^2}
+\]
+\[
+  (D_1 f)(x, y) = \frac{(x^2+y^2)y - 2x^2y}{(x^2+y^2)^2}
+\]
+\[
+  (D_2 f)(x, y) = \frac{(x^2+y^2)x - 2xy^2}{(x^2+y^2)^2}
+\]
+However, $f(x,x) = \frac{1}{2}$ for all $x$, but $f(0,0) = 0$,
+so $f$ is not continuous at $(0,0)$.
+\newpage 
+
+\section*{Rudin 9.7}
+Fix $\bm{x} \in E$ and $\epsilon > 0$.
+Since $E$ is open, there is an open ball $S \subset E$
+centered at $\bm{x}$ with radius $r$.
+Since the partial derivatives are bounded, there exists $M$ such that
+\[
+  |(D_j f)(\bm{y}) - (D_j f)(\bm{x})| < M \quad (\bm{y} \in S,\, 1\leq j \leq n).
+\]
+Suppose $\bm{h} = \sum h_j e_j$, $|\bm{h}| < r$ and put $\bm{v_k} = \sum_{i=1}^k h_j \bm{e_i}$.
+Since $\bm{v_0} = 0$ and $\bm{v_n} = \bm{h}$, we can rewrite
+\[
+  f(\bm{x} + \bm{h}) - f(\bm{x}) = \sum_{j=1}^n [f(\bm{x} + \bm{v_j}) - f(\bm{x} + \bm{v_{j-1}})]
+\]
+Since $|\bm{v_k}| < r$ and $S$ is convex, the segments with end points 
+$\bm{x} + \bm{v_{j-1}}$ and $\bm{x} + \bm{v_j}$ lie in $S$.
+By the mean value theorem,
+\begin{align*}
+  |f(\bm{x} + \bm{v_j}) - f(\bm{x} + \bm{v_{j-1}})| &= 
+  |f(\bm{x} + \bm{v_{j-1}} + h_j\bm{e_j}) - f(\bm{x} + \bm{v_{j-1}})| \\
+  &= |h_j(D_jf)(\bm{x} + \bm{v_{j-1}} + \theta_jh_j\bm{e_j})| \\
+  &< |\bm{h}|M
+\end{align*}
+for some $\theta_j \in (0,1)$ since $\bm{x} + \bm{v_{j-1}} + \theta_jh_j\bm{e_j}$
+is in the line segment between $\bm{v_{j-1}}$ and $\bm{v_j}$.
+
+Thus,
+\begin{align*}
+  | f(\bm{x} + \bm{h}) - f(\bm{x}) |
+  &= \left|\sum_{j=1}^n [f(\bm{x} + \bm{v_j}) - f(\bm{x} + \bm{v_{j-1}})] \right| \\
+  &< \left| \sum_{j=1}^n |\bm{h}|M \right| \\
+  &= nM|\bm{h}| \\
+  &= nM|(\bm{x} + \bm{h}) - (\bm{x})|
+\end{align*}
+so $f$ is Lipschitz continuous.
+\newpage 
+
+\section*{Rudin 9.8}
+Choose a direction $\bm{u} \in \mathbb{R}^n$ and
+let $\varphi(t) = f(\bm{x} + t\bm{u})$.
+Since $\varphi'(t) = f'(\bm{x} + t\bm{u})(\bm{u})$ and $\varphi'(0) = 0$,
+we have that $f'(\bm{x})(\bm{u}) = 0$. Thus, $f'(\bm{x}) = 0$
+since $\bm{u}$ was arbitrary.
+
+\newpage 
+
+\section*{Rudin 9.9}
+Let $\bm{x} \in E$.
+By the Corollary to theorem 9.19,
+there is an open ball containing $\bm{x}$
+where $f$ is constant. 
+If $f(\bm{y}) = f(\bm{x})$, then there is also 
+an open ball containing $\bm{y}$ which is constant.
+Therefore the set $\{\bm{y} | f(\bm{y}) = f(\bm{x})\}$
+is open since its the union of open balls. 
+
+Similarly the complement of this set is also open since for any point
+$f(\bm{y}) \neq f(\bm{x})$, we can draw an open ball containing 
+$\bm{y}$ that is constant. 
+
+Since $E$ is connected and $\{\bm{y} | f(\bm{y}) = f(\bm{x})\}$
+is clopen, it must be that $E = \{\bm{y} | f(\bm{y}) = f(\bm{x})\}$,
+meaning function is constant.
+\newpage
+
+\section*{Rudin 9.10}
+
+Let $\bm{x} = [x_1, x_2, \cdots , x_n]$
+and $\bm{y} = [x_1+h, x_2, \cdots , x_n]$ for arbitrary $h \in \mathbb{R}$.
+Let $g(t) = f(\bm{x} + t\bm{e_1})$, which exists
+for all $t \in [0, h]$ since  $E$ is convex.
+By MVT, we know that $f(\bm{x}) = f(\bm{y})$ since
+\[
+  f(\bm{x}) - f(\bm{y}) = g(h) - g(0) = h (D_1 f)(\bm{x}) = 0.
+\]
+Since $f(\bm{x}) = f(\bm{y})$ for arbitrary $\bm{x}$ and $\bm{y}$,
+$f(\bm{x})$ can only depend on $x_2, \cdots , x_n$.
+
+The set only has to be convex in the first dimension,
+but if no condition is placed, then a function can "jump"
+in value across the gap of, say, a horseshoe since 
+the derivative is a local property.
+
+\newpage
+
+\section*{Rudin 9.11}
+\[
+  \nabla (fg) = 
+  \begin{bmatrix}
+    (D_1(fg))(\bm{x})\\ (D_2(fg))(\bm{x}) \\ \vdots \\(D_n(fg))(\bm{x})
+  \end{bmatrix} =
+  \begin{bmatrix}
+    f(\bm{x})(D_1g)(\bm{x})\\ f(\bm{x})(D_2g)(\bm{x}) \\ \vdots \\f(\bm{x})(D_ng)(\bm{x})
+  \end{bmatrix}
+  + 
+  \begin{bmatrix}
+    g(\bm{x})(D_1f)(\bm{x})\\ g(\bm{x})(D_2f)(\bm{x}) \\ \vdots \\g(\bm{x})(D_nf)(\bm{x})
+  \end{bmatrix} =
+  f\nabla g + g\nabla f
+\]
+\[
+  \nabla (1/f) =
+  \begin{bmatrix}
+    (D_1(1/f))(\bm{x})\\ (D_2(1/f))(\bm{x}) \\ \vdots \\(D_n(1/f))(\bm{x})
+  \end{bmatrix} =
+  \begin{bmatrix}
+    (-f^{-2}(\bm{x}D_1(f))(\bm{x})\\ (-f^{-2}\bm{x}D_2(f))(\bm{x}) \\ \vdots \\(-f^{-2}\bm{x}D_n(f))(\bm{x})
+  \end{bmatrix} =
+  -f^{-2}\nabla f
+\]
+
+\end{document}

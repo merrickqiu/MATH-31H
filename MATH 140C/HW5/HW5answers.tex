@@ -1,0 +1,171 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\DeclareMathOperator{\Span}{span}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 5} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+\begin{enumerate}
+  \item If $A\in\mathcal{E}$ and $B\in\mathcal{E}$ 
+  then $A = \bigcup_{i=1}^N A_i$ and $B = \bigcup_{i=1}^M B_i$ for 
+  some intervals $A_i, B_i$ and for some $N,M$.
+  $A\cup B\in\mathcal{E}$ since
+  the union of two finite unions of intervals is another finite union of intervals.
+  $A-B\in\mathcal{E}$ since the set 
+  difference is right distributive over the union and
+  subtracting a finite number of intervals from an interval results in a union of intervals.
+  \[
+    \bigcup_{i=1}^N A_i - \bigcup_{i=1}^M B_i = 
+    \bigcup_{i=1}^N \left(A_i - \bigcup_{i=1}^M B_i\right)
+    \in \mathcal{E}
+  \]
+  $\mathcal{E}$ is not a $\sigma$-algebra since $I_n = [n, n+1] \in \mathcal{E}$
+  for all $n \in \mathbb{Z}$ but 
+  \[
+    \bigcup_{n\in \mathbb{Z}} I_n = \mathbb{R} \notin \mathcal{E}.
+  \]
+  \item Let $A = \bigcup_{i=1}^n A_i$ for some intervals $A_i$.
+  Then choose $I_j = A_j - \bigcup_{i=1}^{j-1} A_i$ so that $I_j$ is pairwise disjoint
+  and 
+  \[
+    A = \bigcup_{i=1}^N A_i = \bigcup_{j=1}^N I_j
+  \]
+  \item Suppose there exist two different decompositions into pairwise disjoint intervals, 
+  $A = \bigcup_{j=1}^N A_j$ and $A = \bigcup_{j=1}^M B_j$.
+  Let $P_A$ and $P_B$ be the partition representation of these decompositions
+  such that if $A_j = [a,b]$ then $a,b \in P_A$ and likewise if
+  $B_j = [a,b]$ then $a,b \in P_B$.
+  Notice that the measure of a refinement of either partition will have the same measure,
+  so we can simply take the common refinement of $P_A$ and $P_B$ to show that
+  all decompositions have the same measure.
+  \item 
+  If $A$ and $B$ are disjoint elementary sets where $A = \bigcup_{i=1}^N A_i$ and $B = \bigcup_{i=1}^M B_i$ then 
+  $m$ is additive since the all the $A_i$ and $B_i$ are pairwise disjoint.
+  \begin{align*}
+    m(A \cup B) &= m\left(\left(\bigcup_{i=1}^N A_i\right) \cup\left(\bigcup_{i=1}^M B_i\right)\right) \\
+    &= \sum_{i=1}^N m(A_i) + \sum_{i=1}^M m(B_i)
+  \end{align*}
+\end{enumerate}
+\newpage
+
+\section*{Problem 2}
+  The distance function, $d(A,B) = \mu^*(S(A, B))$,
+  is the measure of the symmetric difference of $A$ and $B$.
+
+  Property (27) is true since
+  \begin{align*}
+    d(A,B) &= \mu^*((A-B) \cup (B-A)) \\
+    &= \mu^*((B-A) \cup (A-B)) \\
+    &= d(B,A) \\
+    d(A,A) &= \mu^*(\emptyset) = 0
+  \end{align*}
+
+  Property (28) is true since 
+  \begin{align*}
+    d(A,B) &= \mu^*(A-B) + \mu^*(B-A) \\
+    &= \mu^*(A-B-C) + \mu^*{(A\cap C - B)} + \mu^*(B-A-C) + \mu^*{(B\cap C - A)}\\
+    &\leq \mu^*(A-C) + \mu^*(B-C) + \mu^*{(A\cap C - B)}+ \mu^*{(B\cap C - A)}\\
+    &\leq \mu^*(A-C) + \mu^*(C-A) + \mu^*(C-B) + \mu^*(B-C) \\
+    &= \mu^*((A-C) \cup (C-A)) + \mu^*((C-B) \cup (B-C)) \\
+    &=  d(A,C) + d(C,B)
+  \end{align*}
+
+  For clarity, I will use $A_1B_2$ to represent
+  $\mu^*((A_1 \cup B_2) - (A_2 \cup B_1))$,
+  the measure of the set that is only in sets $A_1$ and $B_2$.
+  Expanding out the values of each distance, its clear that property (29) holds.
+  \begin{align*}
+    d(A_1, B_1) + d(A_2, B_2) =& \mu^*(A_1-B_1) + \mu^*(B_1-A_1) + \mu^*(A_2-B_2) + \mu^*(B_2-A_2) \\
+    = &(A_1 + A_1A_2 + A_1B_2 + A_1A_2B_2) + (B_1 + A_2B_1 + B_1B_2 + A_2B_1B_2) + \\
+     &(A_2 + A_1A_2 + A_2B_1 + A_1A_2B_1) + (B_2 + A_1B_2 + B_1B_2 + A_1B_1B_2) \\
+  \end{align*}
+  \begin{align*}
+    d(A_1 \cup A_2, B_1\cup B_2) &= \mu^*(A_1 \cup A_2-B_1\cup B_2) + \mu^*(B_1\cup B_2-A_1 \cup A_2) \\
+    &= (A_1 + A_2 + A_1A_2) + (B_1 + B_2 + B_1B_2)
+  \end{align*}
+  \begin{align*}
+    d(A_1 \cap A_2, &B_1\cap B_2) = \mu^*(A_1 \cap A_2-B_1\cap B_2) + \mu^*(B_1\cap B_2-A_1 \cap A_2) \\
+    &= (A_1A_2 + A_1A_2B_1 + A_1A_2B_2) + (B_1B_2 + A_1B_1B_2 + A_2B_1B_2)
+  \end{align*}
+  \begin{align*}
+    d(A_1 - A_2, B_1- B_2) &= \mu^*((A_1 - A_2)-(B_1- B_2)) + \mu^*((B_1- B_2)-(A_1 - A_2)) \\
+    &= (A_1 + A_1B_2 + A_1B_1B_2) + (B_1 + A_2B_1 + A_1A_2B_2)
+  \end{align*}
+\newpage  
+
+\section*{Problem 3}
+Assume $(X, \mathcal{M})$ is a countably infinite $\sigma$-algebra.
+For $x \in X$ define $A_x = \bigcap_{x\in E\in \mathcal{M}} E$.
+Since $\mathcal{M}$ is countable, $A_x$ is the intersection of at most 
+countably many sets and so $A_x \in \mathcal{M}$.
+
+Now suppose that $A_x \cap A_y \neq \emptyset$.
+If $x \not\in A_x \cap A_y$, then 
+$x \in A_x - A_x \cap A_y \in \mathcal{M}$.
+This implies that $A_x \cap A_y = \emptyset$ since 
+any element that could be in $A_x \cap A_y$ would not be in $A_x$.
+Thus $x \in A_x \cap A_y$.
+Similarly we know that $y \in A_x \cap A_y$.
+Since every set with $x$ contains $y$ and vice-versa, $A_x = A_y$
+so we have that $A_x \cap A_y \neq \emptyset \implies A_x = A_y$.
+
+Thus for a countably infinite set $x_i\in X$, $A_{x_i}$ forms
+a disjoint partition of $X$.
+The function from $\mathcal{P}(\mathbb{N}) \to \mathcal{M}$
+that takes $I \in \mathcal{P}(\mathbb{N})$
+and gives $\bigcup_{i \in I} A_{x_i}$,
+is injective since each $A_{x_i}$ is pairwise disjoint,
+meaning that $\mathcal{M}$ is uncountably infinite, a countradiction.
+Thus every $\sigma$-algebra is either finite or uncountably infinite.
+\newpage 
+
+\section*{Problem 4}
+\begin{enumerate}
+  \item Let $A = \bigcup_{i=1}^N A_i$ be the union of finitely many intervals. 
+  Since for any interval $A_i = [a,b]$,
+  $m(A_i+t) = (b+t) - (a+t) = m(A_i)$
+  we have that
+  \[
+    m(A+t) 
+    = \bigcup_{i=1}^N m(A_i+t) 
+    = \bigcup_{i=1}^N m(A_i) 
+    = m(A)
+  \]
+  \item $A \subset \bigcup_{n=1}^\infty A_n$
+  is an open covering of $A$ using elementary sets, 
+  then $\bigcup_{n=1}^\infty A_n +t$
+  is an open covering for $A+t$ and vice versa.
+  Using this bijection of open coverings,
+  \[
+    \mu^*(A+t) = \inf \sum_{n=1}^\infty \mu(A_n + t) 
+    = \inf \sum_{n=1}^\infty \mu(A_n) 
+    = \mu^*(A)
+  \]
+
+\end{enumerate}
+\newpage
+
+
+\end{document}

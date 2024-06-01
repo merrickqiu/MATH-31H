@@ -1,0 +1,238 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+
+%User defined commands
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\DeclareMathOperator{\Span}{span}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 3} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 9.13}
+We have that $|f(t)|^2 = f(t)\cdot f(t)= 1$.
+Differentiating this yields 
+\[
+  f(t)\cdot f'(t) + f'(t)\cdot f(t) = 2f'(t)\cdot f(t) = 0,
+\]
+which implies that $f'(t)\cdot f(t) = 0$.
+Geometrically, the velocity of a partical on the surface of a sphere
+is perpenticular to the radius of that sphere.
+\newpage 
+
+\section*{Rudin 9.14}
+\begin{enumerate}[(a)]
+  \item At the origin 
+  \[  
+    D_1 f(0,0) = \lim_{x\to 0} \frac{f(x,0)}{x} = \lim_{x\to 0} \frac{x}{x} = 1
+  \]
+  \[
+    D_1 f(0,0) = \lim_{y\to 0} \frac{f(0,y)}{y}  = \lim_{y\to 0} \frac{0}{y} = 0
+  \]
+  When $(x,y) \neq 0$ the partial derivatives can be bounded by
+  \begin{align*}
+    D_1 f &= \frac{3x^2(x^2+y^2) - 2x^4}{(x^2+y^2)^2} \\ 
+    &= \frac{x^2(x^2+3y^2)}{(x^2+y^2)^2} \\
+    &\leq \frac{3x^2(x^2+y^2)}{(x^2+y^2)^2} \\
+    &\leq \frac{3(x^2+y^2)^2}{(x^2+y^2)^2} \\
+    &= 3
+  \end{align*}
+  \begin{align*}
+    D_2 f &= \frac{0 - 2x^3y}{(x^2+y^2)^2} \\
+    &= -\frac{2x^3y}{(x^2+y^2)^2} \\
+    &= \frac{(x^2+y^2-(x+y)^2)x^2}{(x^2+y^2)^2} \\
+    &\leq \frac{(x^2+y^2)^2}{(x^2+y^2)^2} \\
+    &= 1.
+  \end{align*}
+  \item If $\bm{u} = (x,y)$ and $x^2 + y^2 = 1$ then
+  \[  
+    D_u f(0,0) = \lim_{t\to 0}\frac{f(tx, ty) - f(0,0)}{t} = x^3.
+  \]
+  \[
+    |x^3| \leq 1.
+  \]
+  \item Since the total derivative of $f$ exists away form the origin, by 
+  the chain rule we have that $g'(t) = f'(\gamma(t))\gamma'(t)$ exists when $\gamma(t)$
+  is away from the origin.
+  If $\gamma(t) = (x(t), y(t))$ and $\gamma(t_0) = 0$, then 
+  \begin{align*}
+    g'(0) &= \lim_{t\to t_0} \frac{g(t)-g(t_0)}{t-t_0} \\
+    &= \frac{f(x(t), y(t)) - f(x(t_0), y(t_0))}{t-t_0} \\
+    &= \frac{\frac{x(t)^3}{x(t)^2 + y(t)^2}}{t-t_0} \\
+    &= \frac{\left(\frac{x(t) - x(t_0)}{t-t_0}\right)}{\left(\frac{x(t) - x(t_0)}{t-t_0}\right)^2 + \left(\frac{y(t) - y(t_0)}{t-t_0}\right)^2} \\
+    &= \frac{x'(t_0)^3}{x'(t_0)^2 + y'(t_0)^2}.
+  \end{align*}
+  Thus $g$ is differentiable everywhere. If $\gamma'(t)$ is continuous, then note that $g'(t)$
+  is also continuous away from the origin. 
+  $\gamma'(t)$ is continuous at the origin since 
+  \begin{align*}
+    \lim_{t\to t_0} g'(t) 
+    &= \lim_{t\to t_0} \frac{x(t)^4x'(t)+3x(t)^2y(t)^2 x'(t)- 2x(t)^3y(t)y'(t)}{(x(t)^2+y(t)^2)^2} \\
+    &= \lim_{t\to t_0} \frac{((t-t_0)x'(t))^4x'(t)+3((t-t_0)x'(t))^2((t-t_0)y'(t))^2 x'(t)- 2x(t)^3y(t)y'(t)}{(((t-t_0)x'(t))^2+((t-t_0)y'(t))^2)^2} \\
+    &= \frac{x'(t_0)^5 + x'(t_0)^3y'(t_0)^2}{(x'(t_0)^2 + y'(t_0))^2} \\
+    &= \frac{x'(t_0)^3}{x'(t_0)^2 + y'(t_0)^2} \\
+    &= g'(t_0) 
+  \end{align*}
+  \item The partial derivatives indicate that the derivative should be 
+  \[
+    \sum_{i=1}^n (D_i f)(\bm{x})u_i =  u_1.
+  \]
+  However part (b) says that 
+  \[
+    (D_u f)(x) = u_1^3
+  \]
+  which is a contradiction.
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 9.15}
+\begin{enumerate}[(a)]
+  \item The inequality holds because
+  \begin{align*}
+    4x^4y^2 &\leq (x^4 + y^2)^2 \\
+    4x^4y^2 &\leq x^8 + 2x^4y^2 + y^4 \\
+    0 &\leq x^8 - 2x^4y^2 + y^4 \\
+    0 &\leq (x^4 - y^2)^2.
+  \end{align*}
+  Since 
+  \[
+    \frac{4x^6y^2}{(x^4+y^2)^2} \leq \frac{x^2(x^4+y^2)^2}{(x^4+y^2)^2} = x^2
+  \]
+  and all the other terms tend to $0$, 
+  we have that $\lim_{(x,y) \to (0,0)} f(x,y) = 0$ so $f$ is continuous.
+  \item
+  \[
+    g_\theta(0) = f(0,0) = 0
+  \]
+  \begin{align*}
+    g'_\theta(0) &= \lim_{t \to 0} \frac{f(t\cos \theta, t\sin \theta)- f(0,0)}{t} \\
+    &= \lim_{t \to 0} \frac{1}{t} \left[(t\cos \theta)^2 + (t\sin \theta)^2 - 2(t\cos \theta)(t\sin \theta) - \frac{4(t\cos \theta)^6(t\sin \theta)^2}{((t\cos \theta)^4 +(t\sin \theta)^2)^2}\right] \\
+    &= \lim_{t \to 0} t -2t\cos \theta \sin \theta - 4t^5\frac{\cos^6 \theta \sin^2 \theta}{(t^2\cos^4 \theta + \sin^2 \theta)^2} \\
+    &= 0
+  \end{align*}
+  When $t\neq 0$ we have that 
+  \[
+    g'_\theta(t) = 2t - 6t^2\cos^2 \theta \sin \theta - 4\cos^6\theta \sin^2 \theta \left(\frac{4t^3(t^2\cos^4 \theta + \sin^2 \theta)^2 -4t^5\cos^4 (t^2\cos^4 \theta + \sin^2 \theta)}{(t^2\cos^4 \theta + \sin^2 \theta)^4}\right)
+  \]
+  Therefore,
+  \[
+    g''_\theta(0) = \lim_{t \to 0} \frac{g'(t)- g'(0)}{t} = 2
+  \]
+  \item  $(0,0)$ is not a local minimum for $f$ since $f(x, x^2) = -x^4$
+  and $-x^4$ is strictly decreasing.
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 9.16}
+If $f(0) = 0$ and
+\[
+  f(t) = t + 2t^2\sin\left(\frac{1}{t}\right)
+\]
+then 
+\[
+  f'(0) = \lim_{t\to 0}\frac{f(t) - f(0)}{t} = \lim_{t\to 0} 1 + 2t\sin\left(\frac{1}{t}\right) = 1
+\]
+and when $t \neq 0$
+\[
+  f'(t) = 1 - 2\cos\left(\frac{1}{t}\right) + 4t\sin\left(\frac{1}{t}\right)
+\]
+so $f'$ is not continuous at $0$.
+$|f'| \leq 7$ is bounded since $\cos$ and $\sin$ have values from $-1$ to $1$.
+For any neighborhood around $0$, there always exists points 
+at which $f$ is increasing and points at which it is decreasing since 
+$f'(\frac{1}{n\pi}) = 1+2(-1)^n$ which is positive at even $n$ and negative otherwise,
+ so $f$ cannot be one to one.
+\newpage 
+
+\section*{Rudin 9.17}
+\begin{enumerate}[(a)]
+  \item The range is $\mathbb{R}^2$ except for $(0,0)$ since cosine and sine cannot both be zero.
+  \item The Jacobian is always zero, so by the inverse function theorem every point has a neighborhood 
+  in which it is one-to-one. However it is not one-to-one in the whole space since cosine and sine are periodic.
+  \begin{align*}
+    J_f(x) &= 
+      \det \begin{bmatrix}
+        \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y} \\
+        \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y} \\
+      \end{bmatrix}\\ &=
+      \det \begin{bmatrix}
+        e^x\cos y & -e^x\sin y \\
+        e^x\sin y & e^x\cos y \\
+      \end{bmatrix}\\ &=
+      e^{2x} \cos^2 x + e^{2x} \sin^2 x = e^{2x}
+  \end{align*}
+  \item We can take $g(x, y) = (\log \sqrt{x^2 +y^2}, \arctan \frac{y}{x})$ as the inverse.
+  Plugging in $\bm{a}$ into the derivative calculated in $(b)$ gives
+  \[  
+    f'(\bm{a}) = 
+    \begin{bmatrix}
+      \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+      \frac{\sqrt{3}}{2} & \frac{1}{2}
+    \end{bmatrix}
+  \]
+  The derivative of $g$ is 
+  \[
+    g'(x, y) = 
+    \begin{bmatrix}
+      \frac{x}{x^2 +y^2} & \frac{y}{x^2 +y^2} \\
+      -\frac{y}{x^2 +y^2} & \frac{x}{x^2 +y^2} 
+    \end{bmatrix}
+  \]
+  Plugging in $\bm{b} = (1/2, \sqrt{3}/2)$ yields
+  \[
+    g'(\bm{b}) = 
+    \begin{bmatrix}
+      \frac{1}{2} & \frac{\sqrt{3}}{2} \\
+      -\frac{\sqrt{3}}{2} & \frac{1}{2}
+    \end{bmatrix}
+  \]
+  Thus formula (52) is true since
+  \[
+    g'(\bm{b})f'(\bm{a}) = 
+    \begin{bmatrix}
+      \frac{1}{2} & \frac{\sqrt{3}}{2} \\
+      -\frac{\sqrt{3}}{2} & \frac{1}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+      \frac{\sqrt{3}}{2} & \frac{1}{2}
+    \end{bmatrix}  
+    = \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix}
+  \]
+  \item Since $x$ determines magnitude and $y$ determines phase,
+  lines perpendicular to the x-axis become circles around the origin and 
+  lines perpendicular to the y-axis become lines radiating away from the origin.
+\end{enumerate}
+\newpage 
+
+\section*{Rudin 9.19}
+Subtracting the second and the third equation from the first yields 
+\[
+  u^2 - 3u = 0
+\]
+which implies that $u=0,3$ and so we cant solve for $x,y,z$ in terms of $u$. 
+However for the other $3$ variables,
+the matrix of the first three variables only has
+2 independent columns, so we can simply fix $u$ and solve for 
+the two remaining variables in terms of the variable we choose.
+
+\end{document}

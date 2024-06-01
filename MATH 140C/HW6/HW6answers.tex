@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 140C: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Rudin 11.1}
+Let $E_n$ be the subset of $E$ on which $f(x) > \frac{1}{n}$.
+Write $A = \bigcup E_n$.
+If $\mu(A) = 0$ then $\mu(E_n) = 0$ since $A \supset E_n$.
+If $\mu(E_n) = 0$ then $\mu(A) = 0$ since for the disjoint sets 
+$E_n' = E_n \setminus \bigcup_1^{n-1} E_i$, $\mu(E') = 0$ and $\bigcup E' = \bigcup E = A$ so $\mu(A) = 0$ by countable additivity.
+
+
+We know that $\mu(E_n) = 0$ since $0 \leq \frac{1}{n}\mu(E_n) \leq\int_{E_n} f \,du \leq \int_E f \,du = 0$.
+Since $A$ is the set where $f(x) > 0$ and $f(x) \geq 0$, $\mu(E_n) = 0$ implies that 
+$\mu(A) = 0$, which then implies that $f(x) = 0$ almost everywhere.
+\newpage 
+
+\section*{Rudin 11.2}
+We can apply the conclusion of the previous problem twice on 
+the set of non-negative values and non-positive values to show that 
+$f^+(x) = 0$ almost everywhere and $f^-(x) = 0$.  
+Thus $f(x) = 0$ almost everywhere on $E$ since the 
+set of values where $f(x) \neq 0$ is the union of the set of values where
+$f(x) < 0$ and $f(x) > 0$.
+\newpage 
+
+\section*{Rudin 11.5}
+For $0 \leq x \leq \frac{1}{2}$, the $\liminf$ can be achieved by the subsequence of even elements, $f_{2k}$. 
+For $\frac{1}{2} < x \leq 1$  the $\liminf$ can be achieved by taking the subsequence of odd elements, $f_{2k+1}$.
+Thus we have that
+\[
+	f(x) = \liminf_{n \to \infty} f_n(x) = 0.
+\]
+However each $f_n$ is a simple function with integral 
+$\int_0^1 f_n(x) \,dx = \frac{1}{2}$.
+This problem is in agreement with (77) since
+\[
+	0 = \int_E f \,d\mu \leq \liminf_{n\to \infty} \int_E f_n \,d\mu = \frac{1}{2}. 
+\]
+\newpage 
+
+\section*{Rudin 11.6}
+Since $|f_n(x) - 0| < \frac{1}{n}$, $f_n(x) \to 0$
+uniformly as $n \to \infty$.
+
+However all $f_n$ cannot be bounded by a function $g \in \mathscr{L}$,
+so Theorem 11.32 fails, as given by the fact that
+$\int_{- \infty}^\infty f_n \,dx = \int_{-n}^n \frac{1}{n} \,dx = 2$.
+\newpage
+
+
+\end{document}
