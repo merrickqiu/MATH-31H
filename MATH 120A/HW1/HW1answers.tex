@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 1} \\
+	Merrick Qiu
+\end{center}
+\section*{Page 16}
+\subsection*{Problem 1(c)}
+\begin{align*}
+	\overline{(2+i)^2} &= \overline{(2+i)(2+i)}\\
+	&= \overline{(4-1)+4i} \\
+	&= \overline{3+4i} \\
+	&= 3-4i
+\end{align*}
+
+\subsection*{Problem 1(d)}
+\begin{align*}
+	\abs{(2\cjg{z}+5)(\sqrt{2}-i)} &= \abs{2\cjg{z}+5}\abs{\sqrt{2}-i}\\
+	&= \abs{\cjg{2\cjg{z}+5}}\sqrt{3} \\
+	&= \sqrt{3} \abs{2z+5}
+\end{align*}
+
+\subsection*{Problem 7}
+\begin{align*}
+	\abs{\Re(2+\cjg{z}+z^3)} &\leq \abs{2+\cjg{z}+z^3} \\
+	&\leq \abs{2} + \abs{\cjg{z}} + \abs{z^3} \\
+	&\leq 2 + 1 + 1^3 \\
+	&= 4
+\end{align*}
+\newpage 
+
+\section*{Pages 23-24}
+\subsection*{Problem 1(a)}
+\begin{align*}
+	\frac{-2}{1+\sqrt{3} i} &= \frac{-2}{1+\sqrt{3} i}\frac{1-\sqrt{3} i}{1-\sqrt{3} i}\\
+	&= \frac{-2+2\sqrt{3}i}{1+3} \\
+	&= -\frac{1}{2} + \frac{\sqrt{3}}{2} i
+\end{align*}
+
+Since the number is in the second quadrant and $\arctan(\sqrt{3}) = -\frac{\pi}{3}$,
+we have that $\Arg \frac{-2}{1+\sqrt{3} i} = \frac{2\pi}{3}$.
+\subsection*{Problem 1(b)}
+\begin{align*}
+	\arg(\sqrt{3} - i)^6 &= 6\cdot\arg(\sqrt{3} - i) \\
+	&= 6\cdot\arctan(-\frac{1}{\sqrt{3}}) \\
+	&= 6\cdot\left(-\frac{\pi}{6}\right) \\
+	&= -\pi
+\end{align*}
+Thus the principal argument is $\pi$.
+\subsection*{Problem 5(c)}
+\begin{align*}
+	(\sqrt{3} + i)^6 &= (2e^{i\frac{\pi}{6}})^6 \\
+	&= 64e^{i\pi} \\
+	&= -64
+\end{align*}
+\subsection*{Problem 5(d)}
+\begin{align*}
+	(1+\sqrt{3} i)^{-10} &= (2e^{i\frac{\pi}{3}})^{-10} \\
+	&= 2^{-10}e^{i\frac{-10\pi}{3}} \\
+	&= -2^{-11}+ 2^{-11}\sqrt{3}i \\
+	&= 2^{-11}(-1+\sqrt{3}i)
+\end{align*}
+\subsection*{Problem 6}
+Let $\theta_1 = \Arg(z_1)$ and $\theta_2 = \Arg(z_2)$.
+Since $\Re z_1, \Re z_2 > 0$, $z_1$ and $z_4$ 
+must be in the first or fourth quadrant and so
+$\theta_1, \theta_2 \in (-\frac{\pi}{2}, \frac{\pi}{2}]$.
+Since $\arg(z_1z_2) = \arg(z_1) + \arg(z_2)$, we have that 
+$\arg(z_1z_2) = \theta_1 + \theta_2 + 2\pi n$ for some $n\in \mathbb{Z}$.
+However since $\theta_1, \theta_2 \in (-\frac{\pi}{2}, \frac{\pi}{2}]$,
+it must be that $\theta_1 + \theta_2 \in (-\pi, \pi]$. 
+So $\Arg(z_1z_2) = \arg(z_1z_2)$ for $n=0$ and so 
+$\Arg(z_1z_2) = \Arg(z_1) + \Arg(z_2)$.
+
+\newpage 
+\subsection*{Problem 10}
+\begin{align*}
+	&(\cos \theta + i \sin \theta)^3 = \cos 3\theta + i\sin 3\theta \\
+	\implies& \cos^3 \theta + i3\cos^2\theta \sin \theta - 3\cos \theta \sin^2 \theta - i\sin^3 \theta = \cos 3\theta + i\sin 3\theta \\
+	\implies& (\cos^3 \theta - 3\cos\theta \sin^2 \theta) + i(3\cos^2\theta \sin \theta - \sin^3 \theta) = \cos 3\theta + i\sin 3\theta
+\end{align*}
+
+By equating the real and imaginary parts of both sides, we get the formulas
+\[
+	\cos 3\theta = \cos^3 \theta - 3\cos\theta \sin^2 \theta
+\]
+\[
+	\sin 3\theta = 3\cos^2\theta \sin \theta - \sin^3 \theta
+\]
+
+\end{document}

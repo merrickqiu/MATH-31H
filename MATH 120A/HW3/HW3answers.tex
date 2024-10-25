@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 3} \\
+	Merrick Qiu
+\end{center}
+\section*{Page 43 Problem 2(b)}
+\begin{align*}
+	f(z) &= \frac{\cjg{z}^2}{z} \\
+	&= \frac{\cjg{z}^3}{z\cjg{z}} \\
+	&= \frac{(x-iy)^3}{x^2+y^2} \\
+	&= \frac{x^3 - 3ix^2y - 3xy^2 + iy^3}{x^2+y^2} \\
+	&= \frac{x^3-3xy^2}{x^2+y^2} + i\frac{y^3-3x^2y}{x^2+y^2}
+\end{align*}
+\section*{Page 43 Problem 3}
+\begin{align*}
+	f(z) &= x^2 - y^2 -2y +i(2x-2xy)\\
+	&= \left(\frac{z+\cjg{z}}{2}\right)^2 - \left(\frac{z-\cjg{z}}{2i}\right)^2 - \frac{z-\cjg{z}}{i} + i\left(z+\cjg{z} - \frac{(z+\cjg{z})(z-\cjg{z})}{2i}\right)\\
+	&=  \frac{z^2+2z\cjg{z}+\cjg{z}^2}{4} - \frac{z^2-2z\cjg{z}+\cjg{z}^2}{-4} + i(z-\cjg{z}) + i\left(z+\cjg{z} - \frac{z^2 - \cjg{z}^2}{2i}\right)\\
+	&= \frac{z^2+\cjg{z}^2}{2} + 2iz - \frac{z^2 - \cjg{z}^2}{2} \\
+	&= \cjg{z}^2 + 2iz
+\end{align*}
+
+\section*{Page 43-44 Problem 4}
+\begin{align*}
+	f(z) &= z + \frac{1}{z} \\
+	&= re^{i\theta} + \frac{1}{r}e^{-i\theta} \\
+	&= r\cos(\theta) + ir\sin(\theta) + \frac{1}{r}\cos(-\theta) + i\frac{1}{r}\sin(-\theta) \\
+	&= \left(r + \frac{1}{r}\right)\cos(\theta) + i\left(r - \frac{1}{r}\right)\sin(\theta)
+\end{align*}
+
+\section*{Page 44 Problem 5} 
+The mapping $w = z^2$ is equivalent to the mapping 
+\[
+	u = x^2 - y^2, \quad v = 2xy
+\]
+For the image to be in the square domain, 
+we want to find all $x,y$ so that 
+$1 \leq u \leq 2$ and $1 \leq v \leq 2$.
+Thus the preimage of the square is the following region
+\[
+	R = \{(x,y) | 1 \leq x^2-y^2 \leq 2, 1 \leq 2xy \leq 2\}
+\]
+This region includes two curved boxes in the 
+first and third quadrant bound by the hyperbolas
+$x^2-y^2 = 1$, $x^2-y^2 = 2$, $y = \frac{1}{2x}$, and $y = \frac{1}{x}$.
+
+\section*{Problem 4}
+\begin{enumerate}
+	\item The limit is $4i$. 
+	Let $\epsilon > 0$.
+	Choose $\delta = \frac{\epsilon}{3}$.
+	If $|z - i| < \delta$, then
+	\begin{align*}
+		|f(z) - L| &= |(3z+i)- 4i| \\
+		&= 3|z - i| \\
+		&< 3\delta \\
+		&= \epsilon.
+	\end{align*}
+	\item The limit is $3$.
+	Let $\epsilon > 0$.
+	Choose $\delta = \frac{\epsilon}{3}$.
+	If $|z - 1| < \delta$, then
+	\begin{align*}
+		|f(z) - L| &= |(2z+\cjg{z})- 3| \\
+		&= |(3x-3) + iy| \\
+		&\leq |(3x-3) + 3iy| \\
+		&= 3|(x-1) + iy| \\
+		&= 3|z - 1| \\
+		&< 3\delta \\
+		&= \epsilon.
+	\end{align*}
+	\item The limit is $0$.
+	Let $\epsilon > 0$.
+	Choose $\delta = \epsilon$.
+	If $|z| < \delta$, then 
+	\begin{align*}
+		|f(z) - L| &= \left| \frac{\cjg{z}^2}{z} \right|\\
+		&= \frac{|\cjg{z}|^2}{|z|} \\
+		&= \frac{|z|^2}{|z|} \\
+		&= |z| \\
+		&< \delta \\
+		&= \epsilon
+	\end{align*}
+\end{enumerate}
+
+
+
+
+\end{document}
