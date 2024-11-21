@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 6} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1}
+\begin{enumerate}[(a)]
+	\item $u_x = -2x$, $u_{xx} = -2$ and $u_y = 2y+2$, $u_{yy} = 2$ so $u$ is harmonic since
+	$u_{xx} + u_{yy} = 0$.
+	\item We need $v_y = -2x$ and $v_x = -2y-2$ for Cauchy-Riemann to hold.
+	Integrating $v_y$ with respect to $y$ gives us that 
+	\[
+		v(x,y) = -2xy + g(x)
+	\]
+	Differentiating by $x$ gives us 
+	\[
+		v_x = -2y + g'(x) = -2y-2
+	\]
+	which implies $g(x) = -2x+C$.
+	Therefore the harmonic conjugate is $v = -2xy-2x + C$.
+	\item 
+	\begin{align*}
+		f(z) &= y^2+2y-x^2 + i(-2xy-2x+C) \\
+		&= -(x+iy)^2 - 2i(x+iy) + iC\\
+		&= -z^2 - 2iz + iC
+	\end{align*}
+\end{enumerate}
+\newpage 
+\section*{Problem 2}
+	\begin{align*}
+		\log(1-i) &= \log(\sqrt{2}e^{i\left(-\frac{\pi}{4}+2\pi n\right)}) \\
+		&= \frac{\ln(2)}{2} + i\left(-\frac{\pi}{4}+2\pi n\right)
+	\end{align*}
+	The principal argument is $\frac{\pi}{4}$.
+	\[
+		\operatorname{Log}(1-i) = \frac{\ln(2)}{2} - i\frac{\pi}{4}
+	\]
+\newpage 
+\section*{Problem 3}
+	\[
+		\log(-i) = \log(e^{i\left(-\frac{\pi}{2} + 2\pi n\right)}) = i\left(-\frac{\pi}{2} + 2\pi n\right)
+	\]
+	\[
+		(-i)^{-i} = e^{-i\log(-i)} = e^{-\frac{\pi}{2} + 2\pi n}
+	\]
+	The principal value is 
+	\[
+		(-i)^{-i} = e^{-\frac{\pi}{2}}
+	\]
+\newpage 
+\section*{Problem 4}
+	\[
+		\log(i) = \log(e^{i\left(\frac{\pi}{2} + 2\pi n\right)}) = i\left(\frac{\pi}{2} + 2\pi n\right)
+	\]
+	\[
+		(i)^{1+i} = e^{(1+i)\log(i)} = e^{(i-1)\left(\frac{\pi}{2} + 2\pi n\right)} = e^{-\left(\frac{\pi}{2} + 2\pi n\right)}e^{i\left(\frac{\pi}{2} + 2\pi n\right)} = e^{-\left(\frac{\pi}{2} + 2\pi n\right)}i
+	\]
+	The principal value is 
+	\[
+		(i)^{1+i} = e^{-\frac{\pi}{2}}i
+	\]
+\newpage 
+\section*{Problem 5}
+	\begin{align*}
+		\sin\left(z+\frac{\pi}{2}\right) &= \frac{e^{i\left(z+\frac{\pi}{2}\right)}-e^{-i\left(z+\frac{\pi}{2}\right)}}{2i} \\
+		&= \frac{e^{i\frac{\pi}{2}}e^{iz}-e^{-i\frac{\pi}{2}}e^{-iz}}{2i} \\
+		&= \frac{e^{iz}+e^{-iz}}{2} \\
+		&= \cos(z)
+	\end{align*}
+\newpage 
+
+
+
+\end{document}

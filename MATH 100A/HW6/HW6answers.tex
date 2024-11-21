@@ -1,0 +1,205 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 6} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+For any two nonzero elements $(x,y) \in S$ and $(u,v) \in S$,
+we can multiply $(x,y)$ by an invertible matrix to get to $(u,v)$.
+
+If $x, y \neq 0$ then
+\[
+	\begin{bmatrix}
+		u \\ v
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		\frac{u}{x} & 0 \\
+		0 & \frac{v}{y}
+	\end{bmatrix}
+	\begin{bmatrix}
+		x \\ y
+	\end{bmatrix}
+\]
+If $x = 0$ then
+\[
+	\begin{bmatrix}
+		u \\ v
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		1 & \frac{u}{y} \\
+		0 & \frac{v}{y}
+	\end{bmatrix}
+	\begin{bmatrix}
+		0 \\ y
+	\end{bmatrix}
+\]
+If $y = 0$ then 
+\[
+	\begin{bmatrix}
+		u \\ v
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		\frac{u}{x} & 1\\
+		\frac{v}{x} & 0
+	\end{bmatrix}
+	\begin{bmatrix}
+		x \\ 0
+	\end{bmatrix}
+\]
+Therefore $\text{GL}_2(\bf{R})$ acts transitively on $S$.
+\newpage 
+\section*{Problem 2}
+A matrix is in the stabilizer if multiplying it 
+with $[1,0]$ yields $[1,0]$.
+Notice that the second column of a stabilizing matrix 
+can be arbitrary
+but the first column must be $[1,0]$ for 
+the product to equal $[1,0]$.
+\[
+	\begin{bmatrix}
+		1 \\ 0
+	\end{bmatrix} =
+	\begin{bmatrix}
+		1 & a \\
+		0 & b
+	\end{bmatrix}
+	\begin{bmatrix}
+		1 \\ 0
+	\end{bmatrix}
+\]
+However for the matrix to be invertible, we need $b \neq 0$
+so the stabilizer is
+\[
+    \text{GL}_2(\textbf{R})_{[1,0]} =
+	\left\{
+	\begin{bmatrix}
+		1 & a \\
+		0 & b
+	\end{bmatrix} :
+	a, b \in \mathbb{R}, b\neq 0
+	\right\}.
+\]
+\newpage
+\section*{Problem 3}
+\begin{enumerate}[(a)]
+	\item Since $g \in \text{SL}_2(\bf{R})$ we have that 
+	$ad-bc = 1$.
+	If $cz+d = cx+d + i(cy) = 0$, then $cx+d = 0$ and $cy = 0$.
+	This implies that $c = 0$ since $y > 0$. This then implies that $d = 0$, however
+	this means that $ad-bc = 0$ which is a contradiction,
+	so $cz+d \neq 0$.
+	\item 
+	\begin{align*}
+		\Im g \cdot z &= \Im\frac{az+b}{cz+d}\\
+		&= \Im \frac{(ax+b) + iay}{(cx+d) + icy} \cdot \frac{(cx+d) - icy}{(cx+d) - icy} \\
+		&= \Im \frac{(ax+b)(cx+d) + acy^2 + i(ay(cx+d) - cy(ax+b))}{(cx+d)^2 + (cy)^2} \\
+		&= \frac{acxy + ady - acxy - bcy}{|cz+d|^2} \\
+		&= \frac{(ad-bc)y }{|cz+d|^2} \\
+		&= \frac{y }{|cz+d|^2} \\
+	\end{align*}
+	\item First note that 
+	\[	
+		1 \cdot z = \frac{1z + 0}{0z + 1} = z
+	\]
+	If $G = \begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}$ and 
+	$H = \begin{bmatrix}
+		e & f \\
+		g & h
+	\end{bmatrix}$
+	then
+
+	\begin{align*}
+		(GH) \cdot z &=  
+		\begin{bmatrix}
+			ae+bg & af+bh \\
+			ce+dg & cf+dh
+		\end{bmatrix} \cdot z \\
+		&= \frac{(ae+bg)z + af+bh}{(ce+dg)z + cf+dh} \\
+		&= \frac{\frac{aez + af + bgz +bh}{gz + h}}{\frac{cez + cf+dgz + dh}{gz + h}} \\
+		&= \frac{a\frac{ez + f}{gz + h} + b}{c\frac{ez + f}{gz + h} + d} \\
+		&= G \cdot \frac{ez + f}{gz + h}\\
+		&= G \cdot (H \cdot z)
+	\end{align*}
+\end{enumerate}
+\newpage
+\section*{Problem 4}
+\begin{enumerate}
+	\item For complex numbers $x+iy\in \mathcal{H}$ and $u+iv\in \mathcal{H}$, we need to show that 
+	there exists upper triangle matrix $g$ such that $g\cdot (x+iy) = u+iv$.
+	Let $g = \begin{bmatrix}
+		a & b \\
+		0 & d 
+	\end{bmatrix}$.
+	\begin{align*}
+		g\cdot (x+iy) &= \frac{a(x+iy) + b}{d} \\
+		&= \left(\frac{ax+b}{d}\right)+i\frac{ay}{d} \\
+		&= u + iv
+	\end{align*}
+	Since $v>0$, we can choose $a = 1$, $d= \frac{y}{v}$, and $b = ud-x$ so that 
+	$g\cdot (x+iy) = u+iv$.
+	Since it is possible to get from any element to any other element in $\mathcal{H}$
+	using group actions from $B$, there is only one orbit and $B$ acts transitively on 
+	$\mathcal{H}$. Since $B \subseteq \text{SL}_2(\textbf{R})$, 
+	$\text{SL}_2(\textbf{R})$ also has just one orbit and so it also acts transitively on $B$.
+	\item Let $g \in \text{SL}(2)$ where $g = \begin{bmatrix}
+		a & b \\
+		c & d 
+	\end{bmatrix}$ and
+	$ad-bc = 1$ since the determinant is 1.
+	\begin{align*}
+		g \cdot i &= \frac{ai + b}{ci+d} \\
+		&= \frac{b + ai}{d + ci} \cdot \frac{d - ci}{d - ci} \\
+		&= \frac{(bd+ac)+i(ad-bc)}{d^2+c^2} \\
+		&= \frac{(bd+ac)+i}{d^2+c^2} \\
+	\end{align*}
+	We need $d^2+c^2 = 1$ and $bd+ac = 0$ for $g$ to be a stabilizer. This means that 
+	the inner product of the second row with itself is $1$ and
+	the inner product of the first and second row is $0$.
+	It also must be that $a^2+b^2 = 1$ since the determinant is $1$
+	and the rows are orthogonal.
+	Algebraically we can see this by adding the two following equations
+	to get the third
+	\[
+		1 =(ad-bc)^2 = a^2d^2 - 2abcd + b^2c^2
+	\]
+	\[
+		0 = (ac+bd)^2 = a^2c^2 + 2abcd + b^2d^2
+	\]
+	\[
+		1 = a^2d^2 + a^2c^2 + b^2c^2 + b^2d^2 = a^2(c^d+d^2) + b^2(c^d+d^2) = a^2+b^2
+	\]
+	Thus $gg^t = g^tg = I$,
+	so the stabilizer is $\text{SO}_2(\textbf{R})$.
+	Note that this means
+	\item If $g \in \text{SL}_2(\textbf{R})$ then there must 
+	exist $b \in B$ such that 
+	$b\cdot i = g\cdot i$ since $\text{SL}_2(\textbf{R})$
+	and $B$ both act transitively on $\mathcal{H}$.
+	Therefore $i = b^{-1}g \cdot i$ so $g^{-1}b$ is in the stabilizer of $i$,
+	which is $\text{SO}_2(\textbf{R})$.
+	Therefore $b^{-1}g = h$ for some $h \in \text{SO}_2(\textbf{R})$,
+	ie $g = bh$.
+
+\end{enumerate}
+
+\newpage
+\end{document}

@@ -99,14 +99,34 @@ but $f \notin \mathscr{L}$ since
 Suppose $\{f_n\}$ is a Cauchy sequence.
 Thus, we can find a sequence $\{n_k\}$ so that
 \[
-	|| || < \frac{1}{}
+	||f_{n_k} - f_{n_{k+1}} || < \frac{1}{2^k}
 \]
+Let $g \in \mathscr{L}$. By the Schwarz inequality,
+\begin{align*}
+	\int_X |g(f_{n_k} - f_{n_{k+1}})| \,d\mu &= \langle g, f_{n_k} - f_{n_{k+1}}\rangle  \\
+	&\leq ||g|| ||f_{n_k} - f_{n_{k+1}}|| \\
+	&\leq \frac{||g||}{2^k} \\
+\end{align*}
+Therefore,
 \[
-	\int_X |f_m - f_n| \,du < \epsilon
+	\sum_{k=1}^{\infty} \int_X |g(f_{n_k} - f_{n_{k+1}})| \,d\mu \leq ||g||
 \]
+Then we interchange the summation and integration, which implies that 
+\[
+	|g(x)| \sum_{k=1}^\infty |f_{n_k} - f_{n_{k+1}}| < \infty
+\]
+which then implies that almost everywhere on $X$
+\[
+	\sum_{k=1}^\infty |f_{n_k} - f_{n_{k+1}}| < \infty.
+\]
+Since the partial sum converges, it must be that the sequence converges.
 \newpage
 
 \section*{Rudin 11.12}
+Yes its continuous on $[0,1]$. If we have a sequence $x_n \to x$ we need to show that $g(x_n) \to g(x)$.
+Note that $f(x_n, y) \to f(x,y)$ because $f(x,y)$ is a continuous function of $x$ for fixed $y$.
+Also since $|f(x_n, y)| \leq 1$, we can apply the dominated convergence theorem to say that
+$g(x_n) \to g(x)$.
 \newpage
 
 

@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{bm}
+\usepackage{matlab-prettifier}
+\usepackage[margin=1in]{geometry}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 170C: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+The solution is
+\[
+	u(x,t) = \sum_{n=1}^N c_n e^{-n^2\pi^2t}\sin(n\pi x)
+\]
+The solution has the correct initial time condition since
+\[
+	u(x,0) = \sum_{n=1}^N c_n e^{0}\sin(n\pi x) =  \sum_{n=1}^N c_n \sin(n\pi x).
+\]
+The solution has the correct initial distance conditions since
+\[
+	u(0,t) = \sum_{n=1}^N c_n e^{-n^2\pi^2t}\sin(0) = 0
+\]
+\[
+	u(1,t) = \sum_{n=1}^N c_n e^{-n^2\pi^2t}\sin(n\pi) = 0
+\]
+It satisfies the differential equation since 
+\begin{align*}
+	u_{xx} &= \frac{\partial}{\partial x} n\pi \sum_{n=1}^N c_n e^{-n^2\pi^2t}\cos(n\pi x) \\
+	&= -n^2\pi^2\sum_{n=1}^N c_n e^{-n^2\pi^2t}\sin(n\pi x) \\
+	&= u_t
+\end{align*}
+\newpage
+
+\section*{Problem 2}
+First we find $g$ such that $\nabla^2 g = f$ in $\Omega$.
+Then we solve the dirichlet problem in $\Omega$, using $-g$ for the boundary values.
+Call this solution $v$ so that 
+\[
+	\begin{cases}
+		\nabla^2 v = 0 & \text{in } \Omega \\
+		v = -g & \text{on } \partial \Omega
+	\end{cases}
+\]
+Thus, $u = v + g$ will equal $0$ on the boundary and it will equal $\nabla^2 u = f$ in $\Omega$,
+which solves the problem.
+\newpage 
+
+\section*{Problem 3}
+By the Cauchy-Riemann equations we have that $u_x = v_y$ and $u_y = -v_x$.
+We need to prove that $u$ and $v$ are harmonic, meaning that $\nabla^2 u = 0$ and $\nabla^2 v = 0$.
+These directly follow from the Cauchy-Riemann equations since
+\begin{align*}
+	\nabla^2 u &= u_{xx} + u_{yy} \\
+	&= v_{yx} - v_{xy} \\
+	&= 0
+\end{align*}
+\begin{align*}
+	\nabla^2 v &= v_{xx} + v_{yy} \\
+	&= - u_{yx} + u_{xy} \\
+	&= 0
+\end{align*}
+\newpage
+
+
+
+
+\end{document}

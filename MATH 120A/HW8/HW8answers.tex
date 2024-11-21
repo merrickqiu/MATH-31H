@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 8} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1}
+We can parameterize $C = \{|z-2| = 2\}$ as 
+\[
+	z(t) = 2e^{it} + 2 \qquad (0 \leq t < 2\pi)
+\]
+\begin{align*}
+	\int_C \frac{1}{z-2} \,dz 
+	&= \int_0^{2\pi} \frac{1}{2e^{it}} \left(2ie^{it}\right) \,dz  \\
+	&= \int_0^{2\pi} o \,dz  \\
+	&= 2\pi i
+\end{align*}
+\newpage 
+
+\section*{Problem 2: Page 138, 1(a)}
+If $z$ is on $C$ then 
+\[
+	|z+4| \leq |z| + |4| = 6
+\]
+\[
+	|z^3-1| \geq ||z|^3-|1|| = 7.
+\]
+Therefore 
+\[
+	\left|\frac{z+4}{z^3-1}\right| \leq \frac{6}{7}
+\]
+so $M = \frac{6}{7}$ and the length of $C$ is 
+$L=\pi$.
+
+\[
+	\left|\int_C \frac{z+4}{z^3-1} \,dz\right|
+	\leq ML = \frac{6\pi}{7}.
+\]
+\newpage
+
+\section*{Problem 3: Page 139, 4}
+If $z$ is on $C_R$ then 
+\[
+	|2z^2-1| \leq 2|z|^2 + |-1| = 2R^2+1
+\]
+\[
+	|z^4 + 5z^2 + 4| = 
+	|(z^2-1)||(z^2-4)| \geq
+	||z|^2 - |1||||z|^2 - |4|| =
+	(R^2-1)(R^2-4)
+\]
+Therefore
+\[
+	\left|\frac{2z^2-1}{z^4 + 5z^2 + 4}\right| \leq \frac{2R^2+1}{(R^2-1)(R^2-4)}
+\]
+so $M_R = \frac{2R^2+1}{(R^2-1)(R^2-4)}$ and the length of $C$ is 
+$L = \pi R$.
+
+\[
+	\left|\int_C \frac{2z^2-1}{z^4 + 5z^2 + 4}\right| \leq M_RL = 
+	\frac{\pi R(2R^2+1)}{(R^2-1)(R^2-4)}
+\]
+
+If we divide the numerator and denominator by $R^4$,
+we see that the integral goes to $0$ as $R \to \infty$ since $M_RL \to 0$.
+
+\[
+	\frac{\pi R(2R^2+1)}{(R^2-1)(R^2-4)}
+	\cdot \frac{\frac{1}{R^4}}{\frac{1}{R^4}}
+	=
+	\frac{\pi (\frac{2}{R}+\frac{1}{R^3})}{(1-\frac{1}{R^2})(1-\frac{4}{R^2})}
+\]
+\newpage 
+\section*{Problem 4: Page 147, 1}
+\begin{align*}
+	\int_C z^n \,dz &=
+	\left[\frac{1}{n+1}z^{n+1}\right]_{z_1}^{z_2} \\
+	&= \frac{1}{n+1}z_2^{n+1} - \frac{1}{n+1}z_1^{n+1} \\
+	&= \frac{1}{n+1}(z_2^{n+1} - z_1^{n+1})
+\end{align*}
+\newpage
+
+\section*{Problem 5: Page 147, 2(b)(c)}
+\begin{align*}
+	\int_0^{\pi+2i} \cos\left(\frac{z}{2}\right) \,dz 
+	&= \left[2\sin\left(\frac{z}{2}\right)\right]_0^{\pi+2i}\\
+	&= 2\sin\left(\frac{\pi}{2} + i\right) \\
+	&= \frac{e^{i\frac{\pi}{2}-1} - e^{-i\frac{\pi}{2}+1}}{i} \\
+	&= \frac{e^{-1}i + ei}{i} \\
+	&= e + \frac{1}{e}
+\end{align*}
+
+\begin{align*}
+	\int_1^3 (z-2)^3 \,dz 
+	&= \left[\frac{1}{4}(z-2)^4\right]_1^3 \\
+	&= \frac{1}{4} - \frac{1}{4} \\
+	&= 0
+\end{align*}
+\newpage  
+
+\section*{Problem 6}
+Note that the term we are integrating has an antiderivative.
+\[
+	\frac{d}{dz} \left(-\frac{1}{3}(z-5)^{-3}\right) = (z-5)^{-4}
+\]
+
+Therefore for any closed contour which does not pass through $5$,
+the integral is $0$.
+\end{document}

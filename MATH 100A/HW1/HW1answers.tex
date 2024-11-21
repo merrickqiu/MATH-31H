@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 1} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Since $G \subset S$ and the law of composition is associative on $S$,
+the same law of composition is associative on $G$.
+Since $1 \in S$ and $1$ is its own inverse, $1 \in G$ so $G$ has an identity.
+From the definition of $G$, each element in $G$ has an inverse.
+If $x \in G$ and $y \in G$ then $xy \in G$ since 
+$xy \in S$ and $xy$ has inverse $y^{-1}x^{-1}$, so $G$ is closed.
+
+\section*{Problem 2}
+Matrix multiplication for $\mathrm{SL}_2(\bf{Z})$ is associative since 
+we can expand the matrix multiplications below to show they are equal.
+\[
+	\left(
+	\begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}
+	\begin{bmatrix}
+		e & f \\
+		g & h
+	\end{bmatrix}
+	\right)
+	\begin{bmatrix}
+		i & j \\
+		k & l
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}
+	\left(
+	\begin{bmatrix}
+		e & f \\
+		g & h
+	\end{bmatrix}
+	\begin{bmatrix}
+		i & j \\
+		k & l
+	\end{bmatrix}
+	\right)
+\]
+We have the identity element 
+\[
+	I = 
+	\begin{bmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{bmatrix}
+\]
+Since each matrix has nonzero determinant so each matrix in $\mathrm{SL}_2(\bf{Z})$.
+is invertible, and the inverse of a matrix with determinant 1 also has determinant 1.
+The product of two matricies with determinant 1 also has determinant 1 so 
+$\mathrm{SL}_2(\bf{Z})$ is closed under multiplication.
+
+\section*{Problem 3}
+We can define $\rho(x) = e^x$.
+Thus $\rho(x+y) = e^{x+y} = e^xe^y = \rho(x)\rho(y)$.
+\end{document}

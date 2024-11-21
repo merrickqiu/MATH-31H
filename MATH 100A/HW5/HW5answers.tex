@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 5} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Since $yxy^{-1} = x^{-1}$ and $m$ is odd,
+\[
+	x = y^m x y^{-m} = x^{-1}
+\]
+Therefore $x^2 = 1$.
+\newpage 
+
+\section*{Problem 2}
+Let $n = 2k+1$.
+Since $x^2 = 1$ and $x^n = x^{2k+1} = 1$,
+this implies that $x^{2k+1}(x^{2})^{-k} = x = 1$.
+Substituting $x=1$, we have the relations $y^m = 1$ and $yy^{-1} = 1$,
+which is a cyclic group of order $m$ with generator $y$.
+\newpage 
+
+\section*{Problem 3}
+The last relation implies that $yx = x^{-1}y$, meaning we can
+conjugate all the $y$ to the right and write all elements in $G_{n,m}$
+in the form $x^ay^b$ for 
+$a \in \{0, \ldots, n-1 \}$ and $b \in \{0, \ldots, m-1 \}$.
+Thus there are at most $nm$ elements.
+\newpage 
+
+\section*{Problem 4}
+The cyclic group $N = \langle x \rangle$ is of order $n$
+so it is isomorphic to $\mathbb{Z}/n\mathbb{Z}$.
+It is a normal subgroup of $G_{n,m}$ because of the relation $yxy^{-1} = x^{-1}$.
+
+The cyclic group $M = \langle y \rangle$ is of order $m$
+so it is isomorphic to $\mathbb{Z}/m\mathbb{Z}$.
+$N \cap M = \{1\}$ since the set of symbols $x^k$ is distinct from the set 
+of symbols $y^k$ apart from identity.
+
+Since every element in $G_{n,m}$ can be written as $x^ay^b$
+for integers $a,b$ we have that $G_{n,m} = NM$.
+Let the map $\Psi : G'_{n,m} \to G_{n,m}$ be given by $\Psi(x^a,y^b) = x^ay^b$
+for integers $a,b$.
+
+By the third relation $(\varphi \circ \pi)(y^m)$ is an automorphism
+that is conjugation by $y^m$
+\[
+	(\varphi \circ \pi)(y^m)(x^n) = 
+	\begin{cases}
+		x^n & \text{ if m is even} \\
+		x^{-n} & \text{ if m is odd} \\
+	\end{cases} = 
+	y^m x^n y^{-m}.
+\]
+$\Psi$ is an homomorphism since
+\begin{align*}
+	\Psi((x^a, y^b)(x^c, y^d)) &= \Psi((x^a\varphi(\pi(y^b))(x^c), y^by^d))\\
+	&=x^a\varphi(\pi(y^b))(x^c) y^by^d \\
+	&= x^ay^bx^cy^{-b}y^by^d \\
+	&= x^ay^bx^cy^d \\
+	&=\Psi(x^a, y^b)\Psi(x^c, y^d)
+\end{align*}
+
+$\Psi$ is injective since $N \cap M = \{1\}$
+and it is surjective since $G_{n,m} = NM$.
+Therefore $\Psi$ is an isomorphism between
+$\Psi : G'_{n,m}$ and $G_{n,m}$.
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 3} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+When $n = 1$,
+any element $g \in G$ distinct from the identity has order $p$.
+This is because $|\langle g \rangle|$ must divide $p$ by Lagrange's theorem.
+
+Assume that there
+exists an element with order $p$ for all groups with order 
+$p^1, p^2, \cdots, p^{k-1}$.
+Let $G$ be a group with order $p^k$.
+Choose an element $g \in G$ distinct from the identity.
+The subgroup $\langle g \rangle$ must have order that divides $p^{k}$
+by Lagrange's theorem, meaning that it has order $p^1, p^2, \cdots, p^{k-1}, p^k$.
+
+If the order is $p^k$, then $g$ generates $G$ and we can choose 
+$g^{(p^{k-1})}$ as our element of order $p$.
+
+Otherwise, there is an element $h \in \langle g \rangle$
+with order $p$ by our inductive hypothesis since $\langle g \rangle$
+has order $p^1, p^2, \cdots, p^{k-1}, p^k$.
+Since $\langle g \rangle$ is a subgroup of $G$,
+the same element $h$ is in $G$ with order $p$ as well.
+
+\section*{Problem 2}
+Since $G$ contains an element of order 10, 
+10 must divide $|G|$.
+Since $G$ contains an element of order 6,
+6 must divide $|G|$.
+Thus $|G|$ must be a multiple of 30
+since 30 is the LCM of 10 and 6.
+
+\section*{Problem 3}
+By corollary 11,
+$|G| = |\ker(\varphi)|\cdot|\im(\varphi)|$,
+$|\ker(\varphi)|$ divides $|G|$, and 
+$|\im(\varphi)|$ divides $|G|$ and $|G'|$.
+Since $\phi$ is non-trivial we know that 
+$|\im(\varphi)| \neq 1$.
+Thus $|\im(\varphi)| = 3$ since it must divide both $15$ and $18$.
+This then implies that $|\ker(\varphi)| = 6$ since 
+$|G| = |\ker(\varphi)|\cdot|\im(\varphi)|$.
+
+\section*{Problem 4}
+Since $N$ is a subgroup of $G$ of index 2, $G$ is the disjoint
+union of two cosets, $N$ and $G \setminus N$.
+Let $g \in G$.
+We want to show that $gN = Ng$.
+
+In the case when $g \in N$, then these two sets are equal
+since $gN = N = Ng$.
+
+Let $g \notin N$.
+This implies that $gN \neq N$ and so $gN = G \setminus N$.
+Similarly $Ng \neq N$ so $Ng = G \setminus N$.
+Therefore $gN = G \setminus N = Ng$.
+
+
+
+
+
+
+
+\end{document}

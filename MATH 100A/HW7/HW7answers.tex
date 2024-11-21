@@ -1,0 +1,178 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Every orientation reversing isometry can 
+be written as a glide-reflection.
+We can write $m = t_a r_\ell$ for $a$ parallel to line $\ell$.
+Note that $r_\ell t_a r_\ell = t_a$ since translations are a normal subgroup.
+Therefore 
+\[
+	m^2 = t_a r_\ell t_a r_\ell = t_{2a}
+\]
+\newpage
+
+\section*{Problem 2}
+\begin{align*}
+	x^2yxyx^3yx^4 &= x^2x^{-1}yx^{-3}yx^{-4}y \\
+	&= x^2x^{-1}x^{3}yx^{4}y^2 \\ 
+	&= x^2x^{-1}x^{3}x^{-4}y^3 \\ 
+	&= x^0y^1
+\end{align*}
+\newpage 
+
+\section*{Problem 3}
+First we will prove that $\Gamma \supseteq 3L$.
+For each $\Gamma \subseteq L$ with index 3, there is the
+associated homomorphism $L \to L/\Gamma$ that sends each element to its coset.
+Notice that $\Gamma$ is the kernel of this homomorphism.
+Since $\Gamma$ has index 3, $L/\Gamma$ has order 3
+and so it is isomorphic to the cyclic group $\mathbb{Z}_3$.
+Therefore we can characterize each subgroup of index 3 as being the kernel
+of of a homomorphism $f: L \to \mathbb{Z}_3$.
+If $a,b \in \mathbb{Z}$ and $3av_1 + 3bv_2 \in 3L$ then
+\begin{align*}
+	f(3av_1 + 3bv_2) &= f(3av_1) + f(3bv_2) \\
+	 &= 3f(av_1) + 3f(bv_2) \\
+	 &= 0 \mod 3.
+\end{align*}
+Therefore $3L$ is in the kernel of $f$ and $3L \subseteq \Gamma$.
+This implies that if $av_1 + bv_2 \in \Gamma$, then 
+$a'v_1 + b'v_2 \in \Gamma$ as well if $a' = a \mod 3$ and $b' = b \mod 3$.
+Therefore we only need to consider whether 
+$av_1 + bv_2$ with $a,b \in \mathbb{Z}_3$ are in $\Gamma$.
+These are the eight nonzero vectors with coefficients unique modulo $3$.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$w_i$      & $2w_i$ & Subgroup elements & Cosets \\ \hline
+		$1v_1 + 0v_2$ & $2v_1 + 0v_2$ & $av_1 + 3bv_2$ & $(0 + \Gamma)$, $(v_2 + \Gamma)$, $(2v_2 + \Gamma)$  \\ \hline
+		$0v_1 + 1v_2$ & $0v_1 + 2v_2$ & $3bv_1 + av_2$ & $(0 + \Gamma)$, $(v_1 + \Gamma)$, $(2v_1 + \Gamma)$  \\ \hline
+		$1v_1 + 1v_2$ & $2v_1 + 2v_2$ & $(a+3b)v_1 + (a + 3b)v_2$ & $(0 + \Gamma)$, $(v_1-v_2 + \Gamma)$, $(2v_1-2v_2 + \Gamma)$  \\ \hline
+		$1v_1 + 2v_2$ & $2v_1 + 1v_2$ & $(a+3b)v_1 - (a + 3b)v_2$ & $(0 + \Gamma)$, $(v_1+v_2 + \Gamma)$, $(2v_1+2v_2 + \Gamma)$  \\ \hline
+	\end{tabular}
+\end{table}
+
+In the table above, these eight vectors are listed in the first two columns.
+Notice that the first two columns are integer multiples of each other,
+so we only need to consider if $\Gamma$ contains the four vectors 
+in the first column denoted $w_i$.
+$\Gamma$ must contain just one $w_i$, because 
+if it contained more than one then $\Gamma = L$.
+Therefore there are at most $4$ subgroups of index $3$.
+Since each of these subgroups are unique,
+there are exactly four subgroups of index $3$.
+Each subgroup can be be written as $\Gamma =\langle 3L \cup \{w_i\} \rangle$.
+\newpage
+
+\section*{Problem 4}
+$(\impliedby)$First we will prove that if $g \in M_2(\mathbf{Z})$,
+then $(w_1, w_2)$, where $(w_1,w_2) = (v_1,v_2)g$,
+is a lattice basis for $L$.
+If $g = 
+\begin{bmatrix}
+	a & b \\
+	c & d
+\end{bmatrix}$ with determinant $\pm 1$,
+then $w_1 = av_1 + cv_2$ $w_2 = bv_1 + dv_2$ with 
+$ad-bc = \pm 1$.
+
+If $v = \mathbf{Z}w_1 + \mathbf{Z}w_2$, it is in $L$.
+Writing $v = k_1w_1 + k_2w_2$ for constants $k_1, k_2 \in \mathbf{Z}$
+then
+\begin{align}
+	v &= k_1w_1 + k_2w_2 \\
+	  &= k_1(av_1 + cv_2) + k_2(bv_1 + dv_2) \\
+	  &= (k_1a + k_2b)v_1 + (k_1c + k_2d)v_2.
+\end{align}
+If $v \in L$ then it is in $\mathbf{Z}w_1 + \mathbf{Z}w_2$.
+We can write $v = k_1v_1 + k_2v_2$
+for constants $k_1, k_2 \in \mathbf{Z}$.
+Since $(w_1,w_2)g^{-1} = (v_1,v_2)$ and $g^{-1} = \frac{1}{ad-bc}\begin{bmatrix}
+	d & -b \\
+	-c & a
+\end{bmatrix}$, then 
+$v_1 = \frac{1}{ad-bc} (dw_1 - cw_2)$,
+$v_2 = \frac{1}{ad-bc}(-bw_1 + acw_1)$.
+Therefore we have that
+\begin{align}
+	v &= k_1v_1 + k_2v_2 \\
+	  &= \frac{1}{ad-bc}\left( k_1(dw_1 - cw_2) + k_2((-bw_1 + aw_2))\right) \\
+	  &= \frac{1}{ad-bc}\left(  (k_1d - k_2b)w_1 + (-k_1c + k_2a)w_2\right). 
+\end{align}
+Therefore $\mathbf{Z}v_1 + \mathbf{Z}v_2 = \mathbf{Z}w_1 + \mathbf{Z}w_2$ 
+and$(w_1, w_2)$ is a lattice basis if $g \in M_2(\mathbf{Z})$.
+
+$(\implies)$Next we will prove that if $(w_1,w_2)$ is a lattice basis for $L$,
+we can write it in the form $(w_1,w_2) = (v_1,v_2)g$
+for $g \in M_2(\mathbf{Z})$ with determinant $\pm 1$.
+If $(w_1,w_2)$ is a lattice basis for $L$, then 
+for all $v \in \mathbf{Z}w_1 + \mathbf{Z}w_2$ with $v = k_1w_1 + k_2w_2$, there exists
+constants $s_1, s_2 \in \mathbf{Z}$ such that
+$v = s_1v_1 + s_2v_2$.
+
+When $v = w_1$, let $a$ and $c$ be the constants such that 
+\[
+	w_1 = av_1 + cv_2.
+\]
+When $v = w_2$, let $b$ and $d$ be the constants such that 
+\[
+	w_2 = bv_1 + dv_2.
+\]
+Therefore we can write,
+$(w_1,w_2) = (v_1,v_2)\begin{bmatrix}
+	a & b \\
+	c & d
+\end{bmatrix} = (v_1,v_2)g$.
+From the coefficients in equation (6),
+we must have that $\frac{1}{ad-bc}$ is an integer
+in order that every $v\in \mathbf{Z}v_1 + \mathbf{Z}v_2$ is also in $\mathbf{Z}w_1 + \mathbf{Z}w_2$.
+Since $a,b,c,d$ are all integers, this is only 
+possible when $ad-bc = \pm 1$, meaning that the 
+determinant of $g$ is $\pm 1$.
+\newpage 
+\section*{Problem 5}
+Suppose $f,g$ are the rotations about distinct points $P,Q$ respectively.
+We can write each element of $f$ in the form $t_P R_\theta t_{-P}$ for some $\theta$.
+Likewise we can write each element of $g$ as $t_Q R_\theta t_{-Q}$ for some $\theta$.
+If we rotate around $P$ by $\pi$ and around $Q$ by $\pi$ then we get a translation.
+For all $v \in \mathbf{R}^2$,
+\begin{align*}
+	(t_P R_{\pi} t_{-P})(t_Q R_\pi t_{-Q})v &= t_P R_{-\pi} t_{-P}t_Q R_\pi (v-Q) \\
+	&= t_P R_{\pi} t_{-P}t_Q  (-v+Q) \\
+	&= t_P R_{\pi} t_{-P}  (-v+2Q) \\
+	&= t_P R_{\pi}  (-v+2Q-P) \\
+	&= t_P  (v-2Q+P) \\
+	&= v-2Q+2P \\
+	&= (t_{2P-2Q})v
+\end{align*}
+Therefore the group generated by $f$ and $g$ contains 
+a non-trivial translation.
+
+\newpage
+
+
+
+
+
+\end{document}

@@ -1,0 +1,170 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 4} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1: Page 61 Question 8(a)}
+\[
+	f(z) = \Re(z) = \frac{z+\cjg{z}}{2}
+\]
+\begin{align*}
+	\frac{\Delta w}{\Delta z} &= \frac{\frac{z+ \Delta z + \cjg{z + \Delta z}}{2} - \frac{z+\cjg{z}}{2}}{\Delta z} \\
+	&= \frac{\Delta z + \cjg{\Delta z}}{2 \Delta z} \\
+	&= \frac{1}{2} + \frac{\cjg{\Delta z}}{2 \Delta z}
+\end{align*}
+
+Approaching $\Delta z \to 0$ horizontally yields $1$
+but approaching vertically yields $0$,
+so the limit does not exist at any point.
+Therefore $f'(z)$ does not exist at any point.
+\newpage 
+
+\section*{Problem 2 : Page 62 Question 9}
+When $z = 0$,
+\[
+	\frac{\Delta w}{\Delta z} = \frac{f(\Delta z) - f(0)}{\Delta z} \\
+	= \frac{\cjg{\Delta z}^2}{\Delta z^2}
+\]
+Along the x axis for points $(\Delta x, 0)$,
+\[
+	\frac{\cjg{\Delta z}^2}{\Delta z^2} =
+	\frac{\Delta x^2}{\Delta x^2} =
+	1
+\]
+Along the y axis for points $(0, \Delta y)$
+\[
+	\frac{\cjg{\Delta z}^2}{\Delta z^2} =
+	\frac{\Delta y^2}{\Delta y^2} =
+	1
+\]
+Along the diagonal for points $(\Delta x, \Delta x)$
+\begin{align*}
+	\frac{\cjg{\Delta z}^2}{\Delta z^2} &= \frac{\cjg{\Delta z}^2}{\Delta z^2} \cdot \frac{\cjg{\Delta z}^2}{\cjg{\Delta z}^2} \\
+	&= \frac{(\Delta x - i \Delta x)^4}{({\Delta x}^2 + {\Delta x}^2)^2} \\
+	&= \frac{\Delta x^4 - 4 i \Delta x^4 - 6\Delta x^4 + 4 i \Delta x^4 + \Delta x^4}{(2{\Delta x^2})^2} \\
+	&= \frac{-4\Delta x}{4\Delta x} \\
+	&= -1
+\end{align*}
+
+Since the limit is not equal from all directions, the derivative does not exist 
+for $z = 0$.
+
+\newpage 
+\section*{Problem 3: Page 70 Question 1(c)(d)}
+\[
+	f(z) = 2x + ixy^2, \qquad u(x,y) = 2x, \qquad v(x,y) = xy^2
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= 2, & u_y &= 1 \\
+		v_x &= y^2, & v_y &= 2xy
+	\end{aligned}	
+\end{equation*}
+\[
+	u_x = v_y \implies 2 = 2xy
+\]
+\[
+	u_y = -v_x \implies 1 = -y^2 
+\]
+
+Since there does not exist real $y$ such that $1 = -y^2$,
+$f'(z)$ does not exist at any point.
+\[
+	f(z) = e^{x}e^{-iy} = e^x(\cos(y) - i\sin(y))
+\]
+\[
+	u(x,y) = e^x\cos(y), \qquad v(x,y) = -e^x\sin(y)
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= e^x\cos(y), & u_y &= -e^x\sin(y) \\
+		v_x &= -e^x\sin(y), & v_y &= -e^x\cos(y)
+	\end{aligned}	
+\end{equation*}
+
+\[
+	u_x = v_y \implies e^x\cos(y) = -e^x\cos(y)
+\]
+\[
+	u_y = -v_x \implies e^x\sin(y) = -e^x\sin(y)
+\]
+These two set of equations has no solution since $e^x$ is never zero 
+and $\cos$ and $\sin$ are never simulteanously zero.
+Therefore,
+$f'(z)$ does not exist at any point.
+\newpage 
+
+\section*{Problem 4: Page 70 Question 2(b)}
+\[
+	f(z) = e^{-x}e^{-iy} = e^{-x}(\cos(y) - i\sin(y))
+\]
+\[
+	u(x,y) = e^{-x}\cos(y), \qquad v(x,y) = -e^{-x}\sin(y)
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= -e^{-x}\cos(y), & u_y &= -e^{-x}\sin(y) \\
+		v_x &= e^{-x}\sin(y), & v_y &= -e^{-x}\cos(y)
+	\end{aligned}
+\end{equation*}
+
+Since $u, v$ always exist, their partial derivatives always exist and are continuous,
+and the Cauchy-Riemann conditions hold, 
+$f'(z)$ exists everywhere.
+\newpage
+
+\section*{Problem 5: Page 71 Question 3(b)(c)}
+\[
+	f(z) = x^2 + iy^2
+\]
+\[
+	u(x,y) = x^2, \qquad v(x,y) = y^2
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= 2x, & u_y &= 0  \\
+		v_x &= 0, & v_y &= 2y
+	\end{aligned}
+\end{equation*}
+
+Therefore the derivative exists when $x=y$
+and it is equal to 
+\[
+	f'(x + ix) = u_x + iv_x = 2x
+\]
+
+\[
+	f(z) = z\Im z = (x+iy)y
+\]
+\[
+	u(x,y) = xy, \qquad v(x,y) = y^2
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= y, & u_y &= x  \\
+		v_x &= 0, & v_y &= 2y
+	\end{aligned}
+\end{equation*}
+Therefore the derivative exists when $z=0$
+and it is equal to 
+\[
+	f'(0) = u_x + iv_x = 0
+\]
+\end{document}

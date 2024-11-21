@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 5} \\
+	Merrick Qiu
+\end{center}
+\section*{Problem 1: Page 71 Question 4(a)}
+\begin{align*}
+	f(z) &= \frac{1}{z^4} \\
+	&= \frac{1}{(re^{i\theta})^4} \\
+	&= \frac{1}{r^4}e^{-i4\theta} \\
+	&= \frac{1}{r^4}(\cos 4\theta - i\sin 4\theta)
+\end{align*}
+\[
+	u = \frac{\cos 4\theta}{r^4}, \quad v = -\frac{\sin 4\theta}{r^4}
+\]
+\[
+	ru_r = -\frac{4\cos 4\theta}{r^4} = v_\theta
+\]
+\[
+	u_\theta = -\frac{4\sin 4\theta}{r^4} = -rv_r
+\]
+By the polar form of the Cauchy-Riemann equations,
+$f$ is differentiable when $z \neq 0$.
+\begin{align*}
+	f'(z) = e^{-i\theta}(u_r + iv_r) &= e^{-i\theta}\left(-\frac{4\cos 4\theta}{r^5} + i \frac{4\sin 4\theta}{r^5}\right) \\
+	&= -\frac{4}{r^5}e^{-i\theta}e^{-i4\theta} \\
+	&= -\frac{4}{(re^{i\theta})^5} \\
+	&= -\frac{4}{z^5}
+\end{align*}
+\newpage 
+
+\section*{Problem 2: Page 76 Question 1(c)(d)}
+\[
+	f(z) = e^{-y} \sin x - i e^{-y}\cos x
+\]
+\[
+	u = e^{-y} \sin x, \quad v = -e^{-y}\cos x
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= e^{-y}\cos x & u_y &= -e^{-y}\sin x \\
+		v_x &= e^{-y}\sin x & v_y &= e^{-y}\cos x 
+	\end{aligned}
+\end{equation*}
+
+Since $u_x = v_y$ and $u_y = -v_x$ everywhere,
+the function is entire.
+\begin{align*}
+	f(z) &= (z^2 - 2)e^{-x}e^{-iy} \\
+	&= ((x+iy)^2 - 2)e^{-x}(\cos y - i\sin y) \\
+	&= ((x^2 - y^2 - 2) + 2ixy)e^{-x}(\cos y - i\sin y) \\
+	&= e^{-x}((x^2-y^2-2)\cos y - i(x^2-y^2-2)\sin y + 2ixy\cos y +2xy\sin y) \\
+	&= e^{-x}((x^2-y^2-2)\cos y + 2xy\sin y + i (2xy\cos y - (x^2-y^2-2)\sin y))
+\end{align*}
+\[
+	u =  e^{-x}(x^2-y^2-2)\cos y + 2e^{-x}xy\sin y, \quad v = 2e^{-x}xy\cos y - e^{-x}(x^2-y^2-2)\sin y
+\]
+\begin{align*}
+	u_x &= 2e^{-x}x\cos y - e^{-x}(x^2-y^2-2)\cos y + 2e^{-x}y\sin y - 2e^{-x}xy\sin y \\
+	u_y &= -e^{-x}(x^2-y^2-2)\sin y -2e^{-x}y\cos y + 2e^{-x}xy\cos y + 2e^{-x}x\sin y\\
+	v_x &= 2e^{-x}y\cos y - 2e^{-x}xy\cos y - 2e^{-x}x\sin y + e^{-x}(x^2-y^2-2)\sin y\\
+	v_y &= -2e^{-x}xy\sin y + 2e^{-x}x\cos y - e^{-x}(x^2-y^2-2)\cos y + 2e^{-x}y\sin y
+\end{align*}
+
+Since $u_x = v_y$ and $u_y = -v_x$ everywhere,
+the function is entire.
+\newpage
+\section*{Problem 3: Page 76 Question 2(a)(c)}
+\[
+	f(z) = xy + iy
+\]
+\[
+	u = xy, \quad v = y
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= y & u_y &= x \\
+		v_x &= 0 & v_y &= 1
+	\end{aligned}
+\end{equation*}
+By the Cauchy-Riemann equations, the function is only differentiable at 
+the point $(0,1)$.
+No point has a neighborhood of complex differentiable points so 
+the function is nowhere analytic.
+\[
+	f(z) = e^ye^{ix} = e^y\cos(x) + ie^y\sin(x) 
+\]
+\[
+	u = e^y\cos(x), \quad v = e^y\sin(x) 
+\]
+\begin{equation*}
+	\begin{aligned}
+		u_x &= -e^y\sin(x) & u_y &= e^y\cos(x) \\
+		v_x &= e^y\cos(x)  & v_y &= e^y\sin(x) 
+	\end{aligned}
+\end{equation*}
+By the Cauchy-Riemann equations, the function is only differentiable on 
+the line $(0, y)$.
+No point has a neighborhood of complex differentiable points so 
+the function is nowhere analytic.
+\newpage
+\section*{Problem 4: Page 76 Question 4(c)}
+\[
+	f(z) = \frac{z^2}{(z+2)(z^2+2z+2)}
+\]
+Since $f$ is the quotient of two polynomials,
+the function is analytic everywhere except
+for when the quotient is zero, which are the singular points.
+Factoring the quotient yields
+\[
+	(z+2)(z^2 + 2z+2) = (z+2)(z+1+i)(z+1-i).
+\]
+Therefore the singular points are 
+$z = -2, -1 \pm i$.
+\newpage
+\section*{Problem 5: Page 77 Question 7}
+Since the function is analytic on a domain, it must follow
+the Cauchy-Riemann equations hold for each point.
+However since $v = 0$, this implies that 
+$u_x = v_y = 0$ and $u_y = -v_x = 0$, which means that $f$ must be constant.
+
+\newpage
+
+\end{document}
