@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 9} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+We can show that the both representations have the same trace
+to show that they are isomorphic.
+Each element $g \in D_{2n}$ can be written in the form
+$g = x^ay^b$ for $0 \leq a < n$ and $0 \leq y < 2$.
+
+If $b = 0$ then 
+\begin{align*}
+	\chi_{\rho_1}(x^a) &= 
+	\tr
+	\left(\begin{bmatrix}
+		\cos(\frac{2\pi}{n}) & -\sin(\frac{2\pi}{n})\\
+		\sin(\frac{2\pi}{n}) & \cos(\frac{2\pi}{n})
+	\end{bmatrix} \right) \\ &= 2\cos(\frac{2\pi}{n}) \\ \\
+	\chi_{\rho_1}(x^a) &= 
+	\tr
+	\left(\begin{bmatrix}
+		e^{2\pi i/n} & 0\\
+		0 & e^{-2\pi i/n}
+	\end{bmatrix} \right) \\ &= 
+	\left(\cos(\frac{2\pi}{n}) + i\sin(\frac{2\pi}{n})\right) +
+	\left(\cos(\frac{2\pi}{n}) - i\sin(\frac{2\pi}{n})\right) \\ &=
+	2\cos(\frac{2\pi}{n})
+\end{align*}
+
+If $b=1$ then 
+\begin{align*}
+	\chi_{\rho_1}(x^ay) &= 
+	\tr
+	\left(\begin{bmatrix}
+		\cos(\frac{2\pi}{n}) & \sin(\frac{2\pi}{n})\\
+		\sin(\frac{2\pi}{n}) & -\cos(\frac{2\pi}{n})
+	\end{bmatrix} \right) \\ &= 0 \\ \\
+	\chi_{\rho_1}(x^a) &= 
+	\tr
+	\left(\begin{bmatrix}
+		0 & e^{2\pi i/n} \\
+		e^{-2\pi i/n} & 0
+	\end{bmatrix} \right) \\ &= 
+	0
+\end{align*}
+
+Since the traces of both representations are equal,
+the representations are isomorphic.
+\newpage 
+
+\section*{Problem 2}
+If $a \in \mathbb{Z}/n\mathbb{Z}$ then the $k$th representation 
+is 
+\[
+	\rho_k(a) = e^{ak(2\pi i/n)}
+\]
+This is a homomorphism for all $k$ since 
+\[
+	\rho_k(a+b) = e^{(a+b)k(2\pi i/n)} = e^{ak(2\pi i/n)}\cdot e^{bk(2\pi i/n)} = \rho_k(a)\rho_k(b)
+\]
+\newpage 
+
+\section*{Problem 3}
+Let $C_n \subseteq D_{2n}$ be the cyclic normal subgroup of size $n$.
+Restricting $\rho$ to $C_n$, we can write $V$ as a direct
+sum of irreducible representations of $C_n$ by Maschke's theorem.
+In particular, we have a nonzero eigenvector $v \in V$
+such that $gv = \lambda(g)v$ for every $g \in C_n$
+by Schur's lemma. Let $W = \operatorname{Span}(v, y\cdot v)$.
+We will now prove that $W$ is a  $D_{2n}$ invariant subspace of $V$.
+
+Let $w \in W$ with $w = av + by\cdot v$ for $a,b \in \mathbb{C}$.
+Let $x^a \in D_{2n}$.
+\begin{align*}
+	\rho(x^a)(av + b\rho(y)v) &=
+	a\rho(x^a)v + b\rho(x^ay)v \\
+	&=a\rho(x^a)v + b\rho(y)\rho(x^{-a})v \\
+	&= a\lambda(x^a) v + b\lambda(x^{-a})\rho(y) v \\
+\end{align*}
+Similarly for $x^ay \in D_{2n}$,
+\begin{align*}
+	\rho(x^ay)(av + b\rho(y)v) &=
+	a\rho(x^ay)v + b\rho(x^a)v \\
+	&=a\rho(y)\rho(x^{-a})v + b\rho(x^{a})v \\
+	&= a\lambda(x^{-a})\rho(y) v + b\lambda(x^a) v \\
+\end{align*}
+
+Therefore $W$ is a $D_{2n}$ invariant subspace of $V$.
+Since $\rho$ is an irreducible representation,
+we have that $W=V$ and that $\dim(V) \leq 2$
+since $\dim(W) = 2$.
+
+	
+
+
+
+
+\end{document}

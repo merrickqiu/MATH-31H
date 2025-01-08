@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\cjg}[1]{\overline{#1}}
+\DeclareMathOperator\Arg{Arg}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 120A: Homework 9} \\
+	Merrick Qiu
+\end{center}
+\section*{1. Page 159: Problem 1(a)(b)}
+\[
+	f(z) = \frac{z^2}{z+3}
+\]
+Since this function is the quotient of two polynomials,
+it is only not analytic at $z=-3$ which is outside of the 
+region bound by the contour.
+Therefore the function is analytic everywhere interior to 
+and on $C$ so the integral is zero by the Cauchy-Goursat theorem.
+\[
+	f(z) = ze^{-z}
+\]
+Since $z$ is analytic and $e^{-z}$ is analytic,
+their product is analytic everywhere.
+Therefore the integral is zero by the Cauchy-Goursat theorem.
+\newpage
+\section*{2. Page 159: Problem 2(a)}
+\[
+	f(z) = \frac{1}{3z^2+1}
+\]
+Since this function is the quotient of two polynomials,
+it is analytic everywhere except when $3z^2+1 = 0$, where 
+$z = \pm \frac{1}{\sqrt{3}}i$, which is inside of the square
+and outside of the region bound by the circle and the square.
+Therefore by the corollary, the two integrals are equal.
+\newpage 
+
+\section*{3. Page 170: Problem 1(a)(b)}
+Since $e^{-z}$ is analytic, by the cauchy integral formula
+\[
+	\int_C \frac{e^{-z} \,dz}{z-(\pi i/2)} = 2\pi i e^{-\pi i/2} = 2\pi
+\]
+Since $\frac{\cos z}{z^2+8}$ is analytic interior to $C$,
+\[
+	\int_C \frac{\cos z}{z(z^2+8)} \,dz =  2\pi i \frac{\cos 0}{0^2+8} = \frac{2\pi i}{8}
+\]
+\newpage 
+
+\section*{4. Page 170: Problem 2}
+Since $\frac{1}{z+2i}$ is analytic inside the circle,
+\[
+	\int_C \frac{1}{(z-2i)(z+2i)}\,dz = 2\pi i \frac{1}{2i+2i} = \frac{\pi}{2}
+\]
+By the cauchy extension,
+\[
+	\int_C \frac{1}{(z-2i)^2(z+2i)^2}\,dz = \frac{2\pi i}{1!} \left(-\frac{2}{(2i+2i)^3}\right) = \frac{\pi}{16}
+\]
+\newpage 
+\section*{5. Page 170: Problem 3}
+Since $2s^2-s-2$ is analytic everywhere,
+\[
+	g(2) = \int_C \frac{2s^2-s-2}{s-2} \,ds = 2\pi i (2(2)^2 - 2 - 2) = 8\pi i
+\]
+If $|z| > 3$ the cauchy-goursat theorem says that $g(z) = 0$.
+
+\newpage
+\section*{6. Page 170: Problem 4}
+If $z$ is inside then by the cauchy extension 
+\[
+	\frac{d^2}{ds^2} s^3+2s
+	= \frac{d}{ds} 3s^2 + 2
+	= 6s
+\]
+\begin{align*}
+	\int_C \frac{s^3+2s}{(s-z)^3}\,ds &= \frac{2\pi i}{2!} \left(6z\right) \\
+	&= 6\pi i z \\
+\end{align*}
+If $z$ is outside then the cauchy-goursat theorem says that $g(z) = 0$.
+
+\end{document}

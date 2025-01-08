@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\DeclareMathOperator{\im}{im}
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100A: Homework 8} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Since the trace is the sum of the diagonal entires 
+and each diagonal entry is the dot product of the 
+associated row in $X$ and column in $Y$, then
+\begin{align*}
+	\tr(XY) &= \sum_{i=1}^n \sum_{j=1}^n X_{i,j}Y_{j,i} \\
+	&= \sum_{j=1}^n \sum_{i=1}^n Y_{j,i}X_{i,j} \\
+	&= \tr(YX)
+\end{align*}
+As a corollary, we have that
+\[
+	\tr(SXS^{-1}) = \tr(SS^{-1}X) = \tr(X)
+\]
+\newpage 
+
+\section*{Problem 2}
+($\implies$) Suppose there existed nonzero $w \in V$
+such that $\textbf{C}[G](w) = W \neq V$.
+$W \neq \{0\}$ since $W = \{0\}$ would imply $\rho(g)(w) = 0$
+for all $g$.  Since $\rho(g)$ is invertible,
+that implies $w=0$ which is a contradiction.
+
+$W$ is a nontrivial G-invariant subspace
+since it is the span of $g\cdot w$ for all $g\in G$.
+Applying a group action $g$ to an element in that span 
+will still yield an element in that span.
+Therefore if $V$ is irreducible it must be that 
+$\textbf{C}[G](v) = V$ for all nonzero $v\in V$.
+
+($\impliedby$) 
+If $W \subseteq V$ was a nontrivial G-invariant subspace,
+then $\rho(g)(w) \in W$ for all $g$, and so 
+$\textbf{C}[G](w) \subseteq W$.
+However this contradicts the fact that 
+$\textbf{C}[G](v) = V$ for all $v \neq 0$ in $V$.
+Therefore $V$ does not contain any G-invariant subspaces 
+other than $\{0\}$ and $V$.
+\newpage 
+
+\section*{Problem 3}
+Let $W= \{(v_1,\ldots,v_n): v_1+\cdots+v_n = 0\}$.
+Suppose $w=(w_1,\ldots,w_n) \in W$ is not zero.
+It is sufficient to show that $\textbf{C}[S_n](w) = W$ to show that 
+$W$ is irreducible by the previous question.
+There exists $i<j$ so that $w_i \neq w_j$ since $w \neq 0$.
+Let $\tau$ be the permutation of $S_n$ that 
+only exchanges $i$ with $j$.
+
+
+Notice that $\tau\cdot w - w \in \textbf{C}[S_n](w)$
+(since it is a linear combination of permutations of $w$)
+and that $\tau\cdot w - w = \alpha(e_i - e_j)$ for some $\alpha \neq 0$. 
+Let $\sigma_k$ be the permutation that exchanges $j$ and $n$ and then
+exchanges $i$ with $k$.
+Then $\sigma_k(\tau\cdot w - w) = \alpha(e_{k} - e_{n}) \in \textbf{C}[S_n](w)$ too.
+Since any $w \in W$ can be written as a linear combination of the $e_{k} - e_{n}$ terms,
+and each  $e_{k} - e_{n}$ is in $\textbf{C}[S_n](w)$,
+we have that $\textbf{C}[S_n](w) = W$.
+
+
+
+\end{document}
