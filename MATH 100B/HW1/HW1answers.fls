@@ -104,16 +104,7 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
-INPUT ./HW1answers.aux
-INPUT ./HW1answers.aux
-INPUT HW1answers.aux
 OUTPUT HW1answers.aux
-INPUT ./HW1answers.out
-INPUT ./HW1answers.out
-INPUT HW1answers.out
-INPUT HW1answers.out
-INPUT ./HW1answers.out
-INPUT ./HW1answers.out
 OUTPUT HW1answers.out
 OUTPUT HW1answers.pdf
 INPUT c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map

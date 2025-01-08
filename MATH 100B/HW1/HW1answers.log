@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.13)  7 JAN 2025 15:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.13)  7 JAN 2025 18:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -254,7 +254,8 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen160
 \Gm@layoutvoffset=\dimen161
 \Gm@dimlist=\toks24
-) (./HW1answers.aux)
+)
+No file HW1answers.aux.
 \openout1 = `HW1answers.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -276,10 +277,8 @@ LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 Package hyperref Info: Link coloring OFF on input line 14.
- (./HW1answers.out) (./HW1answers.out)
 \@outlinefile=\write3
 \openout3 = `HW1answers.out'.
-
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -326,26 +325,153 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 22.
  (c:/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [1
+)
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing } inserted.
+<inserted text> 
+                }
+l.25 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing { inserted.
+<inserted text> 
+                {
+l.25 \end{align*}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Extra }, or forgotten $.
+<recently read> }
+                 
+l.25 \end{align*}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing $ inserted.
+<inserted text> 
+                $
+l.25 \end{align*}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing } inserted.
+<inserted text> 
+                }
+l.25 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing } inserted.
+<inserted text> 
+                }
+l.25 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Extra }, or forgotten $.
+<recently read> }
+                 
+l.25 \end{align*}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing $ inserted.
+<inserted text> 
+                $
+l.25 \end{align*}
+                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.25 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing } inserted.
+<inserted text> 
+                }
+l.25 \end{align*}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Misplaced \omit.
+\math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
+                                                  \kern -\alignsep@ \iftag@ ...
+l.25 \end{align*}
+                 
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+c:/Users/merri/Documents/MATH-31H/MATH 100B/HW1/HW1answers.tex:25: Missing { inserted.
+<inserted text> 
+                {
+l.25 \end{align*}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+[1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./HW1answers.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-Package rerunfilecheck Info: File `HW1answers.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package rerunfilecheck Warning: File `HW1answers.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `HW1answers.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10062 strings out of 474934
- 150014 string characters out of 5763814
+ 10054 strings out of 474934
+ 149870 string characters out of 5763814
  1920801 words of memory out of 5000000
- 31491 multiletter control sequences out of 15000+600000
+ 31489 multiletter control sequences out of 15000+600000
  564231 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,8n,93p,586b,432s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on HW1answers.pdf (1 page, 53112 bytes).
+Output written on HW1answers.pdf (1 page, 53100 bytes).
 PDF statistics:
  39 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream
