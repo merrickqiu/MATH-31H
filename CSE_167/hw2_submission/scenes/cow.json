@@ -1,0 +1,27 @@
+{
+    "camera":
+    {
+        "resolution": [320, 240],
+        "transform": [
+            {
+                "lookat":
+                {
+                    "position": [4.0, 4.0, 4.0],
+                    "target": [0.6, 1.0, -0.5],
+                    "up": [0, 1, 0]
+                }
+            }
+        ],
+        "s": 0.4,
+        "z_near": 1e-6
+    },
+    
+    "background": [
+        0.2, 0.2, 0.2
+    ],
+    "objects": [
+        {
+            "filename": "cow.ply"
+        }
+    ]
+}

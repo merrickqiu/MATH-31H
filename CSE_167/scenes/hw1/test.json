@@ -1,0 +1,14 @@
+{
+    "resolution": [160, 90],
+    "background": [
+        1, 1, 1
+    ],
+    "objects": [
+        {
+            "type": "rectangle",
+            "p_min": [5, 5],
+            "p_max": [80, 80],
+            "color": [1.0, 0.0, 0.0]
+        }
+    ]
+}

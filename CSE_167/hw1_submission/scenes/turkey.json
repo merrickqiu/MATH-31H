@@ -1,0 +1,81 @@
+{
+    "resolution": [1080, 720],
+    "background": [
+        0.77, 0.0008, 0.005
+    ],
+    "objects": [
+        {
+            "type": "circle",
+            "center": [360, 360],
+            "radius": 180,
+            "color": [1.0, 1.0, 1.0]
+        },
+        {
+            "type": "circle",
+            "center": [405, 360],
+            "radius": 144,
+            "color": [0.77, 0.0008, 0.005]
+        },
+        {
+            "type": "circle",
+            "center": [591, 360],
+            "radius": 90,
+            "color": [1.0, 1.0, 1.0]
+        },
+        {
+            "type": "triangle",
+            "p0": [38, 0],
+            "p1": [91, 78],
+            "p2": [91, -78],
+            "color": [0.77, 0.0008, 0.005],
+            "transform": [
+                {"rotate": 0},
+                {"translate": [591, 360]}
+            ]
+        },
+        {
+            "type": "triangle",
+            "p0": [38, 0],
+            "p1": [91, 78],
+            "p2": [91, -78],
+            "color": [0.77, 0.0008, 0.005],
+            "transform": [
+                {"rotate": 72},
+                {"translate": [591, 360]}
+            ]
+        },
+        {
+            "type": "triangle",
+            "p0": [38, 0],
+            "p1": [91, 78],
+            "p2": [91, -78],
+            "color": [0.77, 0.0008, 0.005],
+            "transform": [
+                {"rotate": 144},
+                {"translate": [591, 360]}
+            ]
+        },
+        {
+            "type": "triangle",
+            "p0": [38, 0],
+            "p1": [91, 78],
+            "p2": [91, -78],
+            "color": [0.77, 0.0008, 0.005],
+            "transform": [
+                {"rotate": 216},
+                {"translate": [591, 360]}
+            ]
+        },
+        {
+            "type": "triangle",
+            "p0": [38, 0],
+            "p1": [91, 78],
+            "p2": [91, -78],
+            "color": [0.77, 0.0008, 0.005],
+            "transform": [
+                {"rotate": 288},
+                {"translate": [591, 360]}
+            ]
+        }
+    ]
+}

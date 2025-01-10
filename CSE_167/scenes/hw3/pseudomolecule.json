@@ -1,0 +1,80 @@
+{
+    "camera":
+    {
+        "resolution": [800, 600],
+        "transform": [
+            {
+                "lookat":
+                {
+                    "position": [0, 0, -8],
+                    "target": [0, 0, 0],
+                    "up": [0, 1, 0]
+                }
+            }
+        ],
+        "s": 0.4,
+        "z_near": 0.1,
+        "z_far": 20
+    },
+    "background": [
+        0.5, 0.5, 0.5
+    ],
+    "objects": [
+        {
+            "filename": "blue_sphere.ply",
+            "transform": [
+                {"translate": [0.5, 0.9, 0]}
+            ]
+        },
+            {
+                "filename": "black_sphere.ply",
+                "transform": [
+                    {"translate": [1.0, 1.8, 0]}
+                ]
+            },
+                {
+                    "filename": "white_sphere.ply",
+                    "transform": [
+                        {"scale": [0.8, 0.8, 0.8]},
+                        {"translate": [0.5, 2.67, 0]}
+                        
+                    ]
+                },
+        {
+            "filename": "black_sphere.ply",
+            "transform": [
+                {"translate": [1, 0, 0]}
+            ]
+        },
+        {
+            "filename": "blue_sphere.ply",
+            "transform": [
+                {"translate": [0.5, -0.9, 0]}
+            ]
+        },
+        {
+            "filename": "black_sphere.ply",
+            "transform": [
+                {"translate": [-0.5, -0.9, 0]}
+            ]
+        },
+        {
+            "filename": "black_sphere.ply",
+            "transform": [
+                {"translate": [-1, 0, 0]}
+            ]
+        },
+        {
+            "filename": "black_sphere.ply",
+            "transform": [
+                {"translate": [-0.5, 0.9, 0]}
+            ]
+        },
+            {
+                "filename": "sphere.ply",
+                "transform": [
+                    {"translate": [-1, 1.8, 0]}
+                ]
+            }
+    ]
+}
