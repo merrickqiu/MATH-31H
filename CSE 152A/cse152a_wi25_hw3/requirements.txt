@@ -1,0 +1,5 @@
+ipykernel==6.29.5
+numpy==2.0.2
+matplotlib==3.9.4
+opencv-python-headless==4.11.0.86
+scikit-learn==1.6.1

@@ -71,6 +71,83 @@ there are also an infinite number of maximal ideals.
 \newpage 
 
 \section*{Problem 5}
+\begin{enumerate}
+	\item The units of $R$ are the constants $a_0 \in F$ with degree $0$.
+	If $x^2$ are reducible then it can be written as the product of two degree $1$ polynomials,
+	but since $R$ contains no degree $1$ polynomials $x^2$ must be irreducible.
+	Likewise $x^3$ must be written as the product of a degree $1$ polynomial and 
+	a degree $2$ polynomial, but $R$ contains no degree $1$ polynomials.
+	\item We can factor $x^6 = x^2\cdot x^2\cdot x^2 = x^3\cdot x^3$ 
+	in two ways into irreducible elements, so $R$ is not a unique factorization domain.
+\end{enumerate}
+\newpage 
+
+\section*{Problem 6}
+\begin{enumerate}
+	\item $RS^{-1}$ is closed under subtraction since for $\frac{r_1}{s_1}, \frac{r_2}{s_2} \in RS^{-1}$
+	\[
+		\frac{r_1}{s_1} - \frac{r_2}{s_2} = \frac{r_1s_2 - r_2s_1}{s_1s_2} \in RS^{-1}
+	\]
+	since $r_1s_2 - r_2s_1 \in R$ and $s_1s_2 = S^{-1}$.
+
+	$RS^{-1}$ is closed under subtraction since for $\frac{r_1}{s_1}, \frac{r_2}{s_2} \in RS^{-1}$
+	\[
+		\frac{r_1}{s_1}\cdot\frac{r_2}{s_2} = \frac{r_1r_2}{s_1s_2} \in RS^{-1}
+	\]
+	since $r_1r_2 \in R$ and $s_1s_2 = S^{-1}$.
+	Since $\frac{1}{1} \in RS^{-1}$ as well, $RS^{-1}$ is a subring of $F$.
+	\item Define $\hat{\phi}\left(\frac{r}{s}\right) = \phi(r)\phi(s)^{-1}$.
+	This is well defined since $\phi(s)$ is a unit and 
+	it sends two equivalent fractions to the same element.
+	If $\frac{r}{s} = \frac{a}{b}$ then $rb = as$ which can be written as $rs^{-1} = ab^{-1}$ and 
+	\[
+		\hat{\phi}\left(\frac{r}{s}\right) 
+		= \phi(r)\phi(s)^{-1} 
+		= \phi(rs^{-1})
+		= \phi(ab^{-1})
+		= \phi(a)\phi(b)^{-1} 
+		= \hat{\phi}\left(\frac{a}{b}\right).
+	\]
+	It is a homomorphism since 
+	\[
+		\hat{\phi}\left(\frac{1}{1}\right) = 1 
+	\]
+	\begin{align*}
+		\hat{\phi}\left(\frac{r}{s} + \frac{a}{b}\right) &= \hat{\phi}\left(\frac{rb + as}{sb}\right) \\
+		&= \phi(rb+as)\phi(sb)^{-1} \\
+		&= \phi((rb+as)(sb)^{-1}) \\
+		&= \phi(rs^{-1}+ab^{-1}) \\
+		&= \phi(r)\phi(s)^{-1} + \phi(a)\phi(b)^{-1} \\
+		&=\hat{\phi}\left(\frac{r}{s}\right) + \hat{\phi}\left(\frac{a}{b}\right) \\
+	\end{align*}
+	\begin{align*}
+		\hat{\phi}\left(\frac{r}{s}\cdot\frac{a}{b}\right) &= \hat{\phi}\left(\frac{ra}{sb}\right) \\
+		&= \phi(ra)\phi(sb)^{-1} \\
+		&= \phi(r)\phi(s)^{-1}\phi(a)\phi(b)^{-1} \\
+		&=\hat{\phi}\left(\frac{r}{s}\right)\hat{\phi}\left(\frac{a}{b}\right) \\
+	\end{align*}
+	It is unique since another homomorphism with these properties $\varphi$ would have 
+	\begin{align*}
+		\varphi(\frac{r}{s})\varphi(s) &= \varphi(\frac{r}{s}\frac{s}{1}) \\
+		&= \varphi(\frac{r}{1}) \\
+		&= \phi(r) \\
+	\end{align*}
+	Also $\varphi(s) = \phi(s)$ so 
+	\[
+		\varphi(\frac{r}{s}) = \phi(r) \phi(s)^{-1} = \hat{\phi}(\frac{r}{s})
+	\]
+\end{enumerate}
+\newpage
+
+\section*{Problem 7}
+Since $\phi(\frac{a}{p^k}) = \phi(a)\phi(p)^{-k}$ for $\frac{a}{p^k} \in RS^{-1}$, 
+each homomorphism is uniquely determined by where it sends $a$ and $p$.
+Since $a$ is an integer and $\phi(1) = 1$, $\phi(a) = \phi(1+\ldots+1) = \phi(1)+\ldots+\phi(1) = a$.
+Since $p$ must be sent to a unit of $\mathbb{Z}/n\mathbb{Z}$,
+and there are $\varphi(n)$ units in $\mathbb{Z}/n\mathbb{Z}$,
+there are $\varphi(n)$ different homomorphisms,
+where $\varphi(n)$ is eulers totient function.
+
 
 
 
