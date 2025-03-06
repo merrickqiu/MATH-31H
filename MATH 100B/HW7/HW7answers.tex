@@ -1,0 +1,129 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{polynom}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100B: Homework 7} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+We can first uniquely factorize each number
+and check if they share any primes in common
+\begin{align*}
+    2+4i &= 2(1+2i) = (1+i)(1-i)(1+2i) \\
+    5+5i &= 5(1+i) = (1+2i)(1-2i)(1+i) 
+\end{align*}
+
+
+Therefore $\gcd(2+4i, 5+5i) = (1+i)(1+2i) = -1+3i$. 
+\newpage 
+
+\section*{Problem 2}
+\begin{enumerate}[(a)]
+    \item Suppose that $f(x)$ was reducible in $R[x]$.
+    This would imply that $f(x)=g(x)h(x)$ where $g(x)$ and $h(x)$ are 
+    not units in $R[x]$ and they have positive degree
+    (if they were constants then $f(x)$ would no longer have $\gcd = 1$).
+    We can write $g(x) = cg_0(x)$ and $h(x) = c'h_0(x)$ where 
+    $g_0(x)$ and $h_0(x)$ are primitive and $c,c' \in R$.
+    Therefore $f(x) = cc'g_0(x)h_0(x)$ but by Gauss' lemma,
+    $g_0(x)h_0(x)$ is primitive and so $c=c'=1$.
+    Therefore $g(x)$ and $h(x)$ are primitive.
+
+    However this is a factorization of $f(x)$ into 
+    two positive degree polynomials, which are not units in $F[x]$,
+    which is a contradiction.
+    Therefore $f(x)$ is irreducible in $R[x]$.
+
+    \item Note that $\mathbb{Q}[x,y] = (\mathbb{Q}[y])[x]$ and take
+    $R = \mathbb{Q}[y]$. Let $F =\mathbb{Q}(y)$ to be the field of fractions of $R$.
+    Since $(y)x + (y^2+1)$ has $\gcd(y, y^2+1) = 1$, we can simply show that 
+    $yx+y^2+1$ is irreducible in $F[x]$ and apply part $(a)$ to prove that it 
+    is irreducible in $R[x] = \mathbb{Q}[x,y]$. 
+    
+    Since $yx+y^2+1$ is a degree $1$ polynomial in terms of $x$,
+    it can only be written as the product of a degree $1$ polynomial and a degree $0$ polynomial,
+    and all degree $0$ polynomials in $F[x]$ are units since its a field of fractions,
+    so $yx+y^2+1$ is therefore irreducible in $F[x]$ and $R[x]$.
+\end{enumerate}
+\newpage 
+
+\section*{Problem 3}
+\begin{enumerate}[(a)]
+    \item Since $B = \{v_1, \ldots, v_n\}$ is a basis, we can write 
+    $u = b_1v_1 + \ldots + b_nv_n$ for all $u \in V$. 
+    Let $B'$ be $B$ but with $v_i$ replaced with $w$.
+    $B'$ is still linearly independent since if there was a way to form a nontrivial linear combination of its elements
+    to get zero, that would immediately also give us a nontrivial linear combination that equals zero in $B$ 
+    by simply substituting in $w = a_1v_1 + \ldots + a_nv_n$ into that linear combination.
+    
+    In order to show that $B'$ spans,
+    we need to show it is possible to write 
+    $u = c_1v_1 + \ldots + c_{i-1}v_{i-1} + c_i w + c_{i+1}v_{i+1} + \ldots + c_n v_n$,
+    which is $u$ written in terms of the basis vectors in $B'$.
+    First let us solve out for $v_i$ in terms of the vectors in $B'$.
+    \[
+        v_i = \frac{w - \sum_{j\neq i} a_j v_j}{a_i}
+    \]
+    Next we can substitute to get the representation we need, which shows $B'$ is a basis as well.
+    \begin{align*}
+        u &= b_1v_1 + \ldots + b_iv_i + \ldots + b_nv_n \\
+        &= b_1v_1 + \ldots + b_i\left(\frac{w - \sum_{j\neq i} a_j v_j}{a_i}\right) + \ldots + b_nv_n \\
+        &= \left(b_1 - \frac{b_ia_1}{a_i}\right)v_1 + \ldots + \left(\frac{b_i}{a_i}\right)v_i + \ldots +  \left(b_n - \frac{b_ia_n}{a_i}\right)v_n
+    \end{align*}
+    \item We can prove this by induction. 
+    Let $B_i = \{w_1,\ldots,w_i,v_{i+1},\ldots,v_n\}$.
+    In the base case, $B_0$ is the original basis we started with.
+    Asumme that $B_i$ is a basis.
+    There exists some vector $v_j$ that can be written as the linear combination of vectors in $B_i$ that 
+    is not already in $B_i$. There must be some $w_k$ used in this linear combination with nonzero coefficient,
+    so we can replace $w_k$ with $v_j$ and then rearrange the vectors to get a new basis $B_{i+1}$ by part (a).
+\end{enumerate}
+\newpage 
+
+\section*{Problem 4}
+If we have two bases, $B = \{v_1,\ldots,v_n\}$ and $B'=\{w_1,\ldots,w_m\}$ where $m>n$,
+then we can replace the elements of $B'$ one by one with elements by $B$ to create a basis that is a superset of $B$,
+which is a contradiction. Likewise if $m<n$ we can replace elements of $B$ with elements of $B'$ to create a basis 
+that is a super set of $B'$, which is also a contradiction. 
+Therefore all basis have the same number of elements in $V$.
+\newpage 
+
+\section*{Problem 5}
+Suppose that there did exist a linear combination of these functions that equaled zero. 
+\[
+    ax^2+b\sin x + c\cos x + de^x = 0
+\]
+At $x=0$ we have that $c+d=0$.
+At $x=2\pi$ we have that $c +de^{2\pi} = 0$, which implies $de^{2\pi} - d = 0$, $d=0$ and $c=0$.
+At $x=\pi$ we have that $a\pi^2 = 0$ which implies $a=0$.
+We are left with $b\sin x = 0$ which implies $b=0$.
+Therefore only the trivial linear combination gives zero meaning these functions are independent.
+\newpage
+
+\section*{Problem 6}
+If we have a linear combination of a finite number of reciprocals of monic degree 1 polynomials
+equal to $0$, we can show that it implies all the coefficients are $0$.
+
+\[
+    0 = \sum_{i=1}^n \frac{c_i}{x-a_i} 
+    = \frac{\sum_{i=1}^n c_i \prod_{j\neq i} (x-a_j)}{\prod_{i=1}^n (x-a_i)}
+\]
+In the numerator, if $c_i \neq 0$ then $x-a_i$ does not divide the numerator and 
+$a_i$ is not a root, so it must be that all the $c_i = 0$.
+Therefore the set of reciprocals of monic degree 1 polynomials ia linearly independent.
+\end{document}
