@@ -1,0 +1,142 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{polynom}
+\setlength{\parindent}{0pt}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+
+
+\begin{document}
+\begin{center}
+	\huge{\bf Math 100B: Homework 8} \\
+	Merrick Qiu
+\end{center}
+
+\section*{Problem 1}
+Let $S$ be the set of all subsets $X'\subseteq V$ such that 
+$X \subseteq X'$ and $X'$ is linearly independent over $F$.
+Let $(S,\leq)$ be a poset where $X_1 \leq X_2$ iff $X_1 \subseteq X_2$.
+Note that $S$ is nonempty since $X \in S$.
+Suppose $T$ is a chain in $S$.
+Let $Y = \bigcup_{X_i \in T} X_i$ and we want to show that $Y$
+is an upper bound for $T$.
+
+It's clear that if $X_i \in T$ then $X_i \leq Y$ so 
+all we need to show is that $Y \in S$.
+First we have that $X \subseteq Y$ since $X \subseteq X_i$
+for every $X_i \in T$. 
+Now we need to show that $v_1,\ldots,v_n \in Y$ are linearly independent.
+Then $v_i \in X_i$ for some $X_i \in T$.
+Then $v_1,\ldots, v_n \in X_m$ where $X_m$ 
+is the largest among $X_1,\ldots, X_n$.
+Then since $X_m$ consistents of linearly independent vectors,
+$Y$ consists of linearly independent vectors and $Y \in S$.
+
+Since each chain has a maximal element, $S$
+has a maximal element $X'$ by Zorns lemma,
+which is a basis and contains $X$, which completes our proof.
+If $X'$ was not a basis, then it would have a span 
+smaller than $V$, which implies that $X'$ is not maximal(since
+we can add a vector not in the span to $X'$ while keeping it linearly independent) 
+which is a contradiction.
+\newpage 
+
+\section*{Problem 2}
+\begin{enumerate}[(a)]
+    \item If $A$ is invertible then we can choose $P=A$ since 
+    \[
+        A^{-1} AB A = BA
+    \]
+    If $B$ is invertible then we can choose $P=B^{-1}$ since 
+    \[
+        (B^{-1})^{-1} AB B^{-1} = BA
+    \]
+    \item In $\mathbb{R}^2$ we can choose 
+    \[ 
+        A = \begin{bmatrix}
+            1 & 1 \\ 
+            0 & 0
+        \end{bmatrix}
+        \qquad
+        B = \begin{bmatrix}
+            0 & 0 \\ 
+            0 & 1
+        \end{bmatrix}
+    \]
+    However $AB$ and $BA$ are not similar since
+    \[
+        AB = \begin{bmatrix}
+            0 & 1 \\ 
+            0 & 0
+        \end{bmatrix}
+        \qquad 
+        BA = \begin{bmatrix}
+            0 & 0 \\ 
+            0 & 0
+        \end{bmatrix}
+    \]
+\end{enumerate}
+\newpage 
+
+\section*{Problem 3}
+\begin{enumerate}[(a)]
+   \item Let $v \in V$ be arbitrary and let $v' \in \operatorname{im} \phi$. 
+   such that $\phi(v) = v'$.
+   Let $w = v-v'$ so we can write $\phi(v') + \phi(w) = v'$.
+   Sine $v' \in \operatorname{im} \phi$ and $\phi^2 = \phi$
+   it must be that $\phi(v') = v'$.
+   This implies that $\phi(w) = 0$ and $w \in \operatorname{ker} \phi$.
+   Therefore $v = v' + w$ where $v' \in \operatorname{im} \phi$ and 
+   $w \in \operatorname{ker} \phi$, so $V = \operatorname{im}\phi \oplus \operatorname{ker}\phi$.
+   \item Since the image and kernel are subspaces, they each have a basis.
+   Their intersection only contains zero 
+   If the intersection had a nonzero vector, 
+   it would map to $0$ since it was in the kernel but it would also need to map to itself
+   since $\phi^2 = \phi$ which is a contradiction.
+   Therefore the basis for the image and kernel are independent from each other and we 
+   can combine them to form a basis for the entire space $V$
+   (since the dimension of $V$ is the sum of the dimensions of the image and kernel by the rank-nullity theorem).
+
+   If the image has dimension $m$ and $V$ has dimension $n$,
+   then $M_\mathcal{B}(\phi)$ would be a $n\times n$ matrix with zeros everywhere
+   except for the first $m$ entires of the diagonal. 
+\end{enumerate}
+\newpage
+\section*{Problem 4}
+\begin{enumerate}[(a)]
+    \item Since $\phi^2$ is the identity map, $\phi^2(v) = v$ and $\phi(v-\phi(v)) = \phi(v) - v$.
+    If $\phi(v) - v$ is zero then $v-\phi(v)$ has eigenvalue $0$ and if $\phi(v) - v$ is not zero,
+    then it has eigenvalue $-1$.
+    \item Every vector $v \in V$ can be written as the sum $\frac{1}{2}(v + \phi(v)) + \frac{1}{2}(v - \phi(v))$.
+    This is the sum of a vector in $V_1$ and a vector in $V_{-1}$ since
+    \[
+        \phi(\frac{1}{2}(v+\phi(v))) = \frac{1}{2}(\phi(v) + \phi(\phi(v))) = \frac{1}{2}(v+\phi(v))
+    \]
+    \[
+        \phi(\frac{1}{2}(v-\phi(v))) = \frac{1}{2}(\phi(v) - \phi(\phi(v))) = -\frac{1}{2}(v-\phi(v)).
+    \]
+    \item Since $V = V_1 \oplus V_{-1}$ and $V_1$ and $V_{-1}$ both have eigenbasis, 
+    $V$ also has an eigenbasis and so it is diagonal.
+\end{enumerate}
+\newpage
+\section*{Problem 5}
+Over standard coordinates, the matrix 
+\[
+    M_\mathcal{B}(\phi) =
+    \begin{bmatrix}
+        0 & 1 \\ 
+        1 & 0
+    \end{bmatrix}
+\]
+is not diagonalizable because if $v = a_1v_1 + a_2v_2$ is an eigenvector,
+then $a_1 = a_2$, but there is only one such nonzero vector that satisfies this property(namely $v_1 + v_2$). 
+Therefore there does not exist an eigenbasis for $\phi$ and so it is not diagonalizable.
+\end{document}
